@@ -33,7 +33,7 @@ export default {
             })
             .catch(e =>{
                 this.$notify({
-                    message: 'Contraseña invalida.',
+                    message: 'Contraseña invalaliAAAAAA',
                     type: 'warning'
                 });
             })
