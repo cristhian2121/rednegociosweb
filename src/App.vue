@@ -1,64 +1,16 @@
-
 <template>  
-   
   <div id="app">
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <header id="header">
-      <div class="container">
-        <div class="align-items-left justify-content-between d-flex">
-          <div id="logo">
-            <span class="glyphicon glyphicon-qrcode"></span>
-          </div>
-          <nav id="nav-menu-container">
-            <ul class="nav-menu">     
-              <li>         
-                <span class="glyphicon glyphicon-home ticker-txt">                   
-                </span>
-                <router-link :to="{ path: '/home' }">Inicio</router-link>                 
-              </li>              
-              <li>
-                <span class="glyphicon glyphicon-list-alt ticker-txt">
-                </span> 
-                <router-link :to="{ path: '/empresa/registro' }">Anúnciate</router-link>
-              </li>
-              <!-- <li><span class="glyphicon glyphicon-user ticker-txt">
-                 </span>
-                 <router-link :to="{ path: '/login' }">Iniciar sesión</router-link>
-                  
-              </li> -->
-              <li>
-                <span class="glyphicon glyphicon-off">
-                </span>
-                <router-link :to="{ path: '/' }">Salir</router-link>
-                 
-                  
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </div>
-    </header>
-    <div class="espacio-hijos"></div>
-
     <router-view></router-view>
-    <br/>
-
-<!--Agregar piso-->
-
-  </div>
-  
+  </div>  
 </template>
-
-
 
 <script>
 import axios from "axios";
-export default {
-  //  
+export default { 
   async mounted(){      
       this.usuario = sessionStorage.getItem('user')
       if(this.usuario){     
-         await this.traer_empresas();    
+        await this.traer_empresas();    
       }
     },
     data(){
@@ -81,10 +33,18 @@ export default {
 };
 </script>
 
-<style>
+
+
+<style>¿¿
+/*@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css");*/
+
 /* Estilos para la nav-menu   */ 
 .espacio-hijos{
   padding-top: 90px;
+}
+
+.txt-cen{
+  text-align: center;
 }
 
 #logo{
@@ -698,6 +658,7 @@ td, th {
 .text-center {
   text-align: center;
 }
+
 
 .text-left {
   text-align: left;
@@ -2450,7 +2411,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .banner-content .form-wrap {
-  background-image: url("");
+  background-image: url("./assets/back.jpg");
   background-position: center center;
   background-repeat: no-repeat;
   /*border: 1px solid #b8aaf3;*/
@@ -2547,7 +2508,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .single-popular-post {
-  background-color: #222;
+  background-color: #fff;
   padding: 20px;
 }
 
@@ -2560,12 +2521,13 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .single-popular-post h4 {
-  color: #fff;
+  color: #222;
+  text-transform: capitalize;
 }
 
 .single-popular-post h6 {
-  padding: 10px 0;
-  color: #49e4fa;
+  /*padding: 10px 0;*/
+  color: #93c6db;
 }
 
 .single-popular-post .thumb {
@@ -2627,7 +2589,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   border-radius: 3px;
   background-color: white;
   box-shadow: 0px 0px 40px 0px rgba(132, 144, 255, 0.2);
-  padding: 20px 0;
+  padding: 10px 0;
   border: 1px solid transparent;
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;

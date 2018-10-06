@@ -1,381 +1,493 @@
 <template>
-    <div class="container">      
-<div v-if="!carga">
+  <div class="container loginkr">      
+    <div class="row" v-if="!carga">
+      <div class="col-md-1 col-lg-2"></div>
 
-  <div class="row">
-      <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-  
-        <h2> Registre su empresa<small></small></h2>
+      <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8">
+        <h2 style="text-align: center;"> Registre su empresa<small></small></h2>
         <hr>
+        <br>
+        <!--Info empresa-->
+        <div><h2><small>Información general</small></h2>
+        <hr> 
+        <div class="form-group">
+          <label class="control-label" for="nombre">Nombre de la empresa</label>  
+          <input name="nombre" type="text" placeholder="Ingrese el nombre de la empresa" class="form-control input-lg"
+          v-model="empresaModel.nombre" v-validate="'required|max:20'">
+          <span v-show="errors.has('nombre')" class="text-warning"></span>
+          <span v-show="errors.has('nombre')" class="text-danger">*Maximo 20 caracteres</span>
+        </div> 
+        <!--nit/rut-->
+        <div class="form-group">
+          <label class="control-label" for="nit_emp">NIT/RUT</label>  
+          <input name="nit" type="number" v-model="empresaModel.nit" v-validate="'required|max:10'"
+          placeholder="NIT o RUT de la empresa"  class="form-control input-lg">
+          <span v-show="errors.has('nit')" class="text-danger">*Maximo 10 caracteres</span>
+        </div>
+        <div class="row">
+          <!-- departamento -->
+          <div class="col-sm-6 col-md-3">
+            <div class="form-group" >
+              <label class="control-label">Departamento</label>
+              <el-select name="departamento" v-model="empresaModel.id_ciudad" clearable placeholder="Seleccionar" v-validate="required">
+                <el-option v-for="ciudad in ciudades" :key="ciudad.id_ciudad" 
+                :label="ciudad.departamento" :value="ciudad.id_ciudad"></el-option>
+              </el-select>
+              <span v-show="errors.has('departamento')" class="text-danger">*Este campo es requerido</span>
+            </div>
+          </div>
+          <!-- ciudad -->
+          <div class=" col-sm-6 col-md-3">
+            <div class="form-group">
+              <label class="control-label" for="ciudad_emp">Ciudad</label>
+              <el-select v-model="empresaModel.id_ciudad" clearable placeholder="Seleccionar" >
+                <el-option v-for="ciudad in ciudades" :key="ciudad.id_ciudad" 
+                :label="ciudad.ciudad" :value="ciudad.id_ciudad"></el-option>
+              </el-select>
+            </div>
+          </div>
+          <!-- dirección-->
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">Dirección</label>  
+              <input id="dir_emp" name="direccion" type="text" placeholder="Dirección"
+              class="form-control input-lg" v-model="empresaModel.direccion" >
+              <i v-show="errors.has('direccion')" class="text-warning"></i>
+            </div>
+          </div>
+        </div>            
+        <div class="row">
+          <!-- Teléfono-->
+          <div class="col-sm-2 col-md-3">
+            <div class="form-group">
+              <label class="control-label">Teléfono</label>  
+              <input name="telefono" type="number" placeholder="Teléfono" class="form-control input-lg"
+              v-model="empresaModel.telefono" v-validate="'max:7'">
+              <i v-show="errors.has('telefono')" class="text-warning"></i>
+              <span v-show="errors.has('telefono')" class="text-danger">*Máximo 7 caracteres</span>
+            </div>
+          </div>
+          <!-- celular -->
+          <div class="col-sm-2 col-md-3">
+            <div class="form-group">
+              <label class="control-label">Celular/Whatsapp</label>  
+              <input id="cel_emp" name="celular" type="number" placeholder="Whatsapp" class="form-control input-lg" 
+              v-model="empresaModel.celular" v-validate="'max:10'">
+              <i v-show="errors.has('celular')" class="text-warning"></i>
+              <span v-show="errors.has('celular')" class="text-danger">*Máximo 10 caracteres</span>
+            </div>
+          </div>  
+          <!-- Email-->
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label" for="email_emp">Email</label>  
+              <input id="email_emp" name="email" type="email" placeholder="Email"
+              class="form-control input-lg" v-model="empresaModel.email" v-validate="'email'">
+              <i v-show="errors.has('email')" class="text-warning"></i>
+              <span v-show="errors.has('email')" class="text-danger">*Campo requerido</span>
+            </div>
+          </div>
+        </div></div>
+        <br>
 
-        <h2><small>Información general</small></h2>
+        <!--Info representate-->
+        <div><h2><small>Representante</small></h2>
         <hr>
-            <!--Nombre empresa-->
+        <div class="form-group">
+          <label class="control-label" for="nombre">Nombre del representante</label>  
+          <input name="nombre" type="text" placeholder="Ingrese el nombre del representante de la empresa" class="form-control input-lg"
+          v-model="empresaModel.nombre" v-validate="'required|max:20'">
+          <span v-show="errors.has('nombre')" class="text-warning"></span>
+          <span v-show="errors.has('nombre')" class="text-danger">*Maximo 20 caracteres</span>
+        </div>
+        <!--fecha cumpleaños-->
+        <div class="row">
+          <div class="col-sm-6 col-md-3">
+              <label class="control-label">Fecha de nacimiento</label>
+          </div>
+          <div class=" col-sm-6 col-md-3">
+            <el-date-picker v-model="value10" type="date" placeholder="Escoge un día" format="yyyy/MM/dd"></el-date-picker>
+          </div>
+        </div></div>  
+        <br>        
+
+        <!--Sobre nosotros-->
+        <div><h2><small>Sobre nosotros</small></h2>
+        <hr>            
+        <!--sección-->
+        <div class="row">
+          <div class="col-sm-6 col-md-6">
+              <label class="control-label">¿En que sección desea aparecer? </label>
+          </div>
+          <div class=" col-sm-6 col-md-6">
+            <el-select  v-model="empresaModel.id_tipo" clearable placeholder="Seleccionar sección">
+              <el-option v-for="tipo in tipos" :key="tipo.id_tipo" 
+              :label="tipo.nombre" :value="tipo.id_tipo"> </el-option>
+            </el-select>
+          </div>
+        </div>
+
+        <!--Sobre nosotros-->
+        <div class="form-group">
+          <label class="control-label">Quienes Somos o Sobre Nosotros</label> 
+          <textarea class="form-control input-lg" name="mision"
+          placeholder="Escriba un resumen detallado sobre quienes son"
+          v-model="empresaModel.mision" v-validate="'required|max:200'"></textarea>               
+          <i v-show="errors.has('mision')" class="text-warning"></i>
+          <span v-show="errors.has('mision')" class="text-danger">*Maximo 200 caracteres</span>
+        </div>
+        <br>
+        <!--Logo-->
+        <div class="text-center blanc">
+          <el-upload class="upload-demo" action="https://jsonplaceholder.typicode.com/posts/" :on-preview="handlePreview" 
+          :on-remove="handleRemove" multiple :limit="3" :on-exceed="handleExceed" :file-list="fileList">
+            <el-button size="small" type="success">Clic para cargar logo de la empresa</el-button>
+            <div slot="tip" class="el-upload__tip">Solo archivos jpg/png con un tamaño menor de 500kb</div>
+          </el-upload>
+        </div></div>
+        <br>
+
+        <!-- Servicios-->
+        <div><h2><small>Servicios</small></h2>
+        <hr> 
+        <!-- numero servicios -->
+        <div class="form-group">
+          <label class="control-label" for="num_ser">¿Cuántos servicios ofrece?</label>
+          <el-radio-group v-model="radio_servicios" v-on:change="cambio_servicios">
+            <el-radio :label="1">1</el-radio>
+            <el-radio :label="2">2</el-radio>
+            <el-radio :label="3">3</el-radio>
+            <el-radio :label="4">4</el-radio>
+            <el-radio :label="5">5</el-radio>
+            <el-radio :label="6">6</el-radio>
+            <el-radio :label="7">7</el-radio>
+            <el-radio :label="8">8</el-radio>
+            <el-radio :label="9">9</el-radio>
+            <el-radio :label="10">10</el-radio>
+          </el-radio-group>
+        </div>
+        <!-- servicio 1-->
+        <div class="row">
+          <div class="col-xs-4 col-sm-4 col-md-4">
             <div class="form-group">
-              <label class="control-label" for="nombre">Nombre de la empresa</label>  
-              <input id="nombre" name="nombre" type="text"
-               placeholder="Ingrese el nombre de la empresa"
-                class="form-control input-lg" required=""
-                 v-model="empresaModel.nombre" v-validate="'required|max:20'">
-                 <i v-show="errors.has('nombre')" class="text-warning"></i>
-                  <span v-show="errors.has('nombre')" class="text-danger">
-                  *Maximo 20 caracteres</span>
+              <input name="nombre_ser_1" type="text" placeholder="Nombre servicio"
+              class="form-control input-lg" v-model="empresaModel.nombre_ser_1"
+              required="" v-validate="'required|max:20'">
+              <i v-show="errors.has('nombre_ser_1')" class="text-warning"></i>
+              <span v-show="errors.has('nombre_ser_1')" class="text-danger">*Maximo 20 caracteres</span>
             </div>
-            
-            <!--nit/rut-->
+          </div>
+          <div class="col-xs-7 col-sm-7 col-md-7">
             <div class="form-group">
-              <label class="control-label" for="nit_emp">NIT/RUT</label>  
-              <input id="nit_emp" name="nit" type="number" placeholder="NIT o RUT de la empresa"
-               class="form-control input-lg" v-model="empresaModel.nit">
+              <textarea class="form-control input-lg" name="ser_1" 
+              placeholder="Describa el servicio" v-model="empresaModel.ser_3"
+              v-validate="'required|max:20'"></textarea>
+              <i v-show="errors.has('ser_3')" class="text-warning"></i>
+              <span v-show="errors.has('ser_3')" class="text-danger">*Maximo 20 caracteres</span>
             </div>
-
-            <div class="row">
-              <!-- departamento -->
-              <div class="col-xs-3 col-sm-3 col-md-3">
-                  <div class="form-group" >
-                    <label class="control-label" for="dep_emp">Departamento</label>
-                    <select id="dep_emp" name="departamento" class="form-control input-md">
-                      <option value="1">Departamento</option>
-                      <option value="2">Option two</option>
-                    </select>
-                  </div>
-              </div>
-
-              <!-- ciudad -->
-              <div class="col-xs-3 col-sm-3 col-md-3">
-                <div class="form-group">
-                  <label class="control-label" for="ciudad_emp">Ciudad</label>
-                  <template>
-                    <el-select v-model="empresaModel.id_ciudad" clearable placeholder="Seleccionar">
-                      <el-option v-for="ciudad in ciudades" :key="ciudad.id_ciudad"
-                        :label="ciudad.ciudad" :value="ciudad.id_ciudad">
-                      </el-option>
-                    </el-select>
-                  </template>
-                </div>
-              </div>
-              
-              <!-- dirección-->
-              <div class="col-xs-6 col-sm-6 col-md-6">
-                <div class="form-group">
-                  <label class="control-label" for="dir_emp">Dirección</label>  
-                  <input id="dir_emp" name="direccion" type="text" placeholder="Dirección"
-                   class="form-control input-lg" v-model="empresaModel.direccion"
-                   v-validate="'required|max:20'">
-                  <i v-show="errors.has('direccion')" class="text-warning"></i>
-                  <span v-show="errors.has('direccion')" class="text-danger">
-                  *Requerrido, maximo 20 caracteres</span>
-                </div>
-              </div>
-            </div>            
-
-            <div class="row">
-              <!-- Teléfono-->
-              <div class="col-xs-3 col-sm-3 col-md-3">
-                <div class="form-group">
-                  <label class="control-label" for="tel_emp">Teléfono</label>  
-                  <input id="tel_emp" name="telefono" type="number" placeholder="Teléfono"
-                   class="form-control input-lg" v-model="empresaModel.telefono">
-                </div>
-              </div>
-
-              <!-- ciudad -->
-              <div class="col-xs-3 col-sm-3 col-md-3">
-                <div class="form-group">
-                  <label class="col-md-4 control-label" for="cel_emp">Celular</label>  
-                  <input id="cel_emp" name="celular" type="number" placeholder="celular" 
-                  class="form-control input-lg" v-model="empresaModel.celular">
-                </div>
-              </div>
-                
-              <!-- Email-->
-              <div class="col-xs-6 col-sm-6 col-md-6">
-                <div class="form-group">
-                  <label class="control-label" for="email_emp">Email</label>  
-                  <input id="email_emp" name="email" type="email" placeholder="Email"
-                   class="form-control input-lg" v-model="empresaModel.email"
-                   v-validate="'required|email'">
-                  <i v-show="errors.has('email')" class="text-warning"></i>
-                  <span v-show="errors.has('email')" class="text-danger">
-                  *Requerrido</span>
-                </div>
-              </div>
-            </div>
-            <br>
-            <hr>            
-                        
-            <!--sección-->
+          </div>
+          <div class="form-group col-xs-1 col-sm-1 col-md-1">
+            <el-upload class="upload-demo" action="https://jsonplaceholder.typicode.com/posts/" :on-preview="handlePreview" 
+            :on-remove="handleRemove" multiple :limit="3" :on-exceed="handleExceed" :file-list="fileList">
+              <el-button size="small" type="success" plain>Cargar imagen</el-button>
+            </el-upload>
+          </div>
+        </div>
+        <!--Servicio 2-->
+        <div class="row" v-if="servicio_2">
+          <div class="col-xs-4 col-sm-4 col-md-4">
             <div class="form-group">
-              <label class="col-md-4 control-label" for="tipo">¿En que sección desea aparecer?</label>
-              <div class="col-md-8">
-                <template>
-                    <el-select v-model="empresaModel.id_tipo" clearable placeholder="Seleccionar">
-                      <el-option v-for="tipo in tipos" :key="tipo.id_tipo"
-                        :label="tipo.nombre" :value="tipo.id_tipo">
-                      </el-option>
-                    </el-select>
-                 </template>
-              </div>
-            </div>           
-
-            <h2><small>Sobre nosotros</small></h2>
-            <hr>
-            <!--lema-->
+              <input name="nombre_ser_2" type="text" placeholder="Nombre"
+              class="form-control input-lg" v-model="empresaModel.nombre_ser_2">
+            </div>
+          </div>
+          <div class="col-xs-7 col-sm-7 col-md-7">
             <div class="form-group">
-              <label class="control-label" for="lema">Lema</label> 
-              <textarea class="form-control input-lg" id="lema" name="lema"
-               placeholder="Escriba aquí el lema de la empresa"
-                v-model="empresaModel.lema" v-validate="'required|max:40'">
-               </textarea>               
-                 <i v-show="errors.has('lema')" class="text-warning"></i>
-                  <span v-show="errors.has('lema')" class="text-danger">
-                  *Maximo 24 caracteres</span>
-               
+              <textarea class="form-control input-lg" name="ser_2" 
+              placeholder="Describa su servicio" v-model="empresaModel.ser_2"></textarea>
             </div>
-
-            <div class="row">
-              <!-- Misión-->
-              <div class="col-xs-6 col-sm-6 col-md-6">
-                <div class="form-group">
-                  <label class="control-label" for="mision">Misión</label>
-                  <textarea class="form-control input-lg" id="mision" name="mision" 
-                  placeholder="Escriba aquí la misión de la empresa" v-model="empresaModel.mision">
-                  </textarea>
-                </div>
-              </div>
-
-              <!-- Visión -->
-              <div class="col-xs-6 col-sm-6 col-md-6">
-                <div class="form-group">
-                  <label class=" control-label" for="vision">Visión</label>
-                  <textarea class="form-control input-lg" id="vision" name="vision"
-                   placeholder="Escriba aquí la visión de la empresa" v-model="empresaModel.vision">
-                  </textarea>
-                </div>
-              </div>
-            </div>
-            <br>
-
-            <!--Logo-->
+          </div>
+          <div class="form-group col-xs-1 col-sm-1 col-md-1">
+            <el-upload class="upload-demo" action="https://jsonplaceholder.typicode.com/posts/" :on-preview="handlePreview" 
+            :on-remove="handleRemove" multiple :limit="3" :on-exceed="handleExceed" :file-list="fileList">
+              <el-button size="small" type="success" plain>Cargar imagen</el-button>
+            </el-upload>
+          </div>
+        </div>
+        <!--Servicio 3-->
+        <div class="row" v-if="servicio_3">
+          <div class="col-xs-4 col-sm-4 col-md-4">
             <div class="form-group">
-              <label class="col-md-2 control-label" for="logo">Logo</label>
-              <div class="col-md-10">
-                <input id="logo" name="logo" type="file" class="input-file input-lg">
-              </div>
+              <input name="nombre_ser_3" type="text" placeholder="Nombre"
+              class="form-control input-lg" v-model="empresaModel.nombre_ser_3">
             </div>
-            
-            <br>
-            <!-- Servicios-->
-            <h2><small>Servicios</small></h2>
-            <hr>
-            
-            <!-- numero servicios -->
+          </div>
+          <div class="col-xs-7 col-sm-7 col-md-7">
             <div class="form-group">
-              <label class="col-md-4 control-label" for="num_ser">¿Cuántos más servicios ofrece?</label>
-              <div class="col-md-8"> 
-                <el-radio-group v-model="radio_servicios" v-on:change="cambio_servicios">
-                  <el-radio :label="1">1</el-radio>
-                  <el-radio :label="2">2</el-radio>
-                  <el-radio :label="3">3</el-radio>
-                  <el-radio :label="4">4</el-radio>
-                  <el-radio :label="5">5</el-radio>
-                </el-radio-group>
-              </div>
+              <textarea class="form-control input-lg" name="ser_3" 
+              placeholder="Describa su servicio" v-model="empresaModel.ser_3"></textarea>
             </div>
-            <br>
-            <br> 
-            <br> 
-            
-            <!--Servicio 1-->
-            <div class="row">
-              <!-- nombre-->
-              <div class="col-xs-4 col-sm-4 col-md-4">
-                <div class="form-group">
-                  <label class="control-label" for="ser1">Nombre:</label>
-                  <input id="ser1" name="nombre_ser_1" type="text" placeholder="Nombre"
-                   class="form-control input-lg" v-model="empresaModel.nombre_ser_1"
-                    required="" v-validate="'required|max:20'">
-                    <i v-show="errors.has('nombre_ser_1')" class="text-warning"></i>
-                  <span v-show="errors.has('nombre_ser_1')" class="text-danger">
-                  *Maximo 20 caracteres</span>
-                </div>
-              </div>
-              <!-- servicio -->
-              <div class="col-xs-8 col-sm-8 col-md-8">
-                <div class="form-group">
-                  <label class=" control-label" for="ser3">Servicio:</label>
-                  <textarea class="form-control input-lg" id="ser_3" name="ser_3" 
-                  placeholder="Describa su servicio" v-model="empresaModel.ser_3"
-                  v-validate="'required|max:20'">
-                  </textarea>
-                    <i v-show="errors.has('ser_3')" class="text-warning"></i>
-                  <span v-show="errors.has('ser_3')" class="text-danger">
-                  *Maximo 20 caracteres</span>
-                </div>
-              </div>
+          </div>
+          <div class="form-group col-xs-1 col-sm-1 col-md-1">
+            <el-upload class="upload-demo" action="https://jsonplaceholder.typicode.com/posts/" :on-preview="handlePreview" 
+            :on-remove="handleRemove" multiple :limit="3" :on-exceed="handleExceed" :file-list="fileList">
+              <el-button size="small" type="success" plain>Cargar imagen</el-button>
+            </el-upload>
+          </div>
+        </div>
+        <!--Servicio 4-->
+        <div class="row" v-if="servicio_4">
+          <div class="col-xs-4 col-sm-4 col-md-4">
+            <div class="form-group">
+              <input name="nombre_ser_4" type="text" placeholder="Nombre"
+              class="form-control input-lg" v-model="empresaModel.nombre_ser_4">
             </div>
+          </div>
+          <div class="col-xs-7 col-sm-7 col-md-7">
+            <div class="form-group">
+              <textarea class="form-control input-lg" name="ser_4" 
+              placeholder="Describa su servicio" v-model="empresaModel.ser_4"></textarea>
+            </div>
+          </div>
+          <div class="form-group col-xs-1 col-sm-1 col-md-1">
+            <el-upload class="upload-demo" action="https://jsonplaceholder.typicode.com/posts/" :on-preview="handlePreview" 
+            :on-remove="handleRemove" multiple :limit="3" :on-exceed="handleExceed" :file-list="fileList">
+              <el-button size="small" type="success" plain>Cargar imagen</el-button>
+            </el-upload>
+          </div>
+        </div>
+        <!--Servicio 5-->
+        <div class="row" v-if="servicio_5">
+          <div class="col-xs-4 col-sm-4 col-md-4">
+            <div class="form-group">
+              <input name="nombre_ser_5" type="text" placeholder="Nombre"
+              class="form-control input-lg" v-model="empresaModel.nombre_ser_5">
+            </div>
+          </div>
+          <div class="col-xs-7 col-sm-7 col-md-7">
+            <div class="form-group">
+              <textarea class="form-control input-lg" name="ser_5" 
+              placeholder="Describa su servicio" v-model="empresaModel.ser_5"></textarea>
+            </div>
+          </div>
+          <div class="form-group col-xs-1 col-sm-1 col-md-1">
+            <el-upload class="upload-demo" action="https://jsonplaceholder.typicode.com/posts/" :on-preview="handlePreview" 
+            :on-remove="handleRemove" multiple :limit="3" :on-exceed="handleExceed" :file-list="fileList">
+              <el-button size="small" type="success" plain>Cargar imagen</el-button>
+            </el-upload>
+          </div>
+        </div> 
+        <!--Servicio 6-->
+        <div class="row" v-if="servicio_6">
+          <div class="col-xs-4 col-sm-4 col-md-4">
+            <div class="form-group">
+              <input name="nombre_ser_6" type="text" placeholder="Nombre"
+              class="form-control input-lg" v-model="empresaModel.nombre_ser_5">
+            </div>
+          </div>
+          <div class="col-xs-7 col-sm-7 col-md-7">
+            <div class="form-group">
+              <textarea class="form-control input-lg" name="ser_6" 
+              placeholder="Describa su servicio" v-model="empresaModel.ser_5"></textarea>
+            </div>
+          </div>
+          <div class="form-group col-xs-1 col-sm-1 col-md-1">
+            <el-upload class="upload-demo" action="https://jsonplaceholder.typicode.com/posts/" :on-preview="handlePreview" 
+            :on-remove="handleRemove" multiple :limit="3" :on-exceed="handleExceed" :file-list="fileList">
+              <el-button size="small" type="success" plain>Cargar imagen</el-button>
+            </el-upload>
+          </div>
+        </div>
+        <!--Servicio 7-->
+        <div class="row" v-if="servicio_7">
+          <div class="col-xs-4 col-sm-4 col-md-4">
+            <div class="form-group">
+              <input name="nombre_ser_7" type="text" placeholder="Nombre"
+              class="form-control input-lg" v-model="empresaModel.nombre_ser_5">
+            </div>
+          </div>
+          <div class="col-xs-7 col-sm-7 col-md-7">
+            <div class="form-group">
+              <textarea class="form-control input-lg" name="ser_7" 
+              placeholder="Describa su servicio" v-model="empresaModel.ser_5"></textarea>
+            </div>
+          </div>
+          <div class="form-group col-xs-1 col-sm-1 col-md-1">
+            <el-upload class="upload-demo" action="https://jsonplaceholder.typicode.com/posts/" :on-preview="handlePreview" 
+            :on-remove="handleRemove" multiple :limit="3" :on-exceed="handleExceed" :file-list="fileList">
+              <el-button size="small" type="success" plain>Cargar imagen</el-button>
+            </el-upload>
+          </div>
+        </div>
+        <!--Servicio 8-->
+        <div class="row" v-if="servicio_8">
+          <div class="col-xs-4 col-sm-4 col-md-4">
+            <div class="form-group">
+              <input name="nombre_ser_8" type="text" placeholder="Nombre"
+              class="form-control input-lg" v-model="empresaModel.nombre_ser_5">
+            </div>
+          </div>
+          <div class="col-xs-7 col-sm-7 col-md-7">
+            <div class="form-group">
+              <textarea class="form-control input-lg" name="ser_8" 
+              placeholder="Describa su servicio" v-model="empresaModel.ser_5"></textarea>
+            </div>
+          </div>
+          <div class="form-group col-xs-1 col-sm-1 col-md-1">
+            <el-upload class="upload-demo" action="https://jsonplaceholder.typicode.com/posts/" :on-preview="handlePreview" 
+            :on-remove="handleRemove" multiple :limit="3" :on-exceed="handleExceed" :file-list="fileList">
+              <el-button size="small" type="success" plain>Cargar imagen</el-button>
+            </el-upload>
+          </div>
+        </div>
+        <!--Servicio 9-->
+        <div class="row" v-if="servicio_9">
+          <div class="col-xs-4 col-sm-4 col-md-4">
+            <div class="form-group">
+              <input name="nombre_ser_9" type="text" placeholder="Nombre"
+              class="form-control input-lg" v-model="empresaModel.nombre_ser_5">
+            </div>
+          </div>
+          <div class="col-xs-7 col-sm-7 col-md-7">
+            <div class="form-group">
+              <textarea class="form-control input-lg" name="ser_9" 
+              placeholder="Describa su servicio" v-model="empresaModel.ser_5"></textarea>
+            </div>
+          </div>
+          <div class="form-group col-xs-1 col-sm-1 col-md-1">
+            <el-upload class="upload-demo" action="https://jsonplaceholder.typicode.com/posts/" :on-preview="handlePreview" 
+            :on-remove="handleRemove" multiple :limit="3" :on-exceed="handleExceed" :file-list="fileList">
+              <el-button size="small" type="success" plain>Cargar imagen</el-button>
+            </el-upload>
+          </div>
+        </div>
+        <!--Servicio 10-->
+        <div class="row" v-if="servicio_10">
+          <div class="col-xs-4 col-sm-4 col-md-4">
+            <div class="form-group">
+              <input name="nombre_ser_10" type="text" placeholder="Nombre"
+              class="form-control input-lg" v-model="empresaModel.nombre_ser_5">
+            </div>
+          </div>
+          <div class="col-xs-7 col-sm-7 col-md-7">
+            <div class="form-group">
+              <textarea class="form-control input-lg" name="ser_10" 
+              placeholder="Describa su servicio" v-model="empresaModel.ser_5"></textarea>
+            </div>
+          </div>
+          <div class="form-group col-xs-1 col-sm-1 col-md-1">
+            <el-upload class="upload-demo" action="https://jsonplaceholder.typicode.com/posts/" :on-preview="handlePreview" 
+            :on-remove="handleRemove" multiple :limit="3" :on-exceed="handleExceed" :file-list="fileList">
+              <el-button size="small" type="success" plain>Cargar imagen</el-button>
+            </el-upload>
+          </div>
+        </div>
+        </div>
 
-            <!--Servicio 2-->
-            <div class="row" v-if="servicio_2">
-              <!-- nombre-->
-              <div class="col-xs-4 col-sm-4 col-md-4">
-                <div class="form-group">
-                  <label class="control-label" for="ser1">Nombre:</label>
-                  <input id="ser1" name="nombre_ser_2" type="text" placeholder="Nombre"
-                   class="form-control input-lg" v-model="empresaModel.nombre_ser_2">
-                </div>
-              </div>
-              <!-- servicio -->
-              <div class="col-xs-8 col-sm-8 col-md-8">
-                <div class="form-group">
-                  <label class=" control-label" for="ser_2">Servicio:</label>
-                  <textarea class="form-control input-lg" id="ser_2" name="ser_2" 
-                    placeholder="Describa su servicio" v-model="empresaModel.ser_2">
-                  </textarea>
-                </div>
-              </div>
-            </div>
+        <!--Info representate-->
+        <div>
+        <hr>
+        <!--Banner-->
+        <label class="control-label">Cargar imagenes para banner</label>
+        <div class="row">
+          <div class="col-sm-4 col-md-4">
+            <el-upload action="https://jsonplaceholder.typicode.com/posts/" list-type="picture-card" :on-preview="handlePictureCardPreview"
+            :on-remove="handleRemove">
+              <i class="el-icon-plus"></i>
+            </el-upload>
+          </div>
+          <div class=" col-sm-4 col-md-4">
+            <el-upload action="https://jsonplaceholder.typicode.com/posts/" list-type="picture-card" :on-preview="handlePictureCardPreview"
+            :on-remove="handleRemove">
+              <i class="el-icon-plus"></i>
+            </el-upload>
+            <el-dialog :visible.sync="dialogVisible">
+              <img width="100%" :src="dialogImageUrl" alt="">
+            </el-dialog>
+          </div>
+          <div class=" col-sm-4 col-md-4">
+            <el-upload action="https://jsonplaceholder.typicode.com/posts/" list-type="picture-card" :on-preview="handlePictureCardPreview"
+            :on-remove="handleRemove">
+              <i class="el-icon-plus"></i>
+            </el-upload>
+          </div>
+        </div>
+        <br>
+        <!--Redes sociales-->
+        <div class="row">
+          <div class="col-sm-6 col-md-4">
+            <label class="control-label">Ruta de Facebook</label>
+            <input name="facebook" type="text" placeholder="Ingrese el nombre de la empresa" class="form-control input-lg"
+            v-model="empresaModel.nombre" v-validate="'max:100'">
+            <span v-show="errors.has('facebook')" class="text-warning"></span>
+            <span v-show="errors.has('facebook')" class="text-danger">*Maximo 100 caracteres</span>  
+          </div>
+          <div class=" col-sm-6 col-md-4">
+            <label class="control-label">Ruta de Twitter</label>
+            <input name="twitter" type="text" placeholder="Ingrese el nombre de la empresa" class="form-control input-lg"
+            v-model="empresaModel.nombre" v-validate="'max:100'">
+            <span v-show="errors.has('twitter')" class="text-warning"></span>
+            <span v-show="errors.has('twitter')" class="text-danger">*Maximo 100 caracteres</span> 
+          </div>
+          <div class=" col-sm-6 col-md-4">
+            <label class="control-label">Ruta de Youtube</label>
+            <input name="youtube" type="text" placeholder="Ingrese el nombre de la empresa" class="form-control input-lg"
+            v-model="empresaModel.nombre" v-validate="'max:100'">
+            <span v-show="errors.has('youtube')" class="text-warning"></span>
+            <span v-show="errors.has('youtube')" class="text-danger">*Maximo 100 caracteres</span> 
+          </div>
+        </div></div>
+        <br>
 
-            <!--Servicio 3-->
-            <div class="row" v-if="servicio_3">
-              <!-- nombre-->
-              <div class="col-xs-4 col-sm-4 col-md-4">
-                <div class="form-group">
-                  <label class="control-label" for="ser3">Nombre:</label>
-                  <input id="ser3" name="nombre_ser_3" type="text" placeholder="Nombre"
-                   class="form-control input-lg" v-model="empresaModel.nombre_ser_3">
-                </div>
-              </div>
-              <!-- servicio -->
-              <div class="col-xs-8 col-sm-8 col-md-8">
-                <div class="form-group">
-                  <label class=" control-label" for="ser3_det">Servicio:</label>
-                  <textarea class="form-control input-lg" id="ser_3" name="ser_3" 
-                  placeholder="Describa su servicio" v-model="empresaModel.ser_3">
-                  </textarea>
-                </div>
-              </div>
-            </div>
 
-            <!--Servicio 4-->
-            <div class="row" v-if="servicio_4">
-              <!-- nombre-->
-              <div class="col-xs-4 col-sm-4 col-md-4">
-                <div class="form-group">
-                  <label class="control-label" for="ser4">Nombre:</label>
-                  <input id="ser1" name="nombre_ser_4" type="text" placeholder="Nombre"
-                   class="form-control input-lg" v-model="empresaModel.nombre_ser_4">
-                </div>
-              </div>
-              <!-- servicio -->
-              <div class="col-xs-8 col-sm-8 col-md-8">
-                <div class="form-group">
-                  <label class=" control-label" for="ser4">Servicio:</label>
-                  <textarea class="form-control input-lg" id="ser_4" name="ser_4" 
-                    placeholder="Describa su servicio" v-model="empresaModel.ser_4">
-                  </textarea>
-                </div>
-              </div>
-            </div>
-
-            <!--Servicio 5-->
-            <div class="row" v-if="servicio_5">
-              <!-- nombre-->
-              <div class="col-xs-4 col-sm-4 col-md-4">
-                <div class="form-group">
-                  <label class="control-label" for="ser5">Nombre:</label>
-                  <input id="ser5" name="nombre_ser_5" type="text" placeholder="Nombre"
-                   class="form-control input-lg" v-model="empresaModel.nombre_ser_5">
-                </div>
-              </div>
-              <!-- servicio -->
-              <div class="col-xs-8 col-sm-8 col-md-8">
-                <div class="form-group">
-                  <label class=" control-label" for="ser5">Servicio:</label>
-                  <textarea class="form-control input-lg" id="ser5" name="ser_5" 
-                  placeholder="Describa su servicio" v-model="empresaModel.ser_5">
-                  </textarea>
-                </div>
-              </div>
-            </div>
-            
-            <hr>
-  
-            
-            <!--Registro-->
-        
-              <!-- Button (Double) -->      
-        
-            
-            
-
-        
+        <hr>
+        <!-- Button (Double) -->      
         <div class="row">
           <div class="col-xs-3 col-sm-3 col-md-3">
-            <span class="button-checkbox">
-              <button type="button" class="btn" data-color="info" tabindex="7">I Agree</button>
-                <input type="checkbox" name="t_and_c" id="t_and_c" class="hidden" value="1">
-            </span>
+            <el-checkbox v-model="checked">Acepto</el-checkbox>
           </div>
-          <div class="col-xs-9 col-sm-9 col-md-9">
-             By clicking <strong class="label label-primary">Register</strong>, you agree to the <a href="#" data-toggle="modal" data-target="#t_and_c_m">Terms and Conditions</a> set out by this site, including our Cookie Use.
+          <div class="col-xs-9 col-sm-9 col-md-9"> 
+            Al hacer clic en <strong class="label label-primary">Guardar registro</strong>,
+            usted acepta los <a href="#" data-toggle="modal" data-target="#t_and_c_m">Términos
+            y condiciones</a> establecidos por este sitio, incluido nuestro Uso de cookies. 
           </div>
         </div>
-        <hr>
-
-    
-
-        <div class="form-group">
+        <br>
+        <br>
+        <div class="form-group blanc">
           <label class="col-md-4 control-label" for="buttonatras1id"></label>
-          <div class="col-md-8">
-            <button id="buttonatras1id" name="buttonatras1id" class="btn btn-info">Atras</button>
-            <button  name="continuar" class="save btn btn-success">Continuar registro</button>
+          <el-button type="danger">Cancelar</el-button>
+          <el-button v-on:click="validateBeforeSubmit" type="primary">Guardar registro</el-button> 
+        </div>        
+      </div>
+
+      <!--Flooter
+      <div class="modal fade" id="t_and_c_m" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+              <h4 class="modal-title" id="myModalLabel">Terms & Conditions</h4>
+            </div>
+            <div class="modal-body">
+              <p>Aqui van los terminos y condiciones.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal">I Agree</button>
+            </div>
           </div>
         </div>
-        <br>
-        <br>
+      </div>-->
 
-      <button type="button" class=" btn btn-default"
-      v-on:click="validateBeforeSubmit">Guardar</button>
-
-        
-        
     </div>
+    <!--gif loader-->
+    <div class="centrar" v-if="carga">
+      <div class="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div>
+      <div></div><div></div><div></div><div></div><div></div><div></div>
+      </div>
+    </div>
+
   </div>
-
-  
-  <!--Flooter-->
-  <div class="modal fade" id="t_and_c_m" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-          <h4 class="modal-title" id="myModalLabel">Terms & Conditions</h4>
-        </div>
-        <div class="modal-body">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal">I Agree</button>
-        </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->  
-  </div>
-
-<!--gif loader-->
-  <div class="centrar" v-if="carga">
-<div class="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-      </div> 
-
-</div>
-  
 </template>
 
 <script>
@@ -390,6 +502,7 @@ export default {
     },
     data(){
       return{
+        value10: '',
         empresaModel: {
           nombre: null,
           nit: null,
@@ -429,6 +542,11 @@ export default {
         servicio_3: false,
         servicio_4: false,
         servicio_5: false,
+        servicio_6: false,
+        servicio_7: false,
+        servicio_8: false,
+        servicio_9: false,
+        servicio_10: false,
         registro_formulario: false,
         alerta_formulario: false,
         error_formulario: false,
@@ -494,22 +612,72 @@ export default {
           case 1:
             this.servicio_2 = false; this.servicio_3 = false; 
             this.servicio_4 = false; this.servicio_5 = false;
+            this.servicio_6 = false; this.servicio_7 = false; 
+            this.servicio_8 = false; this.servicio_9 = false;
+            this.servicio_10 = false;
             break;
           case 2:
             this.servicio_2 = true; this.servicio_3 = false; 
             this.servicio_4 = false; this.servicio_5 = false;
+            this.servicio_6 = false; this.servicio_7 = false; 
+            this.servicio_8 = false; this.servicio_9 = false;
+            this.servicio_10 = false;
             break;
           case 3:
             this.servicio_2 = true; this.servicio_3 = true; 
             this.servicio_4 = false; this.servicio_5 = false;
+            this.servicio_6 = false; this.servicio_7 = false; 
+            this.servicio_8 = false; this.servicio_9 = false;
+            this.servicio_10 = false;
             break;
           case 4:
             this.servicio_2 = true; this.servicio_3 = true; 
             this.servicio_4 = true; this.servicio_5 = false;
+            this.servicio_6 = false; this.servicio_7 = false; 
+            this.servicio_8 = false; this.servicio_9 = false;
+            this.servicio_10 = false;
             break;
           case 5:
             this.servicio_2 = true; this.servicio_3 = true; 
             this.servicio_4 = true; this.servicio_5 = true;
+            this.servicio_6 = false; this.servicio_7 = false; 
+            this.servicio_8 = false; this.servicio_9 = false;
+            this.servicio_10 = false;
+            break;
+          case 6:
+            this.servicio_2 = true; this.servicio_3 = true; 
+            this.servicio_4 = true; this.servicio_5 = true;
+            this.servicio_6 = true; this.servicio_7 = false; 
+            this.servicio_8 = false; this.servicio_9 = false;
+            this.servicio_10 = false;
+            break;
+          case 7:
+            this.servicio_2 = true; this.servicio_3 = true; 
+            this.servicio_4 = true; this.servicio_5 = true;
+            this.servicio_6 = true; this.servicio_7 = true; 
+            this.servicio_8 = false; this.servicio_9 = false;
+            this.servicio_10 = false;
+            break;
+          case 8:
+            this.servicio_2 = true; this.servicio_3 = true; 
+            this.servicio_4 = true; this.servicio_5 = true;
+            this.servicio_6 = true; this.servicio_7 = true; 
+            this.servicio_8 = true; this.servicio_9 = false;
+            this.servicio_10 = false;
+            break;
+          case 9:
+            this.servicio_2 = true; this.servicio_3 = true; 
+            this.servicio_4 = true; this.servicio_5 = true;
+            this.servicio_6 = true; this.servicio_7 = true; 
+            this.servicio_8 = true; this.servicio_9 = true;
+            this.servicio_10 = false;
+            break;
+          case 10:
+            this.servicio_2 = true; this.servicio_3 = true; 
+            this.servicio_4 = true; this.servicio_5 = true;
+            this.servicio_6 = true; this.servicio_7 = true; 
+            this.servicio_8 = true; this.servicio_9 = true;
+            this.servicio_10 = true;
             break;
         }
       },
@@ -546,6 +714,10 @@ export default {
 </script>
 
 <style>
+.blanc span {
+  color:#fff;
+}
+
 .centrar
 	{
 		position: absolute;
