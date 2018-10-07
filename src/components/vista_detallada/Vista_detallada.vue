@@ -165,7 +165,7 @@ export default {
     mounted(){        
         this.nombre_empresa = this.$route.params.nombre;
         if(this.nombre_empresa) this.traer_empresas();
-        console.log(this.carga)
+        this.carga = false;
     },
     methods: {
         traer_empresas: function() {
