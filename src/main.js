@@ -61,7 +61,7 @@ var router = new Router({
       component: Registration,
     },
     {
-      path: '/registration/empresa',
+      path: '/registration/business',
       component: Registro_empresa
     },
     {
