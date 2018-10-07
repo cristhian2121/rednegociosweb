@@ -26,16 +26,16 @@
         </div>
         <div class="row">
           <!-- departamento -->
-          <div class="col-sm-6 col-md-3">
+          <!-- <div class="col-sm-6 col-md-3">
             <div class="form-group" >
               <label class="control-label">Departamento</label>
-              <el-select name="departamento" v-model="empresaModel.id_ciudad" clearable placeholder="Seleccionar" v-validate="required">
+              <el-select name="departamento" v-model="empresaModel.id_ciudad" clearable placeholder="Seleccionar" v-validate="'required'">
                 <el-option v-for="ciudad in ciudades" :key="ciudad.id_ciudad" 
                 :label="ciudad.departamento" :value="ciudad.id_ciudad"></el-option>
               </el-select>
               <span v-show="errors.has('departamento')" class="text-danger">*Este campo es requerido</span>
             </div>
-          </div>
+          </div> -->
           <!-- ciudad -->
           <div class=" col-sm-6 col-md-3">
             <div class="form-group">
@@ -91,7 +91,7 @@
         <br>
 
         <!--Info representate-->
-        <div><h2><small>Representante</small></h2>
+        <!-- <div><h2><small>Representante</small></h2>
         <hr>
         <div class="form-group">
           <label class="control-label" for="nombre">Nombre del representante</label>  
@@ -99,9 +99,9 @@
           v-model="empresaModel.nombre" v-validate="'required|max:20'">
           <span v-show="errors.has('nombre')" class="text-warning"></span>
           <span v-show="errors.has('nombre')" class="text-danger">*Maximo 20 caracteres</span>
-        </div>
+        </div>-->
         <!--fecha cumpleaños-->
-        <div class="row">
+        <!-- <div class="row">
           <div class="col-sm-6 col-md-3">
               <label class="control-label">Fecha de nacimiento</label>
           </div>
@@ -109,7 +109,7 @@
             <el-date-picker v-model="value10" type="date" placeholder="Escoge un día" format="yyyy/MM/dd"></el-date-picker>
           </div>
         </div></div>  
-        <br>        
+        <br>          -->
 
         <!--Sobre nosotros-->
         <div><h2><small>Sobre nosotros</small></h2>
@@ -139,9 +139,12 @@
         <br>
         <!--Logo-->
         <div class="text-center blanc">
-          <el-upload class="upload-demo" action="https://jsonplaceholder.typicode.com/posts/" :on-preview="handlePreview" 
-          :on-remove="handleRemove" multiple :limit="3" :on-exceed="handleExceed" :file-list="fileList">
-            <el-button size="small" type="success">Clic para cargar logo de la empresa</el-button>
+          <el-upload
+            action= "http://localhost:8000/api/archivo/"
+            multiple
+            :limit="1"
+            :on-exceed="exceso_archivos">
+            <el-button size="small" type="success">Click para cargar logo de la empresa</el-button>
             <div slot="tip" class="el-upload__tip">Solo archivos jpg/png con un tamaño menor de 500kb</div>
           </el-upload>
         </div></div>
@@ -171,24 +174,27 @@
           <div class="col-xs-4 col-sm-4 col-md-4">
             <div class="form-group">
               <input name="nombre_ser_1" type="text" placeholder="Nombre servicio"
-              class="form-control input-lg" v-model="empresaModel.nombre_ser_1"
-              required="" v-validate="'required|max:20'">
+              class="form-control input-lg" v-model="servicioModel.nombre_ser_1"
+              v-validate="'required|max:20'">
               <i v-show="errors.has('nombre_ser_1')" class="text-warning"></i>
               <span v-show="errors.has('nombre_ser_1')" class="text-danger">*Maximo 20 caracteres</span>
             </div>
-          </div>
+          </div>general
           <div class="col-xs-7 col-sm-7 col-md-7">
             <div class="form-group">
               <textarea class="form-control input-lg" name="ser_1" 
-              placeholder="Describa el servicio" v-model="empresaModel.ser_3"
+              placeholder="Describa el servicio" v-model="servicioModel.ser_1"
               v-validate="'required|max:20'"></textarea>
               <i v-show="errors.has('ser_3')" class="text-warning"></i>
               <span v-show="errors.has('ser_3')" class="text-danger">*Maximo 20 caracteres</span>
             </div>
           </div>
           <div class="form-group col-xs-1 col-sm-1 col-md-1">
-            <el-upload class="upload-demo" action="https://jsonplaceholder.typicode.com/posts/" :on-preview="handlePreview" 
-            :on-remove="handleRemove" multiple :limit="3" :on-exceed="handleExceed" :file-list="fileList">
+            <el-upload
+            action= "http://localhost:8000/api/archivo/"
+            multiple
+            :limit="1"
+            :on-exceed="exceso_archivos">
               <el-button size="small" type="success" plain>Cargar imagen</el-button>
             </el-upload>
           </div>
@@ -198,18 +204,21 @@
           <div class="col-xs-4 col-sm-4 col-md-4">
             <div class="form-group">
               <input name="nombre_ser_2" type="text" placeholder="Nombre"
-              class="form-control input-lg" v-model="empresaModel.nombre_ser_2">
+              class="form-control input-lg" v-model="servicioModel.nombre_ser_2">
             </div>
           </div>
           <div class="col-xs-7 col-sm-7 col-md-7">
             <div class="form-group">
               <textarea class="form-control input-lg" name="ser_2" 
-              placeholder="Describa su servicio" v-model="empresaModel.ser_2"></textarea>
+              placeholder="Describa su servicio" v-model="servicioModel.ser_2"></textarea>
             </div>
           </div>
           <div class="form-group col-xs-1 col-sm-1 col-md-1">
-            <el-upload class="upload-demo" action="https://jsonplaceholder.typicode.com/posts/" :on-preview="handlePreview" 
-            :on-remove="handleRemove" multiple :limit="3" :on-exceed="handleExceed" :file-list="fileList">
+            <el-upload
+            action= "http://localhost:8000/api/archivo/"
+            multiple
+            :limit="1"
+            :on-exceed="exceso_archivos">
               <el-button size="small" type="success" plain>Cargar imagen</el-button>
             </el-upload>
           </div>
@@ -219,18 +228,21 @@
           <div class="col-xs-4 col-sm-4 col-md-4">
             <div class="form-group">
               <input name="nombre_ser_3" type="text" placeholder="Nombre"
-              class="form-control input-lg" v-model="empresaModel.nombre_ser_3">
+              class="form-control input-lg" v-model="servicioModel.nombre_ser_3">
             </div>
           </div>
           <div class="col-xs-7 col-sm-7 col-md-7">
             <div class="form-group">
               <textarea class="form-control input-lg" name="ser_3" 
-              placeholder="Describa su servicio" v-model="empresaModel.ser_3"></textarea>
+              placeholder="Describa su servicio" v-model="servicioModel.ser_3"></textarea>
             </div>
           </div>
           <div class="form-group col-xs-1 col-sm-1 col-md-1">
-            <el-upload class="upload-demo" action="https://jsonplaceholder.typicode.com/posts/" :on-preview="handlePreview" 
-            :on-remove="handleRemove" multiple :limit="3" :on-exceed="handleExceed" :file-list="fileList">
+            <el-upload
+            action= "http://localhost:8000/api/archivo/"
+            multiple
+            :limit="1"
+            :on-exceed="exceso_archivos">
               <el-button size="small" type="success" plain>Cargar imagen</el-button>
             </el-upload>
           </div>
@@ -240,18 +252,21 @@
           <div class="col-xs-4 col-sm-4 col-md-4">
             <div class="form-group">
               <input name="nombre_ser_4" type="text" placeholder="Nombre"
-              class="form-control input-lg" v-model="empresaModel.nombre_ser_4">
+              class="form-control input-lg" v-model="servicioModel.nombre_ser_4">
             </div>
           </div>
           <div class="col-xs-7 col-sm-7 col-md-7">
             <div class="form-group">
               <textarea class="form-control input-lg" name="ser_4" 
-              placeholder="Describa su servicio" v-model="empresaModel.ser_4"></textarea>
+              placeholder="Describa su servicio" v-model="servicioModel.ser_4"></textarea>
             </div>
           </div>
           <div class="form-group col-xs-1 col-sm-1 col-md-1">
-            <el-upload class="upload-demo" action="https://jsonplaceholder.typicode.com/posts/" :on-preview="handlePreview" 
-            :on-remove="handleRemove" multiple :limit="3" :on-exceed="handleExceed" :file-list="fileList">
+            <el-upload
+            action= "http://localhost:8000/api/archivo/"
+            multiple
+            :limit="1"
+            :on-exceed="exceso_archivos">
               <el-button size="small" type="success" plain>Cargar imagen</el-button>
             </el-upload>
           </div>
@@ -261,18 +276,21 @@
           <div class="col-xs-4 col-sm-4 col-md-4">
             <div class="form-group">
               <input name="nombre_ser_5" type="text" placeholder="Nombre"
-              class="form-control input-lg" v-model="empresaModel.nombre_ser_5">
+              class="form-control input-lg" v-model="servicioModel.nombre_ser_5">
             </div>
           </div>
           <div class="col-xs-7 col-sm-7 col-md-7">
             <div class="form-group">
               <textarea class="form-control input-lg" name="ser_5" 
-              placeholder="Describa su servicio" v-model="empresaModel.ser_5"></textarea>
+              placeholder="Describa su servicio" v-model="servicioModel.ser_5"></textarea>
             </div>
           </div>
           <div class="form-group col-xs-1 col-sm-1 col-md-1">
-            <el-upload class="upload-demo" action="https://jsonplaceholder.typicode.com/posts/" :on-preview="handlePreview" 
-            :on-remove="handleRemove" multiple :limit="3" :on-exceed="handleExceed" :file-list="fileList">
+            <el-upload
+            action= "http://localhost:8000/api/archivo/"
+            multiple
+            :limit="1"
+            :on-exceed="exceso_archivos">
               <el-button size="small" type="success" plain>Cargar imagen</el-button>
             </el-upload>
           </div>
@@ -282,18 +300,21 @@
           <div class="col-xs-4 col-sm-4 col-md-4">
             <div class="form-group">
               <input name="nombre_ser_6" type="text" placeholder="Nombre"
-              class="form-control input-lg" v-model="empresaModel.nombre_ser_5">
+              class="form-control input-lg" v-model="servicioModel.nombre_ser_5">
             </div>
           </div>
           <div class="col-xs-7 col-sm-7 col-md-7">
             <div class="form-group">
               <textarea class="form-control input-lg" name="ser_6" 
-              placeholder="Describa su servicio" v-model="empresaModel.ser_5"></textarea>
+              placeholder="Describa su servicio" v-model="servicioModel.ser_5"></textarea>
             </div>
           </div>
           <div class="form-group col-xs-1 col-sm-1 col-md-1">
-            <el-upload class="upload-demo" action="https://jsonplaceholder.typicode.com/posts/" :on-preview="handlePreview" 
-            :on-remove="handleRemove" multiple :limit="3" :on-exceed="handleExceed" :file-list="fileList">
+            <el-upload
+            action= "http://localhost:8000/api/archivo/"
+            multiple
+            :limit="1"
+            :on-exceed="exceso_archivos">
               <el-button size="small" type="success" plain>Cargar imagen</el-button>
             </el-upload>
           </div>
@@ -303,18 +324,21 @@
           <div class="col-xs-4 col-sm-4 col-md-4">
             <div class="form-group">
               <input name="nombre_ser_7" type="text" placeholder="Nombre"
-              class="form-control input-lg" v-model="empresaModel.nombre_ser_5">
+              class="form-control input-lg" v-model="servicioModel.nombre_ser_5">
             </div>
           </div>
           <div class="col-xs-7 col-sm-7 col-md-7">
             <div class="form-group">
               <textarea class="form-control input-lg" name="ser_7" 
-              placeholder="Describa su servicio" v-model="empresaModel.ser_5"></textarea>
+              placeholder="Describa su servicio" v-model="servicioModel.ser_5"></textarea>
             </div>
           </div>
           <div class="form-group col-xs-1 col-sm-1 col-md-1">
-            <el-upload class="upload-demo" action="https://jsonplaceholder.typicode.com/posts/" :on-preview="handlePreview" 
-            :on-remove="handleRemove" multiple :limit="3" :on-exceed="handleExceed" :file-list="fileList">
+            <el-upload
+            action= "http://localhost:8000/api/archivo/"
+            multiple
+            :limit="1"
+            :on-exceed="exceso_archivos">
               <el-button size="small" type="success" plain>Cargar imagen</el-button>
             </el-upload>
           </div>
@@ -324,18 +348,21 @@
           <div class="col-xs-4 col-sm-4 col-md-4">
             <div class="form-group">
               <input name="nombre_ser_8" type="text" placeholder="Nombre"
-              class="form-control input-lg" v-model="empresaModel.nombre_ser_5">
+              class="form-control input-lg" v-model="servicioModel.nombre_ser_5">
             </div>
           </div>
           <div class="col-xs-7 col-sm-7 col-md-7">
             <div class="form-group">
               <textarea class="form-control input-lg" name="ser_8" 
-              placeholder="Describa su servicio" v-model="empresaModel.ser_5"></textarea>
+              placeholder="Describa su servicio" v-model="servicioModel.ser_5"></textarea>
             </div>
           </div>
           <div class="form-group col-xs-1 col-sm-1 col-md-1">
-            <el-upload class="upload-demo" action="https://jsonplaceholder.typicode.com/posts/" :on-preview="handlePreview" 
-            :on-remove="handleRemove" multiple :limit="3" :on-exceed="handleExceed" :file-list="fileList">
+            <el-upload
+            action= "http://localhost:8000/api/archivo/"
+            multiple
+            :limit="1"
+            :on-exceed="exceso_archivos">
               <el-button size="small" type="success" plain>Cargar imagen</el-button>
             </el-upload>
           </div>
@@ -345,18 +372,21 @@
           <div class="col-xs-4 col-sm-4 col-md-4">
             <div class="form-group">
               <input name="nombre_ser_9" type="text" placeholder="Nombre"
-              class="form-control input-lg" v-model="empresaModel.nombre_ser_5">
+              class="form-control input-lg" v-model="servicioModel.nombre_ser_5">
             </div>
           </div>
           <div class="col-xs-7 col-sm-7 col-md-7">
             <div class="form-group">
               <textarea class="form-control input-lg" name="ser_9" 
-              placeholder="Describa su servicio" v-model="empresaModel.ser_5"></textarea>
+              placeholder="Describa su servicio" v-model="servicioModel.ser_5"></textarea>
             </div>
           </div>
           <div class="form-group col-xs-1 col-sm-1 col-md-1">
-            <el-upload class="upload-demo" action="https://jsonplaceholder.typicode.com/posts/" :on-preview="handlePreview" 
-            :on-remove="handleRemove" multiple :limit="3" :on-exceed="handleExceed" :file-list="fileList">
+            <el-upload
+            action= "http://localhost:8000/api/archivo/"
+            multiple
+            :limit="1"
+            :on-exceed="exceso_archivos">
               <el-button size="small" type="success" plain>Cargar imagen</el-button>
             </el-upload>
           </div>
@@ -366,18 +396,21 @@
           <div class="col-xs-4 col-sm-4 col-md-4">
             <div class="form-group">
               <input name="nombre_ser_10" type="text" placeholder="Nombre"
-              class="form-control input-lg" v-model="empresaModel.nombre_ser_5">
+              class="form-control input-lg" v-model="servicioModel.nombre_ser_5">
             </div>
           </div>
           <div class="col-xs-7 col-sm-7 col-md-7">
             <div class="form-group">
               <textarea class="form-control input-lg" name="ser_10" 
-              placeholder="Describa su servicio" v-model="empresaModel.ser_5"></textarea>
+              placeholder="Describa su servicio" v-model="servicioModel.ser_5"></textarea>
             </div>
           </div>
           <div class="form-group col-xs-1 col-sm-1 col-md-1">
-            <el-upload class="upload-demo" action="https://jsonplaceholder.typicode.com/posts/" :on-preview="handlePreview" 
-            :on-remove="handleRemove" multiple :limit="3" :on-exceed="handleExceed" :file-list="fileList">
+            <el-upload
+            action= "http://localhost:8000/api/archivo/"
+            multiple
+            :limit="1"
+            :on-exceed="exceso_archivos">
               <el-button size="small" type="success" plain>Cargar imagen</el-button>
             </el-upload>
           </div>
@@ -388,7 +421,7 @@
         <div>
         <hr>
         <!--Banner-->
-        <label class="control-label">Cargar imagenes para banner</label>
+        <!-- <label class="control-label">Cargar imagenes para banner</label>
         <div class="row">
           <div class="col-sm-4 col-md-4">
             <el-upload action="https://jsonplaceholder.typicode.com/posts/" list-type="picture-card" :on-preview="handlePictureCardPreview"
@@ -412,7 +445,7 @@
             </el-upload>
           </div>
         </div>
-        <br>
+        <br> -->
         <!--Redes sociales-->
         <div class="row">
           <div class="col-sm-6 col-md-4">
@@ -444,7 +477,7 @@
         <!-- Button (Double) -->      
         <div class="row">
           <div class="col-xs-3 col-sm-3 col-md-3">
-            <el-checkbox v-model="checked">Acepto</el-checkbox>
+            <el-checkbox>Acepto</el-checkbox>
           </div>
           <div class="col-xs-9 col-sm-9 col-md-9"> 
             Al hacer clic en <strong class="label label-primary">Guardar registro</strong>,
@@ -512,21 +545,41 @@ export default {
           telefono: null,
           celular: null,
           email: null,
-          lema: null,
           logo: null,
-          mision: null,
-          vision: null,
+          mision: null,          
+          fecha_registro: null,
+        },
+        servicioModel:{
           nombre_ser_1: null,
           ser_1: null,
+          imagen1: null,
           nombre_ser_2: null,
           ser_2: null,
+          imagen2: null,
           nombre_ser_3: null,
           ser_3: null,
+          imagen3: null,
           nombre_ser_4: null,
           ser_4: null,
+          imagen4: null,
           nombre_ser_5: null,
           ser_5: null,
-          fecha_registro: null,
+          imagen5: null,
+          nombre_ser_6: null,
+          ser_6: null,
+          imagen6: null,
+          nombre_ser_7: null,
+          ser_7: null,
+          imagen7: null,
+          nombre_ser_8: null,
+          ser_8: null,
+          imagen8: null,
+          nombre_ser_9: null,
+          ser_9: null,
+          imagen9: null,
+          nombre_ser_10: null,
+          ser_10: null,
+          imagen10: null,
         },
         ciudades:[{
           id_ciudad: null,
@@ -550,52 +603,79 @@ export default {
         registro_formulario: false,
         alerta_formulario: false,
         error_formulario: false,
-        carga: true
+        carga: true,
+        id_empresa: null
       }                  
     },
     methods:{
       enviar_formulario:async function(){
+        this.carga = true;
+        // axios({
+        //   method: "post",
+        //   url: "http://localhost:8000/api/empresa/",
+        //   data:{
+        //     nombre: this.empresaModel.nombre,
+        //     nit: this.empresaModel.nit,
+        //     direccion: this.empresaModel.direccion,
+        //     telefono: this.empresaModel.telefono,
+        //     celular: this.empresaModel.celular,
+        //     email: this.empresaModel.email,
+        //     mision: this.empresaModel.mision,            
+        //     id_tipo: this.empresaModel.id_tipo,
+        //     id_ciudad: this.empresaModel.id_ciudad,
+        //   }
+        // })
+        // .then(respuesta =>{
+        //   this.id_empresa = respuesta.data.id_empresa;
+        //   // this.$route.router.go('/home');
+        //   console.log(this.id_empresa);
+        //   this.enviar_servicios();          
+        //   this.carga = false;
+        // })
+        // .catch(e => {
+        //   this.mensaje_error();
+        //   this.carga = false;
+        // })
+        this.enviar_servicios();
+      },
+      enviar_servicios: async function(){
+        console.log(this.servicioModel.nombre_ser_1);
+        console.log(this.servicioModel.ser_1);
         axios({
           method: "post",
-          url: "http://localhost:8000/api/empresa/",
+          url: "http://localhost:8000/api/servicio/",
           data:{
-            nombre: this.empresaModel.nombre,
-            nit: this.empresaModel.nit,
-            direccion: this.empresaModel.direccion,
-            telefono: this.empresaModel.telefono,
-            celular: this.empresaModel.celular,
-            email: this.empresaModel.email,
-            logo: this.empresaModel.logo,
-            lema: this.empresaModel.lema,
-            mision: this.empresaModel.mision,
-            vision: this.empresaModel.vision,
-            nombre_ser_1: this.empresaModel.nombre_ser_1,
-            ser_1: this.empresaModel.ser_1,
-            nombre_ser_2: this.empresaModel.nombre_ser_2,
-            ser_2: this.empresaModel.ser_2,
-            nombre_ser_3: this.empresaModel.nombre_ser_3,
-            ser_3: this.empresaModel.ser_3,
-            nombre_ser_4:  this.empresaModel.nombre_ser_4,
-            ser_4: this.empresaModel.ser_4,
-            nombre_ser_5:  this.empresaModel.nombre_ser_5,
-            ser_5: this.empresaModel.ser_5,
-            fecha_registro:  null,
-            id_tipo:  this.empresaModel.id_tipo,
-            id_ciudad:  this.empresaModel.id_ciudad
+            id_empresa: this.id_empresa,
+            nombre_ser_1: this.servicioModel.nombre_ser_1,
+            ser_1: this.servicioModel.ser_1,            
+            nombre_ser_2: this.servicioModel.nombre_ser_2,
+            ser_2: this.servicioModel.ser_2,
+            nombre_ser_3: this.servicioModel.nombre_ser_3,
+            ser_3: this.servicioModel.ser_3,
+            nombre_ser_4: this.servicioModel.nombre_ser_4,
+            ser_4: this.servicioModel.ser_4,
+            nombre_ser_5: this.servicioModel.nombre_ser_5,
+            ser_5: this.servicioModel.ser_5,
+            nombre_ser_1: this.servicioModel.nombre_ser_6,
+            ser_1: this.servicioModel.ser_6,
+            nombre_ser_2: this.servicioModel.nombre_ser_7,
+            ser_2: this.servicioModel.ser_7,
+            nombre_ser_3: this.servicioModel.nombre_ser_8,
+            ser_3: this.servicioModel.ser_8,
+            nombre_ser_4: this.servicioModel.nombre_ser_9,
+            ser_4: this.servicioModel.ser_9,
+            nombre_ser_5: this.servicioModel.nombre_ser_10,
+            ser_5: this.servicioModel.ser_10,
           }
         })
-        .then(respuesta =>{
-          console.log(respuesta.status);
-          this.$route.router.go('/home');
+        .then(res => {
           this.mensaje_exito();
           this.carga = false;
         })
         .catch(e => {
-          console.log(this.empresaModel);
-          this.mensaje_error();
           this.carga = false;
+          this.mensaje_error();          
         })
-
       },
       traer_ciudaes: async function(){
         axios.get("http://localhost:8000/api/ciudad/").then(respuesta => {
@@ -698,6 +778,12 @@ export default {
           title: 'Por favor',
           message: 'Valida los campos del formulario'
         });
+      },
+      exceso_archivos(){
+      this.$notify.warning({
+          title: 'Alerta',
+          message: 'Ha excedido el limite e archivos'
+      });
       },
       validateBeforeSubmit() {
         this.$validator.validateAll().then((result) => {
