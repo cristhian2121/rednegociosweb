@@ -12,6 +12,7 @@ import Home from './components/home/Home';
 import Registro_empresa from './components/registro_empresa/Registro_empresa';
 import Vista_detallada  from './components/vista_detallada/Vista_detallada';
 import Registration from './components/registration/Registration';
+import Edit_profile from './components/editation/Editation'
 
 //Agregar bootstrap
 import BootstrapVue from 'bootstrap-vue'
@@ -71,6 +72,11 @@ var router = new Router({
     {
       path: '/:nombre',
       component: Vista_detallada,
+      props: true
+    },
+    {
+      path: '/profile/edit/:nombre',
+      component: Edit_profile,
       props: true
     },
     {
