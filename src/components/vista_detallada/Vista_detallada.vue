@@ -1,6 +1,4 @@
 <template>
-
-
     <div class="container" >      
       <div class="row" v-if="!carga">
 
