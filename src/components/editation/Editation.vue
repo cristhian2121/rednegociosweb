@@ -1,8 +1,7 @@
 <template>
   <div class="container loginkr">      
-    <div class="row" v-if="!carga">
+    <div class="row" v-if="!carga && vista">
       <div class="col-md-1 col-lg-2"></div>
-
       <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8">
         <h2 style="text-align: center;"> Edite la información de la empresa<small></small></h2>
         <hr>
@@ -119,7 +118,7 @@
           <div class="col-sm-6 col-md-6">
               <label class="control-label">¿En que sección desea aparecer? </label>
           </div>
-          <div class=" col-sm-6 col-md-6">
+          <div class="col-sm-6 col-md-6">
             <el-select  v-model="empresaModel.id_tipo" clearable placeholder="Seleccionar sección">
               <el-option v-for="tipo in tipos" :key="tipo.id_tipo" 
               :label="tipo.nombre" :value="tipo.id_tipo"> </el-option>
@@ -529,10 +528,25 @@ import axios from "axios";
 
 export default {  
     name: 'edicion_empresa',
-    props: ['id_empresa'],
+    props: ['nombre'],
     async mounted(){
-      await this.traer_ciudaes();
-      await this.traer_tipos();
+      this.nombre_empresa = this.$route.params.nombre;     
+      console.log(this.nombre_empresa);
+        if(this.nombre_empresa) {
+          console.log("existe");
+          console.log(this.carga);
+          try{
+            await this.traer_empresas();            
+            await this.traer_ciudaes();
+            await this.traer_tipos();
+          }
+          catch(e){
+            console.log("Error");
+            this.mensaje_error();
+          }
+          this.vista = true;
+          await this.traer_servicios();          
+        }
       this.carga = false;
     },
     data(){
@@ -605,33 +619,23 @@ export default {
         alerta_formulario: false,
         error_formulario: false,
         carga: true,
-        id_empresa: null
+        id_empresa: null,
+        vista: false
       }                  
-    },
-    mounted(){        
-        this.nombre_empresa = this.$route.params.nombre;
-        console.log(this.nombre_empresa)
-        if(this.nombre_empresa) this.traer_empresas();
-        this.carga = false;
-        if(this.nombre_empresa) this.traer_servicios;
-        this.carga = false;
     },
     methods:{
       traer_empresas: function() {
         axios.get(`http://localhost:8000/api/detalle/?nombre=${this.nombre_empresa}`)
           .then(respuesta => {
-            console.log("shdjsa")
-            console.log(respuesta.data)
-            this.empresaModel = respuesta.data[0];
+            this.empresaModel = respuesta.data[0];            
+            console.log(this.empresaModel);
           });
       },
       traer_servicios: function() {
         axios.get(`http://localhost:8000/api/servicio/?nombre=${this.nombre_empresa}`)
           .then(respuesta => {
-            console.log(respuesta.data)
             this.empresaModel = respuesta.data[0];
           });
-          localhost:8000/api/servicio/
       },
       enviar_formulario:async function(){
         this.carga = true;
@@ -805,10 +809,10 @@ export default {
         });
       },
       exceso_archivos(){
-      this.$notify.warning({
-          title: 'Alerta',
-          message: 'Ha excedido el limite e archivos'
-      });
+        this.$notify.warning({
+            title: 'Alerta',
+            message: 'Ha excedido el limite e archivos'
+        });
       },
       validateBeforeSubmit() {
         this.$validator.validateAll().then((result) => {
@@ -819,7 +823,7 @@ export default {
           this.mensaje_informacion();
           return;
         });
-    }
+      }
     }
 }
 </script>
