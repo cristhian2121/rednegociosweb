@@ -27,8 +27,7 @@ export default {
 		/*nos posicionamos en el centro del navegador*/
 		top:50%;
 		left:50%;
-    padding-top: 20%;
-	
+    padding-top: 20%;	
 	}
 
 .lds-default {

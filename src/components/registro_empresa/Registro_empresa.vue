@@ -143,7 +143,8 @@
             action= "http://localhost:8000/api/archivo/"
             multiple
             :limit="1"
-            :on-exceed="exceso_archivos">
+            :on-exceed="exceso_archivos"
+            :on-success="logo_cargado">
             <el-button size="small" type="success">Click para cargar logo de la empresa</el-button>
             <div slot="tip" class="el-upload__tip">Solo archivos jpg/png con un tamaño menor de 500kb</div>
           </el-upload>
@@ -193,7 +194,7 @@
             <el-upload
             action= "http://localhost:8000/api/archivo/"
             multiple
-            :limit="1"
+            :limit="1"            
             :on-exceed="exceso_archivos">
               <el-button size="small" type="success" plain>Cargar imagen</el-button>
             </el-upload>
@@ -451,21 +452,21 @@
           <div class="col-sm-6 col-md-4">
             <label class="control-label">Ruta de Facebook</label>
             <input name="facebook" type="text" placeholder="Ingrese el nombre de la empresa" class="form-control input-lg"
-            v-model="empresaModel.nombre" v-validate="'max:100'">
+            v-model="empresaModel.facebook" v-validate="'max:100'">
             <span v-show="errors.has('facebook')" class="text-warning"></span>
             <span v-show="errors.has('facebook')" class="text-danger">*Maximo 100 caracteres</span>  
           </div>
           <div class=" col-sm-6 col-md-4">
-            <label class="control-label">Ruta de Twitter</label>
+            <label class="control-label">Ruta de Instagram</label>
             <input name="twitter" type="text" placeholder="Ingrese el nombre de la empresa" class="form-control input-lg"
-            v-model="empresaModel.nombre" v-validate="'max:100'">
+            v-model="empresaModel.instagram" v-validate="'max:100'">
             <span v-show="errors.has('twitter')" class="text-warning"></span>
             <span v-show="errors.has('twitter')" class="text-danger">*Maximo 100 caracteres</span> 
           </div>
           <div class=" col-sm-6 col-md-4">
             <label class="control-label">Ruta de Youtube</label>
             <input name="youtube" type="text" placeholder="Ingrese el nombre de la empresa" class="form-control input-lg"
-            v-model="empresaModel.nombre" v-validate="'max:100'">
+            v-model="empresaModel.youtube" v-validate="'max:100'">
             <span v-show="errors.has('youtube')" class="text-warning"></span>
             <span v-show="errors.has('youtube')" class="text-danger">*Maximo 100 caracteres</span> 
           </div>
@@ -513,6 +514,7 @@
       </div>-->
 
     </div>
+    
     <!--gif loader-->
     <div class="centrar" v-if="carga">
       <div class="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div>
@@ -549,7 +551,7 @@ export default {
           mision: null,          
           fecha_registro: null,
         },
-        servicioModel:{
+        servicioModel: {
           nombre_ser_1: null,
           ser_1: null,
           imagen1: null,
@@ -604,43 +606,46 @@ export default {
         alerta_formulario: false,
         error_formulario: false,
         carga: true,
-        id_empresa: null
+        id_empresa: null,
+        id_archivo: null,
+        empresa_nombre: null
       }                  
     },
     methods:{
-      enviar_formulario:async function(){
+      enviar_formulario: function(){
         this.carga = true;
-        // axios({
-        //   method: "post",
-        //   url: "http://localhost:8000/api/empresa/",
-        //   data:{
-        //     nombre: this.empresaModel.nombre,
-        //     nit: this.empresaModel.nit,
-        //     direccion: this.empresaModel.direccion,
-        //     telefono: this.empresaModel.telefono,
-        //     celular: this.empresaModel.celular,
-        //     email: this.empresaModel.email,
-        //     mision: this.empresaModel.mision,            
-        //     id_tipo: this.empresaModel.id_tipo,
-        //     id_ciudad: this.empresaModel.id_ciudad,
-        //   }
-        // })
-        // .then(respuesta =>{
-        //   this.id_empresa = respuesta.data.id_empresa;
-        //   // this.$route.router.go('/home');
-        //   console.log(this.id_empresa);
-        //   this.enviar_servicios();          
-        //   this.carga = false;
-        // })
-        // .catch(e => {
-        //   this.mensaje_error();
-        //   this.carga = false;
-        // })
-        this.enviar_servicios();
+        axios({
+          method: "post",
+          url: "http://localhost:8000/api/empresa/",
+          data:{
+            nombre: this.empresaModel.nombre,
+            nit: this.empresaModel.nit,
+            direccion: this.empresaModel.direccion,
+            telefono: this.empresaModel.telefono,
+            celular: this.empresaModel.celular,
+            email: this.empresaModel.email,
+            mision: this.empresaModel.mision,            
+            id_tipo: this.empresaModel.id_tipo,
+            id_ciudad: this.empresaModel.id_ciudad,
+            id_archivo: this.id_archivo,
+            instagram: this.empresaModel.instagram,
+            facebook: this.empresaModel.facebook,
+            youtube: this.empresaModel.youtube
+          }
+        })
+        .then(respuesta =>{
+          this.id_empresa = respuesta.data.id_empresa;
+          this.empresa_nombre = respuesta.data.nombre;          
+          if(this.id_empresa){
+            this.enviar_servicios();
+          } 
+        })
+        .catch(e => {
+          this.mensaje_error();
+          this.carga = false;
+        })
       },
-      enviar_servicios: async function(){
-        console.log(this.servicioModel.nombre_ser_1);
-        console.log(this.servicioModel.ser_1);
+      enviar_servicios: function(){
         axios({
           method: "post",
           url: "http://localhost:8000/api/servicio/",
@@ -656,25 +661,26 @@ export default {
             ser_4: this.servicioModel.ser_4,
             nombre_ser_5: this.servicioModel.nombre_ser_5,
             ser_5: this.servicioModel.ser_5,
-            nombre_ser_1: this.servicioModel.nombre_ser_6,
-            ser_1: this.servicioModel.ser_6,
-            nombre_ser_2: this.servicioModel.nombre_ser_7,
-            ser_2: this.servicioModel.ser_7,
-            nombre_ser_3: this.servicioModel.nombre_ser_8,
-            ser_3: this.servicioModel.ser_8,
-            nombre_ser_4: this.servicioModel.nombre_ser_9,
-            ser_4: this.servicioModel.ser_9,
-            nombre_ser_5: this.servicioModel.nombre_ser_10,
-            ser_5: this.servicioModel.ser_10,
+            nombre_ser_6: this.servicioModel.nombre_ser_6,
+            ser_6: this.servicioModel.ser_6,
+            nombre_ser_7: this.servicioModel.nombre_ser_7,
+            ser_7: this.servicioModel.ser_7,
+            nombre_ser_8: this.servicioModel.nombre_ser_8,
+            ser_8: this.servicioModel.ser_8,
+            nombre_ser_9: this.servicioModel.nombre_ser_9,
+            ser_9: this.servicioModel.ser_9,
+            nombre_ser_10: this.servicioModel.nombre_ser_10,
+            ser_10: this.servicioModel.ser_10
           }
         })
         .then(res => {
+          this.carga = false;          
           this.mensaje_exito();
-          this.carga = false;
+          this.$router.push({ path: `/${this.empresa_nombre}`});                 
         })
-        .catch(e => {
-          this.carga = false;
+        .catch(er => {
           this.mensaje_error();          
+          this.carga = false;
         })
       },
       traer_ciudaes: async function(){
@@ -687,6 +693,9 @@ export default {
         this.tipos = respuesta.data;
         });
       },
+      // usuario: async function(){
+      //   await axios.get("")
+      // }
       cambio_servicios: function(){
         switch(this.radio_servicios){
           case 1:
@@ -784,6 +793,9 @@ export default {
           title: 'Alerta',
           message: 'Ha excedido el limite e archivos'
       });
+      },
+      logo_cargado(res, file){
+        this.id_archivo = res;
       },
       validateBeforeSubmit() {
         this.$validator.validateAll().then((result) => {
