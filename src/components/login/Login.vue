@@ -13,7 +13,7 @@ export default {
     },
 
     mounted(){    
-        sessionStorage.removeItem('user') ;
+        sessionStorage.removeItem('user');
     },
 
     methods:{
@@ -33,7 +33,7 @@ export default {
             })
             .catch(e =>{
                 this.$notify({
-                    message: 'Contraseña invalaliAAAAAA',
+                    message: 'Contraseña invalida',
                     type: 'warning'
                 });
             })
@@ -61,15 +61,11 @@ export default {
           
           <p>
               <input v-model="usuario_model.password" type="password1" class="form-control input-lg" id="password1" placeholder="Contraseña" required="" />          
-          </p>
+          </p>        
           
           <div class="pwstrength_viewport_progress"></div>          
           
-          <button class="btn btn-lg btn-primary btn-block"
-          v-on:click="ingresar()">Ingresar</button>
-          <div>
-            <router-link :to="{ path: '/registration' }">Registrarme</router-link>- <a href="#">Olvide Contraseña</a>
-          </div>
+          
 <!--           
         
         <div class="form-links">

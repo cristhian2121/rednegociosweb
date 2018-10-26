@@ -8,6 +8,10 @@
                     <p><img src="@/assets/logo.png" class="img-responsive img-logo" alt="" /></p> <!--https://thumbs.dreamstime.com/b/conexi%C3%B3n-de-red-social-y-comunicaci%C3%B3n-empresarial-global-89882816.jpg" class="img-responsive" alt="" /></p>-->
                     <p><input v-model="usuario_model.email" type="email" name="email" placeholder="Correo electrónico" required class="form-control input-lg"/></p>
                     <p><input v-model="usuario_model.password" type="password" class="form-control input-lg" id="password1" placeholder="Contraseña" required="" /></p>
+                    <form>
+                        <div class="g-recaptcha" data-sitekey="6LdOw3UUAAAAADpYeBKGykbrkXelEx6mtlrVI4rb"></div>
+                    </form>
+                    
                     
                     <el-button type="primary" class="btn-lg btn-block" v-on:click="ingresar()">Ingresar</el-button>
                     

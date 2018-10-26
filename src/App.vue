@@ -35,7 +35,7 @@ export default {
 
 
 
-<style>¿¿
+<style>
 /*@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css");*/
 
 /* Estilos para la nav-menu   */ 
