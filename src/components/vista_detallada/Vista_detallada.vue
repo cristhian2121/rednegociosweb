@@ -21,8 +21,8 @@
 
           <!-- Post Content -->
           <p class="lead">
-            Empresa dedicada a la comercialización de productos derivados del cerdo ibérico, a través de Internet, con la posibilidad de ir ampliando progresivamente la gama
-            de productos agroalimentarios disponibles, siguiendo siempre la más estricta línea de calidad de nuestros productos</p>
+            {{empresas.mision}}
+          </p>
           
           <p class="lead">La desventaja que tenemos los españoles es que la inmensa mayoría de los comercios virtuales se encuentran en Estados Unidos.
           </p>
@@ -78,7 +78,7 @@
         <div class="col-md-4">
 
           <!-- Search Widget -->
-          <div class="card my-4">
+          <!-- <div class="card my-4">
             <h5 class="card-header">Search</h5>
             <div class="card-body">
               <div class="input-group">
@@ -88,7 +88,7 @@
                 </span>
               </div>
             </div>
-          </div>
+          </div> -->
 
           <!-- Categories Widget -->
           <div class="card my-4">
@@ -160,10 +160,9 @@ export default {
             carga: true
         }        
     },
-    mounted(){        
+    mounted(){
         this.nombre_empresa = this.$route.params.nombre;
-        if(this.nombre_empresa) this.traer_empresas();
-        this.carga = false;
+        if(this.nombre_empresa) this.traer_empresas();        
     },
     methods: {
         traer_empresas: function() {
