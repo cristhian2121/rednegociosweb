@@ -20,7 +20,7 @@
                         </div>      
                         <!-- Button -->
                         <div class="col-md-2"> 
-                            <el-button type="primary" icon="el-icon-search" v-on:click="buscar_filtros">Buscar</el-button>      		                               
+                            <el-button type="primary" icon="el-icon-search" v-on:click="buscar_filtros()">Buscar</el-button>      		                               
                         </div>	                    
                     </div>
                 </div>											
@@ -31,37 +31,37 @@
                     <div class="row">
                         <div class="col-lg-2 col-md-4 col-sm-6">
                             <div class="single-fcat">
-                                <a href="category.html"><img class="img-category" src="../../static/img/o1.png" alt=""></a>
+                                <img class="img-category" src="../../static/img/o1.png" alt="">
                                 <p>Reparaciones</p>
                             </div>
                             </div>
                             <div class="col-lg-2 col-md-4 col-sm-6">
                                 <div class="single-fcat">
-                                    <a href="category.html"><img class="img-category" src="../../static/img/o2.png" alt=""></a>
+                                    <img class="img-category" src="../../static/img/o2.png" alt="">
                                     <p>Call Center</p>
                                 </div>
                             </div>
                             <div class="col-lg-2 col-md-4 col-sm-6">
                                 <div class="single-fcat">
-                                    <a href="category.html"><img class="img-category" src="../../static/img/o3.png" alt=""></a>
+                                    <img class="img-category" src="../../static/img/o3.png" alt="">
                                     <p>Tecnologia</p>
                                 </div>
                             </div>
                             <div class="col-lg-2 col-md-4 col-sm-6">
                                 <div class="single-fcat">
-                                    <a href="category.html"><img class="img-category" src="../../static/img/o4.png" alt=""></a>
+                                    <img class="img-category" src="../../static/img/o4.png" alt="">
                                     <p>Logistica</p>
                                 </div>
                             </div>
                             <div class="col-lg-2 col-md-4 col-sm-6">
                                 <div class="single-fcat">
-                                    <a href="category.html"><img class="img-category" src="../../static/img/o5.png" alt=""></a>
+                                    <img class="img-category" src="../../static/img/o5.png" alt="">
                                     <p>Medicina</p>
                                 </div>
                             </div>
                             <div class="col-lg-2 col-md-4 col-sm-6">
                                 <div class="single-fcat">
-                                    <a href="category.html"><img class="img-category" src="../../static/img/o6.png" alt=""></a>
+                                    <img class="img-category" src="../../static/img/o6.png" alt="">
                                     <p>Ventas</p>
                                 </div>			
                             </div>
@@ -137,18 +137,16 @@ export default {
   },
   methods: {
     buscar_filtros: function() {
-      if (this.ciudadModel) {
-        this.empresasAux = this.empresas.filter(
-          empresa => empresa.id_ciudad == this.ciudadModel
-        );
-      }
-      else if (this.tipoModel) {
-        this.empresasAux = this.empresas.filter(
-          empresa => empresa.id_tipo == this.tipoModel
-        );
-      }
-      else{
         this.empresasAux = this.empresas;
+      if (this.ciudadModel) {
+            this.empresasAux = this.empresasAux.filter(
+            empresa => empresa.id_ciudad == this.ciudadModel            
+        );
+      }
+      if (this.tipoModel) {
+            this.empresasAux = this.empresasAux.filter(
+            empresa => empresa.id_tipo == this.tipoModel            
+        );
       }
     },
 

@@ -75,7 +75,7 @@ var router = new Router({
       props: true
     },
     {
-      path: '/profile/edit/:nombre',
+      path: '/profile/edit/:empresa',
       component: Edit_profile,
       props: true
     },

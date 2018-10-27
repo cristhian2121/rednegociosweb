@@ -528,26 +528,18 @@ import axios from "axios";
 
 export default {  
     name: 'edicion_empresa',
-    props: ['nombre'],
+    props: ['empresa'],
     async mounted(){
       this.nombre_empresa = this.$route.params.nombre;     
-      console.log(this.nombre_empresa);
         if(this.nombre_empresa) {
-          console.log("existe");
-          console.log(this.carga);
           try{
-            await this.traer_empresas();            
-            await this.traer_ciudaes();
-            await this.traer_tipos();
+            await this.traer_empresas();                        
           }
           catch(e){
-            console.log("Error");
             this.mensaje_error();
-          }
-          this.vista = true;
+          }          
           await this.traer_servicios();          
-        }
-      this.carga = false;
+        }      
     },
     data(){
       return{
@@ -624,11 +616,14 @@ export default {
       }                  
     },
     methods:{
-      traer_empresas: function() {
+      traer_empresas: async function() {
         axios.get(`http://localhost:8000/api/detalle/?nombre=${this.nombre_empresa}`)
-          .then(respuesta => {
+          .then(async respuesta => {
             this.empresaModel = respuesta.data[0];            
-            console.log(this.empresaModel);
+            await this.traer_ciudaes();
+            await this.traer_tipos();
+            this.vista = true;
+            this.carga = false;
           });
       },
       traer_servicios: function() {
@@ -657,7 +652,6 @@ export default {
         .then(respuesta =>{
           this.id_empresa = respuesta.data.id_empresa;
           // this.$route.router.go('/home');
-          console.log(this.id_empresa);
           this.enviar_servicios();          
           this.carga = false;
         })
@@ -668,8 +662,6 @@ export default {
         this.enviar_servicios();
       },
       enviar_servicios: async function(){
-        console.log(this.servicioModel.nombre_ser_1);
-        console.log(this.servicioModel.ser_1);
         axios({
           method: "get",
           url: "http://localhost:8000/api/servicio/",
