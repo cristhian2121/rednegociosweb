@@ -117,7 +117,7 @@
         <!--sección-->
         <div class="row">
           <div class="col-sm-6 col-md-6">
-              <label class="control-label">¿En que sección desea aparecer? </label>
+              <label class="control-label">¿En que sección desea aparecer?</label>
           </div>
           <div class=" col-sm-6 col-md-6">
             <el-select  v-model="empresaModel.id_tipo" clearable placeholder="Seleccionar sección">
@@ -789,7 +789,7 @@ export default {
         });
       },
       exceso_archivos(){
-      this.$notify.warning({
+        this.$notify.warning({
           title: 'Alerta',
           message: 'Ha excedido el limite e archivos'
       });
