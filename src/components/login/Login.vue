@@ -1,46 +1,45 @@
 <script>
-import axios from 'axios';
+import axios from "axios";
 export default {
-    name: "login",
-    data(){
-        return{
-            usuario_model: {
-                email: null,
-                password: null
-            },
-            respuesta: ''
-        }
-    },
+  name: "login",
+  data() {
+    return {
+      usuario_model: {
+        email: null,
+        password: null
+      },
+      respuesta: ""
+    };
+  },
 
-    mounted(){    
-        sessionStorage.removeItem('user');
-    },
+  mounted() {
+    sessionStorage.removeItem("user");
+  },
 
-    methods:{
-        ingresar: function(){
-            axios({
-                method: "post",
-                url: 'http://localhost:8000/rest-auth/login/',
-                data:{
-                    username: this.usuario_model.email,
-                    email: this.usuario_model.email,
-                    password: this.usuario_model.password
-                }
-            })
-            .then(respuesta => {
-                sessionStorage.setItem('user',this.usuario_model.email);
-                this.$router.push({ path: 'home'})
-            })
-            .catch(e =>{
-                this.$notify({
-                    message: 'Contraseña invalida',
-                    type: 'warning'
-                });
-            })
+  methods: {
+    ingresar: function() {
+      axios({
+        method: "post",
+        url: "http://localhost:8000/rest-auth/login/",
+        data: {
+          username: this.usuario_model.email,
+          email: this.usuario_model.email,
+          password: this.usuario_model.password
         }
+      })
+        .then(respuesta => {
+          sessionStorage.setItem("user", this.usuario_model.email);
+          this.$router.push({ path: "home" });
+        })
+        .catch(e => {
+          this.$notify({
+            message: "Contraseña invalida",
+            type: "warning"
+          });
+        });
     }
-
-}
+  }
+};
 </script>
 
 <template>
@@ -81,8 +80,8 @@ export default {
 </template>
 
 <style>
-.login-kr{
-	padding-top: 15%;
+.login-kr {
+  padding-top: 15%;
 }
 </style>
 

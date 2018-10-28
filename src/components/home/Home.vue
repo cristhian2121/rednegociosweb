@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import MyHeader from '@/components/header/Header';
-import MySearch from '@/components/search/Search';
+import MyHeader from "@/components/header/Header";
+import MySearch from "@/components/search/Search";
 
 export default {
   name: "home",
@@ -21,14 +21,13 @@ export default {
 </script>
 
 <style>
-.centrar
-	{
-		position: absolute;
-		/*nos posicionamos en el centro del navegador*/
-		top:50%;
-		left:50%;
-    padding-top: 20%;	
-	}
+.centrar {
+  position: absolute;
+  /*nos posicionamos en el centro del navegador*/
+  top: 50%;
+  left: 50%;
+  padding-top: 20%;
+}
 
 .lds-default {
   display: inline-block;
@@ -40,7 +39,7 @@ export default {
   position: absolute;
   width: 5px;
   height: 5px;
-  background: #2F4F4F;
+  background: #2f4f4f;
   border-radius: 50%;
   animation: lds-default 1.2s linear infinite;
 }
@@ -105,7 +104,10 @@ export default {
   left: 50px;
 }
 @keyframes lds-default {
-  0%, 20%, 80%, 100% {
+  0%,
+  20%,
+  80%,
+  100% {
     transform: scale(1);
   }
   50% {

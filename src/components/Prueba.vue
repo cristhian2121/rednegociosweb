@@ -3,20 +3,20 @@
 </template>
 
 <script>
-    import axios from 'axios';
-    export default{
-    mounted() {
-        axios.get("http://localhost:8000/api/empresas/").then(respuesta =>{
-            this.empresas = respuesta.data;
-            this.empresa = this.empresas[12];
-        });
-    },
-    data(){
-        return{
-            empresas:null,
-            empresa:String
-        }
-    }    
-}
+import axios from "axios";
+export default {
+  mounted() {
+    axios.get("http://localhost:8000/api/empresas/").then(respuesta => {
+      this.empresas = respuesta.data;
+      this.empresa = this.empresas[12];
+    });
+  },
+  data() {
+    return {
+      empresas: null,
+      empresa: String
+    };
+  }
+};
 </script>
 

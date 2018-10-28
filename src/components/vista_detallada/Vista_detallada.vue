@@ -1,191 +1,181 @@
 <template>
-    <div class="container" >      
+   <div class="container" >
       <div class="row" v-if="!carga">
-
-        <!-- Post Content Column -->
-        <div class="col-lg-8">
-
-          <!-- Title -->
-          <h1 class="mt-4">{{empresas.nombre}}</h1>
-
-          <!-- Author -->
-          <p class="lead">            
-            {{empresas.lema}}
-          </p>
-          <hr>
-
-          <!-- Preview Image -->
-          <img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">
-
-          <hr>
-
-          <!-- Post Content -->
-          <p class="lead">
-            {{empresas.mision}}
-          </p>
-          
-          <p class="lead">La desventaja que tenemos los españoles es que la inmensa mayoría de los comercios virtuales se encuentran en Estados Unidos.
-          </p>
-
-          <p class="lead">Servicios</p>
-
-          <p class="lead">Dirección: {{empresas.direccion}} - {{empresas.ciudad}}</p>
-          <p class="lead">Teléfono: {{empresas.telefono}} - {{empresas.celular}}</p>
-          <hr>
-
-          <!-- Comments Form -->
-          <div class="card my-4">
-            <h5 class="card-header">Comentarios:</h5>
-            <div class="card-body">
-              <form>
-                <div class="form-group">
-                  <textarea class="form-control" rows="3"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Enviar</button>
-              </form>
+         <!-- Post Content Column -->
+         <div class="col-lg-8">
+            <!-- Title -->
+            <h1 class="mt-4">{{empresas.nombre}}</h1>
+            <!-- Author -->
+            <p class="lead">            
+               {{empresas.lema}}
+            </p>
+            <hr>
+            <!-- Preview Image -->
+            <img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">
+            <hr>
+            <!-- Post Content -->
+            <p class="lead">
+               {{empresas.mision}}
+            </p>
+            <p class="lead">La desventaja que tenemos los españoles es que la inmensa mayoría de los comercios virtuales se encuentran en Estados Unidos.
+            </p>
+            <p class="lead">Servicios</p>
+            <p class="lead">Dirección: {{empresas.direccion}} - {{empresas.ciudad}}</p>
+            <p class="lead">Teléfono: {{empresas.telefono}} - {{empresas.celular}}</p>
+            <hr>
+            <!-- Comments Form -->
+            <div class="card my-4">
+               <h5 class="card-header">Comentarios:</h5>
+               <div class="card-body">
+                  <form>
+                     <div class="form-group">
+                        <textarea class="form-control" rows="3"></textarea>
+                     </div>
+                     <button type="submit" class="btn btn-primary">Enviar</button>
+                  </form>
+               </div>
             </div>
-          </div>
-
-          <!-- Single Comment -->
-          <div class="media mb-4">
-            <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-            <div class="media-body">
-              <h5 class="mt-0">Cristhian Delgado</h5>
-              Es una gran opcion de negocio.
-            </div>
-          </div>
-
-          <!-- Comment with nested comments -->
-          <div class="media mb-4">
-            <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-            <div class="media-body">
-              <h5 class="mt-0">Hellen Palma</h5>
-              Malo, el servicio no me gusto, la sopa fria, las papas muy grasosas.
-
-              <div class="media mt-4">
-                <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-                <div class="media-body">
+            <!-- Single Comment -->
+            <div class="media mb-4">
+               <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+               <div class="media-body">
                   <h5 class="mt-0">Cristhian Delgado</h5>
-                  Pero tienen muy buena carne y el servicio es lo mejor.
-                </div>
-              </div>
+                  Es una gran opcion de negocio.
+               </div>
             </div>
-          </div>
-
-        </div>
-
-        <!-- Sidebar Widgets Column -->
-        <div class="col-md-4">
-
-          <!-- Search Widget -->
-          <!-- <div class="card my-4">
-            <h5 class="card-header">Search</h5>
-            <div class="card-body">
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search for...">
-                <span class="input-group-btn">
-                  <button class="btn btn-secondary" type="button">Go!</button>
-                </span>
-              </div>
+            <!-- Comment with nested comments -->
+            <div class="media mb-4">
+               <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+               <div class="media-body">
+                  <h5 class="mt-0">Hellen Palma</h5>
+                  Malo, el servicio no me gusto, la sopa fria, las papas muy grasosas.
+                  <div class="media mt-4">
+                     <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+                     <div class="media-body">
+                        <h5 class="mt-0">Cristhian Delgado</h5>
+                        Pero tienen muy buena carne y el servicio es lo mejor.
+                     </div>
+                  </div>
+               </div>
             </div>
-          </div> -->
-
-          <!-- Categories Widget -->
-          <div class="card my-4">
-            <h5 class="card-header">Categories</h5>
-            <div class="card-body">
-              <div class="row">
-                <div class="col-lg-6">
-                  <ul class="list-unstyled mb-0">
-                    <li>
-                      <a href="#">Web Design</a>
-                    </li>
-                    <li>
-                      <a href="#">HTML</a>
-                    </li>
-                    <li>
-                      <a href="#">Freebies</a>
-                    </li>
-                  </ul>
-                </div>
-                <div class="col-lg-6">
-                  <ul class="list-unstyled mb-0">
-                    <li>
-                      <a href="#">JavaScript</a>
-                    </li>
-                    <li>
-                      <a href="#">CSS</a>
-                    </li>
-                    <li>
-                      <a href="#">Tutorials</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+         </div>
+         <!-- Sidebar Widgets Column -->
+         <div class="col-md-4">
+            <!-- Search Widget -->
+            <!-- <div class="card my-4">
+               <h5 class="card-header">Search</h5>
+               <div class="card-body">
+                 <div class="input-group">
+                   <input type="text" class="form-control" placeholder="Search for...">
+                   <span class="input-group-btn">
+                     <button class="btn btn-secondary" type="button">Go!</button>
+                   </span>
+                 </div>
+               </div>
+               </div> -->
+            <!-- Categories Widget -->
+            <div class="card my-4">
+               <h5 class="card-header">Categories</h5>
+               <div class="card-body">
+                  <div class="row">
+                     <div class="col-lg-6">
+                        <ul class="list-unstyled mb-0">
+                           <li>
+                              <a href="#">Web Design</a>
+                           </li>
+                           <li>
+                              <a href="#">HTML</a>
+                           </li>
+                           <li>
+                              <a href="#">Freebies</a>
+                           </li>
+                        </ul>
+                     </div>
+                     <div class="col-lg-6">
+                        <ul class="list-unstyled mb-0">
+                           <li>
+                              <a href="#">JavaScript</a>
+                           </li>
+                           <li>
+                              <a href="#">CSS</a>
+                           </li>
+                           <li>
+                              <a href="#">Tutorials</a>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
             </div>
-          </div>
-
-          <!-- Side Widget -->
-          <div class="card my-4">
-            <h5 class="card-header">Side Widget</h5>
-            <div class="card-body">
-              You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+            <!-- Side Widget -->
+            <div class="card my-4">
+               <h5 class="card-header">Side Widget</h5>
+               <div class="card-body">
+                  You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+               </div>
             </div>
-          </div>
-
-        </div>
-
+         </div>
       </div>
       <!-- /.row -->
       <div class="centrar" v-if="carga">
-<div class="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-      </div> 
-    </div>
-    <!-- /.container -->
+         <div class="lds-default">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+         </div>
+      </div>
+   </div>
+   <!-- /.container -->
 </template>
-
-
 
 <script>
 import axios from "axios";
 
 export default {
-    name: 'vista-detallada',
-    props: ['id_empresa'],
-    data(){
-        return{
-            empresas: [Object],
-            empresasAux: [Object],
-            nombre_empresa: '',
-            carga: true
-        }        
-    },
-    mounted(){
-        this.nombre_empresa = this.$route.params.nombre;
-        if(this.nombre_empresa) this.traer_empresas();        
-    },
-    methods: {
-        traer_empresas: function() {
-            axios.get(`http://localhost:8000/api/detalle/?nombre=${this.nombre_empresa}`)
-            .then(respuesta => {
-            this.empresas = respuesta.data[0];
-            this.carga = false;
-            });
-        }
+  name: "vista-detallada",
+  props: ["id_empresa"],
+  data() {
+    return {
+      empresas: [Object],
+      empresasAux: [Object],
+      nombre_empresa: "",
+      carga: true
+    };
+  },
+  mounted() {
+    this.nombre_empresa = this.$route.params.nombre;
+    if (this.nombre_empresa) this.traer_empresas();
+  },
+  methods: {
+    traer_empresas: function() {
+      axios
+        .get(`http://localhost:8000/api/detalle/?nombre=${this.nombre_empresa}`)
+        .then(respuesta => {
+          this.empresas = respuesta.data[0];
+          this.carga = false;
+        });
     }
-}
+  }
+};
 </script>
 
 <style>
-.centrar
-	{
-		position: absolute;
-		/*nos posicionamos en el centro del navegador*/
-		top:50%;
-		left:50%;
-    padding-top: 20%;
-	
-	}
+.centrar {
+  position: absolute;
+  /*nos posicionamos en el centro del navegador*/
+  top: 50%;
+  left: 50%;
+  padding-top: 20%;
+}
 
 .lds-default {
   display: inline-block;
@@ -197,7 +187,7 @@ export default {
   position: absolute;
   width: 5px;
   height: 5px;
-  background: #2F4F4F;
+  background: #2f4f4f;
   border-radius: 50%;
   animation: lds-default 1.2s linear infinite;
 }
@@ -262,7 +252,10 @@ export default {
   left: 50px;
 }
 @keyframes lds-default {
-  0%, 20%, 80%, 100% {
+  0%,
+  20%,
+  80%,
+  100% {
     transform: scale(1);
   }
   50% {
