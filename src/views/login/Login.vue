@@ -1,16 +1,14 @@
 <template>
-    <div class="container loginkr">
         <div class="row">
-            <div class="col-md-3"></div>
+            <div class="img-left col-md-3"></div>
             
-            <div class="col-md-6">
+            <div class="loginkr col-md-6">
                 <section class="login-form">
                     <p><img src="@/assets/logo.png" class="img-responsive img-logo" alt="" /></p> <!--https://thumbs.dreamstime.com/b/conexi%C3%B3n-de-red-social-y-comunicaci%C3%B3n-empresarial-global-89882816.jpg" class="img-responsive" alt="" /></p>-->
-                    <p><input v-model="usuario_model.email" type="email" name="email" placeholder="Correo electrónico" required class="form-control input-lg"/></p>
-                    <p><input v-model="usuario_model.password" type="password" class="form-control input-lg" id="password1" placeholder="Contraseña" required="" /></p>
-                    <form>
-                        <div class="g-recaptcha" data-sitekey="6LdOw3UUAAAAADpYeBKGykbrkXelEx6mtlrVI4rb"></div>
-                    </form>
+                    <p><el-input v-model="usuario_model.email" type="email" name="email" placeholder="Correo electrónico" required></el-input></p>
+                    <p><el-input v-model="usuario_model.password" type="password" id="password1" placeholder="Contraseña" required=""></el-input></p>
+                    
+                    <p><div class="cont-center g-recaptcha" data-sitekey="6LdOw3UUAAAAADpYeBKGykbrkXelEx6mtlrVI4rb"></div></p>
                     
                     
                     <el-button type="primary" class="btn-lg btn-block" v-on:click="ingresar()">Ingresar</el-button>
@@ -19,12 +17,12 @@
                 </section>  
             </div>
       
-            <div class="col-md-3">
+            <div class="img-rigth col-md-3">
+                <div style="height: 20%;"></div>
                 <el-button type="info">Preguntas frecuentes</el-button>
             </div>
  
         </div>
-    </div>
 </template>
 
 <script>
@@ -60,7 +58,7 @@ export default {
             })
             .catch(e =>{
                 this.$notify({
-                    message: 'Contraseña invalida.',
+                    message: 'Usuario o contraseña invalida.',
                     type: 'warning'
                 });
             })
@@ -71,7 +69,8 @@ export default {
 
 <style>
 .loginkr{
-    padding-top: 9%;
+    padding-top: 8%;
+    padding-bottom: 12%;
 }
 
 .img-logo{

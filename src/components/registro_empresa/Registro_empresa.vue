@@ -1,9 +1,9 @@
 <template>
-  <div class="container loginkr">      
+  <div class="">      
     <div class="row" v-if="!carga">
-      <div class="col-md-1 col-lg-2"></div>
+      <div class="img-left col-md-2 col-lg-2"></div>
 
-      <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8">
+      <div class="loginkr col-xs-12 col-sm-12 col-md-8 col-lg-8">
         <h2 style="text-align: center;"> Registre su empresa<small></small></h2>
         <hr>
         <br>
@@ -12,16 +12,16 @@
         <hr> 
         <div class="form-group">
           <label class="control-label" for="nombre">Nombre de la empresa</label>  
-          <input name="nombre" type="text" placeholder="Ingrese el nombre de la empresa" class="form-control input-lg"
-          v-model="empresaModel.nombre" v-validate="'required|max:20'">
+          <el-input name="nombre" type="text" placeholder="Ingrese el nombre de la empresa"
+          v-model="empresaModel.nombre" v-validate="'required|max:20'"></el-input>
           <span v-show="errors.has('nombre')" class="text-warning"></span>
           <span v-show="errors.has('nombre')" class="text-danger">*Maximo 20 caracteres</span>
         </div> 
         <!--nit/rut-->
         <div class="form-group">
           <label class="control-label" for="nit_emp">NIT/RUT</label>  
-          <input name="nit" type="number" v-model="empresaModel.nit" v-validate="'required|max:10'"
-          placeholder="NIT o RUT de la empresa"  class="form-control input-lg">
+          <el-input name="nit" type="number" v-model="empresaModel.nit" v-validate="'required|max:10'"
+          placeholder="NIT o RUT de la empresa" ></el-input>
           <span v-show="errors.has('nit')" class="text-danger">*Maximo 10 caracteres</span>
         </div>
         <div class="row">
@@ -50,8 +50,8 @@
           <div class="col-md-6">
             <div class="form-group">
               <label class="control-label">Dirección</label>  
-              <input id="dir_emp" name="direccion" type="text" placeholder="Dirección"
-              class="form-control input-lg" v-model="empresaModel.direccion" >
+              <el-input id="dir_emp" name="direccion" type="text" placeholder="Dirección"
+               v-model="empresaModel.direccion" ></el-input>
               <i v-show="errors.has('direccion')" class="text-warning"></i>
             </div>
           </div>
@@ -61,8 +61,8 @@
           <div class="col-sm-2 col-md-3">
             <div class="form-group">
               <label class="control-label">Teléfono</label>  
-              <input name="telefono" type="number" placeholder="Teléfono" class="form-control input-lg"
-              v-model="empresaModel.telefono" v-validate="'max:7'">
+              <el-input name="telefono" type="number" placeholder="Teléfono"
+              v-model="empresaModel.telefono" v-validate="'max:7'"></el-input>
               <i v-show="errors.has('telefono')" class="text-warning"></i>
               <span v-show="errors.has('telefono')" class="text-danger">*Máximo 7 caracteres</span>
             </div>
@@ -71,8 +71,8 @@
           <div class="col-sm-2 col-md-3">
             <div class="form-group">
               <label class="control-label">Celular/Whatsapp</label>  
-              <input id="cel_emp" name="celular" type="number" placeholder="Whatsapp" class="form-control input-lg" 
-              v-model="empresaModel.celular" v-validate="'max:10'">
+              <el-input id="cel_emp" name="celular" type="number" placeholder="Whatsapp" 
+              v-model="empresaModel.celular" v-validate="'max:10'"></el-input>
               <i v-show="errors.has('celular')" class="text-warning"></i>
               <span v-show="errors.has('celular')" class="text-danger">*Máximo 10 caracteres</span>
             </div>
@@ -81,8 +81,8 @@
           <div class="col-md-6">
             <div class="form-group">
               <label class="control-label" for="email_emp">Email</label>  
-              <input id="email_emp" name="email" type="email" placeholder="Email"
-              class="form-control input-lg" v-model="empresaModel.email" v-validate="'email'">
+              <el-input id="email_emp" name="email" type="email" placeholder="Email"
+              v-model="empresaModel.email" v-validate="'email'"></el-input>
               <i v-show="errors.has('email')" class="text-warning"></i>
               <span v-show="errors.has('email')" class="text-danger">*Campo requerido</span>
             </div>
@@ -130,9 +130,9 @@
         <!--Sobre nosotros-->
         <div class="form-group">
           <label class="control-label">Quienes Somos o Sobre Nosotros</label> 
-          <textarea class="form-control input-lg" name="mision"
+          <el-input type="textarea" name="mision"
           placeholder="Escriba un resumen detallado sobre quienes son"
-          v-model="empresaModel.mision" v-validate="'required|max:200'"></textarea>               
+          v-model="empresaModel.mision" v-validate="'required|max:200'"></el-input>            
           <i v-show="errors.has('mision')" class="text-warning"></i>
           <span v-show="errors.has('mision')" class="text-danger">*Maximo 200 caracteres</span>
         </div>
@@ -494,6 +494,8 @@
           <el-button v-on:click="validateBeforeSubmit" type="primary">Guardar registro</el-button> 
         </div>        
       </div>
+
+      <div class="img-rigth col-md-2 col-lg-2"></div>
 
       <!--Flooter
       <div class="modal fade" id="t_and_c_m" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

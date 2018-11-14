@@ -50,7 +50,6 @@ export default{
   },
   async mounted(){
     this.email_user = sessionStorage.getItem('user');
-    console.log(this.email_user);
     if(this.email_user){
       await this.usuario_empresa();
     }
@@ -62,14 +61,10 @@ export default{
     usuario_empresa: async function(){
       await axios.get(`http://localhost:8000/api/empresa_usuario/?email=${this.email_user}`)
       .then(resp => {
-        console.log("usuarios");
-        console.log(resp);
         if(resp.data[0].email == this.email_user){
-          console.log("entro");
           this.nombre_empresa = resp.data[0].nombre;
           this.tiene_empresa = true;
         } 
-        console.log(this.tiene_empresa);
       })
     }
     // traer_empresas: function() {

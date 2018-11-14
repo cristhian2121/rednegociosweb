@@ -2,6 +2,7 @@
     <div id="search">
         <div v-if="!carga">
             <div class="row">
+                
                 <div class="banner-content col-lg-12">
                     <div style="margin-top:70px"></div>
                     <div class="row justify-content-center form-wrap">

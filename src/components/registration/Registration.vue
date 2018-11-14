@@ -1,16 +1,16 @@
 <template>
-<div class="container login-kr">
+<div class="">
     <div class="row">
-        <div class="col-md-2"></div>
+        <div class="img-left col-md-3"></div>
     
-        <div class="col-md-8">
+        <div class="loginkr col-md-6">
             <h2 style="text-align:center">Registro Personas</h2>
             <hr><br>
             <section class="login-form">
           
-                <p><input v-model="usuario_model.email" type="email" name="email" placeholder="Correo electrónico" required class="form-control input-lg"/></p>
-                <p><input v-model="usuario_model.password1" type="password" class="form-control input-lg"  placeholder="Contraseña" required="" /></p>
-                <p><input v-model="usuario_model.password2" type="password" class="form-control input-lg" placeholder="Repita Contraseña" required="" /></p>
+                <p><el-input v-model="usuario_model.email" type="email" name="email" placeholder="Correo electrónico" required ></el-input></p>
+                <p><el-input v-model="usuario_model.password1" type="password"  placeholder="Contraseña" required=""></el-input></p>
+                <p><el-input v-model="usuario_model.password2" type="password" placeholder="Repita Contraseña" required=""></el-input></p>
 
                 <p class="txt-cen">¿Quiere inscribir su empresa?</p>
                 <div class="form-group txt-cen">
@@ -23,7 +23,7 @@
             </section>  
         </div>
       
-        <div class="col-md-3"></div>
+        <div class="img-rigth col-md-3"></div>
     </div>
 </div>
 </template>
@@ -84,7 +84,7 @@ export default {
 
 <style>
 .login-kr{
-	padding-top: 15%;
+	padding-top: 8%;
 }
 </style>
 

@@ -1,0 +1,451 @@
+<div id="top">
+    <!-- header -->
+    <header class="s-header">
+        <div class="header-logo">
+            <a class="site-logo" href="index.html">
+                <img src="images/logo.svg" alt="Homepage">
+            </a>
+        </div> <!-- end header-logo -->
+
+        <!--barra navegacion-->
+        <nav class="header-nav">
+            <a href="#0" class="header-nav__close" title="close"><span>Close</span></a>
+            <div class="header-nav__content">
+                <h3>{{empresa.nombre}}</h3>
+                <ul class="header-nav__list">
+                    <li class="current"><a class="smoothscroll"  href="#home" title="home">-></a></li>
+                    <li><a class="smoothscroll"  href="#about" title="about">Nosotros</a></li>
+                    <li><a class="smoothscroll"  href="#services" title="services">Servicios</a></li>
+                    <!--<li><a class="smoothscroll"  href="#works" title="works">Works</a></li>-->
+                    <li><a class="smoothscroll"  href="#contact" title="contact">Contacto</a></li>
+                </ul>
+                <p>Visitanos en nuestras redes <a href='#0'>Facebook</a> .</p>
+                <ul class="header-nav__social">
+                    <li><a href="#0"><i class="fab fa-facebook"></i></a></li>
+                    <li><a href="#0"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#0"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="#0"><i class="fab fa-behance"></i></a></li>
+                    <li><a href="#0"><i class="fab fa-dribbble"></i></a></li>
+                </ul>
+            </div>
+        </nav> 
+        <a class="header-menu-toggle" href="#0"><span class="header-menu-icon"></span></a>
+    </header>
+    <!-- end barra de navegación -->
+
+
+    <!-- banner -->
+    <section id="home" class="s-home target-section" data-parallax="scroll" data-image-src="images/hero-bg.jpg" data-natural-width=3000 data-natural-height=2000 data-position-y=top>
+
+        <div class="shadow-overlay"></div>
+        <div class="home-content">
+            <div class="row home-content__main">
+                <h1>{{ empresa.nombre }}<br></h1>
+                <!--<p>lema <br></p>-->
+            </div>
+        </div>
+
+        <ul class="home-sidelinks">
+            <li><a class="smoothscroll" href="#about">Nosotros<span></span></a></li>
+            <li><a class="smoothscroll" href="#services">Servicios<span></span></a></li>
+            <li><a  class="smoothscroll" href="#contact">Contacto<span></span></a></li>
+        </ul>
+        <ul class="home-social">
+            <li class="home-social-title">Siguenos</li>
+            <li><a href="#0"><i class="fab fa-facebook"></i><span class="home-social-text">Facebook</span></a></li>
+            <li><a href="#0"><i class="fab fa-twitter"></i><span class="home-social-text">Twitter</span></a></li>
+            <li><a href="#0"><i class="fab fa-linkedin"></i><span class="home-social-text">LinkedIn</span></a></li>
+        </ul>
+        <a href="#about" class="home-scroll smoothscroll">
+            <span class="home-scroll__text">Bajar</span><span class="home-scroll__icon"></span>
+        </a>
+    </section>
+    <!-- end banner -->
+
+
+    <!-- about -->
+    <section id='about' class="s-about">
+
+        <div class="row section-header" data-aos="fade-up">
+            <div class="col-full">
+                <h3 class="subhead">Quienes somos</h3>
+                <!--<h1 class="display-1">{{ empresa.lema}}</h1>-->
+            </div>
+        </div>
+        <div class="row" data-aos="fade-up">
+            <div class="col-full">
+                <p class="lead">{{ empresa.mision }} 
+                </p>
+            </div>
+        </div> <!-- end about-desc -->
+
+        <!--<div class="row">   
+            <div class="about-process process block-1-2 block-tab-full">
+                <div class="process__vline-left"></div>
+                <div class="process__vline-right"></div>
+                <div class="col-block process__col" data-item="1" data-aos="fade-up">
+                    <div class="process__text">
+                        <h4>Define</h4>
+                        <p>
+                        Quos dolores saepe mollitia deserunt accusamus autem reprehenderit. Voluptas facere animi explicabo non quis magni recusandae. 
+                        Numquam debitis pariatur omnis facere unde. Laboriosam minus amet nesciunt est. Et saepe eos maxime tempore quasi deserunt ab.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-block process__col" data-item="2" data-aos="fade-up">
+                    <div class="process__text">
+                        <h4>Design</h4>
+                        <p>
+                        Quos dolores saepe mollitia deserunt accusamus autem reprehenderit. Voluptas facere animi explicabo non quis magni recusandae. 
+                        Numquam debitis pariatur omnis facere unde. Laboriosam minus amet nesciunt est. Et saepe eos maxime tempore quasi deserunt ab.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-block process__col" data-item="3" data-aos="fade-up">
+                    <div class="process__text">
+                        <h4>Build</h4>
+                        <p>
+                        Quos dolores saepe mollitia deserunt accusamus autem reprehenderit. Voluptas facere animi explicabo non quis magni recusandae. 
+                        Numquam debitis pariatur omnis facere unde. Laboriosam minus amet nesciunt est. Et saepe eos maxime tempore quasi deserunt ab.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-block process__col" data-item="4" data-aos="fade-up">
+                    <div class="process__text">
+                        <h4>Launch</h4>
+                        <p>
+                        Quos dolores saepe mollitia deserunt accusamus autem reprehenderit. Voluptas facere animi explicabo non quis magni recusandae. 
+                        Numquam debitis pariatur omnis facere unde. Laboriosam minus amet nesciunt est. Et saepe eos maxime tempore quasi deserunt ab.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+    </section> 
+    <!-- end about -->
+
+
+    <!-- services -->
+    <section id='services' class="s-services light-gray">
+        <div class="row section-header" data-aos="fade-up">
+            <div class="col-full">
+                <h3 class="subhead">Nuestros servicios</h3>
+                <!--<h1 class="display-1">resumen sobre servicios.</h1>-->
+            </div>
+        </div>
+       <!-- <div class="row" data-aos="fade-up">
+            <div class="col-full">
+                <p class="lead">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse. 
+                </p>
+            </div>
+        </div>-->
+
+        <div class="row services-list block-1-3 block-m-1-2 block-tab-full">
+            <div class="col-block service-item" data-aos="fade-up">
+                <div class="service-icon service-icon--brand-identity">
+                    <i class="icon-tv"></i>
+                </div>
+                <div class="service-text col-lg-8">
+                    <h3 class="h4">Brand Identity</h3>
+                    <p>Nemo cupiditate ab quibusdam quaerat impedit magni. Earum suscipit ipsum laudantium. 
+                    Quo delectus est. Maiores voluptas ab sit natus veritatis ut. Debitis nulla cumque veritatis.
+                    Sunt suscipit voluptas ipsa in tempora esse soluta sint.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-block service-item" data-aos="fade-up">
+                <div class="service-icon  service-icon--illustration">
+                    <i class="icon-group"></i>
+                </div>
+                <div class="service-text">
+                    <h3 class="h4">Illustration</h3>
+                    <p>Nemo cupiditate ab quibusdam quaerat impedit magni. Earum suscipit ipsum laudantium. 
+                    Quo delectus est. Maiores voluptas ab sit natus veritatis ut. Debitis nulla cumque veritatis.
+                    Sunt suscipit voluptas ipsa in tempora esse soluta sint.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end s-services -->
+
+
+    <!-- Blog-->
+    <section id='works' class="s-works">
+                
+        <div class="row section-header" data-aos="fade-up">
+            <div class="col-full">
+                <h3 class="subhead">Ultimas publicaciones</h3>
+                <h1 class="display-1">Estas son unos de nuestros ultimos productos.</h1>
+            </div>
+        </div>
+
+        <div class="row masonry-wrap">
+            <div class="masonry">
+                <div class="masonry__brick" data-aos="fade-up">
+                    <div class="item-folio">
+                        <div class="item-folio__thumb">
+                            <a href="images/portfolio/gallery/g-lamp.jpg" class="thumb-link" title="Lamp" data-size="1050x700">
+                                <img src="images/portfolio/lamp.jpg" 
+                                     srcset="images/portfolio/lamp.jpg 1x, images/portfolio/lamp@2x.jpg 2x" alt="">
+                            </a>
+                        </div>
+                        <div class="item-folio__text">
+                            <h3 class="item-folio__title">
+                                Lamp
+                            </h3>
+                            <p class="item-folio__cat">
+                                Web Design
+                            </p>
+                        </div>
+                        <a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">
+                            Project Link
+                        </a>
+                        <div class="item-folio__caption">
+                            <p>Vero molestiae sed aut natus excepturi. Et tempora numquam. Temporibus iusto quo.Unde dolorem corrupti neque nisi.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="masonry__brick" data-aos="fade-up">
+                    <div class="item-folio">
+                        <div class="item-folio__thumb">
+                            <a href="images/portfolio/gallery/g-salad.jpg" class="thumb-link" title="Salad" data-size="1050x700">
+                                <img src="images/portfolio/salad.jpg" 
+                                     srcset="images/portfolio/salad.jpg 1x, images/portfolio/salad@2x.jpg 2x" alt="">
+                            </a>
+                        </div>
+                        <div class="item-folio__text">
+                            <h3 class="item-folio__title">Salad</h3>
+                            <p class="item-folio__cat">Branding</p>
+                        </div>
+                        <a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">
+                            Project Link
+                        </a>
+                        <span class="item-folio__caption">
+                            <p>Vero molestiae sed aut natus excepturi. Et tempora numquam. Temporibus iusto quo.Unde dolorem corrupti neque nisi.</p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="masonry__brick" data-aos="fade-up">
+                    <div class="item-folio">
+                        <div class="item-folio__thumb">
+                            <a href="images/portfolio/gallery/g-woodcraft.jpg" class="thumb-link" title="Woodcraft" data-size="1050x700">
+                                <img src="images/portfolio/woodcraft.jpg"
+                                     srcset="images/portfolio/woodcraft.jpg 1x, images/portfolio/woodcraft@2x.jpg 2x" alt="">
+                            </a>
+                        </div>
+                        <div class="item-folio__text">
+                            <h3 class="item-folio__title">Woodcraft</h3>
+                            <p class="item-folio__cat">Branding</p>
+                        </div>
+                        <a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">
+                            Project Link
+                        </a>
+                        <span class="item-folio__caption">
+                            <p>Vero molestiae sed aut natus excepturi. Et tempora numquam. Temporibus iusto quo.Unde dolorem corrupti neque nisi.</p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="masonry__brick" data-aos="fade-up">
+                    <div class="item-folio">
+                        <div class="item-folio__thumb">
+                            <a href="images/portfolio/gallery/g-liberty.jpg" class="thumb-link" title="Liberty" data-size="1050x700">
+                                <img src="images/portfolio/liberty.jpg"
+                                     srcset="images/portfolio/liberty.jpg 1x, images/portfolio/liberty@2x.jpg 2x" alt="">
+                            </a>
+                        </div>
+                        <div class="item-folio__text">
+                            <h3 class="item-folio__title">Liberty</h3>
+                            <p class="item-folio__cat">Web Development</p>
+                        </div>
+                        <a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">
+                            Project Link
+                        </a>
+                        <span class="item-folio__caption">
+                            <p>Vero molestiae sed aut natus excepturi. Et tempora numquam. Temporibus iusto quo.Unde dolorem corrupti neque nisi.</p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="masonry__brick" data-aos="fade-up">
+                    <div class="item-folio">
+                        <div class="item-folio__thumb">
+                            <a href="images/portfolio/gallery/g-fuji.jpg" class="thumb-link" title="Fuji" data-size="1050x700">
+                                <img src="images/portfolio/fuji.jpg"
+                                     srcset="images/portfolio/fuji.jpg 1x, images/portfolio/fuji@2x.jpg 2x" alt="">
+                            </a>
+                        </div>
+                        <div class="item-folio__text">
+                            <h3 class="item-folio__title">Fuji</h3>
+                            <p class="item-folio__cat">Web Design</p>
+                        </div>
+                        <a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">
+                            Project Link
+                        </a>
+                        <span class="item-folio__caption">
+                            <p>Vero molestiae sed aut natus excepturi. Et tempora numquam. Temporibus iusto quo.Unde dolorem corrupti neque nisi.</p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="masonry__brick" data-aos="fade-up">
+                    <div class="item-folio">
+                        <div class="item-folio__thumb">
+                            <a href="images/portfolio/gallery/g-shutterbug.jpg" class="thumb-link" title="Shutterbug" data-size="1050x700">
+                                <img src="images/portfolio/shutterbug.jpg"
+                                     srcset="images/portfolio/shutterbug.jpg 1x, images/portfolio/shutterbug@2x.jpg 2x" alt="">
+                            </a>
+                        </div>
+                        <div class="item-folio__text">
+                            <h3 class="item-folio__title">Lady Shutterbug</h3>
+                            <p class="item-folio__cat">Branding</p>
+                        </div>
+                        <a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">
+                            Project Link
+                        </a>
+                        <span class="item-folio__caption">
+                            <p>Vero molestiae sed aut natus excepturi. Et tempora numquam. Temporibus iusto quo.Unde dolorem corrupti neque nisi.</p>
+                        </span>
+                    </div>
+                </div>
+            </div> 
+        </div> 
+        <!-- end blog -->
+
+        <!-- lo que dicen los clientes-->
+        <div class="testimonials-wrap" data-aos="fade-up">
+            <div class="row">
+                <div class="col-full testimonials-header">
+                    <h2 class="h1">Ultimos comentarios</h2>
+                </div>
+            </div>
+            <div class="row testimonials">
+                <div class="col-full testimonials__slider">
+                    <div class="testimonials__slide">
+                        <img src="images/avatars/user-01.jpg" alt="Author image" class="testimonials__avatar">
+                        <p>Muy buen servicio.</p>
+                        <div class="testimonials__author">
+                            Tim Cook<span>CEO, Apple</span>
+                        </div>
+                    </div> <!-- end testimonials__slide -->
+
+                    <div class="testimonials__slide">
+                        <img src="images/avatars/user-05.jpg" alt="Author image" class="testimonials__avatar">
+                        <p>¿Cuanto valen los nevecones?</p>
+                        <div class="testimonials__author">
+                            Sundar Pichai
+                            <span>CEO, Google</span>
+                        </div>
+                    </div> <!-- end testimonials__slide -->
+
+                    <div class="testimonials__slide">
+                        <img src="images/avatars/user-02.jpg" alt="Author image" class="testimonials__avatar">
+                        <p>les doy 5 estrellas.</p>
+                        <div class="testimonials__author">
+                            Satya Nadella
+                            <span>CEO, Microsoft</span>
+                        </div>
+                    </div> <!-- end testimonials__slide -->
+                    
+                </div> <!-- end testimonials__slider -->
+
+            </div> <!-- end testimonials -->
+
+        </div> <!-- end testimonials-wrap -->
+
+    </section> <!-- end s-works -->
+
+
+    <!-- stats
+    <section id="stats" class="s-stats">
+        <div class="row stats block-1-4 block-m-1-2 block-mob-full" data-aos="fade-up">        
+            <div class="col-block stats__col ">
+                <div class="stats__count">129</div>
+                <h5>Awards Received</h5>
+            </div>
+            <div class="col-block stats__col">
+                <div class="stats__count">1507</div>
+                <h5>Cups of Coffee</h5>
+            </div>
+            <div class="col-block stats__col">
+                <div class="stats__count">108</div>
+                <h5>Projects Completed</h5>
+            </div>
+            <div class="col-block stats__col">
+                <div class="stats__count">103</div>
+                <h5>Happy Clients</h5> 
+            </div>
+        </div>
+    </section>end s-stats -->
+
+
+    <!-- contact -->
+    <section id="contact" class="s-contact">
+
+        <div class="row section-header" data-aos="fade-up">
+            <div class="col-full">
+                <h3 class="subhead subhead--light">Contactanos</h3>
+                <h1 class="display-1 display-1--light">Ponte en contacto y hagamos algo genial juntos.</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-full contact-main" data-aos="fade-up">
+                <p>
+                <a href="mailto:#0" class="contact-email">{{ empresa.email}}</a>
+                <span class="contact-number"> {{ empresa.telefono}}  /  {{ empresa.celular }}</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-five tab-full contact-secondary" data-aos="fade-up">
+                <h3 class="subhead subhead--light">Donde encontrarnos</h3>
+
+                <p class="contact-address">
+                    {{ empresa.ciudad }}, {{ empresa.pais}}<br>
+                    {{ empresa.direccion }}
+                </p>
+            </div>
+
+            <div class="col-five tab-full contact-secondary" data-aos="fade-up">
+                <h3 class="subhead subhead--light">Siguenos</h3>
+
+                <ul class="contact-social">
+                    <li><a href="#0"><i class="fab fa-facebook"></i></a></li>
+                    <li><a href="#0"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#0"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="#0"><i class="fab fa-behance"></i></a></li>
+                    <li><a href="#0"><i class="fab fa-dribbble"></i></a></li>
+                </ul>
+
+                <div class="contact-subscribe">
+                    <form id="mc-form" class="group mc-form" novalidate="true">
+                        <input type="email" value="" name="EMAIL" class="email" id="mc-email" placeholder="Email Address" required="">
+                        <input type="submit" name="subscribe" value="Subscribete">
+                        <label for="mc-email" class="subscribe-message"></label>
+                    </form>
+                </div>
+            </div>
+
+        </div> <!-- end row -->
+
+        <div class="row">
+            <div class="col-full cl-copyright">
+                <span>
+                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://bitools.co" target="_blank">Bitools</a>
+            </div>
+        </div>
+
+        <div class="cl-go-top">
+            <a class="smoothscroll" title="Back to Top" href="#top"><i class="icon-arrow-up" aria-hidden="true"></i></a>
+        </div>
+
+    </section> <!-- end s-contact -->
+
+    </div>
+
