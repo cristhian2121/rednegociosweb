@@ -166,7 +166,7 @@ export default {
     },
     methods: {
         traer_empresas: function() {
-            axios.get(`http://localhost:8000/api/detalle/?nombre=${this.nombre_empresa}`)
+            axios.get(`http://68.183.124.242:8000/api/detalle/?nombre=${this.nombre_empresa}`)
             .then(respuesta => {
             this.empresas = respuesta.data[0];
             this.carga = false;

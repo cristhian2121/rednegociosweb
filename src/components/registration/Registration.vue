@@ -52,7 +52,7 @@ export default {
         registrar: function(){
             axios({
                 method: "post",
-                url: 'http://localhost:8000/rest-auth/registration/',
+                url: 'http://68.183.124.242:8000/rest-auth/registration/',
                 data:{
                     username: this.usuario_model.email,
                     email: this.usuario_model.email,
