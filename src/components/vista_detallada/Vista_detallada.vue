@@ -1,4 +1,4 @@
-<template class="aaa">   
+<template>   
   <div id="top" v-if="!carga">
     <!-- barra de navegación -->
     <header class="s-header">
@@ -231,7 +231,7 @@
         <div class="testimonials-wrap" >
           
                 <div class="col-full testimonials-header">
-                    <h2 class="h1">Ultimos comentarios</h2>
+                    <h2>Ultimos comentarios</h2>
                 </div>
 
             <div class="testimonials">
@@ -270,7 +270,7 @@
         <div>
             <div class="col-full">
                 <h3 class="subhead">Contactanos</h3>
-                <h1 class="display-1--light">Ponte en contacto y hagamos algo genial juntos.</h1>
+                <h3 class="display-1--light">Ponte en contacto y hagamos algo genial juntos.</h3>
             </div>
         </div>
 
@@ -409,25 +409,26 @@ export default {
 }
 
 p.lead {
-  /*font-family: "metropolis-regular", sans-serif;*/
-  font-size: 2.2rem;
+  font-family: "metropolis-regular", sans-serif;
+  font-size: 1.6rem;
   line-height: 1.75;
   margin-bottom: 3.6rem;
   color: rgba(85, 85, 85, 0.95);
+  text-align: center;
 }
 @media only screen and (max-width: 1200px) {
   p.lead {
-    font-size: 2.3rem;
+    font-size: 1.7rem;
   }
 }
 @media only screen and (max-width: 1000px) {
   p.lead {
-    font-size: 2.3rem;
+    font-size: 1.7rem;
   }
 }
 @media only screen and (max-width: 800px) {
   p.lead {
-    font-size: 2rem;
+    font-size: 1.6rem;
   }
 }
 
@@ -436,12 +437,12 @@ p.lead {
  * ------------------------------------------------------------------- */
 .display-1--light {
   color: #ffffff;
-  font-size: 2.4rem;
+  font-size: 1.2rem;
 }
 
 .subhead {
   font-family: "metropolis-semibold", sans-serif;
-  font-size: 1.4rem;
+  font-size: 0.9rem;
   line-height: 1.3125;
   text-transform: uppercase;
   letter-spacing: 0.25rem;
@@ -462,37 +463,18 @@ p.lead {
  * display headings
  * ------------------------------------------------------------------- */
 @media only screen and (max-width: 800px) {
-  .display-1--light h1{
-    font-size: 2rem;
-    margin-bottom: 4.2rem;
-  }
-
   .subhead {
     font-size: 1.3rem;
   }
 }
-@media only screen and (max-width: 700px) {
-  .display-1--light h1{
-    font-size: 2rem;
-  }
-}
 @media only screen and (max-width: 600px) {
   .display-1--light {
-    font-size: 2rem;
+    font-size: 0.8rem;
   }
 }
 @media only screen and (max-width: 500px) {
-  .display-1--light h1{
-    font-size: 1.8rem;
-  }
-
   .subhead {
     font-size: 1.2rem;
-  }
-}
-@media only screen and (max-width: 400px) {
-  .display-1--light h1{
-    font-size: 1.7rem;
   }
 }
 
@@ -548,7 +530,6 @@ p.lead {
   height: 45px;
   line-height: 45px;
   font-family: "metropolis-regular", sans-serif;
-  font-size: 1.4rem;
   text-transform: uppercase;
   letter-spacing: 0.4rem;
   color: #cc147f;
@@ -689,19 +670,18 @@ p.lead {
   width: 100%;
   height: 100%;
   vertical-align: middle;
-  padding-bottom: 15.6rem;
+  padding-bottom: 5%;
   overflow: hidden;
   position: relative;
 }
 .home-content h1 {
-  font-size: 5.5rem;
+  font-size: 4rem;
   line-height: 1.1;
   margin-top: 0;
   color: #ffffff;
 }
 .home-content h1 + p {
-  font-family: "metropolis-light", sans-serif;
-  font-size: 3.8rem;
+  font-size: 2rem;
   line-height: 1.421;
   color: rgba(255, 255, 255, 0.8);
   margin-top: 2.4rem;
@@ -731,7 +711,7 @@ p.lead {
 .home-sidelinks {
   list-style: none;
   font-family: "metropolis-regular", sans-serif;
-  font-size: 1.4rem;
+  font-size: 1rem;
   line-height: 1.714;
   text-transform: uppercase;
   letter-spacing: 0.3rem;
@@ -793,7 +773,7 @@ p.lead {
   height: 4.8rem;
   position: absolute;
   right: 110px;
-  bottom: 6.6rem;
+  bottom: 0.001rem;
 }
 .home-scroll__text {
   display: inline-block;
@@ -811,8 +791,8 @@ p.lead {
 }
 .home-scroll__icon {
   display: block;
-  height: 4.8rem;
-  width: 4.8rem;
+  height: 60px;
+  width: 60px;
   background-color: #ffffff;
   background-position: center center;
   background-repeat: no-repeat;
@@ -842,7 +822,7 @@ p.lead {
   margin: 0;
   color: #ffffff;
   position: absolute;
-  bottom: 6.6rem;
+  bottom: 1rem;
   left: 110px;
 }
 .home-social a {
@@ -890,21 +870,6 @@ p.lead {
  * home
  * ------------------------------------------------------------------- */
 @media only screen and (max-width: 1600px) {
-  .home-content h1 {
-    font-size: 5.5rem;
-  }
-  .home-content h1 + p {
-    font-size: 3.6rem;
-  }
-
-  .home-content__main {
-    padding-top: 18rem;
-  }
-
-  .home-sidelinks {
-    font-size: 1.3rem;
-  }
-
   .home-scroll {
     right: 60px;
   }
@@ -914,21 +879,12 @@ p.lead {
   }
 }
 @media only screen and (max-width: 1500px) {
-  .home-content h1 {
-    font-size: 8.6rem;
-  }
 
   .home-content__main {
     max-width: 1100px;
   }
 }
 @media only screen and (max-width: 1400px) {
-  .home-content h1 {
-    font-size: 4.5rem;
-  }
-  .home-content h1 + p {
-    font-size: 3rem;
-  }
   .home-content h1 + p::before {
     top: 2.4rem;
   }
@@ -942,14 +898,6 @@ p.lead {
   }
 }
 @media only screen and (max-width: 1200px) {
-  .home-content h1 {
-    font-size: 4.3rem;
-  }
-  .home-content h1 + p {
-    font-size: 2.4rem;
-    padding-right: 2rem;
-    padding-left: 8rem;
-  }
   .home-content h1 + p::before {
     width: 5.5rem;
     top: 1.8rem;
@@ -976,15 +924,7 @@ p.lead {
     display: none;
   }
 }
-@media only screen and (max-width: 900px) {
-  .home-content h1 {
-    font-size: 7rem;
-  }
-}
 @media only screen and (max-width: 800px) {
-  .home-content h1 {
-    font-size: 4rem;
-  }
 
   .home-content__main {
     max-width: 580px;
@@ -1002,13 +942,6 @@ p.lead {
   }
 }
 @media only screen and (max-width: 700px) {
-  .home-content h1 {
-    font-size: 4rem;
-  }
-  .home-content h1 + p {
-    font-size: 2.2rem;
-    padding-right: 0;
-  }
   .home-content h1 + p::before {
     top: 1.6rem;
   }
@@ -1018,13 +951,6 @@ p.lead {
   }
 }
 @media only screen and (max-width: 600px) {
-  .home-content h1 {
-    font-size: 3.8rem;
-  }
-  .home-content h1 + p {
-    padding-top: 3rem;
-    padding-left: 0;
-  }
   .home-content h1 + p::before {
     left: 0;
     top: 0;
@@ -1058,37 +984,14 @@ p.lead {
   }
 }
 @media only screen and (max-width: 500px) {
-  .home-content h1 {
-    font-size: 3.7rem;
-  }
-  .home-content h1 + p {
-    padding-top: 2.8rem;
-  }
-
   .s-home {
     min-height: 642px;
-  }
-}
-@media only screen and (max-width: 450px) {
-  .home-content h1 {
-    font-size: 3.6rem;
-  }
-  .home-content h1 + p {
-    padding-top: 2.4rem;
   }
 }
 @media only screen and (max-width: 400px) {
   .s-home {
     min-height: 630px;
   }
-
-  .home-content h1 {
-    font-size: 3.5rem;
-  }
-  .home-content h1 + p {
-    padding-top: 2.1rem;
-  }
-
   .home-content__main {
     padding-left: 25px;
     padding-right: 25px;
@@ -1156,11 +1059,11 @@ p.lead {
 }
 
 .service-item .details p {
-  font-size: 1.8rem;
+  font-size: 1.1rem;
 }
 
 .service-item .details .name-emp {
-  font-size: 2.2rem;
+  font-size: 1.5rem;
 }
 /* ------------------------------------------------------------------- 
  * responsive:
@@ -1205,7 +1108,7 @@ p.lead {
  * ------------------------------------------------------------------- */
 .s-works {
   background: #ffffff;
-  padding: 7%;
+  padding-bottom: 7%;
   position: relative;
 }
 
@@ -1455,7 +1358,6 @@ p.lead {
 }
 
 .testimonials {
-  font-size: 1.5rem;
   line-height: 2;
   margin-top: 4.2rem;
   border-top: 1px solid rgba(0, 0, 0, 0.15);
@@ -1495,14 +1397,14 @@ p.lead {
 .testimonials__author {
   margin-top: 0rem;
   font-family: "metropolis-bold", sans-serif;
-  font-size: 1.7rem;
+  font-size: 1.2rem;
   line-height: 1.5;
   color: #000000;
 }
 .testimonials__author span {
   display: block;
   font-family: "metropolis-regular", sans-serif;
-  font-size: 1.1rem;
+  font-size: 1rem;
   line-height: 1.5;
   color: rgba(85, 85, 85, 0.7);
   text-transform: none;
@@ -1580,7 +1482,7 @@ p.lead {
 
 .contact-email {
   display: inline-block;
-  font-size: 2.3rem;
+  font-size: 1.6rem;
   line-height: 1.222;
   color: #ffffff;
   padding-top: 3.6rem;
@@ -1598,13 +1500,13 @@ p.lead {
 }
 
 .contact-number {
-  font-size: 2.1rem;
+  font-size: 1.5rem;
   line-height: 1.7;
   display: block;
 }
 
 .contact-address {
-  font-size: 2rem;
+  font-size: 1.5rem;
   line-height: 1.607;
   margin-top: 2.4rem;
 }
@@ -1798,15 +1700,15 @@ p.lead {
 }
 @media only screen and (max-width: 1200px) {
   .contact-email {
-    font-size: 2.3rem;
+    font-size: 1.6rem;
   }
 
   .contact-number {
-    font-size: 2.1rem;
+    font-size: 1.5rem;
   }
 
   .contact-address {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   .contact-social {
@@ -1819,15 +1721,15 @@ p.lead {
 }
 @media only screen and (max-width: 1000px) {
   .contact-email {
-    font-size: 2.2rem;
+    font-size: 1.5rem;
   }
 
   .contact-number {
-    font-size: 2rem;
+    font-size: 1.4rem;
   }
 
   .contact-address {
-    font-size: 1.9rem;
+    font-size: 1.4rem;
   }
 
   .contact-social {
@@ -1845,15 +1747,15 @@ p.lead {
   }
 
   .contact-email {
-    font-size: 2rem;
+    font-size: 1.4rem;
   }
 
   .contact-number {
-    font-size: 1.9rem;
+    font-size: 1.3rem;
   }
 
   .contact-address {
-    font-size: 1.8rem;
+    font-size: 1.3rem;
   }
 
   .cl-go-top {
@@ -1875,15 +1777,15 @@ p.lead {
 }
 @media only screen and (max-width: 600px) {
   .contact-email {
-    font-size: 1.9rem;
+    font-size: 1.3rem;
   }
 
   .contact-number {
-    font-size: 1.8rem;
+    font-size: 1.2rem;
   }
 
   .contact-address {
-    font-size: 1.7rem;
+    font-size: 1.2rem;
   }
 
   .contact-social {
@@ -1923,11 +1825,11 @@ p.lead {
   }
 
   .contact-email {
-    font-size: 1.9rem;
+    font-size: 1.3rem;
   }
 
   .contact-number {
-    font-size: 1.7rem;
+    font-size: 1.2rem;
   }
 
   .cl-copyright {

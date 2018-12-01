@@ -51,6 +51,8 @@ export default {
 }
 .img-rigth{
   background-image: url("./assets/ri.png");
+  background-position: center center;
+  align-content: center;
   /*background-position: center center;
   background-repeat: no-repeat;
   align-content: center;*/
@@ -148,7 +150,7 @@ body {
   line-height: 1.625em;
   position: relative;*/
 
-  background: #111111;
+  background: #fff;
   font-family: "metropolis-regular", sans-serif;
   font-size: 1.7rem;
   font-style: normal;

@@ -1,5 +1,5 @@
 <template>
-  <div class="">      
+  <div class="container">      
     <div class="row" v-if="!carga">
       <div class="img-left col-md-2 col-lg-2"></div>
 

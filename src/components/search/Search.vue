@@ -83,7 +83,10 @@
                                              style="width:150px; height:100px" alt=""/> 
                                         </div>
                                         <div class="details">
-                                            <a href="#" v-on:click="ir_pagina(empresa.nombre)" class='name-emp'>{{ empresa.nombre }}</a> <span> Nit. {{empresa.nit}}</span>
+                                            <div class="testimonials__author">
+                                                <a href="#" v-on:click="ir_pagina(empresa.nombre)" class='name-emp'>{{ empresa.nombre }}</a>
+                                                <span>Nit. {{empresa.nit}}</span>
+                                            </div>
                                             <h6>{{ empresa.tipo }}</h6>
                                             <p>
                                             {{ empresa.mision }}
