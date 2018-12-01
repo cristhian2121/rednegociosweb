@@ -2,6 +2,7 @@
     <div id="search">
         <div v-if="!carga">
             <div class="row">
+                
                 <div class="banner-content col-lg-12">
                     <div style="margin-top:70px"></div>
                     <div class="row justify-content-center form-wrap">
@@ -82,7 +83,10 @@
                                              style="width:150px; height:100px" alt=""/> 
                                         </div>
                                         <div class="details">
-                                            <a href="#" v-on:click="ir_pagina(empresa.nombre)" class='name-emp'>{{ empresa.nombre }}</a> <span> Nit. {{empresa.nit}}</span>
+                                            <div class="testimonials__author">
+                                                <a href="#" v-on:click="ir_pagina(empresa.nombre)" class='name-emp'>{{ empresa.nombre }}</a>
+                                                <span>Nit. {{empresa.nit}}</span>
+                                            </div>
                                             <h6>{{ empresa.tipo }}</h6>
                                             <p>
                                             {{ empresa.mision }}
