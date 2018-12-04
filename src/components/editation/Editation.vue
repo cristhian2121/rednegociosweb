@@ -1,6 +1,6 @@
 <template>
   <div class="container loginkr">      
-    <div class="row" v-if="!carga">
+    <div class="row" v-if="!carga && vista">
       <div class="col-md-1 col-lg-2"></div>
       <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8">
         <h2 style="text-align: center;"> Edite la información de la empresa<small></small></h2>
@@ -528,6 +528,7 @@ import axios from "axios";
 
 export default {  
     name: 'edicion_empresa',
+
     props: ['empresa'],
     async mounted(){
       this.nombre_empresa = this.$route.params.empresa;     
@@ -541,6 +542,8 @@ export default {
             this.mensaje_error();
           }
           this.traer_servicios();          
+
+
         }
       this.carga = false;
     },
@@ -635,7 +638,6 @@ export default {
             console.log(this.servicioModel);
             if(this.servicioModel.length > 0){
               this.radio_servicios = this.servicioModel.length + 1;              
-            }
           });
       },
       enviar_formulario:async function(){
@@ -823,5 +825,6 @@ export default {
         });
       }
     }
+
 }
 </script>

@@ -378,6 +378,7 @@ export default {
           this.carga = false;
         });
     },
+
     traer_servicios: async function() {
       axios.get("http://68.183.124.242:8000/api/servicio/").then(respuesta => {
           this.servicios = respuesta.data[0];
