@@ -148,7 +148,8 @@ body {
   line-height: 1.625em;
   position: relative;*/
 
-  background: #111111;
+
+  background: #fff;
   font-family: "metropolis-regular", sans-serif;
   font-size: 1.7rem;
   font-style: normal;

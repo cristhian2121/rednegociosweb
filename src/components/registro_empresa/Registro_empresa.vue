@@ -1,5 +1,6 @@
 <template>
-  <div class="">      
+ <div class="container">
+
     <div class="row" v-if="!carga">
       <div class="img-left col-md-2 col-lg-2"></div>
 
@@ -180,8 +181,8 @@
               <i v-show="errors.has('nombre_ser_1')" class="text-warning"></i>
               <span v-show="errors.has('nombre_ser_1')" class="text-danger">*Maximo 20 caracteres</span>
             </div>
-          </div>general
-          <div class="col-xs-7 col-sm-7 col-md-7">
+          </div>
+          <div class="col-xs-6 col-sm-6 col-md-6">
             <div class="form-group">
               <textarea class="form-control input-lg" name="ser_1" 
               placeholder="Describa el servicio" v-model="servicioModel.ser_1"
@@ -196,7 +197,7 @@
             multiple
             :limit="1"            
             :on-exceed="exceso_archivos">
-              <el-button size="small" type="success" plain>Cargar imagen</el-button>
+              <el-button size="small" type="success" plain><span class="el-icon-upload"></span></el-button>
             </el-upload>
           </div>
         </div>
@@ -208,7 +209,7 @@
               class="form-control input-lg" v-model="servicioModel.nombre_ser_2">
             </div>
           </div>
-          <div class="col-xs-7 col-sm-7 col-md-7">
+          <div class="col-xs-6 col-sm-6 col-md-6">
             <div class="form-group">
               <textarea class="form-control input-lg" name="ser_2" 
               placeholder="Describa su servicio" v-model="servicioModel.ser_2"></textarea>
@@ -220,7 +221,7 @@
             multiple
             :limit="1"
             :on-exceed="exceso_archivos">
-              <el-button size="small" type="success" plain>Cargar imagen</el-button>
+              <el-button size="small" type="success" plain><span class="el-icon-upload"></span></el-button>
             </el-upload>
           </div>
         </div>
@@ -232,7 +233,7 @@
               class="form-control input-lg" v-model="servicioModel.nombre_ser_3">
             </div>
           </div>
-          <div class="col-xs-7 col-sm-7 col-md-7">
+          <div class="col-xs-6 col-sm-6 col-md-6">
             <div class="form-group">
               <textarea class="form-control input-lg" name="ser_3" 
               placeholder="Describa su servicio" v-model="servicioModel.ser_3"></textarea>
@@ -244,7 +245,7 @@
             multiple
             :limit="1"
             :on-exceed="exceso_archivos">
-              <el-button size="small" type="success" plain>Cargar imagen</el-button>
+              <el-button size="small" type="success" plain><span class="el-icon-upload"></span></el-button>
             </el-upload>
           </div>
         </div>
@@ -256,7 +257,7 @@
               class="form-control input-lg" v-model="servicioModel.nombre_ser_4">
             </div>
           </div>
-          <div class="col-xs-7 col-sm-7 col-md-7">
+          <div class="col-xs-6 col-sm-6 col-md-6">
             <div class="form-group">
               <textarea class="form-control input-lg" name="ser_4" 
               placeholder="Describa su servicio" v-model="servicioModel.ser_4"></textarea>
@@ -268,7 +269,7 @@
             multiple
             :limit="1"
             :on-exceed="exceso_archivos">
-              <el-button size="small" type="success" plain>Cargar imagen</el-button>
+              <el-button size="small" type="success" plain><span class="el-icon-upload"></span></el-button>
             </el-upload>
           </div>
         </div>
@@ -280,7 +281,7 @@
               class="form-control input-lg" v-model="servicioModel.nombre_ser_5">
             </div>
           </div>
-          <div class="col-xs-7 col-sm-7 col-md-7">
+          <div class="col-xs-6 col-sm-6 col-md-6">
             <div class="form-group">
               <textarea class="form-control input-lg" name="ser_5" 
               placeholder="Describa su servicio" v-model="servicioModel.ser_5"></textarea>
@@ -292,7 +293,7 @@
             multiple
             :limit="1"
             :on-exceed="exceso_archivos">
-              <el-button size="small" type="success" plain>Cargar imagen</el-button>
+              <el-button size="small" type="success" plain><span class="el-icon-upload"></span></el-button>
             </el-upload>
           </div>
         </div> 
@@ -304,7 +305,7 @@
               class="form-control input-lg" v-model="servicioModel.nombre_ser_5">
             </div>
           </div>
-          <div class="col-xs-7 col-sm-7 col-md-7">
+          <div class="col-xs-6 col-sm-6 col-md-6">
             <div class="form-group">
               <textarea class="form-control input-lg" name="ser_6" 
               placeholder="Describa su servicio" v-model="servicioModel.ser_5"></textarea>
@@ -316,7 +317,7 @@
             multiple
             :limit="1"
             :on-exceed="exceso_archivos">
-              <el-button size="small" type="success" plain>Cargar imagen</el-button>
+              <el-button size="small" type="success" plain><span class="el-icon-upload"></span></el-button>
             </el-upload>
           </div>
         </div>
@@ -328,7 +329,7 @@
               class="form-control input-lg" v-model="servicioModel.nombre_ser_5">
             </div>
           </div>
-          <div class="col-xs-7 col-sm-7 col-md-7">
+          <div class="col-xs-6 col-sm-6 col-md-6">
             <div class="form-group">
               <textarea class="form-control input-lg" name="ser_7" 
               placeholder="Describa su servicio" v-model="servicioModel.ser_5"></textarea>
@@ -340,7 +341,7 @@
             multiple
             :limit="1"
             :on-exceed="exceso_archivos">
-              <el-button size="small" type="success" plain>Cargar imagen</el-button>
+              <el-button size="small" type="success" plain><span class="el-icon-upload"></span></el-button>
             </el-upload>
           </div>
         </div>
@@ -352,7 +353,7 @@
               class="form-control input-lg" v-model="servicioModel.nombre_ser_5">
             </div>
           </div>
-          <div class="col-xs-7 col-sm-7 col-md-7">
+          <div class="col-xs-6 col-sm-6 col-md-6">
             <div class="form-group">
               <textarea class="form-control input-lg" name="ser_8" 
               placeholder="Describa su servicio" v-model="servicioModel.ser_5"></textarea>
@@ -364,7 +365,7 @@
             multiple
             :limit="1"
             :on-exceed="exceso_archivos">
-              <el-button size="small" type="success" plain>Cargar imagen</el-button>
+              <el-button size="small" type="success" plain><span class="el-icon-upload"></span></el-button>
             </el-upload>
           </div>
         </div>
@@ -376,7 +377,7 @@
               class="form-control input-lg" v-model="servicioModel.nombre_ser_5">
             </div>
           </div>
-          <div class="col-xs-7 col-sm-7 col-md-7">
+          <div class="col-xs-6 col-sm-6 col-md-6">
             <div class="form-group">
               <textarea class="form-control input-lg" name="ser_9" 
               placeholder="Describa su servicio" v-model="servicioModel.ser_5"></textarea>
@@ -388,7 +389,7 @@
             multiple
             :limit="1"
             :on-exceed="exceso_archivos">
-              <el-button size="small" type="success" plain>Cargar imagen</el-button>
+              <el-button size="small" type="success" plain><span class="el-icon-upload"></span></el-button>
             </el-upload>
           </div>
         </div>
@@ -400,7 +401,7 @@
               class="form-control input-lg" v-model="servicioModel.nombre_ser_5">
             </div>
           </div>
-          <div class="col-xs-7 col-sm-7 col-md-7">
+          <div class="col-xs-6 col-sm-6 col-md-6">
             <div class="form-group">
               <textarea class="form-control input-lg" name="ser_10" 
               placeholder="Describa su servicio" v-model="servicioModel.ser_5"></textarea>
@@ -412,7 +413,7 @@
             multiple
             :limit="1"
             :on-exceed="exceso_archivos">
-              <el-button size="small" type="success" plain>Cargar imagen</el-button>
+              <el-button size="small" type="success" plain><span class="el-icon-upload"></span></el-button>
             </el-upload>
           </div>
         </div>
