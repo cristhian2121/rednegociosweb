@@ -48,7 +48,7 @@ export default {
         ingresar: function(){
             axios({
                 method: "post",
-                url: 'http://localhost:8000/rest-auth/login/',
+                url: 'http://68.183.124.242:8000/rest-auth/login/',
                 data:{
                     username: this.usuario_model.email,
                     email: this.usuario_model.email,

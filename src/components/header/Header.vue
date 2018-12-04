@@ -59,7 +59,7 @@ export default{
       sessionStorage.removeItem('user');
     },
     usuario_empresa: async function(){
-      await axios.get(`http://localhost:8000/api/empresa_usuario/?email=${this.email_user}`)
+      await axios.get(`http://68.183.124.242:8000/api/empresa_usuario/?email=${this.email_user}`)
       .then(resp => {
         if(resp.data[0].email == this.email_user){
           this.nombre_empresa = resp.data[0].nombre;
@@ -68,7 +68,7 @@ export default{
       })
     }
     // traer_empresas: function() {
-    //   axios.get(`http://localhost:8000/api/empresa/?usuario=${this.nombre_empresa}`)
+    //   axios.get(`http://68.183.124.242:8000/api/empresa/?usuario=${this.nombre_empresa}`)
     //   .then(respuesta => {
     //     this.empresas = respuesta.data[0];
     //     this.carga = false;        
