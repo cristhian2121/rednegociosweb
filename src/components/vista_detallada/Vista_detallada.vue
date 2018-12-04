@@ -1,13 +1,11 @@
-<template>
+<template>   
   <div id="top" v-if="!carga">
     <!-- barra de navegación -->
     <header class="s-header">
         <div class="header-logo">
             <a class="site-logo" href=""><img src="" alt="Logo"></a>
         </div>
-        <router-link class="header-menu-toggle" :to="{ path: '/ho
-        
-        me' }">Inicio</router-link>
+        <router-link class="header-menu-toggle" :to="{ path: '/home' }">Inicio</router-link>
     </header>
     <!-- end barra de navegación -->
 
@@ -36,6 +34,7 @@
         </a>
     </section>
     <!-- end banner -->
+    <!---->
 
 
     <!-- about -->
@@ -119,7 +118,6 @@
                             <p>Vero molestiae sed aut natus excepturi. Et tempora numquam. Temporibus iusto quo.Unde dolorem corrupti neque nisi.</p>
                         </div>
                     </div>
-
                 </div>
 
                 <div class="masonry__brick">
@@ -262,10 +260,10 @@
                         </div>
                     </div>
 
-
             </div>
         </div>
     </section>
+
 
     <!-- contact -->
     <section id="contact" class="s-contact">
@@ -316,9 +314,6 @@
                     </form>
                 </div>-->
             </div>
-
-
-
 
         </div> <!-- end row -->
 
@@ -429,16 +424,12 @@ p.lead {
 }
 @media only screen and (max-width: 1000px) {
   p.lead {
-
     font-size: 1.7rem;
-
   }
 }
 @media only screen and (max-width: 800px) {
   p.lead {
-
     font-size: 1.6rem;
-
   }
 }
 
@@ -447,14 +438,11 @@ p.lead {
  * ------------------------------------------------------------------- */
 .display-1--light {
   color: #ffffff;
-
   font-size: 1.2rem;
-
 }
 
 .subhead {
   font-family: "metropolis-semibold", sans-serif;
-
   font-size: 0.9rem;
   line-height: 1.3125;
   text-transform: uppercase;
@@ -480,7 +468,6 @@ p.lead {
     font-size: 1.3rem;
   }
 }
-
 @media only screen and (max-width: 600px) {
   .display-1--light {
     font-size: 0.8rem;
@@ -491,7 +478,6 @@ p.lead {
     font-size: 1.2rem;
   }
 }
-
 
 /* ===================================================================
  * # header styles
@@ -553,7 +539,6 @@ p.lead {
 }
 .header-menu-toggle::before {
   display: inline-block;
-
   /*content: "Menu";*/
   height: 45px;
   left: auto;
@@ -686,16 +671,12 @@ p.lead {
   width: 100%;
   height: 100%;
   vertical-align: middle;
-
   padding-bottom: 5%;
-
   overflow: hidden;
   position: relative;
 }
 .home-content h1 {
-
   font-size: 4rem;
-
   line-height: 1.1;
   margin-top: 0;
   color: #ffffff;
@@ -911,7 +892,6 @@ p.lead {
 
   .home-content__main {
     max-width: 1000px;
-
   }
 
   .home-sidelinks a {
@@ -1379,7 +1359,6 @@ p.lead {
 }
 
 .testimonials {
-
   line-height: 2;
   margin-top: 4.2rem;
   border-top: 1px solid rgba(0, 0, 0, 0.15);
@@ -1419,9 +1398,7 @@ p.lead {
 .testimonials__author {
   margin-top: 0rem;
   font-family: "metropolis-bold", sans-serif;
-
   font-size: 1.2rem;
-
   line-height: 1.5;
   color: #000000;
 }
@@ -1506,9 +1483,7 @@ p.lead {
 
 .contact-email {
   display: inline-block;
-
   font-size: 1.6rem;
-
   line-height: 1.222;
   color: #ffffff;
   padding-top: 3.6rem;
@@ -1526,17 +1501,13 @@ p.lead {
 }
 
 .contact-number {
-
   font-size: 1.5rem;
-
   line-height: 1.7;
   display: block;
 }
 
 .contact-address {
-
   font-size: 1.5rem;
-
   line-height: 1.607;
   margin-top: 2.4rem;
 }
@@ -1730,7 +1701,6 @@ p.lead {
 }
 @media only screen and (max-width: 1200px) {
   .contact-email {
-
     font-size: 1.6rem;
   }
 
@@ -1740,7 +1710,6 @@ p.lead {
 
   .contact-address {
     font-size: 1.5rem;
-
   }
 
   .contact-social {
@@ -1753,7 +1722,6 @@ p.lead {
 }
 @media only screen and (max-width: 1000px) {
   .contact-email {
-
     font-size: 1.5rem;
   }
 
@@ -1763,7 +1731,6 @@ p.lead {
 
   .contact-address {
     font-size: 1.4rem;
-
   }
 
   .contact-social {
@@ -1781,7 +1748,6 @@ p.lead {
   }
 
   .contact-email {
-
     font-size: 1.4rem;
   }
 
@@ -1791,7 +1757,6 @@ p.lead {
 
   .contact-address {
     font-size: 1.3rem;
-
   }
 
   .cl-go-top {
@@ -1813,7 +1778,6 @@ p.lead {
 }
 @media only screen and (max-width: 600px) {
   .contact-email {
-
     font-size: 1.3rem;
   }
 
@@ -1823,7 +1787,6 @@ p.lead {
 
   .contact-address {
     font-size: 1.2rem;
-
   }
 
   .contact-social {
@@ -1863,13 +1826,11 @@ p.lead {
   }
 
   .contact-email {
-
     font-size: 1.3rem;
   }
 
   .contact-number {
     font-size: 1.2rem;
-
   }
 
   .cl-copyright {

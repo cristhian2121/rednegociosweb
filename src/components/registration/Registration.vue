@@ -1,5 +1,4 @@
 <template>
-
    <div class="container">
       <div class="row">
          <div class="img-left col-md-3"></div>
@@ -28,7 +27,6 @@
          <div class="img-rigth col-md-3"></div>
       </div>
    </div>
-
 </template>
 
 <script>
@@ -86,7 +84,6 @@ export default {
 
 
 <style>
-
 .loginkr-r {
     padding-top: 10%;
     padding-bottom: 13%;
