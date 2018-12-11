@@ -1,5 +1,4 @@
-<template>
-  <div class="container">      
+<template>    
     <div class="row" v-if="!carga">
       <div class="img-left col-md-2 col-lg-2"></div>
 
@@ -140,7 +139,7 @@
         <!--Logo-->
         <div class="text-center blanc">
           <el-upload
-            action= "http://localhost:8000/api/archivo/"
+            action= "http://68.183.124.242:8000/api/archivo/"
             multiple
             :limit="1"
             :on-exceed="exceso_archivos"
@@ -192,7 +191,7 @@
           </div>
           <div class="form-group col-xs-1 col-sm-1 col-md-1">
             <el-upload
-            action= "http://localhost:8000/api/archivo/"
+            action= "http://68.183.124.242:8000/api/archivo/"
             multiple
             :limit="1"            
             :on-exceed="exceso_archivos">
@@ -216,7 +215,7 @@
           </div>
           <div class="form-group col-xs-1 col-sm-1 col-md-1">
             <el-upload
-            action= "http://localhost:8000/api/archivo/"
+            action= "http://68.183.124.242:8000/api/archivo/"
             multiple
             :limit="1"
             :on-exceed="exceso_archivos">
@@ -240,7 +239,7 @@
           </div>
           <div class="form-group col-xs-1 col-sm-1 col-md-1">
             <el-upload
-            action= "http://localhost:8000/api/archivo/"
+            action= "http://68.183.124.242:8000/api/archivo/"
             multiple
             :limit="1"
             :on-exceed="exceso_archivos">
@@ -264,7 +263,7 @@
           </div>
           <div class="form-group col-xs-1 col-sm-1 col-md-1">
             <el-upload
-            action= "http://localhost:8000/api/archivo/"
+            action= "http://68.183.124.242:8000/api/archivo/"
             multiple
             :limit="1"
             :on-exceed="exceso_archivos">
@@ -288,7 +287,7 @@
           </div>
           <div class="form-group col-xs-1 col-sm-1 col-md-1">
             <el-upload
-            action= "http://localhost:8000/api/archivo/"
+            action= "http://68.183.124.242:8000/api/archivo/"
             multiple
             :limit="1"
             :on-exceed="exceso_archivos">
@@ -312,7 +311,7 @@
           </div>
           <div class="form-group col-xs-1 col-sm-1 col-md-1">
             <el-upload
-            action= "http://localhost:8000/api/archivo/"
+            action= "http://68.183.124.242:8000/api/archivo/"
             multiple
             :limit="1"
             :on-exceed="exceso_archivos">
@@ -336,7 +335,7 @@
           </div>
           <div class="form-group col-xs-1 col-sm-1 col-md-1">
             <el-upload
-            action= "http://localhost:8000/api/archivo/"
+            action= "http://68.183.124.242:8000/api/archivo/"
             multiple
             :limit="1"
             :on-exceed="exceso_archivos">
@@ -360,7 +359,7 @@
           </div>
           <div class="form-group col-xs-1 col-sm-1 col-md-1">
             <el-upload
-            action= "http://localhost:8000/api/archivo/"
+            action= "http://68.183.124.242:8000/api/archivo/"
             multiple
             :limit="1"
             :on-exceed="exceso_archivos">
@@ -384,7 +383,7 @@
           </div>
           <div class="form-group col-xs-1 col-sm-1 col-md-1">
             <el-upload
-            action= "http://localhost:8000/api/archivo/"
+            action= "http://68.183.124.242:8000/api/archivo/"
             multiple
             :limit="1"
             :on-exceed="exceso_archivos">
@@ -408,7 +407,7 @@
           </div>
           <div class="form-group col-xs-1 col-sm-1 col-md-1">
             <el-upload
-            action= "http://localhost:8000/api/archivo/"
+            action= "http://68.183.124.242:8000/api/archivo/"
             multiple
             :limit="1"
             :on-exceed="exceso_archivos">
@@ -515,16 +514,17 @@
         </div>
       </div>-->
 
-    </div>
-    
-    <!--gif loader-->
-    <div class="centrar" v-if="carga">
+          <div class="centrar" v-if="carga">
       <div class="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div>
       <div></div><div></div><div></div><div></div><div></div><div></div>
       </div>
     </div>
 
-  </div>
+    </div>
+    
+    <!--gif loader-->
+
+
 </template>
 
 <script>
@@ -618,7 +618,7 @@ export default {
         this.carga = true;
         axios({
           method: "post",
-          url: "http://localhost:8000/api/empresa/",
+          url: "http://68.183.124.242:8000/api/empresa/",
           data:{
             nombre: this.empresaModel.nombre,
             nit: this.empresaModel.nit,
@@ -650,7 +650,7 @@ export default {
       enviar_servicios: function(){
         axios({
           method: "post",
-          url: "http://localhost:8000/api/servicio/",
+          url: "http://68.183.124.242:8000/api/servicio/",
           data:{
             id_empresa: this.id_empresa,
             nombre_ser_1: this.servicioModel.nombre_ser_1,
@@ -686,12 +686,12 @@ export default {
         })
       },
       traer_ciudaes: async function(){
-        axios.get("http://localhost:8000/api/ciudad/").then(respuesta => {
+        axios.get("http://68.183.124.242:8000/api/ciudad/").then(respuesta => {
         this.ciudades = respuesta.data;
         });   
       },
       traer_tipos: async function(){
-        axios.get("http://localhost:8000/api/tipo/").then(respuesta => {
+        axios.get("http://68.183.124.242:8000/api/tipo/").then(respuesta => {
         this.tipos = respuesta.data;
         });
       },

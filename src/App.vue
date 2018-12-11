@@ -22,7 +22,7 @@ export default {
     },
     methods:{
       traer_empresas: async function(){        
-            axios.get(`http://localhost:8000/api/detalle/?email_user=${this.usuario}`)
+            axios.get(`http://68.183.124.242:8000/api/detalle/?email_user=${this.usuario}`)
             .then(respuesta => {
               this.empresas = respuesta.data[0];
               this.$router.push({ path: `/empresa/${this.empresas.nombre}`});
@@ -36,6 +36,17 @@ export default {
 
 
 <style>
+
+*,:after,:before {
+box-sizing:inherit;
+-webkit-tap-highlight-color:transparent;
+-moz-tap-highlight-color:transparent;
+}
+
+body .row {
+  margin-left: 0px;
+  margin-right: 0px;
+}
 
 .cont-center{
   display: flex;
@@ -141,23 +152,18 @@ export default {
 
 
 body {
-  /*color: #777777;
-  font-family: "", sans-serif;
-  font-size: 12px;
-  font-weight: 300;
-  line-height: 1.625em;
-  position: relative;*/
-
-
   background: #fff;
   font-family: "metropolis-regular", sans-serif;
-  font-size: 1.7rem;
+  /*font-size: 1.7rem;*/
   font-style: normal;
   font-weight: normal;
   line-height: 1.765;
   color: #555555;
   margin: 0;
   padding: 0;
+  box-sizing:border-box;
+  margin:0;
+  width:100%;
 }
 ol, ul {
   margin: 0;

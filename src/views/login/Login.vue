@@ -1,5 +1,4 @@
 <template>
-   <div class="container">
       <div class="row">
          <div class="img-left col-md-3"></div>
          <div class="loginkr col-md-6">
@@ -25,7 +24,6 @@
             <el-button type="info">Preguntas frecuentes</el-button>
          </div>
       </div>
-   </div>
 </template>
 
 <script>
@@ -48,7 +46,7 @@ export default {
         ingresar: function(){
             axios({
                 method: "post",
-                url: 'http://localhost:8000/rest-auth/login/',
+                url: 'http://68.183.124.242:8000/rest-auth/login/',
                 data:{
                     username: this.usuario_model.email,
                     email: this.usuario_model.email,
