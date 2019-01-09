@@ -846,7 +846,7 @@ td, th {
 }
 
 .container.fullwidth {
- /* width: 100%;*/
+  width: 100%;
 }
 
 .container.no-padding {

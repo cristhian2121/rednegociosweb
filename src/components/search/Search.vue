@@ -27,49 +27,6 @@
                 </div>											
             </div>
 
-            <section class="features-area">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-2 col-md-4 col-sm-6">
-                            <div class="single-fcat">
-                                <a href="category.html"><img class="img-category" src="../../static/img/o1.png" alt=""></a>
-                                <p>Reparaciones</p>
-                            </div>
-                            </div>
-                            <div class="col-lg-2 col-md-4 col-sm-6">
-                                <div class="single-fcat">
-                                    <a href="category.html"><img class="img-category" src="../../static/img/o2.png" alt=""></a>
-                                    <p>Call Center</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-4 col-sm-6">
-                                <div class="single-fcat">
-                                    <a href="category.html"><img class="img-category" src="../../static/img/o3.png" alt=""></a>
-                                    <p>Tecnologia</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-4 col-sm-6">
-                                <div class="single-fcat">
-                                    <a href="category.html"><img class="img-category" src="../../static/img/o4.png" alt=""></a>
-                                    <p>Logistica</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-4 col-sm-6">
-                                <div class="single-fcat">
-                                    <a href="category.html"><img class="img-category" src="../../static/img/o5.png" alt=""></a>
-                                    <p>Medicina</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-4 col-sm-6">
-                                <div class="single-fcat">
-                                    <a href="category.html"><img class="img-category" src="../../static/img/o6.png" alt=""></a>
-                                    <p>Ventas</p>
-                                </div>			
-                            </div>
-                        </div>
-                    </div>	
-                </section>
-
                 <!--resultados-->
                 <section class="popular-post-area pt-100">
                     <div class="container">
@@ -157,19 +114,19 @@ export default {
     },
 
     traer_Empresas: async function() {
-      axios.get("http://68.183.124.242:8000/api/detalle/").then(respuesta => {
+      axios.get("http://127.0.0.1:8000/api/detalle/").then(respuesta => {
       this.empresas = respuesta.data;
       this.empresasAux = this.empresas;
       this.carga = false;   
     });
     },
     traer_tipos: async function(){
-      axios.get("http://68.183.124.242:8000/api/tipo/").then(respuesta => {
+      axios.get("http://127.0.0.1:8000/api/tipo/").then(respuesta => {
       this.tipos = respuesta.data;
     });
     },
     traer_ciudades: async function(){
-      axios.get("http://68.183.124.242:8000/api/ciudad/").then(respuesta => {
+      axios.get("http://127.0.0.1:8000/api/ciudad/").then(respuesta => {
       this.ciudades = respuesta.data;
     });
     },

@@ -1,8 +1,8 @@
 <template>
    <div class="container">
       <div class="row">
-         <div class="img-left col-md-3"></div>
-         <div class="loginkr col-md-6">
+         <div class="img-left col-md-4 col-sm-5 col-xs-5"></div>
+         <div class="loginkr col-md-4 col-sm-2 col-xs-2">
             <section class="login-form">
                <p><img src="@/assets/logo.png" class="img-responsive img-logo" alt="" /></p>
                <!--https://thumbs.dreamstime.com/b/conexi%C3%B3n-de-red-social-y-comunicaci%C3%B3n-empresarial-global-89882816.jpg" class="img-responsive" alt="" /></p>-->
@@ -20,7 +20,7 @@
                <a href="#"> Olvide Contraseña</a>
             </section>
          </div>
-         <div class="img-rigth col-md-3">
+         <div class="img-rigth col-md-4 col-sm-5 col-xs-5">
             <div style="height: 20%;"></div>
             <el-button type="info">Preguntas frecuentes</el-button>
          </div>
@@ -48,7 +48,7 @@ export default {
         ingresar: function(){
             axios({
                 method: "post",
-                url: 'http://68.183.124.242:8000/rest-auth/login/',
+                url: 'http://127.0.0.1:8000/rest-auth/login/',
                 data:{
                     username: this.usuario_model.email,
                     email: this.usuario_model.email,
@@ -71,7 +71,10 @@ export default {
 </script>
 
 <style>
-
+.row{
+  margin-left:0px;
+  margin-right:0px
+}
 
 .img-logo{
   display:block;

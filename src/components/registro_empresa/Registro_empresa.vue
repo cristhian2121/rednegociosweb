@@ -140,7 +140,7 @@
         <!--Logo-->
         <div class="text-center blanc">
           <el-upload
-            action= "http://68.183.124.242:8000/api/archivo/"
+            action= "http://sfo2.digitaloceanspaces.com"
             multiple
             :limit="1"
             :on-exceed="exceso_archivos"
