@@ -139,7 +139,7 @@
         <!--Logo-->
         <div class="text-center blanc">
           <el-upload
-            action= "http://localhost:8000/api/archivo/"
+            action= "http://68.183.124.242:8000/api/archivo/"
             multiple
             :limit="1"
             :on-exceed="exceso_archivos">
@@ -190,7 +190,7 @@
           </div>
           <div class="form-group col-xs-1 col-sm-1 col-md-1">
             <el-upload
-            action= "http://localhost:8000/api/archivo/"
+            action= "http://68.183.124.242:8000/api/archivo/"
             multiple
             :limit="1"
             :on-exceed="exceso_archivos">
@@ -214,7 +214,7 @@
           </div>
           <div class="form-group col-xs-1 col-sm-1 col-md-1">
             <el-upload
-            action= "http://localhost:8000/api/archivo/"
+            action= "http://68.183.124.242:8000/api/archivo/"
             multiple
             :limit="1"
             :on-exceed="exceso_archivos">
@@ -238,7 +238,7 @@
           </div>
           <div class="form-group col-xs-1 col-sm-1 col-md-1">
             <el-upload
-            action= "http://localhost:8000/api/archivo/"
+            action= "http://68.183.124.242:8000/api/archivo/"
             multiple
             :limit="1"
             :on-exceed="exceso_archivos">
@@ -262,7 +262,7 @@
           </div>
           <div class="form-group col-xs-1 col-sm-1 col-md-1">
             <el-upload
-            action= "http://localhost:8000/api/archivo/"
+            action= "http://68.183.124.242:8000/api/archivo/"
             multiple
             :limit="1"
             :on-exceed="exceso_archivos">
@@ -286,7 +286,7 @@
           </div>
           <div class="form-group col-xs-1 col-sm-1 col-md-1">
             <el-upload
-            action= "http://localhost:8000/api/archivo/"
+            action= "http://68.183.124.242:8000/api/archivo/"
             multiple
             :limit="1"
             :on-exceed="exceso_archivos">
@@ -310,7 +310,7 @@
           </div>
           <div class="form-group col-xs-1 col-sm-1 col-md-1">
             <el-upload
-            action= "http://localhost:8000/api/archivo/"
+            action= "http://68.183.124.242:8000/api/archivo/"
             multiple
             :limit="1"
             :on-exceed="exceso_archivos">
@@ -334,7 +334,7 @@
           </div>
           <div class="form-group col-xs-1 col-sm-1 col-md-1">
             <el-upload
-            action= "http://localhost:8000/api/archivo/"
+            action= "http://68.183.124.242:8000/api/archivo/"
             multiple
             :limit="1"
             :on-exceed="exceso_archivos">
@@ -358,7 +358,7 @@
           </div>
           <div class="form-group col-xs-1 col-sm-1 col-md-1">
             <el-upload
-            action= "http://localhost:8000/api/archivo/"
+            action= "http://68.183.124.242:8000/api/archivo/"
             multiple
             :limit="1"
             :on-exceed="exceso_archivos">
@@ -382,7 +382,7 @@
           </div>
           <div class="form-group col-xs-1 col-sm-1 col-md-1">
             <el-upload
-            action= "http://localhost:8000/api/archivo/"
+            action= "http://68.183.124.242:8000/api/archivo/"
             multiple
             :limit="1"
             :on-exceed="exceso_archivos">
@@ -406,7 +406,7 @@
           </div>
           <div class="form-group col-xs-1 col-sm-1 col-md-1">
             <el-upload
-            action= "http://localhost:8000/api/archivo/"
+            action= "http://68.183.124.242:8000/api/archivo/"
             multiple
             :limit="1"
             :on-exceed="exceso_archivos">
@@ -528,24 +528,22 @@ import axios from "axios";
 
 export default {  
     name: 'edicion_empresa',
-    props: ['nombre'],
+
+    props: ['empresa'],
     async mounted(){
-      this.nombre_empresa = this.$route.params.nombre;     
-      console.log(this.nombre_empresa);
+      this.nombre_empresa = this.$route.params.empresa;     
         if(this.nombre_empresa) {
-          console.log("existe");
-          console.log(this.carga);
           try{
-            await this.traer_empresas();            
-            await this.traer_ciudaes();
-            await this.traer_tipos();
+            this.traer_empresas();
+            this.traer_ciudaes();
+            this.traer_tipos();
           }
           catch(e){
-            console.log("Error");
             this.mensaje_error();
           }
-          this.vista = true;
-          await this.traer_servicios();          
+          this.traer_servicios();          
+
+
         }
       this.carga = false;
     },
@@ -565,6 +563,8 @@ export default {
           fecha_registro: null,
         },
         servicioModel:{
+          id_empresa: null,
+          id_servicio: null, 
           nombre_ser_1: null,
           ser_1: null,
           imagen1: null,
@@ -625,23 +625,27 @@ export default {
     },
     methods:{
       traer_empresas: function() {
-        axios.get(`http://localhost:8000/api/detalle/?nombre=${this.nombre_empresa}`)
+        axios.get(`http://68.183.124.242:8000/api/detalle/?nombre=${this.nombre_empresa}`)
           .then(respuesta => {
             this.empresaModel = respuesta.data[0];            
-            console.log(this.empresaModel);
           });
       },
       traer_servicios: function() {
-        axios.get(`http://localhost:8000/api/servicio/?nombre=${this.nombre_empresa}`)
+        axios.get(`http://68.183.124.242:8000/api/servicio/?nombre=${this.nombre_empresa}`)
           .then(respuesta => {
-            this.empresaModel = respuesta.data[0];
+            this.servicioModel = respuesta.data[5];
+            console.log(respuesta.data);
+            console.log(this.servicioModel);
+            if(this.servicioModel.length > 0){
+              this.radio_servicios = this.servicioModel.length + 1;              
+            }
           });
       },
       enviar_formulario:async function(){
         this.carga = true;
         axios({
           method: "get",
-          url: "http://localhost:8000/api/empresa/",
+          url: "http://68.183.124.242:8000/api/empresa/",
           data:{
             nombre: this.empresaModel.nombre,
             nit: this.empresaModel.nit,
@@ -657,7 +661,6 @@ export default {
         .then(respuesta =>{
           this.id_empresa = respuesta.data.id_empresa;
           // this.$route.router.go('/home');
-          console.log(this.id_empresa);
           this.enviar_servicios();          
           this.carga = false;
         })
@@ -668,11 +671,9 @@ export default {
         this.enviar_servicios();
       },
       enviar_servicios: async function(){
-        console.log(this.servicioModel.nombre_ser_1);
-        console.log(this.servicioModel.ser_1);
         axios({
           method: "get",
-          url: "http://localhost:8000/api/servicio/",
+          url: "http://68.183.124.242:8000/api/servicio/",
           data:{
             id_empresa: this.id_empresa,
             nombre_ser_1: this.servicioModel.nombre_ser_1,
@@ -707,12 +708,12 @@ export default {
         })
       },
       traer_ciudaes: async function(){
-        axios.get("http://localhost:8000/api/ciudad/").then(respuesta => {
+        axios.get("http://68.183.124.242:8000/api/ciudad/").then(respuesta => {
         this.ciudades = respuesta.data;
         });   
       },
       traer_tipos: async function(){
-        axios.get("http://localhost:8000/api/tipo/").then(respuesta => {
+        axios.get("http://68.183.124.242:8000/api/tipo/").then(respuesta => {
         this.tipos = respuesta.data;
         });
       },
@@ -825,106 +826,6 @@ export default {
         });
       }
     }
+
 }
 </script>
-
-<style>
-.blanc span {
-  color:#fff;
-}
-
-.centrar
-	{
-		position: absolute;
-		/*nos posicionamos en el centro del navegador*/
-		top:50%;
-		left:50%;
-    padding-top: 20%;
-	
-	}
-
-.lds-default {
-  display: inline-block;
-  position: relative;
-  width: 64px;
-  height: 64px;
-}
-.lds-default div {
-  position: absolute;
-  width: 5px;
-  height: 5px;
-  background: #2F4F4F;
-  border-radius: 50%;
-  animation: lds-default 1.2s linear infinite;
-}
-.lds-default div:nth-child(1) {
-  animation-delay: 0s;
-  top: 29px;
-  left: 53px;
-}
-.lds-default div:nth-child(2) {
-  animation-delay: -0.1s;
-  top: 18px;
-  left: 50px;
-}
-.lds-default div:nth-child(3) {
-  animation-delay: -0.2s;
-  top: 9px;
-  left: 41px;
-}
-.lds-default div:nth-child(4) {
-  animation-delay: -0.3s;
-  top: 6px;
-  left: 29px;
-}
-.lds-default div:nth-child(5) {
-  animation-delay: -0.4s;
-  top: 9px;
-  left: 18px;
-}
-.lds-default div:nth-child(6) {
-  animation-delay: -0.5s;
-  top: 18px;
-  left: 9px;
-}
-.lds-default div:nth-child(7) {
-  animation-delay: -0.6s;
-  top: 29px;
-  left: 6px;
-}
-.lds-default div:nth-child(8) {
-  animation-delay: -0.7s;
-  top: 41px;
-  left: 9px;
-}
-.lds-default div:nth-child(9) {
-  animation-delay: -0.8s;
-  top: 50px;
-  left: 18px;
-}
-.lds-default div:nth-child(10) {
-  animation-delay: -0.9s;
-  top: 53px;
-  left: 29px;
-}
-.lds-default div:nth-child(11) {
-  animation-delay: -1s;
-  top: 50px;
-  left: 41px;
-}
-.lds-default div:nth-child(12) {
-  animation-delay: -1.1s;
-  top: 41px;
-  left: 50px;
-}
-@keyframes lds-default {
-  0%, 20%, 80%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.5);
-  }
-}
-</style>
-
-

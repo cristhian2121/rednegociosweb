@@ -22,7 +22,7 @@ export default {
     },
     methods:{
       traer_empresas: async function(){        
-            axios.get(`http://localhost:8000/api/detalle/?email_user=${this.usuario}`)
+            axios.get(`http://68.183.124.242:8000/api/detalle/?email_user=${this.usuario}`)
             .then(respuesta => {
               this.empresas = respuesta.data[0];
               this.$router.push({ path: `/empresa/${this.empresas.nombre}`});
@@ -36,6 +36,27 @@ export default {
 
 
 <style>
+
+.cont-center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.img-left{
+  background-image: url("./assets/le.png");
+  background-position: center center;
+  /*background-repeat: no-repeat;*/
+  align-content: center;
+}
+.img-rigth{
+  background-image: url("./assets/ri.png");
+  background-position: center center;
+  align-content: center;
+  /*background-position: center center;
+  background-repeat: no-repeat;
+  align-content: center;*/
+}
 /*@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css");*/
 
 /* Estilos para la nav-menu   */ 
@@ -119,13 +140,25 @@ export default {
   color: #777777;
   font-weight: 300;
 }
+
+
 body {
-  color: #777777;
-  font-family: "Poppins", sans-serif;
+  /*color: #777777;
+  font-family: "", sans-serif;
   font-size: 12px;
   font-weight: 300;
   line-height: 1.625em;
-  position: relative;
+  position: relative;*/
+
+  background: #fff;
+  font-family: "metropolis-regular", sans-serif;
+  font-size: 1.7rem;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1.765;
+  color: #555555;
+  margin: 0;
+  padding: 0;
 }
 ol, ul {
   margin: 0;
@@ -149,9 +182,10 @@ iframe {
   border: 0;
 }
 
-a, a:focus, a:hover {
+a, a:focus, a:hover, a:active {
   text-decoration: none;
   outline: 0;
+  color: #26bfb5;
 }
 
 .btn.active.focus,
@@ -189,7 +223,8 @@ h4, h5, h6 {
   line-height: 1.2em !important;
   margin-bottom: 0;
   margin-top: 0;
-  font-weight: 600;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
 }
 
 .h1, .h2, .h3,
@@ -811,7 +846,7 @@ td, th {
 }
 
 .container.fullwidth {
- /* width: 100%;*/
+  width: 100%;
 }
 
 .container.no-padding {
@@ -834,7 +869,7 @@ td, th {
 }
 
 .row.no-margin {
-  margin-left: 0;
+  margin-left: 0px;
   margin-right: 0;
 }
 

@@ -50,7 +50,6 @@ export default{
   },
   async mounted(){
     this.email_user = sessionStorage.getItem('user');
-    console.log(this.email_user);
     if(this.email_user){
       await this.usuario_empresa();
     }
@@ -60,20 +59,16 @@ export default{
       sessionStorage.removeItem('user');
     },
     usuario_empresa: async function(){
-      await axios.get(`http://localhost:8000/api/empresa_usuario/?email=${this.email_user}`)
+      await axios.get(`http://68.183.124.242:8000/api/empresa_usuario/?email=${this.email_user}`)
       .then(resp => {
-        console.log("usuarios");
-        console.log(resp);
         if(resp.data[0].email == this.email_user){
-          console.log("entro");
           this.nombre_empresa = resp.data[0].nombre;
           this.tiene_empresa = true;
         } 
-        console.log(this.tiene_empresa);
       })
     }
     // traer_empresas: function() {
-    //   axios.get(`http://localhost:8000/api/empresa/?usuario=${this.nombre_empresa}`)
+    //   axios.get(`http://68.183.124.242:8000/api/empresa/?usuario=${this.nombre_empresa}`)
     //   .then(respuesta => {
     //     this.empresas = respuesta.data[0];
     //     this.carga = false;        
