@@ -139,7 +139,7 @@
         <!--Logo-->
         <div class="text-center blanc">
           <el-upload
-            action= "http://68.183.124.242:8000/api/archivo/"
+            action= "http://sfo2.digitaloceanspaces.com"
             multiple
             :limit="1"
             :on-exceed="exceso_archivos"
@@ -191,7 +191,7 @@
           </div>
           <div class="form-group col-xs-1 col-sm-1 col-md-1">
             <el-upload
-            action= "http://68.183.124.242:8000/api/archivo/"
+            action= "http://127.0.0.1:8000/api/archivo/"
             multiple
             :limit="1"            
             :on-exceed="exceso_archivos">
@@ -215,7 +215,7 @@
           </div>
           <div class="form-group col-xs-1 col-sm-1 col-md-1">
             <el-upload
-            action= "http://68.183.124.242:8000/api/archivo/"
+            action= "http://127.0.0.1:8000/api/archivo/"
             multiple
             :limit="1"
             :on-exceed="exceso_archivos">
@@ -239,7 +239,7 @@
           </div>
           <div class="form-group col-xs-1 col-sm-1 col-md-1">
             <el-upload
-            action= "http://68.183.124.242:8000/api/archivo/"
+            action= "http://127.0.0.1:8000/api/archivo/"
             multiple
             :limit="1"
             :on-exceed="exceso_archivos">
@@ -263,7 +263,7 @@
           </div>
           <div class="form-group col-xs-1 col-sm-1 col-md-1">
             <el-upload
-            action= "http://68.183.124.242:8000/api/archivo/"
+            action= "http://127.0.0.1:8000/api/archivo/"
             multiple
             :limit="1"
             :on-exceed="exceso_archivos">
@@ -287,7 +287,7 @@
           </div>
           <div class="form-group col-xs-1 col-sm-1 col-md-1">
             <el-upload
-            action= "http://68.183.124.242:8000/api/archivo/"
+            action= "http://127.0.0.1:8000/api/archivo/"
             multiple
             :limit="1"
             :on-exceed="exceso_archivos">
@@ -311,7 +311,7 @@
           </div>
           <div class="form-group col-xs-1 col-sm-1 col-md-1">
             <el-upload
-            action= "http://68.183.124.242:8000/api/archivo/"
+            action= "http://127.0.0.1:8000/api/archivo/"
             multiple
             :limit="1"
             :on-exceed="exceso_archivos">
@@ -335,7 +335,7 @@
           </div>
           <div class="form-group col-xs-1 col-sm-1 col-md-1">
             <el-upload
-            action= "http://68.183.124.242:8000/api/archivo/"
+            action= "http://127.0.0.1:8000/api/archivo/"
             multiple
             :limit="1"
             :on-exceed="exceso_archivos">
@@ -359,7 +359,7 @@
           </div>
           <div class="form-group col-xs-1 col-sm-1 col-md-1">
             <el-upload
-            action= "http://68.183.124.242:8000/api/archivo/"
+            action= "http://127.0.0.1:8000/api/archivo/"
             multiple
             :limit="1"
             :on-exceed="exceso_archivos">
@@ -383,7 +383,7 @@
           </div>
           <div class="form-group col-xs-1 col-sm-1 col-md-1">
             <el-upload
-            action= "http://68.183.124.242:8000/api/archivo/"
+            action= "http://127.0.0.1:8000/api/archivo/"
             multiple
             :limit="1"
             :on-exceed="exceso_archivos">
@@ -407,7 +407,7 @@
           </div>
           <div class="form-group col-xs-1 col-sm-1 col-md-1">
             <el-upload
-            action= "http://68.183.124.242:8000/api/archivo/"
+            action= "http://127.0.0.1:8000/api/archivo/"
             multiple
             :limit="1"
             :on-exceed="exceso_archivos">
@@ -618,7 +618,7 @@ export default {
         this.carga = true;
         axios({
           method: "post",
-          url: "http://68.183.124.242:8000/api/empresa/",
+          url: "http://127.0.0.1:8000/api/empresa/",
           data:{
             nombre: this.empresaModel.nombre,
             nit: this.empresaModel.nit,
@@ -650,7 +650,7 @@ export default {
       enviar_servicios: function(){
         axios({
           method: "post",
-          url: "http://68.183.124.242:8000/api/servicio/",
+          url: "http://127.0.0.1:8000/api/servicio/",
           data:{
             id_empresa: this.id_empresa,
             nombre_ser_1: this.servicioModel.nombre_ser_1,
@@ -686,12 +686,12 @@ export default {
         })
       },
       traer_ciudaes: async function(){
-        axios.get("http://68.183.124.242:8000/api/ciudad/").then(respuesta => {
+        axios.get("http://127.0.0.1:8000/api/ciudad/").then(respuesta => {
         this.ciudades = respuesta.data;
         });   
       },
       traer_tipos: async function(){
-        axios.get("http://68.183.124.242:8000/api/tipo/").then(respuesta => {
+        axios.get("http://127.0.0.1:8000/api/tipo/").then(respuesta => {
         this.tipos = respuesta.data;
         });
       },
