@@ -36,7 +36,7 @@
                                     <div class="single-popular-post d-flex flex-row">
                                         <div class="thumb">                  
                                             <img class="img-responsive"
-                                             v-bind:src="'D:/proyectoRolo/Api/archivo/'+empresa.nombre_logo"
+                                             v-bind:src="'data:image;base64,'+empresa.base64Img"
                                              style="width:150px; height:100px" alt=""/> 
                                         </div>
                                         <div class="details">
@@ -114,26 +114,26 @@ export default {
     },
 
     traer_Empresas: async function() {
-      axios.get("http://68.183.124.242:8000/api/detalle/").then(respuesta => {
+      axios.get("http://127.0.0.1:8000/api/detalle/").then(respuesta => {
       this.empresas = respuesta.data;
       this.empresasAux = this.empresas;
       this.carga = false;   
     });
     },
     traer_tipos: async function(){
-      axios.get("http://68.183.124.242:8000/api/tipo/").then(respuesta => {
+      axios.get("http://127.0.0.1:8000/api/tipo/").then(respuesta => {
       this.tipos = respuesta.data;
     });
     },
     traer_ciudades: async function(){
-      axios.get("http://68.183.124.242:8000/api/ciudad/").then(respuesta => {
+      axios.get("http://127.0.0.1:8000/api/ciudad/").then(respuesta => {
       this.ciudades = respuesta.data;
     });
     },
     ir_pagina: function(emp){
         const empresa = emp;
         this.$router.push({ path: `/${empresa}`}) 
-    }
+    },
 
   }
 };
