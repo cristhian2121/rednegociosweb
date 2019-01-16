@@ -638,6 +638,7 @@ export default {
             console.log(this.servicioModel);
             if(this.servicioModel.length > 0){
               this.radio_servicios = this.servicioModel.length + 1;              
+            }
           });
       },
       enviar_formulario:async function(){
