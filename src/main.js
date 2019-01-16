@@ -5,10 +5,8 @@ import Router from 'vue-router';
 
 //vistas
 import Login from './views/login/Login';
+import Home from './views/home/Home';
 
-import Listar from './components/prueba/Listar';
-import Otro from './components/prueba/Otro';
-import Home from './components/home/Home';
 import Registro_empresa from './components/registro_empresa/Registro_empresa';
 import Vista_detallada  from './components/vista_detallada/Vista_detallada';
 import Registration from './components/registration/Registration';
@@ -78,14 +76,6 @@ var router = new Router({
       path: '/profile/edit/:empresa',
       component: Edit_profile,
       props: true
-    },
-    {
-      path: '/ruta',
-      component: Listar
-    },
-    {
-      path: '/otro',
-      component: Otro
     }
   ]
 })

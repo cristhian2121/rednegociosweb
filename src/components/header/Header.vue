@@ -46,9 +46,9 @@ export default {
       nombre_empresa: null
     };
   },
-  async mounted() {
-    this.email_user = sessionStorage.getItem("user");
-    if (this.email_user) {
+  async mounted(){
+    this.email_user = sessionStorage.getItem('user');
+    if(this.email_user){
       await this.usuario_empresa();
     }
   },
@@ -56,17 +56,14 @@ export default {
     logout: function() {
       sessionStorage.removeItem("user");
     },
-    usuario_empresa: async function() {
-      await axios
-        .get(
-          `http://localhost:8000/api/empresa_usuario/?email=${this.email_user}`
-        )
-        .then(resp => {
-          if (resp.data[0].email == this.email_user) {
-            this.nombre_empresa = resp.data[0].nombre;
-            this.tiene_empresa = true;
-          }
-        });
+    usuario_empresa: async function(){
+      await axios.get(`http://localhost:8000/api/empresa_usuario/?email=${this.email_user}`)
+      .then(resp => {
+        if(resp.data[0].email == this.email_user){
+          this.nombre_empresa = resp.data[0].nombre;
+          this.tiene_empresa = true;
+        } 
+      })
     }
     // traer_empresas: function() {
     //   axios.get(`http://localhost:8000/api/empresa/?usuario=${this.nombre_empresa}`)

@@ -22,21 +22,3 @@ export default {
   }
 };
 </script>
-<style scoped lang="sass">
-@import './../assets/styles/colors'
-footer
-  position: fixed
-  bottom: 0
-  background-color: $green
-  border-top: 2px solid darken($green, 20%)
-  padding: 0 15px
-  color: $white
-  ul
-    padding: 0
-    display: flex
-    justify-content: space-around
-    list-style: none
-    a
-      text-decoration: none
-      color: $white
-</style>

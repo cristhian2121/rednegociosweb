@@ -16,15 +16,27 @@ export default {
     sessionStorage.removeItem("user");
   },
 
-  methods: {
-    ingresar: function() {
-      axios({
-        method: "post",
-        url: "http://localhost:8000/rest-auth/login/",
-        data: {
-          username: this.usuario_model.email,
-          email: this.usuario_model.email,
-          password: this.usuario_model.password
+    methods:{
+        ingresar: function(){
+            axios({
+                method: "post",
+                url: 'http://68.183.124.242:8000/rest-auth/login/',
+                data:{
+                    username: this.usuario_model.email,
+                    email: this.usuario_model.email,
+                    password: this.usuario_model.password
+                }
+            })
+            .then(respuesta => {
+                sessionStorage.setItem('user',this.usuario_model.email);
+                this.$router.push({ path: 'home'})
+            })
+            .catch(e =>{
+                this.$notify({
+                    message: 'Contraseña invalida',
+                    type: 'warning'
+                });
+            })
         }
       })
         .then(respuesta => {
