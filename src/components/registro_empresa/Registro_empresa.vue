@@ -12,9 +12,9 @@
         <div class="form-group">
           <label class="control-label" for="nombre">Nombre de la empresa</label>  
           <el-input name="nombre" type="text" placeholder="Ingrese el nombre de la empresa"
-          v-model="empresaModel.nombre" v-validate="'required|max:20'"></el-input>
-          <span v-show="errors.has('nombre')" class="text-warning"></span>
-          <span v-show="errors.has('nombre')" class="text-danger">*Maximo 20 caracteres</span>
+          v-model="empresaModel.nombre" v-validate="'required|max:50'"></el-input>
+          <!-- <span v-show="errors.has('nombre')" class="text-warning"></span> -->
+          <span v-show="errors.has('nombre')" class="text-danger">*Maximo 50 caracteres</span>
         </div> 
         <!--nit/rut-->
         <div class="form-group">
@@ -51,7 +51,7 @@
               <label class="control-label">Dirección</label>  
               <el-input id="dir_emp" name="direccion" type="text" placeholder="Dirección"
                v-model="empresaModel.direccion" ></el-input>
-              <i v-show="errors.has('direccion')" class="text-warning"></i>
+              <!-- <i v-show="errors.has('direccion')" class="text-warning"></i> -->
             </div>
           </div>
         </div>            
@@ -61,9 +61,9 @@
             <div class="form-group">
               <label class="control-label">Teléfono</label>  
               <el-input name="telefono" type="number" placeholder="Teléfono"
-              v-model="empresaModel.telefono" v-validate="'max:7'"></el-input>
-              <i v-show="errors.has('telefono')" class="text-warning"></i>
-              <span v-show="errors.has('telefono')" class="text-danger">*Máximo 7 caracteres</span>
+              v-model="empresaModel.telefono" v-validate="'max:10'"></el-input>
+              <!-- <i v-show="errors.has('telefono')" class="text-warning"></i> -->
+              <span v-show="errors.has('telefono')" class="text-danger">*Máximo 10 caracteres</span>
             </div>
           </div>
           <!-- celular -->
@@ -71,9 +71,9 @@
             <div class="form-group">
               <label class="control-label">Celular/Whatsapp</label>  
               <el-input id="cel_emp" name="celular" type="number" placeholder="Whatsapp" 
-              v-model="empresaModel.celular" v-validate="'max:10'"></el-input>
-              <i v-show="errors.has('celular')" class="text-warning"></i>
-              <span v-show="errors.has('celular')" class="text-danger">*Máximo 10 caracteres</span>
+              v-model="empresaModel.celular" v-validate="'max:15'"></el-input>
+              <!-- <i v-show="errors.has('celular')" class="text-warning"></i> -->
+              <span v-show="errors.has('celular')" class="text-danger">*Máximo 15 caracteres</span>
             </div>
           </div>  
           <!-- Email-->
@@ -82,7 +82,7 @@
               <label class="control-label" for="email_emp">Email</label>  
               <el-input id="email_emp" name="email" type="email" placeholder="Email"
               v-model="empresaModel.email" v-validate="'email'"></el-input>
-              <i v-show="errors.has('email')" class="text-warning"></i>
+              <!-- <i v-show="errors.has('email')" class="text-warning"></i> -->
               <span v-show="errors.has('email')" class="text-danger">*Campo requerido</span>
             </div>
           </div>
@@ -139,7 +139,7 @@
         <!--Logo-->
         <div class="text-center blanc">
           <el-upload
-            action= "http://sfo2.digitaloceanspaces.com"
+            action= "http://localhost:8000/api/archivo/"
             multiple
             :limit="1"
             :on-exceed="exceso_archivos"
@@ -175,23 +175,23 @@
             <div class="form-group">
               <input name="nombre_ser_1" type="text" placeholder="Nombre servicio"
               class="form-control input-lg" v-model="servicioModel.nombre_ser_1"
-              v-validate="'required|max:20'">
+              v-validate="'required|max:100'">
               <i v-show="errors.has('nombre_ser_1')" class="text-warning"></i>
-              <span v-show="errors.has('nombre_ser_1')" class="text-danger">*Maximo 20 caracteres</span>
+              <span v-show="errors.has('nombre_ser_1')" class="text-danger">*Maximo 100 caracteres</span>
             </div>
           </div>general
           <div class="col-xs-7 col-sm-7 col-md-7">
             <div class="form-group">
               <textarea class="form-control input-lg" name="ser_1" 
               placeholder="Describa el servicio" v-model="servicioModel.ser_1"
-              v-validate="'required|max:20'"></textarea>
+              v-validate="'required|max:200'"></textarea>
               <i v-show="errors.has('ser_3')" class="text-warning"></i>
-              <span v-show="errors.has('ser_3')" class="text-danger">*Maximo 20 caracteres</span>
+              <span v-show="errors.has('ser_3')" class="text-danger">*Maximo 200 caracteres</span>
             </div>
           </div>
           <div class="form-group col-xs-1 col-sm-1 col-md-1">
             <el-upload
-            action= "http://127.0.0.1:8000/api/archivo/"
+            action= "http://68.183.124.242:8000/api/archivo/"
             multiple
             :limit="1"            
             :on-exceed="exceso_archivos">
@@ -215,7 +215,7 @@
           </div>
           <div class="form-group col-xs-1 col-sm-1 col-md-1">
             <el-upload
-            action= "http://127.0.0.1:8000/api/archivo/"
+            action= "http://68.183.124.242:8000/api/archivo/"
             multiple
             :limit="1"
             :on-exceed="exceso_archivos">
@@ -239,7 +239,7 @@
           </div>
           <div class="form-group col-xs-1 col-sm-1 col-md-1">
             <el-upload
-            action= "http://127.0.0.1:8000/api/archivo/"
+            action= "http://68.183.124.242:8000/api/archivo/"
             multiple
             :limit="1"
             :on-exceed="exceso_archivos">
@@ -263,7 +263,7 @@
           </div>
           <div class="form-group col-xs-1 col-sm-1 col-md-1">
             <el-upload
-            action= "http://127.0.0.1:8000/api/archivo/"
+            action= "http://68.183.124.242:8000/api/archivo/"
             multiple
             :limit="1"
             :on-exceed="exceso_archivos">
@@ -287,7 +287,7 @@
           </div>
           <div class="form-group col-xs-1 col-sm-1 col-md-1">
             <el-upload
-            action= "http://127.0.0.1:8000/api/archivo/"
+            action= "http://68.183.124.242:8000/api/archivo/"
             multiple
             :limit="1"
             :on-exceed="exceso_archivos">
@@ -311,7 +311,7 @@
           </div>
           <div class="form-group col-xs-1 col-sm-1 col-md-1">
             <el-upload
-            action= "http://127.0.0.1:8000/api/archivo/"
+            action= "http://68.183.124.242:8000/api/archivo/"
             multiple
             :limit="1"
             :on-exceed="exceso_archivos">
@@ -335,7 +335,7 @@
           </div>
           <div class="form-group col-xs-1 col-sm-1 col-md-1">
             <el-upload
-            action= "http://127.0.0.1:8000/api/archivo/"
+            action= "http://68.183.124.242:8000/api/archivo/"
             multiple
             :limit="1"
             :on-exceed="exceso_archivos">
@@ -359,7 +359,7 @@
           </div>
           <div class="form-group col-xs-1 col-sm-1 col-md-1">
             <el-upload
-            action= "http://127.0.0.1:8000/api/archivo/"
+            action= "http://68.183.124.242:8000/api/archivo/"
             multiple
             :limit="1"
             :on-exceed="exceso_archivos">
@@ -383,7 +383,7 @@
           </div>
           <div class="form-group col-xs-1 col-sm-1 col-md-1">
             <el-upload
-            action= "http://127.0.0.1:8000/api/archivo/"
+            action= "http://68.183.124.242:8000/api/archivo/"
             multiple
             :limit="1"
             :on-exceed="exceso_archivos">
@@ -407,7 +407,7 @@
           </div>
           <div class="form-group col-xs-1 col-sm-1 col-md-1">
             <el-upload
-            action= "http://127.0.0.1:8000/api/archivo/"
+            action= "http://68.183.124.242:8000/api/archivo/"
             multiple
             :limit="1"
             :on-exceed="exceso_archivos">
@@ -618,7 +618,7 @@ export default {
         this.carga = true;
         axios({
           method: "post",
-          url: "http://127.0.0.1:8000/api/empresa/",
+          url: "http://68.183.124.242:8000/api/empresa",
           data:{
             nombre: this.empresaModel.nombre,
             nit: this.empresaModel.nit,
@@ -650,7 +650,7 @@ export default {
       enviar_servicios: function(){
         axios({
           method: "post",
-          url: "http://127.0.0.1:8000/api/servicio/",
+          url: "http://68.183.124.242:8000/api/servicio/",
           data:{
             id_empresa: this.id_empresa,
             nombre_ser_1: this.servicioModel.nombre_ser_1,
@@ -686,12 +686,12 @@ export default {
         })
       },
       traer_ciudaes: async function(){
-        axios.get("http://127.0.0.1:8000/api/ciudad/").then(respuesta => {
+        axios.get("http://68.183.124.242:8000/api/ciudad/").then(respuesta => {
         this.ciudades = respuesta.data;
         });   
       },
       traer_tipos: async function(){
-        axios.get("http://127.0.0.1:8000/api/tipo/").then(respuesta => {
+        axios.get("http://68.183.124.242:8000/api/tipo/").then(respuesta => {
         this.tipos = respuesta.data;
         });
       },
@@ -801,6 +801,7 @@ export default {
       },
       validateBeforeSubmit() {
         this.$validator.validateAll().then((result) => {
+          console.log(result)
           if (result) {
             this.enviar_formulario();
             return;
