@@ -1,92 +1,150 @@
-<template>   
+<template>
   <div id="top" v-if="!carga">
     <!-- barra de navegación -->
     <header class="s-header">
-        <div class="header-logo">
-            <a class="site-logo" href=""><img src="" alt="Logo"></a>
-        </div>
-        <router-link class="header-menu-toggle" :to="{ path: '/home' }">Inicio</router-link>
+      <div class="header-logo">
+        <img
+          class="img-responsive"
+          v-bind:src="'data:image;base64,'+empresas.base64Img"
+          style="width:150px; height:100px"
+          alt="Logo"
+        >
+      </div>
+      <router-link class="header-menu-toggle" :to="{ path: '/home' }">Inicio</router-link>
     </header>
     <!-- end barra de navegación -->
-
     <!-- banner -->
-    <section id="home" class="s-home" data-parallax="scroll" data-image-src="images/hero-bg.jpg" data-natural-width=3000 data-natural-height=2000 data-position-y=top>
-        <div class="shadow-overlay"></div>
-        <div class="container home-content">
-            <div class="home-content__main">
-                <h1>{{ empresas.nombre }}<br></h1>
-                <!--<p>lema <br></p>-->
-            </div>
+    <section
+      id="home"
+      class="s-home"
+      data-parallax="scroll"
+      data-image-src="images/hero-bg.jpg"
+      data-natural-width="3000"
+      data-natural-height="2000"
+      data-position-y="top"
+    >
+      <div class="shadow-overlay"></div>
+      <div class="container home-content">
+        <div class="home-content__main">
+          <h1>
+            {{ empresas.nombre }}
+            <br>
+          </h1>
+          <!--<p>lema <br></p>-->
         </div>
-        <ul class="home-sidelinks">
-            <li><a class="smoothscroll" href="#about">Nosotros<span></span></a></li>
-            <li><a class="smoothscroll" href="#services">Servicios<span></span></a></li>
-            <li><a  class="smoothscroll" href="#contact">Contacto<span></span></a></li>
-        </ul>
-        <ul class="home-social">
-            <li class="home-social-title">Siguenos</li>
-            <li><a href="#0"><i class="fab fa-facebook"></i><span class="home-social-text">Facebook</span></a></li>
-            <li><a href="#0"><i class="fab fa-twitter"></i><span class="home-social-text">Twitter</span></a></li>
-            <li><a href="#0"><i class="fab fa-linkedin"></i><span class="home-social-text">LinkedIn</span></a></li>
-        </ul>
-        <a href="#about" class="home-scroll smoothscroll">
-            <span class="home-scroll__text">Bajar</span><span class="home-scroll__icon"></span>
-        </a>
+      </div>
+      <ul class="home-sidelinks">
+        <li>
+          <a class="smoothscroll" href="#about">
+            Nosotros
+            <span></span>
+          </a>
+        </li>
+        <li>
+          <a class="smoothscroll" href="#services">
+            Servicios
+            <span></span>
+          </a>
+        </li>
+        <li>
+          <a class="smoothscroll" href="#contact">
+            Contacto
+            <span></span>
+          </a>
+        </li>
+      </ul>
+      <ul class="home-social">
+        <li class="home-social-title">Siguenos</li>
+        <li>
+          <a href="#0">
+            <i class="fab fa-facebook"></i>
+            <span class="home-social-text">Facebook</span>
+          </a>
+        </li>
+        <li>
+          <a href="#0">
+            <i class="fab fa-twitter"></i>
+            <span class="home-social-text">Twitter</span>
+          </a>
+        </li>
+        <li>
+          <a href="#0">
+            <i class="fab fa-linkedin"></i>
+            <span class="home-social-text">LinkedIn</span>
+          </a>
+        </li>
+      </ul>
+      <a href="#about" class="home-scroll smoothscroll">
+        <span class="home-scroll__text">Bajar</span>
+        <span class="home-scroll__icon"></span>
+      </a>
     </section>
     <!-- end banner -->
     <!---->
-
-
     <!-- about -->
-    <section id='about' class="s-about">
-        <div>
-            <div class="col-full">
-                <h3 class="subhead">Quienes somos</h3>
-                <!--<h1 class="display-1--light">{{ empresa.lema}}</h1>-->
-            </div>
+    <section id="about" class="s-about">
+      <div>
+        <div class="col-full">
+          <h3 class="subhead">Quienes somos</h3>
+          <!--<h1 class="display-1--light">{{ empresa.lema}}</h1>-->
         </div>
-        <div >
-            <div class="col-full">
-                <p class="lead">{{ empresas.mision }}
-                </p>
-            </div>
+      </div>
+      <div>
+        <div class="col-full">
+          <p class="lead">{{ empresas.mision }}</p>
         </div>
+      </div>
     </section>
     <!-- end about -->
-
     <!-- services -->
-    <section id='services' class="s-services light-gray popular-post-area pt-100">
-
-      <div >
+    <section id="services" class="s-services light-gray popular-post-area pt-100">
+      <div>
         <div class="col-full">
           <h3 class="subhead">Nuestros servicios</h3>
-                <!--<h1 class="display-1--light">resumen sobre servicios.</h1>-->
+          <!--<h1 class="display-1--light">resumen sobre servicios.</h1>-->
         </div>
       </div>
 
       <div class="services-list align-items-center">
-          <div v-for="servicio in servicios">
-            <div class="service-item d-flex flex-row">
-              <div class="thumb">                  
-                <img class="img-responsive" v-bind:src="'D:/proyectoRolo/Api/archivo/'+empresas.nombre_logo"
-                style="width:150px; height:100px" alt=""/> 
-              </div>
-
-              <div class="details">
-                <a class='h4 name-emp'>{{ empresas.nombre }}</a>
-                <p>{{ empresas.mision }} Nemo cupiditate ab quibusdam quaerat impedit magni. Ea</p>
-              </div>                      
+        <div v-if="servicios.nombre_ser_1">
+          <div class="service-item d-flex flex-row">
+            <div class="thumb">
+              <img>
             </div>
-          </div>																																			
+            <div class="details">
+              <a class="h4 name-emp">{{ servicios.nombre_ser_1 }}</a>
+              <p>{{ servicios.ser_1 }}</p>
+            </div>
+          </div>
+        </div>
+        <div v-if="servicios.nombre_ser_2">
+          <div class="service-item d-flex flex-row">
+            <div class="thumb">
+              <img>
+            </div>
+            <div class="details">
+              <a class="h4 name-emp">{{ servicios.nombre_ser_2 }}</a>
+              <p>{{ servicios.ser_2 }}</p>
+            </div>
+          </div>
+        </div>
+        <div v-if="servicios.nombre_ser_3">
+          <div class="service-item d-flex flex-row">
+            <div class="thumb">
+              <img>
+            </div>
+            <div class="details">
+              <a class="h4 name-emp">{{ servicios.nombre_ser_3 }}</a>
+              <p>{{ servicios.ser_3 }}</p>
+            </div>
+          </div>
+        </div>
       </div>
-
     </section>
     <!-- end services -->
-
     <!-- Blog-->
-    <section id='works' class="s-works">
-
-        <!--<div class="row section-header">
+    <section id="works" class="s-works">
+      <!--<div class="row section-header">
             <div class="col-full">
                 <h3 class="subhead">Ultimas publicaciones</h3>
                 <h1 class="display-1--light">Estas son unos de nuestros ultimos productos.</h1>
@@ -226,112 +284,128 @@
                 </div>
             </div>
         </div>
-        end blog -->
-
-        <!-- lo que dicen los clientes-->
-        <div class="testimonials-wrap" >
-          
-                <div class="col-full testimonials-header">
-                    <h2>Ultimos comentarios</h2>
-                </div>
-
-            <div class="testimonials">
-                    <div class="testimonials__slide">
-                        <img src="images/avatars/user-01.jpg" alt="image" class="testimonials__avatar">
-                        <p>Muy buen servicio.</p>
-                        <div class="testimonials__author">
-                            Tim Cook<span>CEO, Apple</span>
-                        </div>
-                    </div>
-                    <div class="testimonials__slide">
-                        <img src="images/avatars/user-05.jpg" alt="Author image" class="testimonials__avatar">
-                        <p>¿Cuanto valen los nevecones?</p>
-                        <div class="testimonials__author">
-                            Sundar Pichai
-                            <span>CEO, Google</span>
-                        </div>
-                    </div>
-                    <div class="testimonials__slide">
-                        <img src="images/avatars/user-02.jpg" alt="Author image" class="testimonials__avatar">
-                        <p>les doy 5 estrellas.</p>
-                        <div class="testimonials__author">
-                            Satya Nadella
-                            <span>CEO, Microsoft</span>
-                        </div>
-                    </div>
-
-            </div>
+      end blog-->
+      <!-- lo que dicen los clientes-->
+      <div class="testimonials-wrap">
+        <div class="col-full testimonials-header">
+          <h2>Ultimos comentarios</h2>
         </div>
-    </section>
 
+        <div class="testimonials">
+          <div class="testimonials__slide">
+            <img src="images/avatars/user-01.jpg" alt="image" class="testimonials__avatar">
+            <p>Muy buen servicio.</p>
+            <div class="testimonials__author">
+              Tim Cook
+              <span>CEO, Apple</span>
+            </div>
+          </div>
+          <div class="testimonials__slide">
+            <img src="images/avatars/user-05.jpg" alt="Author image" class="testimonials__avatar">
+            <p>¿Cuanto valen los nevecones?</p>
+            <div class="testimonials__author">
+              Sundar Pichai
+              <span>CEO, Google</span>
+            </div>
+          </div>
+          <div class="testimonials__slide">
+            <img src="images/avatars/user-02.jpg" alt="Author image" class="testimonials__avatar">
+            <p>les doy 5 estrellas.</p>
+            <div class="testimonials__author">
+              Satya Nadella
+              <span>CEO, Microsoft</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- contact -->
     <section id="contact" class="s-contact">
+      <div>
+        <div class="col-full">
+          <h3 class="subhead">Contactanos</h3>
+          <h3 class="display-1--light">Ponte en contacto y hagamos algo genial juntos.</h3>
+        </div>
+      </div>
 
-        <div>
-            <div class="col-full">
-                <h3 class="subhead">Contactanos</h3>
-                <h3 class="display-1--light">Ponte en contacto y hagamos algo genial juntos.</h3>
-            </div>
+      <div class>
+        <div class="col-full contact-main">
+          <p>
+            <a href="mailto:#0" class="contact-email">{{ empresas.email}}</a>
+            <span class="contact-number">{{ empresas.telefono}} / {{ empresas.celular }}</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-7 contact-secondary">
+          <h3 class="subhead">Donde encontrarnos</h3>
+
+          <p class="contact-address">
+            {{ empresas.ciudad }}, {{ empresas.pais}}
+            <br>
+            {{ empresas.direccion }}
+          </p>
         </div>
 
-        <div class="">
-            <div class="col-full contact-main">
-                <p>
-                <a href="mailto:#0" class="contact-email">{{ empresas.email}}</a>
-                <span class="contact-number"> {{ empresas.telefono}}  /  {{ empresas.celular }}</span>
-                </p>
-            </div>
-        </div>
+        <div class="col-md-5 contact-secondary">
+          <h3 class="subhead">Siguenos</h3>
 
-        <div class="row">
+          <ul class="contact-social">
+            <li>
+              <a href="#0">
+                <i class="fab fa-facebook"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#0">
+                <i class="fab fa-twitter"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#0">
+                <i class="fab fa-instagram"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#0">
+                <i class="fab fa-behance"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#0">
+                <i class="fab fa-dribbble"></i>
+              </a>
+            </li>
+          </ul>
 
-            <div class="col-md-7 contact-secondary">
-                <h3 class="subhead">Donde encontrarnos</h3>
-
-                <p class="contact-address">
-                    {{ empresas.ciudad }}, {{ empresas.pais}}<br>
-                    {{ empresas.direccion }}
-                </p>
-            </div>
-
-            <div class="col-md-5 contact-secondary">
-                <h3 class="subhead">Siguenos</h3>
-
-                <ul class="contact-social">
-                    <li><a href="#0"><i class="fab fa-facebook"></i></a></li>
-                    <li><a href="#0"><i class="fab fa-twitter"></i></a></li>
-                    <li><a href="#0"><i class="fab fa-instagram"></i></a></li>
-                    <li><a href="#0"><i class="fab fa-behance"></i></a></li>
-                    <li><a href="#0"><i class="fab fa-dribbble"></i></a></li>
-                </ul>
-
-                <!--<div class="contact-subscribe">
+          <!--<div class="contact-subscribe">
                     <form id="mc-form" class="group mc-form" novalidate="true">
                         <input type="email" value="" name="EMAIL" class="email" id="mc-email" placeholder="Email Address" required="">
                         <input type="submit" name="subscribe" value="Subscribete">
                         <label for="mc-email" class="subscribe-message"></label>
                     </form>
-                </div>-->
-            </div>
-
-        </div> <!-- end row -->
-
-        <div class="row">
-            <!--<div class="col-full cl-copyright">
+          </div>-->
+        </div>
+      </div>
+      <!-- end row -->
+      <div class="row">
+        <!--<div class="col-full cl-copyright">
                 <span>
 Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://bitools.co" target="_blank">Bitools</a>
-            </div>-->
-        </div>
+        </div>-->
+      </div>
 
-        <div class="cl-go-top">
-            <a class="smoothscroll" title="Back to Top" href="#top"><i class="icon-arrow-up" aria-hidden="true"></i></a>
-        </div>
-
+      <div class="cl-go-top">
+        <a class="smoothscroll" title="Back to Top" href="#top">
+          <i class="icon-arrow-up" aria-hidden="true"></i>
+        </a>
+      </div>
     </section>
     <!-- end s-contact -->
-    </div>
-    <!-- /.container -->
+  </div>
+  <!-- /.container -->
 </template>
 
 <script>
@@ -342,8 +416,10 @@ export default {
   props: ["id_empresa"],
 
   async mounted() {
-    this.carga = true; 
-    await this.traer_servicios();   
+    this.carga = true;
+    await this.traer_servicios();
+    this.nombre_empresa = this.$route.params.nombre;
+    if (this.nombre_empresa) this.traer_empresas();
   },
   data() {
     return {
@@ -354,36 +430,30 @@ export default {
       carga: true
     };
   },
-  mounted() {
-    this.nombre_empresa = this.$route.params.nombre;
-    if (this.nombre_empresa) this.traer_empresas();
-  },
   methods: {
-
     mostrar_servicios: function() {
       if (this.servicioModel) {
         this.empresas = this.empresas.filter(
           empresa => empresa.id_empresa == this.servicioModel
         );
       }
-      
     },
-
 
     traer_empresas: function() {
       axios
         .get(`http://68.183.124.242:8000/api/detalle/?nombre=${this.nombre_empresa}`)
         .then(respuesta => {
           this.empresas = respuesta.data[0];
+          console.log(this.empresas);          
           this.carga = false;
         });
     },
 
     traer_servicios: async function() {
-      axios.get("http://68.183.124.242:8000/api/servicio/").then(respuesta => {
-          this.servicios = respuesta.data[0];
-          this.carga = false;
-        });
+      axios.get(`http://68.183.124.242:8000/api/servicio/`).then(respuesta => {
+        this.servicios = respuesta.data[1];
+        this.carga = false;
+      });
     }
   }
 };
@@ -881,7 +951,6 @@ p.lead {
   }
 }
 @media only screen and (max-width: 1500px) {
-
   .home-content__main {
     max-width: 1100px;
   }
@@ -927,7 +996,6 @@ p.lead {
   }
 }
 @media only screen and (max-width: 800px) {
-
   .home-content__main {
     max-width: 580px;
   }
@@ -1043,7 +1111,7 @@ p.lead {
   margin-top: 2%;
 }
 
-.service-item{
+.service-item {
   padding: 2%;
 }
 
@@ -1072,7 +1140,6 @@ p.lead {
  * services
  * ------------------------------------------------------------------- */
 @media only screen and (max-width: 1200px) {
-
   .services-list [class*="col-"]:nth-child(2n + 1) {
     padding-right: 30px;
   }
@@ -1081,7 +1148,6 @@ p.lead {
   }
 }
 @media only screen and (max-width: 800px) {
-
   .services-list {
     margin-top: 3rem;
   }
@@ -1098,7 +1164,6 @@ p.lead {
   }
 }
 @media only screen and (max-width: 400px) {
-
   .services-list [class*="col-"]:nth-child(n) {
     padding: 0;
   }
@@ -1859,6 +1924,5 @@ p.lead {
 }
 
 /*# sourceMappingURL=main.css.map */
-
 </style>
 

@@ -13,16 +13,16 @@
         <div class="form-group">
           <label class="control-label" for="nombre">Nombre de la empresa</label>  
           <el-input name="nombre" type="text" placeholder="Ingrese el nombre de la empresa"
-          v-model="empresaModel.nombre" v-validate="'required|max:20'"></el-input>
+          v-model="empresaModel.nombre" v-validate="'required|max:64'"></el-input>
           <span v-show="errors.has('nombre')" class="text-warning"></span>
-          <span v-show="errors.has('nombre')" class="text-danger">*Maximo 20 caracteres</span>
+          <span v-show="errors.has('nombre')" class="text-danger">*Maximo 64 caracteres</span>
         </div> 
         <!--nit/rut-->
         <div class="form-group">
           <label class="control-label" for="nit_emp">NIT/RUT</label>  
-          <el-input name="nit" type="number" v-model="empresaModel.nit" v-validate="'required|max:10'"
+          <el-input name="nit" type="number" v-model="empresaModel.nit" v-validate="'required|max:11'"
           placeholder="NIT o RUT de la empresa" ></el-input>
-          <span v-show="errors.has('nit')" class="text-danger">*Maximo 10 caracteres</span>
+          <span v-show="errors.has('nit')" class="text-danger">*Maximo 11 caracteres</span>
         </div>
         <div class="row">
           <!-- departamento -->
@@ -62,9 +62,9 @@
             <div class="form-group">
               <label class="control-label">Teléfono</label>  
               <el-input name="telefono" type="number" placeholder="Teléfono"
-              v-model="empresaModel.telefono" v-validate="'max:7'"></el-input>
+              v-model="empresaModel.telefono" v-validate="'max:12'"></el-input>
               <i v-show="errors.has('telefono')" class="text-warning"></i>
-              <span v-show="errors.has('telefono')" class="text-danger">*Máximo 7 caracteres</span>
+              <span v-show="errors.has('telefono')" class="text-danger">*Máximo 12 caracteres</span>
             </div>
           </div>
           <!-- celular -->
@@ -72,9 +72,9 @@
             <div class="form-group">
               <label class="control-label">Celular/Whatsapp</label>  
               <el-input id="cel_emp" name="celular" type="number" placeholder="Whatsapp" 
-              v-model="empresaModel.celular" v-validate="'max:10'"></el-input>
+              v-model="empresaModel.celular" v-validate="'max:12'"></el-input>
               <i v-show="errors.has('celular')" class="text-warning"></i>
-              <span v-show="errors.has('celular')" class="text-danger">*Máximo 10 caracteres</span>
+              <span v-show="errors.has('celular')" class="text-danger">*Máximo 12 caracteres</span>
             </div>
           </div>  
           <!-- Email-->
@@ -140,7 +140,7 @@
         <!--Logo-->
         <div class="text-center blanc">
           <el-upload
-            action= "http://sfo2.digitaloceanspaces.com"
+            action= "http://127.0.0.1:8000/api/archivo/"
             multiple
             :limit="1"
             :on-exceed="exceso_archivos"
@@ -176,18 +176,18 @@
             <div class="form-group">
               <input name="nombre_ser_1" type="text" placeholder="Nombre servicio"
               class="form-control input-lg" v-model="servicioModel.nombre_ser_1"
-              v-validate="'required|max:20'">
+              v-validate="'required|max:120'">
               <i v-show="errors.has('nombre_ser_1')" class="text-warning"></i>
-              <span v-show="errors.has('nombre_ser_1')" class="text-danger">*Maximo 20 caracteres</span>
+              <span v-show="errors.has('nombre_ser_1')" class="text-danger">*Maximo 120 caracteres</span>
             </div>
           </div>
           <div class="col-xs-6 col-sm-6 col-md-6">
             <div class="form-group">
               <textarea class="form-control input-lg" name="ser_1" 
               placeholder="Describa el servicio" v-model="servicioModel.ser_1"
-              v-validate="'required|max:20'"></textarea>
+              v-validate="'required|max:120'"></textarea>
               <i v-show="errors.has('ser_3')" class="text-warning"></i>
-              <span v-show="errors.has('ser_3')" class="text-danger">*Maximo 20 caracteres</span>
+              <span v-show="errors.has('ser_3')" class="text-danger">*Maximo 120 caracteres</span>
             </div>
           </div>
           <div class="form-group col-xs-1 col-sm-1 col-md-1">
