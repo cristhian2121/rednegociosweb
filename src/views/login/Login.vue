@@ -7,15 +7,18 @@
                <p><img src="@/assets/logo.png" class="img-responsive img-logo" alt="" /></p>
                <!--https://thumbs.dreamstime.com/b/conexi%C3%B3n-de-red-social-y-comunicaci%C3%B3n-empresarial-global-89882816.jpg" class="img-responsive" alt="" /></p>-->
                <p>
-                  <el-input v-model="usuario_model.email" type="email" name="email" placeholder="Correo electrónico" required></el-input>
+                  <el-input v-model="usuario_model.email" id="email_input" type="email" name="email" v-validate="'required|max:65'" placeholder="Correo electrónico"></el-input>
+                  <span class='email_type text-danger'>*El correo debe ser de tipo email.</span>
+                  <span v-show="errors.has('email')" class="text-danger">*El correo debe contener entre 1 y 65 caracteres.</span>
                </p>
                <p>
-                  <el-input v-model="usuario_model.password" type="password" id="password1" placeholder="Contraseña" required=""></el-input>
+                  <el-input v-model="usuario_model.password"  name="password" type="password" id="password" v-validate="'required|min:8|max:50'" placeholder="Contraseña" required=""></el-input>
+                  <span v-show="errors.has('password')" class="text-danger">*La contraseña debe contener entre 8 y 50 caracteres.</span>
                </p>
                <p>
                <div class="cont-center g-recaptcha" data-sitekey="6LdOw3UUAAAAADpYeBKGykbrkXelEx6mtlrVI4rb"></div>
                </p>
-               <el-button type="primary" class="btn-lg btn-block" v-on:click="ingresar()">Ingresar</el-button>
+               <el-button type="primary" class="btn-lg btn-block" v-on:click="validateBeforeSubmit()">Ingresar</el-button>
                <router-link :to="{ path: '/registration'}">Registrarme -</router-link>
                <a href="#"> Olvide Contraseña</a>
             </section>
@@ -46,6 +49,14 @@ export default {
     },
     methods:{
         ingresar: function(){
+          let emailAux = this.usuario_model.email;
+          let typeEmail = this.isValidEmail(emailAux)
+          if (typeEmail==false){
+            document.querySelector('.email_type').style.display='block';
+            return
+          }else{
+            document.querySelector('.email_type').style.display='none';
+          }
             axios({
                 method: "post",
                 url: 'http://68.183.124.242:8000/rest-auth/login/',
@@ -60,17 +71,49 @@ export default {
                 this.$router.push({ path: 'home'})
             })
             .catch(e =>{
-                this.$notify({
-                    message: 'Usuario o contraseña invalida.',
-                    type: 'warning'
-                });
+              this.mensaje_error();
             })
-        }
+        },
+        isValidEmail: function(mail) {
+          return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(mail); 
+        },
+
+        mensaje_error() {
+          this.$notify.error({
+            title: "Ops",
+            message: 'Usuario o contraseña invalida',
+            type: "danger"
+          });
+        },
+        validateBeforeSubmit() {
+        this.$validator.validateAll().then((result) => {
+          if (result) {
+            this.ingresar();
+            return;
+          }         
+            this.mensaje_informacion();
+            return;          
+        });
     }
+        // emailFail: function(){
+        //   amor()
+        // },
+        // passwordFail: function(){
+        //   console.log("en")
+        //   amor()
+        // }
+    }
+}
+function amor(){
+  console.log("inicio function")
 }
 </script>
 
 <style>
+.email_type{
+  display:none;
+}
+
 .row{
   margin-left:0px;
   margin-right:0px

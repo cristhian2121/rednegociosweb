@@ -8,13 +8,17 @@
             <br>
             <section class="login-form">
                <p>
-                  <el-input v-model="usuario_model.email" type="email" name="email" placeholder="Correo electrónico" required ></el-input>
+                  <el-input v-model="usuario_model.email" type="email" name="email" placeholder="Correo electrónico" v-validate="'required|max:65'" ></el-input>
+                  <span class='email_type text-danger'>*El correo debe ser de tipo email.</span>
+                  <span v-show="errors.has('email')" class="text-danger">*El correo debe contener entre 1 y 65 caracteres</span>
                </p>
                <p>
-                  <el-input v-model="usuario_model.password1" type="password"  placeholder="Contraseña" required=""></el-input>
+                  <el-input v-model="usuario_model.password1" name='password1' type="password"  placeholder="Contraseña" v-validate="'required|min:8|max:50'"></el-input>
+                  <span v-show="errors.has('password1')" class="text-danger">*La contraseña debe contener entre 8 y 50 caracteres</span>
                </p>
                <p>
-                  <el-input v-model="usuario_model.password2" type="password" placeholder="Repita Contraseña" required=""></el-input>
+                  <el-input v-model="usuario_model.password2" name='password2' type="password" placeholder="Repita Contraseña" v-validate="'required|min:8|max:50'"></el-input>
+                  <span v-show="errors.has('password2')" class="text-danger">*La contraseña debe contener entre 8 y 50 caracteres</span>
                </p>
                <p class="txt-cen">¿Quiere inscribir su empresa?</p>
                <div class="form-group txt-cen">
@@ -51,6 +55,15 @@ export default {
 
     methods:{
         registrar: function(){
+            let emailAux= this.usuario_model.email;
+            let typeEmail= this.isValidEmail(emailAux);
+            if(typeEmail==false){
+                document.querySelector('.email_type').style.display='block';
+                return
+            }else{
+                document.querySelector('.email_type').style.display='none';
+            }
+            
             axios({
                 method: "post",
                 url: 'http://68.183.124.242:8000/rest-auth/registration/',
@@ -71,10 +84,13 @@ export default {
             })
             .catch(e =>{                
                 this.$notify({
-                    message: 'La contraseña no coincide',
+                    message: 'Las contraseñas no coincide',
                     type: 'warning'
                 });
             })
+        },
+        isValidEmail: function(mail){
+            return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(mail); 
         }
 
     }
@@ -88,6 +104,7 @@ export default {
     padding-top: 10%;
     padding-bottom: 13%;
 }
+
 </style>
 
 

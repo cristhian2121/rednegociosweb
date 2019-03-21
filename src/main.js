@@ -41,9 +41,6 @@ Vue.component(Checkbox.name, Checkbox);
 Vue.component(DatePicker.name, DatePicker);
 Vue.component(upload.name, upload);
 Vue.component(dialog.name, dialog);
-//Vue.component(date.name, select);
-// Vue.component(Alert.name, Alert);
-// Vue.component(Message.name, Message);
 Vue.prototype.$notify = Notification;
 Vue.use(VeeValidate);
 
@@ -60,7 +57,7 @@ var router = new Router({
       component: Registration,
     },
     {
-      path: '/registration/business',
+      path: '/registration/bussines',
       component: Registro_empresa
     },
     {

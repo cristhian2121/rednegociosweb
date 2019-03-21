@@ -12,17 +12,16 @@
         <hr> 
         <div class="form-group">
           <label class="control-label" for="nombre">Nombre de la empresa</label>  
-          <el-input name="nombre" type="text" placeholder="Ingrese el nombre de la empresa"
+          <el-input name="nombre" type="text" placeholder="Nombre de la empresa"
           v-model="empresaModel.nombre" v-validate="'required|max:64'"></el-input>
-          <span v-show="errors.has('nombre')" class="text-warning"></span>
-          <span v-show="errors.has('nombre')" class="text-danger">*Maximo 64 caracteres</span>
+          <span v-show="errors.has('nombre')" class="text-danger">*El nombre debe contener entre 1 y 64 caracteres.</span>
         </div> 
         <!--nit/rut-->
         <div class="form-group">
           <label class="control-label" for="nit_emp">NIT/RUT</label>  
           <el-input name="nit" type="number" v-model="empresaModel.nit" v-validate="'required|max:11'"
           placeholder="NIT o RUT de la empresa" ></el-input>
-          <span v-show="errors.has('nit')" class="text-danger">*Maximo 11 caracteres</span>
+          <span v-show="errors.has('nit')" class="text-danger">*El NIT o RUT debe contener entre 1 y 64 caracteres.</span>
         </div>
         <div class="row">
           <!-- departamento -->
@@ -40,19 +39,20 @@
           <div class=" col-sm-6 col-md-3">
             <div class="form-group">
               <label class="control-label" for="ciudad_emp">Ciudad</label>
-              <el-select v-model="empresaModel.id_ciudad" clearable placeholder="Seleccionar" >
+              <el-select v-model="empresaModel.id_ciudad" name="ciudad" clearable placeholder="Seleccionar ciudad" v-validate="'required'">
                 <el-option v-for="ciudad in ciudades" :key="ciudad.id_ciudad" 
                 :label="ciudad.ciudad" :value="ciudad.id_ciudad"></el-option>
               </el-select>
+              <span v-show="errors.has('ciudad')" class="text-danger">*Debe seleccionar una ciudad</span>
+
             </div>
           </div>
           <!-- dirección-->
-          <div class="col-md-6">
+          <div class="col-md-9">
             <div class="form-group">
               <label class="control-label">Dirección</label>  
-              <el-input id="dir_emp" name="direccion" type="text" placeholder="Dirección"
+              <el-input id="dir_emp" name="direccion" type="text" placeholder="Dirección de la empresa"
                v-model="empresaModel.direccion" ></el-input>
-              <i v-show="errors.has('direccion')" class="text-warning"></i>
             </div>
           </div>
         </div>            
@@ -62,28 +62,26 @@
             <div class="form-group">
               <label class="control-label">Teléfono</label>  
               <el-input name="telefono" type="number" placeholder="Teléfono"
-              v-model="empresaModel.telefono" v-validate="'max:12'"></el-input>
-              <i v-show="errors.has('telefono')" class="text-warning"></i>
-              <span v-show="errors.has('telefono')" class="text-danger">*Máximo 12 caracteres</span>
+              v-model="empresaModel.telefono" v-validate="'max:7'"></el-input>
+              <span v-show="errors.has('telefono')" class="text-danger">*El teléfono debe contener máximo caracteres.</span>
             </div>
           </div>
           <!-- celular -->
           <div class="col-sm-2 col-md-3">
             <div class="form-group">
-              <label class="control-label">Celular/Whatsapp</label>  
-              <el-input id="cel_emp" name="celular" type="number" placeholder="Whatsapp" 
+              <label class="control-label">Celular</label>  
+              <el-input id="cel_emp" name="celular" type="number" placeholder="Celular/Whatsapp" 
               v-model="empresaModel.celular" v-validate="'max:12'"></el-input>
-              <i v-show="errors.has('celular')" class="text-warning"></i>
-              <span v-show="errors.has('celular')" class="text-danger">*Máximo 12 caracteres</span>
+              <span v-show="errors.has('celular')" class="text-danger">*El celular debe contener máximo 12 caracteres</span>
             </div>
           </div>  
           <!-- Email-->
           <div class="col-md-6">
             <div class="form-group">
-              <label class="control-label" for="email_emp">Email</label>  
-              <el-input id="email_emp" name="email" type="email" placeholder="Email"
+              <label class="control-label" for="email_emp">Correo electrónico</label>  
+              <el-input id="email_emp" name="email" type="email" placeholder="Correo electrónico"
               v-model="empresaModel.email" v-validate="'email'"></el-input>
-              <i v-show="errors.has('email')" class="text-warning"></i>
+              <span class="email_type text-danger">*El correo es de tiempo email.</span>
               <span v-show="errors.has('email')" class="text-danger">*Campo requerido</span>
             </div>
           </div>
@@ -116,14 +114,15 @@
         <hr>            
         <!--sección-->
         <div class="row">
-          <div class="col-sm-6 col-md-6">
+          <div class="col-sm-5 col-md-5">
               <label class="control-label">¿En que sección desea aparecer?</label>
           </div>
-          <div class=" col-sm-6 col-md-6">
-            <el-select  v-model="empresaModel.id_tipo" clearable placeholder="Seleccionar sección">
+          <div class=" col-sm-7 col-md-7">
+            <el-select  v-model="empresaModel.id_tipo" name="tipo" clearable placeholder="Seleccionar sección" v-validate="'required'">
               <el-option v-for="tipo in tipos" :key="tipo.id_tipo" 
               :label="tipo.nombre" :value="tipo.id_tipo"> </el-option>
             </el-select>
+            <span v-show="errors.has('tipo')" class="text-danger">*Debe seleccionar una sección</span>
           </div>
         </div>
 
