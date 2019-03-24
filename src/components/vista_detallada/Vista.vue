@@ -5,8 +5,7 @@
     <header id="header" class="alt">
       <h1>
         <strong>
-          <!-- <a href>{{ empresas.nombre }}</a> -->
-          <a href=""><img src="@/assets/logo-linew.png" class="im-logo-header"></a>
+          <a href>{{ empresas.nombre }}</a>
         </strong>
       </h1>
       <nav id="nav">
@@ -28,7 +27,7 @@
     </header>
 
     <!-- Banner -->
-    <!-- <section id="banner">
+    <section id="banner">
       <img src="@/assets/logo-linew.png" class="im-logo">
       <p>Todo lo que necesitas, en un solo lugar</p>
       <ul class="icons banner">
@@ -65,13 +64,6 @@
           <br>
         </li>
       </ul>
-    </section> -->
-    <section class="">
-        <agile :arrows="false" :speed="750" :fade="true" :autoplay="true" :pauseOnHover="false">
-          <div class="slide slide--1"><img width="100%" src="@/assets/slide1.png" alt></div>
-          <div class="slide slide--2"><img width="100%" src="@/assets/slide2.png" alt></div>
-          <div class="slide slide--3"><img width="100%" src="@/assets/slide3.png" alt></div>
-        </agile>
     </section>
 
     <!-- One -->
@@ -92,8 +84,8 @@
             ></iframe>
           </div>
           <div class="6u 12u$(medium)">
-            <!-- <p>{{ empresas.mision }}</p> -->
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+            <p>{{ empresas.mision }}</p>
+            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p> -->
           </div>
         </div>
       </div>
@@ -105,18 +97,19 @@
           <h2>Nuestros servicios</h2>
         </header>
         <div class="feature-grid">
-          <div class="feature">
+          <div class="feature" v-for="servicio in servicios">
             <div class="image rounded">
-              <img src="@/assets/logo-home.png" alt>
+              <img v-bind:src="'D:/proyectoRolo/Api/archivo/'+empresas.nombre_logo" alt>
+              <!-- <img  src="@/assets/logo-home.png" alt> -->
             </div>
             <div class="content">
               <header>
-                <h4>Servicio 1</h4>
+                <h4>{{ empresas.nombre }}</h4>
               </header>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore esse tenetur accusantium porro omnis, unde mollitia totam sit nesciunt consectetur.</p>
+              <p>{{ empresas.mision }}</p>
             </div>
           </div>
-          <div class="feature">
+          <!-- <div class="feature">
             <div class="image rounded">
               <img src="@/assets/logo-home.png" alt>
             </div>
@@ -148,12 +141,18 @@
               </header>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore esse tenetur accusantium porro omnis, unde mollitia totam sit nesciunt consectetur.</p>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </section>
-    
-    <section id="Blog" class="wrapper special">
+    <section class="">
+        <agile :arrows="false" :speed="750" :fade="true" :autoplay="true" :pauseOnHover="false">
+          <div class="slide slide--1"><img width="100%" src="@/assets/slide1.png" alt></div>
+          <div class="slide slide--2"><img width="100%" src="@/assets/slide2.png" alt></div>
+          <div class="slide slide--3"><img width="100%" src="@/assets/slide3.png" alt></div>
+        </agile>
+    </section>
+    <section id="Blog" class="wrapper special style2">
       <div class="container">
         <header class="major">
           <h2>Blog</h2>
@@ -176,7 +175,7 @@
                 <label>Title blog</label>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
               </div>
-              <el-button class="btn CMXD-btn-grey">Ver más</el-button>
+              <el-button class="btn CMXD-btn-grey" v-on:click="validateBeforeSubmit">Ver más</el-button>
             </div>
           </div>
           <div class="col-md-4 padding-blog">
@@ -186,7 +185,7 @@
                 <label>Title blog</label>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
               </div>
-              <el-button class="btn CMXD-btn-grey">Ver más</el-button>
+              <el-button class="btn CMXD-btn-grey" v-on:click="validateBeforeSubmit">Ver más</el-button>
             </div>
           </div>
           <div class="col-md-4 padding-blog">
@@ -196,7 +195,7 @@
                 <label>Title blog</label>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
               </div>
-              <el-button class="btn CMXD-btn-grey">Ver más</el-button>
+              <el-button class="btn CMXD-btn-grey" v-on:click="validateBeforeSubmit">Ver más</el-button>
             </div>
           </div>
           <div class="col-md-4 padding-blog">
@@ -206,7 +205,7 @@
                 <label>Title blog</label>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
               </div>
-              <el-button class="btn CMXD-btn-grey">Ver más</el-button>
+              <el-button class="btn CMXD-btn-grey" v-on:click="validateBeforeSubmit">Ver más</el-button>
             </div>
           </div>
           <div class="col-md-4 padding-blog">
@@ -216,7 +215,7 @@
                 <label>Title blog</label>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
               </div>
-              <el-button class="btn CMXD-btn-grey">Ver más</el-button>
+              <el-button class="btn CMXD-btn-grey" v-on:click="validateBeforeSubmit">Ver más</el-button>
             </div>
           </div>
         </div>
@@ -346,7 +345,7 @@
               </div>
             </div>
             <div class="form-CMXD col-md-12 text-center">
-              <el-button class="btn CMXD-btn-ok">Enviar</el-button>
+              <el-button class="btn CMXD-btn-ok" v-on:click="validateBeforeSubmit">Enviar</el-button>
             </div>
           </div>
         </div>
