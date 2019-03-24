@@ -68,6 +68,7 @@ export default {
     logout: function() {
       sessionStorage.removeItem("user");
     },
+<<<<<<< HEAD
     usuario_empresa: async function() {
       await axios
         .get(
@@ -81,6 +82,16 @@ export default {
             this.tiene_empresa = true;
           }
         });
+=======
+    usuario_empresa: async function(){
+      await axios.get(`http://68.183.124.242:8000/api/empresa_usuario/?email=${this.email_user}`)
+      .then(resp => {
+        if(resp.data[0].email == this.email_user){
+          this.nombre_empresa = resp.data[0].nombre;
+          this.tiene_empresa = true;
+        } 
+      })
+>>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
     }
     // traer_empresas: function() {
     //   axios.get(`http://68.183.124.242:8000/api/empresa/?usuario=${this.nombre_empresa}`)
