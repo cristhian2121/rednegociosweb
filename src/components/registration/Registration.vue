@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD
   <div id="CMXD-login" class="flex flex-center">
     <a class="freepick" href="http://www.freepik.com">Photo by Freepik</a>
     <!--Back-->
@@ -167,34 +166,6 @@
       </div>
     </div>
   </div>
-=======
-      <div class="row">
-         <div class="img-left col-md-3"></div>
-         <div class="loginkr-r col-md-6">
-            <h2 style="text-align:center">Registro Personas</h2>
-            <hr>
-            <br>
-            <section class="login-form">
-               <p>
-                  <el-input v-model="usuario_model.email" type="email" name="email" placeholder="Correo electrónico" required ></el-input>
-               </p>
-               <p>
-                  <el-input v-model="usuario_model.password1" type="password"  placeholder="Contraseña" required=""></el-input>
-               </p>
-               <p>
-                  <el-input v-model="usuario_model.password2" type="password" placeholder="Repita Contraseña" required=""></el-input>
-               </p>
-               <p class="txt-cen">¿Quiere inscribir su empresa?</p>
-               <div class="form-group txt-cen">
-                  <el-radio type="radio" v-model="btn_empresa" label="1">Si</el-radio>
-                  <el-radio type="radio" v-model="btn_empresa" label="2">No</el-radio>
-               </div>
-               <el-button type="primary" class="btn-lg btn-block" v-on:click="registrar()">Registrarme</el-button>
-            </section>
-         </div>
-         <div class="img-rigth col-md-3"></div>
-      </div>
->>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
 </template>
 
 <script>
@@ -202,7 +173,6 @@ import formLogin from '@/components/login/Form_login';
 import axios from "axios";
 
 export default {
-<<<<<<< HEAD
   name: "registration",
   components: {
     formLogin
@@ -220,52 +190,6 @@ export default {
       showModal: true
     };
   },
-=======
-    name: "registration",
-    data(){
-        return{
-            usuario_model: {
-                username: null,
-                email: null,
-                password1: null,
-                password2: null
-            },
-            respuesta: '',
-            btn_empresa: '2'
-        }
-    },
-
-    mounted(){     
-    },
-
-    methods:{
-        registrar: function(){
-            axios({
-                method: "post",
-                url: 'http://68.183.124.242:8000/rest-auth/registration/',
-                data:{
-                    username: this.usuario_model.email,
-                    email: this.usuario_model.email,
-                    password1: this.usuario_model.password1,
-                    password2: this.usuario_model.password2
-                }
-            })
-            .then(respuesta => {
-                sessionStorage.setItem('user',this.usuario_model.email);
-                if (this.btn_empresa==1){
-                    this.$router.push({ path: '/registration/business'})
-                }else{
-                    this.$router.push({ path: 'home'})
-                }
-            })
-            .catch(e =>{                
-                this.$notify({
-                    message: 'La contraseña no coincide',
-                    type: 'warning'
-                });
-            })
-        }
->>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
 
   mounted() {
     
@@ -304,7 +228,6 @@ export default {
 
 
 
-<<<<<<< HEAD
 <style scoped>
 body {
   overflow-x: hidden;
@@ -613,12 +536,6 @@ body {
 }
 a:hover {
   text-decoration: none;
-=======
-<style>
-.loginkr-r {
-    padding-top: 10%;
-    padding-bottom: 13%;
->>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
 }
 </style>
 

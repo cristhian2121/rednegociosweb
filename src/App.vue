@@ -6,37 +6,11 @@
 
 <script>
 import axios from "axios";
-<<<<<<< HEAD
 export default {
   async mounted() {
     this.usuario = sessionStorage.getItem("user");
     if (this.usuario) {
       await this.traer_empresas();
-=======
-export default { 
-  async mounted(){      
-      this.usuario = sessionStorage.getItem('user')
-      if(this.usuario){     
-        await this.traer_empresas();    
-      }
-    },
-    data(){
-      return{
-        usuario : null,
-        empresas : [],
-        loader: true
-      }      
-    },
-    methods:{
-      traer_empresas: async function(){        
-            axios.get(`http://68.183.124.242:8000/api/detalle/?email_user=${this.usuario}`)
-            .then(respuesta => {
-              this.empresas = respuesta.data[0];
-              this.$router.push({ path: `/empresa/${this.empresas.nombre}`});
-              this.loader = false;
-            });
-        }
->>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
     }
   },
   data() {
@@ -1872,22 +1846,7 @@ a.freepick.inside-back {
 }
 /* End Buttons CMXD*/
 
-<<<<<<< HEAD
 .cont-center {
-=======
-*,:after,:before {
-box-sizing:inherit;
--webkit-tap-highlight-color:transparent;
--moz-tap-highlight-color:transparent;
-}
-
-body .row {
-  margin-left: 0px;
-  margin-right: 0px;
-}
-
-.cont-center{
->>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1991,7 +1950,6 @@ body .row {
 }
 
 body {
-<<<<<<< HEAD
   /*color: #777777;
   font-family: "", sans-serif;
   font-size: 12px;
@@ -1999,18 +1957,12 @@ body {
   line-height: 1.625em;
   position: relative;*/
   font-size: 1.7rem;
-=======
-  background: #fff;
-  font-family: "metropolis-regular", sans-serif;
-  /*font-size: 1.7rem;*/
->>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
   font-style: normal;
   font-weight: normal;
   line-height: 1.765;
   color: #555555;
   margin: 0;
   padding: 0;
-<<<<<<< HEAD
   font-family: Helvetica, Arial, sans-serif;
   -webkit-animation-name: fade-body;
   -webkit-animation-duration: 0.5s;
@@ -2032,11 +1984,6 @@ body {
   100% {
     opacity: 1;
   }
-=======
-  box-sizing:border-box;
-  margin:0;
-  width:100%;
->>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
 }
 ol,
 ul {

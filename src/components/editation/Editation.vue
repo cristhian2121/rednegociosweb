@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD
   <div id="CMXD-login">
     <a class="freepick inside-back" href="http://www.freepik.com">Photo by Freepik</a>
     <MyHeader></MyHeader>
@@ -10,15 +9,6 @@
       </div>
       <div class="title-business">Información general</div>
       <div class="row">
-=======
-  <div class="container loginkr">      
-    <div class="row" v-if="!carga && vista">
-      <div class="col-md-1 col-lg-2"></div>
-      <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8">
-        <h2 style="text-align: center;"> Edite la información de la empresa<small></small></h2>
-        <hr>
-        <br>
->>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
         <!--Info empresa-->
         <div class="form-CMXD row col-md-6">
           <div class="CMXD-icon-form">
@@ -207,11 +197,7 @@
         <!--Logo-->
         <div class="form-CMXD row col-md-6">
           <el-upload
-<<<<<<< HEAD
             action="http://sfo2.digitaloceanspaces.com"
-=======
-            action= "http://68.183.124.242:8000/api/archivo/"
->>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
             multiple
             :limit="1"
             class="btn-services"
@@ -243,7 +229,6 @@
           </div>
         </div>
 
-<<<<<<< HEAD
         <!--Logo-->
         <div class="form-CMXD row col-md-6">
           <el-upload
@@ -798,266 +783,6 @@
         <div class="form-CMXD row col-md-6">
           <el-upload
             action="http://68.183.124.242:8000/api/archivo/"
-=======
-        <!-- Servicios-->
-        <div><h2><small>Servicios</small></h2>
-        <hr> 
-        <!-- numero servicios -->
-        <div class="form-group">
-          <label class="control-label" for="num_ser">¿Cuántos servicios ofrece?</label>
-          <el-radio-group v-model="radio_servicios" v-on:change="cambio_servicios">
-            <el-radio :label="1">1</el-radio>
-            <el-radio :label="2">2</el-radio>
-            <el-radio :label="3">3</el-radio>
-            <el-radio :label="4">4</el-radio>
-            <el-radio :label="5">5</el-radio>
-            <el-radio :label="6">6</el-radio>
-            <el-radio :label="7">7</el-radio>
-            <el-radio :label="8">8</el-radio>
-            <el-radio :label="9">9</el-radio>
-            <el-radio :label="10">10</el-radio>
-          </el-radio-group>
-        </div>
-        <!-- servicio 1-->
-        <div class="row">
-          <div class="col-xs-4 col-sm-4 col-md-4">
-            <div class="form-group">
-              <input name="nombre_ser_1" type="text" placeholder="Nombre servicio"
-              class="form-control input-lg" v-model="servicioModel.nombre_ser_1"
-              v-validate="'required|max:20'">
-              <i v-show="errors.has('nombre_ser_1')" class="text-warning"></i>
-              <span v-show="errors.has('nombre_ser_1')" class="text-danger">*Maximo 20 caracteres</span>
-            </div>
-          </div>general
-          <div class="col-xs-7 col-sm-7 col-md-7">
-            <div class="form-group">
-              <textarea class="form-control input-lg" name="ser_1" 
-              placeholder="Describa el servicio" v-model="servicioModel.ser_1"
-              v-validate="'required|max:20'"></textarea>
-              <i v-show="errors.has('ser_3')" class="text-warning"></i>
-              <span v-show="errors.has('ser_3')" class="text-danger">*Maximo 20 caracteres</span>
-            </div>
-          </div>
-          <div class="form-group col-xs-1 col-sm-1 col-md-1">
-            <el-upload
-            action= "http://68.183.124.242:8000/api/archivo/"
-            multiple
-            :limit="1"
-            :on-exceed="exceso_archivos">
-              <el-button size="small" type="success" plain>Cargar imagen</el-button>
-            </el-upload>
-          </div>
-        </div>
-        <!--Servicio 2-->
-        <div class="row" v-if="servicio_2">
-          <div class="col-xs-4 col-sm-4 col-md-4">
-            <div class="form-group">
-              <input name="nombre_ser_2" type="text" placeholder="Nombre"
-              class="form-control input-lg" v-model="servicioModel.nombre_ser_2">
-            </div>
-          </div>
-          <div class="col-xs-7 col-sm-7 col-md-7">
-            <div class="form-group">
-              <textarea class="form-control input-lg" name="ser_2" 
-              placeholder="Describa su servicio" v-model="servicioModel.ser_2"></textarea>
-            </div>
-          </div>
-          <div class="form-group col-xs-1 col-sm-1 col-md-1">
-            <el-upload
-            action= "http://68.183.124.242:8000/api/archivo/"
-            multiple
-            :limit="1"
-            :on-exceed="exceso_archivos">
-              <el-button size="small" type="success" plain>Cargar imagen</el-button>
-            </el-upload>
-          </div>
-        </div>
-        <!--Servicio 3-->
-        <div class="row" v-if="servicio_3">
-          <div class="col-xs-4 col-sm-4 col-md-4">
-            <div class="form-group">
-              <input name="nombre_ser_3" type="text" placeholder="Nombre"
-              class="form-control input-lg" v-model="servicioModel.nombre_ser_3">
-            </div>
-          </div>
-          <div class="col-xs-7 col-sm-7 col-md-7">
-            <div class="form-group">
-              <textarea class="form-control input-lg" name="ser_3" 
-              placeholder="Describa su servicio" v-model="servicioModel.ser_3"></textarea>
-            </div>
-          </div>
-          <div class="form-group col-xs-1 col-sm-1 col-md-1">
-            <el-upload
-            action= "http://68.183.124.242:8000/api/archivo/"
-            multiple
-            :limit="1"
-            :on-exceed="exceso_archivos">
-              <el-button size="small" type="success" plain>Cargar imagen</el-button>
-            </el-upload>
-          </div>
-        </div>
-        <!--Servicio 4-->
-        <div class="row" v-if="servicio_4">
-          <div class="col-xs-4 col-sm-4 col-md-4">
-            <div class="form-group">
-              <input name="nombre_ser_4" type="text" placeholder="Nombre"
-              class="form-control input-lg" v-model="servicioModel.nombre_ser_4">
-            </div>
-          </div>
-          <div class="col-xs-7 col-sm-7 col-md-7">
-            <div class="form-group">
-              <textarea class="form-control input-lg" name="ser_4" 
-              placeholder="Describa su servicio" v-model="servicioModel.ser_4"></textarea>
-            </div>
-          </div>
-          <div class="form-group col-xs-1 col-sm-1 col-md-1">
-            <el-upload
-            action= "http://68.183.124.242:8000/api/archivo/"
-            multiple
-            :limit="1"
-            :on-exceed="exceso_archivos">
-              <el-button size="small" type="success" plain>Cargar imagen</el-button>
-            </el-upload>
-          </div>
-        </div>
-        <!--Servicio 5-->
-        <div class="row" v-if="servicio_5">
-          <div class="col-xs-4 col-sm-4 col-md-4">
-            <div class="form-group">
-              <input name="nombre_ser_5" type="text" placeholder="Nombre"
-              class="form-control input-lg" v-model="servicioModel.nombre_ser_5">
-            </div>
-          </div>
-          <div class="col-xs-7 col-sm-7 col-md-7">
-            <div class="form-group">
-              <textarea class="form-control input-lg" name="ser_5" 
-              placeholder="Describa su servicio" v-model="servicioModel.ser_5"></textarea>
-            </div>
-          </div>
-          <div class="form-group col-xs-1 col-sm-1 col-md-1">
-            <el-upload
-            action= "http://68.183.124.242:8000/api/archivo/"
-            multiple
-            :limit="1"
-            :on-exceed="exceso_archivos">
-              <el-button size="small" type="success" plain>Cargar imagen</el-button>
-            </el-upload>
-          </div>
-        </div> 
-        <!--Servicio 6-->
-        <div class="row" v-if="servicio_6">
-          <div class="col-xs-4 col-sm-4 col-md-4">
-            <div class="form-group">
-              <input name="nombre_ser_6" type="text" placeholder="Nombre"
-              class="form-control input-lg" v-model="servicioModel.nombre_ser_5">
-            </div>
-          </div>
-          <div class="col-xs-7 col-sm-7 col-md-7">
-            <div class="form-group">
-              <textarea class="form-control input-lg" name="ser_6" 
-              placeholder="Describa su servicio" v-model="servicioModel.ser_5"></textarea>
-            </div>
-          </div>
-          <div class="form-group col-xs-1 col-sm-1 col-md-1">
-            <el-upload
-            action= "http://68.183.124.242:8000/api/archivo/"
-            multiple
-            :limit="1"
-            :on-exceed="exceso_archivos">
-              <el-button size="small" type="success" plain>Cargar imagen</el-button>
-            </el-upload>
-          </div>
-        </div>
-        <!--Servicio 7-->
-        <div class="row" v-if="servicio_7">
-          <div class="col-xs-4 col-sm-4 col-md-4">
-            <div class="form-group">
-              <input name="nombre_ser_7" type="text" placeholder="Nombre"
-              class="form-control input-lg" v-model="servicioModel.nombre_ser_5">
-            </div>
-          </div>
-          <div class="col-xs-7 col-sm-7 col-md-7">
-            <div class="form-group">
-              <textarea class="form-control input-lg" name="ser_7" 
-              placeholder="Describa su servicio" v-model="servicioModel.ser_5"></textarea>
-            </div>
-          </div>
-          <div class="form-group col-xs-1 col-sm-1 col-md-1">
-            <el-upload
-            action= "http://68.183.124.242:8000/api/archivo/"
-            multiple
-            :limit="1"
-            :on-exceed="exceso_archivos">
-              <el-button size="small" type="success" plain>Cargar imagen</el-button>
-            </el-upload>
-          </div>
-        </div>
-        <!--Servicio 8-->
-        <div class="row" v-if="servicio_8">
-          <div class="col-xs-4 col-sm-4 col-md-4">
-            <div class="form-group">
-              <input name="nombre_ser_8" type="text" placeholder="Nombre"
-              class="form-control input-lg" v-model="servicioModel.nombre_ser_5">
-            </div>
-          </div>
-          <div class="col-xs-7 col-sm-7 col-md-7">
-            <div class="form-group">
-              <textarea class="form-control input-lg" name="ser_8" 
-              placeholder="Describa su servicio" v-model="servicioModel.ser_5"></textarea>
-            </div>
-          </div>
-          <div class="form-group col-xs-1 col-sm-1 col-md-1">
-            <el-upload
-            action= "http://68.183.124.242:8000/api/archivo/"
-            multiple
-            :limit="1"
-            :on-exceed="exceso_archivos">
-              <el-button size="small" type="success" plain>Cargar imagen</el-button>
-            </el-upload>
-          </div>
-        </div>
-        <!--Servicio 9-->
-        <div class="row" v-if="servicio_9">
-          <div class="col-xs-4 col-sm-4 col-md-4">
-            <div class="form-group">
-              <input name="nombre_ser_9" type="text" placeholder="Nombre"
-              class="form-control input-lg" v-model="servicioModel.nombre_ser_5">
-            </div>
-          </div>
-          <div class="col-xs-7 col-sm-7 col-md-7">
-            <div class="form-group">
-              <textarea class="form-control input-lg" name="ser_9" 
-              placeholder="Describa su servicio" v-model="servicioModel.ser_5"></textarea>
-            </div>
-          </div>
-          <div class="form-group col-xs-1 col-sm-1 col-md-1">
-            <el-upload
-            action= "http://68.183.124.242:8000/api/archivo/"
-            multiple
-            :limit="1"
-            :on-exceed="exceso_archivos">
-              <el-button size="small" type="success" plain>Cargar imagen</el-button>
-            </el-upload>
-          </div>
-        </div>
-        <!--Servicio 10-->
-        <div class="row" v-if="servicio_10">
-          <div class="col-xs-4 col-sm-4 col-md-4">
-            <div class="form-group">
-              <input name="nombre_ser_10" type="text" placeholder="Nombre"
-              class="form-control input-lg" v-model="servicioModel.nombre_ser_5">
-            </div>
-          </div>
-          <div class="col-xs-7 col-sm-7 col-md-7">
-            <div class="form-group">
-              <textarea class="form-control input-lg" name="ser_10" 
-              placeholder="Describa su servicio" v-model="servicioModel.ser_5"></textarea>
-            </div>
-          </div>
-          <div class="form-group col-xs-1 col-sm-1 col-md-1">
-            <el-upload
-            action= "http://68.183.124.242:8000/api/archivo/"
->>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
             multiple
             :limit="1"
             class="btn-services"
@@ -1347,7 +1072,6 @@ import { Empresa } from "../../models/empresa";
 import axios from "axios";
 import MyHeader from "@/components/header/Header";
 
-<<<<<<< HEAD
 export default {
   name: "edicion_empresa",
 
@@ -1420,79 +1144,6 @@ export default {
       },
       ciudades: [
         {
-=======
-export default {  
-    name: 'edicion_empresa',
-
-    props: ['empresa'],
-    async mounted(){
-      this.nombre_empresa = this.$route.params.empresa;     
-        if(this.nombre_empresa) {
-          try{
-            this.traer_empresas();
-            this.traer_ciudaes();
-            this.traer_tipos();
-          }
-          catch(e){
-            this.mensaje_error();
-          }
-          this.traer_servicios();          
-
-
-        }
-      this.carga = false;
-    },
-    data(){
-      return{
-        empresaModel: {
-          nombre: null,
-          nit: null,
-          id_tipo: null,
-          id_ciudad: null,
-          direccion: null,
-          telefono: null,
-          celular: null,
-          email: null,
-          logo: null,
-          mision: null,          
-          fecha_registro: null,
-        },
-        servicioModel:{
-          id_empresa: null,
-          id_servicio: null, 
-          nombre_ser_1: null,
-          ser_1: null,
-          imagen1: null,
-          nombre_ser_2: null,
-          ser_2: null,
-          imagen2: null,
-          nombre_ser_3: null,
-          ser_3: null,
-          imagen3: null,
-          nombre_ser_4: null,
-          ser_4: null,
-          imagen4: null,
-          nombre_ser_5: null,
-          ser_5: null,
-          imagen5: null,
-          nombre_ser_6: null,
-          ser_6: null,
-          imagen6: null,
-          nombre_ser_7: null,
-          ser_7: null,
-          imagen7: null,
-          nombre_ser_8: null,
-          ser_8: null,
-          imagen8: null,
-          nombre_ser_9: null,
-          ser_9: null,
-          imagen9: null,
-          nombre_ser_10: null,
-          ser_10: null,
-          imagen10: null,
-        },
-        ciudades:[{
->>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
           id_ciudad: null,
           departamento: null,
           ciudad: null
@@ -1534,7 +1185,6 @@ export default {
           this.empresaModel = respuesta.data[0];
         });
     },
-<<<<<<< HEAD
     traer_servicios: function() {
       axios
         .get(
@@ -1548,41 +1198,6 @@ export default {
           console.log(this.servicioModel);
           if (this.servicioModel.length > 0) {
             this.radio_servicios = this.servicioModel.length + 1;
-=======
-    methods:{
-      traer_empresas: function() {
-        axios.get(`http://68.183.124.242:8000/api/detalle/?nombre=${this.nombre_empresa}`)
-          .then(respuesta => {
-            this.empresaModel = respuesta.data[0];            
-          });
-      },
-      traer_servicios: function() {
-        axios.get(`http://68.183.124.242:8000/api/servicio/?nombre=${this.nombre_empresa}`)
-          .then(respuesta => {
-            this.servicioModel = respuesta.data[5];
-            console.log(respuesta.data);
-            console.log(this.servicioModel);
-            if(this.servicioModel.length > 0){
-              this.radio_servicios = this.servicioModel.length + 1;              
-            }
-          });
-      },
-      enviar_formulario:async function(){
-        this.carga = true;
-        axios({
-          method: "get",
-          url: "http://68.183.124.242:8000/api/empresa/",
-          data:{
-            nombre: this.empresaModel.nombre,
-            nit: this.empresaModel.nit,
-            direccion: this.empresaModel.direccion,
-            telefono: this.empresaModel.telefono,
-            celular: this.empresaModel.celular,
-            email: this.empresaModel.email,
-            mision: this.empresaModel.mision,            
-            id_tipo: this.empresaModel.id_tipo,
-            id_ciudad: this.empresaModel.id_ciudad,
->>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
           }
         });
     },
@@ -1612,7 +1227,6 @@ export default {
         .catch(e => {
           this.mensaje_error();
           this.carga = false;
-<<<<<<< HEAD
         });
       this.enviar_servicios();
     },
@@ -1644,46 +1258,12 @@ export default {
           ser_5: this.servicioModel.ser_10
         }
       })
-=======
-        })
-        this.enviar_servicios();
-      },
-      enviar_servicios: async function(){
-        axios({
-          method: "get",
-          url: "http://68.183.124.242:8000/api/servicio/",
-          data:{
-            id_empresa: this.id_empresa,
-            nombre_ser_1: this.servicioModel.nombre_ser_1,
-            ser_1: this.servicioModel.ser_1,            
-            nombre_ser_2: this.servicioModel.nombre_ser_2,
-            ser_2: this.servicioModel.ser_2,
-            nombre_ser_3: this.servicioModel.nombre_ser_3,
-            ser_3: this.servicioModel.ser_3,
-            nombre_ser_4: this.servicioModel.nombre_ser_4,
-            ser_4: this.servicioModel.ser_4,
-            nombre_ser_5: this.servicioModel.nombre_ser_5,
-            ser_5: this.servicioModel.ser_5,
-            nombre_ser_1: this.servicioModel.nombre_ser_6,
-            ser_1: this.servicioModel.ser_6,
-            nombre_ser_2: this.servicioModel.nombre_ser_7,
-            ser_2: this.servicioModel.ser_7,
-            nombre_ser_3: this.servicioModel.nombre_ser_8,
-            ser_3: this.servicioModel.ser_8,
-            nombre_ser_4: this.servicioModel.nombre_ser_9,
-            ser_4: this.servicioModel.ser_9,
-            nombre_ser_5: this.servicioModel.nombre_ser_10,
-            ser_5: this.servicioModel.ser_10,
-          }
-        })
->>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
         .then(res => {
           this.mensaje_exito();
           this.carga = false;
         })
         .catch(e => {
           this.carga = false;
-<<<<<<< HEAD
           this.mensaje_error();
         });
     },
@@ -1694,18 +1274,6 @@ export default {
     },
     traer_tipos: async function() {
       axios.get("http://68.183.124.242:8000/api/tipo/").then(respuesta => {
-=======
-          this.mensaje_error();          
-        })
-      },
-      traer_ciudaes: async function(){
-        axios.get("http://68.183.124.242:8000/api/ciudad/").then(respuesta => {
-        this.ciudades = respuesta.data;
-        });   
-      },
-      traer_tipos: async function(){
-        axios.get("http://68.183.124.242:8000/api/tipo/").then(respuesta => {
->>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
         this.tipos = respuesta.data;
       });
     },
@@ -1857,7 +1425,6 @@ export default {
         return;
       });
     }
-<<<<<<< HEAD
   }
 };
 </script>
@@ -2039,8 +1606,5 @@ a:hover {
   .form-CMXD.row.col-md-12 .input-effect{
     width: 85%;
   }
-=======
-
->>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
 }
 </style>

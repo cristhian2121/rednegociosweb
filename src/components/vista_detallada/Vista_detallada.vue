@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <template>
   <div class="landing">
     <a class="freepick" href="http://www.freepik.com">Photo by Freepik</a>
@@ -27,46 +26,6 @@
         </ul>
       </nav>
     </header>
-=======
-<template>   
-  <div id="top" v-if="!carga">
-    <!-- barra de navegación -->
-    <header class="s-header">
-        <div class="header-logo">
-            <a class="site-logo" href=""><img src="" alt="Logo"></a>
-        </div>
-        <router-link class="header-menu-toggle" :to="{ path: '/home' }">Inicio</router-link>
-    </header>
-    <!-- end barra de navegación -->
-
-    <!-- banner -->
-    <section id="home" class="s-home" data-parallax="scroll" data-image-src="images/hero-bg.jpg" data-natural-width=3000 data-natural-height=2000 data-position-y=top>
-        <div class="shadow-overlay"></div>
-        <div class="container home-content">
-            <div class="home-content__main">
-                <h1>{{ empresas.nombre }}<br></h1>
-                <!--<p>lema <br></p>-->
-            </div>
-        </div>
-        <ul class="home-sidelinks">
-            <li><a class="smoothscroll" href="#about">Nosotros<span></span></a></li>
-            <li><a class="smoothscroll" href="#services">Servicios<span></span></a></li>
-            <li><a  class="smoothscroll" href="#contact">Contacto<span></span></a></li>
-        </ul>
-        <ul class="home-social">
-            <li class="home-social-title">Siguenos</li>
-            <li><a href="#0"><i class="fab fa-facebook"></i><span class="home-social-text">Facebook</span></a></li>
-            <li><a href="#0"><i class="fab fa-twitter"></i><span class="home-social-text">Twitter</span></a></li>
-            <li><a href="#0"><i class="fab fa-linkedin"></i><span class="home-social-text">LinkedIn</span></a></li>
-        </ul>
-        <a href="#about" class="home-scroll smoothscroll">
-            <span class="home-scroll__text">Bajar</span><span class="home-scroll__icon"></span>
-        </a>
-    </section>
-    <!-- end banner -->
-    <!---->
-
->>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
 
     <!-- Banner -->
     <!-- <section id="banner">
@@ -309,7 +268,6 @@
                 </div>
               </div>
             </div>
-<<<<<<< HEAD
           </div>
           <div class="col-md-6 row bg-white-c">
             <div class="form-CMXD row col-md-12">
@@ -324,55 +282,6 @@
             </div>
             <div class="col-md-12">
               <br>
-=======
-        </div>
-        end blog -->
-
-        <!-- lo que dicen los clientes-->
-        <div class="testimonials-wrap" >
-          
-                <div class="col-full testimonials-header">
-                    <h2>Ultimos comentarios</h2>
-                </div>
-
-            <div class="testimonials">
-                    <div class="testimonials__slide">
-                        <img src="images/avatars/user-01.jpg" alt="image" class="testimonials__avatar">
-                        <p>Muy buen servicio.</p>
-                        <div class="testimonials__author">
-                            Tim Cook<span>CEO, Apple</span>
-                        </div>
-                    </div>
-                    <div class="testimonials__slide">
-                        <img src="images/avatars/user-05.jpg" alt="Author image" class="testimonials__avatar">
-                        <p>¿Cuanto valen los nevecones?</p>
-                        <div class="testimonials__author">
-                            Sundar Pichai
-                            <span>CEO, Google</span>
-                        </div>
-                    </div>
-                    <div class="testimonials__slide">
-                        <img src="images/avatars/user-02.jpg" alt="Author image" class="testimonials__avatar">
-                        <p>les doy 5 estrellas.</p>
-                        <div class="testimonials__author">
-                            Satya Nadella
-                            <span>CEO, Microsoft</span>
-                        </div>
-                    </div>
-
-            </div>
-        </div>
-    </section>
-
-
-    <!-- contact -->
-    <section id="contact" class="s-contact">
-
-        <div>
-            <div class="col-full">
-                <h3 class="subhead">Contactanos</h3>
-                <h3 class="display-1--light">Ponte en contacto y hagamos algo genial juntos.</h3>
->>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
             </div>
             <div class="form-CMXD row col-md-12">
               <div class="CMXD-icon-form">
@@ -595,15 +504,11 @@ export default {
 
     traer_empresas: function() {
       axios
-<<<<<<< HEAD
         .get(
           `http://68.183.124.242:8000/api/detalle/?nombre=${
             this.nombre_empresa
           }`
         )
-=======
-        .get(`http://68.183.124.242:8000/api/detalle/?nombre=${this.nombre_empresa}`)
->>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
         .then(respuesta => {
           this.empresas = respuesta.data[0];
           this.carga = false;
@@ -612,15 +517,9 @@ export default {
 
     traer_servicios: async function() {
       axios.get("http://68.183.124.242:8000/api/servicio/").then(respuesta => {
-<<<<<<< HEAD
         this.servicios = respuesta.data[0];
         this.carga = false;
       });
-=======
-          this.servicios = respuesta.data[0];
-          this.carga = false;
-        });
->>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
     }
   }
 };
@@ -631,7 +530,6 @@ img.im-logo-header {
     height: 100%;
     padding: 20px;
 }
-<<<<<<< HEAD
 .col-md-12.text {
     text-align: justify;
     padding: 0px 20px;
@@ -663,70 +561,24 @@ img.im-logo-header {
   animation-name: fade-bg-modal;
   animation-duration: 0.5s;
   transition: 0.2s;
-=======
-
-p.lead {
-  font-family: "metropolis-regular", sans-serif;
-  font-size: 1.6rem;
-  line-height: 1.75;
-  margin-bottom: 3.6rem;
-  color: rgba(85, 85, 85, 0.95);
-  text-align: center;
-}
-@media only screen and (max-width: 1200px) {
-  p.lead {
-    font-size: 1.7rem;
-  }
-}
-@media only screen and (max-width: 1000px) {
-  p.lead {
-    font-size: 1.7rem;
-  }
-}
-@media only screen and (max-width: 800px) {
-  p.lead {
-    font-size: 1.6rem;
-  }
->>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
 }
 @-webkit-keyframes fade-bg-modal {
   0% {
     opacity: 0;
   }
 
-<<<<<<< HEAD
   100% {
     opacity: 1;
   }
-=======
-/* ------------------------------------------------------------------- 
- * ## display headings
- * ------------------------------------------------------------------- */
-.display-1--light {
-  color: #ffffff;
-  font-size: 1.2rem;
->>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
 }
 @keyframes fade-bg-modal {
   0% {
     opacity: 0;
   }
 
-<<<<<<< HEAD
   100% {
     opacity: 1;
   }
-=======
-.subhead {
-  font-family: "metropolis-semibold", sans-serif;
-  font-size: 0.9rem;
-  line-height: 1.3125;
-  text-transform: uppercase;
-  letter-spacing: 0.25rem;
-  color: #cc147f;
-  margin-top: 0;
-  margin-bottom: 2.1rem;
->>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
 }
 .modal-wrapper {
   display: table-cell;
@@ -747,7 +599,6 @@ p.lead {
   animation-name: fade-bg-modal-model;
   animation-duration: 0.5s;
 }
-<<<<<<< HEAD
 @-webkit-keyframes fade-bg-modal-model {
   0% {
     margin-top: 150%;
@@ -775,35 +626,6 @@ label.register-tipe {
   color: grey;
 }
 .close-modal {
-=======
-
-/* ------------------------------------------------------------------- 
- * responsive:
- * display headings
- * ------------------------------------------------------------------- */
-@media only screen and (max-width: 800px) {
-  .subhead {
-    font-size: 1.3rem;
-  }
-}
-@media only screen and (max-width: 600px) {
-  .display-1--light {
-    font-size: 0.8rem;
-  }
-}
-@media only screen and (max-width: 500px) {
-  .subhead {
-    font-size: 1.2rem;
-  }
-}
-
-/* ===================================================================
- * # header styles
- *
- * ------------------------------------------------------------------- */
-.s-header {
-  z-index: 500;
->>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
   width: 100%;
   text-align: right;
 }
@@ -824,28 +646,8 @@ label.register-tipe {
   color: #000000;
   cursor: pointer;
 }
-<<<<<<< HEAD
 .close-modal i.material-icons {
   font-size: 20px;
-=======
-
-/* ------------------------------------------------------------------- 
- * ## mobile menu toggle 
- * ------------------------------------------------------------------- */
-.header-menu-toggle {
-  position: fixed;
-  right: 110px;
-  top: 42px;
-  width: 48px;
-  height: 45px;
-  line-height: 45px;
-  font-family: "metropolis-regular", sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.4rem;
-  color: #cc147f;
-  -webkit-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
->>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
 }
 .btnr {
   width: 100%;
@@ -995,7 +797,6 @@ button.el-button.btn.CMXD-btn-grey.el-button--default {
 }
 .card-blog {
   width: 100%;
-<<<<<<< HEAD
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.38);
   background: white;
   border-radius: 3px;
@@ -1016,17 +817,11 @@ button.el-button.btn.CMXD-btn-grey.el-button--default {
   line-height: 1;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
-=======
-  height: 100%;
-  vertical-align: middle;
-  padding-bottom: 5%;
->>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
   overflow: hidden;
   text-overflow: ellipsis;
   color: grey;
   font-weight: 300;
 }
-<<<<<<< HEAD
 .col-md-6.row.bg-white-c {
   background: rgba(255, 255, 255, 0.8);
   border-radius: 3px;
@@ -1035,21 +830,6 @@ button.el-button.btn.CMXD-btn-grey.el-button--default {
 ul.icons img {
   width: 40px;
   opacity: 0.4;
-=======
-.home-content h1 {
-  font-size: 4rem;
-  line-height: 1.1;
-  margin-top: 0;
-  color: #ffffff;
-}
-.home-content h1 + p {
-  font-size: 2rem;
-  line-height: 1.421;
-  color: rgba(255, 255, 255, 0.8);
-  margin-top: 2.4rem;
-  padding-left: 10rem;
-  position: relative;
->>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
 }
 ul.icons.banner img {
   width: 25px !important;
@@ -1061,30 +841,9 @@ footer#footer a {
   font-size: 19px;
   color: #484848;
 }
-<<<<<<< HEAD
 section#banner img {
   width: 40%;
   height: auto;
-=======
-
-/* ------------------------------------------------------------------- 
- * ## home sidelinks
- * ------------------------------------------------------------------- */
-.home-sidelinks {
-  list-style: none;
-  font-family: "metropolis-regular", sans-serif;
-  font-size: 1rem;
-  line-height: 1.714;
-  text-transform: uppercase;
-  letter-spacing: 0.3rem;
-  margin: 0;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  position: absolute;
-  top: 50%;
-  right: 0;
->>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
 }
 .date-bus i {
   font-size: 31px;
@@ -1213,7 +972,6 @@ section {
   display: block;
 }
 
-<<<<<<< HEAD
 body {
   line-height: 1;
 }
@@ -1221,45 +979,6 @@ body {
 ol,
 ul {
   list-style: none;
-=======
-/* ------------------------------------------------------------------- 
- * ## home scroll
- * ------------------------------------------------------------------- */
-.home-scroll {
-  height: 4.8rem;
-  position: absolute;
-  right: 110px;
-  bottom: 0.001rem;
-}
-.home-scroll__text {
-  display: inline-block;
-  font-family: "metropolis-semibold", sans-serif;
-  font-size: 11px;
-  line-height: 4.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.3rem;
-  color: #ffffff;
-  border-bottom: 1px solid transparent;
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-  position: relative;
-  right: 7.5rem;
-}
-.home-scroll__icon {
-  display: block;
-  height: 60px;
-  width: 60px;
-  background-color: #ffffff;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: 10px 15px;
-  border-radius: 50%;
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-  position: absolute;
-  top: 0;
-  right: 0;
->>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
 }
 
 blockquote,
@@ -1275,24 +994,9 @@ q:after {
   content: none;
 }
 
-<<<<<<< HEAD
 table {
   border-collapse: collapse;
   border-spacing: 0;
-=======
-/* ------------------------------------------------------------------- 
- * ## home scroll
- * ------------------------------------------------------------------- */
-.home-social {
-  list-style: none;
-  font-size: 14px;
-  line-height: 4.8rem;
-  margin: 0;
-  color: #ffffff;
-  position: absolute;
-  bottom: 1rem;
-  left: 110px;
->>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
 }
 
 body {
@@ -1338,7 +1042,6 @@ body {
   width: 80em;
 }
 
-<<<<<<< HEAD
 @media screen and (max-width: 1680px) {
   .container.\31 25\25 {
     width: 100%;
@@ -1356,22 +1059,12 @@ body {
 
   .container.\32 5\25 {
     width: 20em;
-=======
-/* ------------------------------------------------------------------- 
- * responsive:
- * home
- * ------------------------------------------------------------------- */
-@media only screen and (max-width: 1600px) {
-  .home-scroll {
-    right: 60px;
->>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
   }
 
   .container {
     width: 80em;
   }
 }
-<<<<<<< HEAD
 
 @media screen and (max-width: 1280px) {
   .container.\31 25\25 {
@@ -1391,15 +1084,11 @@ body {
   .container.\32 5\25 {
     width: 16.25em;
   }
-=======
-@media only screen and (max-width: 1500px) {
->>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
 
   .container {
     width: 65em;
   }
 }
-<<<<<<< HEAD
 
 @media screen and (max-width: 980px) {
   .container.\31 25\25 {
@@ -1414,11 +1103,6 @@ body {
 
   .container.\35 0\25 {
     width: 45%;
-=======
-@media only screen and (max-width: 1400px) {
-  .home-content h1 + p::before {
-    top: 2.4rem;
->>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
   }
 
   .container.\32 5\25 {
@@ -1429,7 +1113,6 @@ body {
     width: 90%;
   }
 }
-<<<<<<< HEAD
 
 @media screen and (max-width: 736px) {
   .container.\31 25\25 {
@@ -1440,12 +1123,6 @@ body {
 
   .container.\37 5\25 {
     width: 67.5%;
-=======
-@media only screen and (max-width: 1200px) {
-  .home-content h1 + p::before {
-    width: 5.5rem;
-    top: 1.8rem;
->>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
   }
 
   .container.\35 0\25 {
@@ -1471,7 +1148,6 @@ body {
   .container.\37 5\25 {
     width: 67.5%;
   }
-<<<<<<< HEAD
 
   .container.\35 0\25 {
     width: 45%;
@@ -1638,10 +1314,6 @@ body {
     clear: none;
     margin-left: 0;
   }
-=======
-}
-@media only screen and (max-width: 800px) {
->>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
 
   .\31 1u\28xlarge\29,
   .\31 1u\24\28xlarge\29 {
@@ -1670,7 +1342,6 @@ body {
     clear: none;
     margin-left: 0;
   }
-<<<<<<< HEAD
 
   .\37 u\28xlarge\29,
   .\37 u\24\28xlarge\29 {
@@ -1698,12 +1369,6 @@ body {
     width: 33.3333333333%;
     clear: none;
     margin-left: 0;
-=======
-}
-@media only screen and (max-width: 700px) {
-  .home-content h1 + p::before {
-    top: 1.6rem;
->>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
   }
 
   .\33 u\28xlarge\29,
@@ -1712,7 +1377,6 @@ body {
     clear: none;
     margin-left: 0;
   }
-<<<<<<< HEAD
 
   .\32 u\28xlarge\29,
   .\32 u\24\28xlarge\29 {
@@ -1741,13 +1405,6 @@ body {
   .\32 u\24\28xlarge\29 + *,
   .\31 u\24\28xlarge\29 + * {
     clear: left;
-=======
-}
-@media only screen and (max-width: 600px) {
-  .home-content h1 + p::before {
-    left: 0;
-    top: 0;
->>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
   }
 
   .\-11u\28xlarge\29 {
@@ -1773,7 +1430,6 @@ body {
   .\-6u\28xlarge\29 {
     margin-left: 50%;
   }
-<<<<<<< HEAD
 
   .\-5u\28xlarge\29 {
     margin-left: 41.66667%;
@@ -1823,21 +1479,6 @@ body {
     width: 75%;
     clear: none;
     margin-left: 0;
-=======
-}
-@media only screen and (max-width: 500px) {
-  .s-home {
-    min-height: 642px;
-  }
-}
-@media only screen and (max-width: 400px) {
-  .s-home {
-    min-height: 630px;
-  }
-  .home-content__main {
-    padding-left: 25px;
-    padding-right: 25px;
->>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
   }
 
   .\38 u\28large\29,
@@ -1919,7 +1560,6 @@ body {
     margin-left: 83.33333%;
   }
 
-<<<<<<< HEAD
   .\-9u\28large\29 {
     margin-left: 75%;
   }
@@ -1927,20 +1567,6 @@ body {
   .\-8u\28large\29 {
     margin-left: 66.66667%;
   }
-=======
-.service-item .details p {
-  font-size: 1.1rem;
-}
-
-.service-item .details .name-emp {
-  font-size: 1.5rem;
-}
-/* ------------------------------------------------------------------- 
- * responsive:
- * services
- * ------------------------------------------------------------------- */
-@media only screen and (max-width: 1200px) {
->>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
 
   .\-7u\28large\29 {
     margin-left: 58.33333%;
@@ -1971,7 +1597,6 @@ body {
   }
 }
 
-<<<<<<< HEAD
 @media screen and (max-width: 980px) {
   .\31 2u\28medium\29,
   .\31 2u\24\28medium\29 {
@@ -1979,17 +1604,6 @@ body {
     clear: none;
     margin-left: 0;
   }
-=======
-/* ===================================================================
- * # works
- *
- * ------------------------------------------------------------------- */
-.s-works {
-  background: #ffffff;
-  padding-bottom: 7%;
-  position: relative;
-}
->>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
 
   .\31 1u\28medium\29,
   .\31 1u\24\28medium\29 {
@@ -3185,18 +2799,8 @@ table.alt thead {
   border-bottom: 0;
 }
 
-<<<<<<< HEAD
 table.alt tfoot {
   border-top: 0;
-=======
-.testimonials {
-  line-height: 2;
-  margin-top: 4.2rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.15);
-  position: relative;
-  display: flex;
-  justify-content: space-between;
->>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
 }
 
 /* Wrapper */
@@ -3214,7 +2818,6 @@ body.is-touch .wrapper.style3 {
   width: 60em;
 }
 
-<<<<<<< HEAD
 .wrapper.style2 {
   background-color: #f6f6f6;
 }
@@ -3225,23 +2828,6 @@ body.is-touch .wrapper.style3 {
     url(../../assets/bg-login.png);
   background-position: center center;
   background-size: cover;
-=======
-.testimonials__author {
-  margin-top: 0rem;
-  font-family: "metropolis-bold", sans-serif;
-  font-size: 1.2rem;
-  line-height: 1.5;
-  color: #000000;
-}
-.testimonials__author span {
-  display: block;
-  font-family: "metropolis-regular", sans-serif;
-  font-size: 1rem;
-  line-height: 1.5;
-  color: rgba(85, 85, 85, 0.7);
-  text-transform: none;
-  letter-spacing: 0;
->>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
 }
 
 .wrapper.style3 header.major {
@@ -3296,7 +2882,6 @@ body.is-touch .wrapper.style3 {
   z-index: 10001;
 }
 
-<<<<<<< HEAD
 #header h1 {
   color: #484848;
   font-weight: 400;
@@ -3305,27 +2890,9 @@ body.is-touch .wrapper.style3 {
   line-height: inherit;
   margin: 0;
   padding: 0;
-=======
-.contact-email {
-  display: inline-block;
-  font-size: 1.6rem;
-  line-height: 1.222;
-  color: #ffffff;
-  padding-top: 3.6rem;
-  position: relative;
-}
-.contact-email::before {
-  content: "";
-  display: block;
-  height: 1px;
-  width: 60px;
-  background-color: #cc147f;
-  position: absolute;
->>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
   top: 0;
 }
 
-<<<<<<< HEAD
 #header nav {
   height: inherit;
   line-height: inherit;
@@ -3339,18 +2906,6 @@ body.is-touch .wrapper.style3 {
   list-style: none;
   margin: 0;
   padding-left: 0;
-=======
-.contact-number {
-  font-size: 1.5rem;
-  line-height: 1.7;
-  display: block;
-}
-
-.contact-address {
-  font-size: 1.5rem;
-  line-height: 1.607;
-  margin-top: 2.4rem;
->>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
 }
 
 #header nav ul li {
@@ -3593,7 +3148,6 @@ section#contact .major p {
     line-height: 4em;
   }
 }
-<<<<<<< HEAD
 
 #navPanel.visible {
   -moz-transform: translateX(0);
@@ -3605,20 +3159,6 @@ section#contact .major p {
 }
 
 /* Banner */
-=======
-@media only screen and (max-width: 1200px) {
-  .contact-email {
-    font-size: 1.6rem;
-  }
-
-  .contact-number {
-    font-size: 1.5rem;
-  }
-
-  .contact-address {
-    font-size: 1.5rem;
-  }
->>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
 
 body.is-touch #banner {
   background-attachment: scroll;
@@ -3634,7 +3174,6 @@ body.is-touch #banner {
   line-height: 1.75;
   text-align: center;
 }
-<<<<<<< HEAD
 
 #banner:last-child {
   margin-bottom: 0;
@@ -3647,20 +3186,6 @@ body.is-touch #banner {
   line-height: 1.35;
   margin-bottom: 0.5em;
 }
-=======
-@media only screen and (max-width: 1000px) {
-  .contact-email {
-    font-size: 1.5rem;
-  }
-
-  .contact-number {
-    font-size: 1.4rem;
-  }
-
-  .contact-address {
-    font-size: 1.4rem;
-  }
->>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
 
 #banner p {
   color: #efefef;
@@ -3673,35 +3198,20 @@ body.is-touch #banner {
     padding: 14em 0 11em 0;
   }
 
-<<<<<<< HEAD
   #banner h2 {
     font-size: 2.5em;
-=======
-  .contact-email {
-    font-size: 1.4rem;
->>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
   }
 }
 
-<<<<<<< HEAD
 @media screen and (max-width: 980px) {
   #banner {
     padding: 9em 0 7em 0;
-=======
-  .contact-number {
-    font-size: 1.3rem;
->>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
   }
 }
 
-<<<<<<< HEAD
 @media screen and (max-width: 736px) {
   #banner {
     padding: 6em 2em 6em 2em;
-=======
-  .contact-address {
-    font-size: 1.3rem;
->>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
   }
 
   #banner br {
@@ -3719,7 +3229,6 @@ body.is-touch #banner {
     text-align: center;
   }
 }
-<<<<<<< HEAD
 
 @media screen and (max-width: 480px) {
   #banner {
@@ -3731,19 +3240,6 @@ body.is-touch #banner {
     right: 0 !important;
     text-align: center;
     align-items: center;
-=======
-@media only screen and (max-width: 600px) {
-  .contact-email {
-    font-size: 1.3rem;
-  }
-
-  .contact-number {
-    font-size: 1.2rem;
-  }
-
-  .contact-address {
-    font-size: 1.2rem;
->>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
   }
   section#contact {
     padding-bottom: 30px;
@@ -3776,24 +3272,13 @@ body.is-touch #banner {
   padding-top: 4em;
 }
 
-<<<<<<< HEAD
 @media screen and (max-width: 736px) {
   #main {
     padding-top: 2em;
-=======
-  .contact-email {
-    font-size: 1.3rem;
->>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
   }
 }
 
-<<<<<<< HEAD
 /* Footer */
-=======
-  .contact-number {
-    font-size: 1.2rem;
-  }
->>>>>>> b7c7d09958bac3ded564c3ecae461be8fdac6b65
 
 #footer {
   padding: 3em 0 1em 0;
