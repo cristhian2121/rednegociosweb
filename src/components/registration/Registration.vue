@@ -71,7 +71,7 @@
                         >
                         <span class="focus-border"></span>
                         <span class='ob_name text-danger'>*Ingrese su nombre.<br></span>
-                        <span class="lon_name text-danger">Este nombre ha superado el máximo de caracteres permitido.</span>
+                        <span class="long_name text-danger">Este nombre excede el máximo de caracteres permitido.</span>
                       </div>
                     </div>
                     <div class="form-CMXD row col-md-6">
@@ -88,7 +88,7 @@
                         >
                         <span class="focus-border"></span>
                         <span class='ob_lastname text-danger'>*Ingrese al menos un apellido.<br></span>
-                        <span class="lon_lastnamename text-danger">Este apellido ha superado el máximo de caracteres permitido.</span>
+                        <span class="long_lastname text-danger">Este apellido excede el máximo de caracteres permitido.</span>
                       </div>
                     </div>
                     <div class="form-CMXD row col-md-12">
@@ -105,8 +105,8 @@
                           placeholder="Correo electrónico"
                         >
                         <span class="focus-border"></span>
-                        <span class='ob_name text-danger'>Ingrese un correo eléctronico valido.<br></span>
-                        <span class="lon_name text-danger">Este correo ha superado el máximo de caracteres permitido.</span>
+                        <span class='ob_email text-danger'>Ingrese un correo electrónico valido.<br></span>
+                        <span class="long_email text-danger">*Este correo excede el máximo de caracteres permitido.</span>
                       </div>
                     </div>
                     <div class="form-CMXD row col-md-6">
@@ -122,8 +122,8 @@
                           placeholder="Contraseña"
                         >
                         <span class="focus-border"></span>
-                        <span class='ob_name text-danger'>*Ingrese una contraseña.<br></span>
-                        <span class="lon_name text-danger">Esta contraseña  ha superado el máximo de caracteres permitido.</span>
+                        <span class='ob_pass text-danger'>Ingrese una contraseña.<br></span>
+                        <span class="long_pass text-danger">*La contraseña debe contener entre 8 y 65 caracteres.</span>
                       </div>
                     </div>
                     <div class="form-CMXD row col-md-6">
@@ -138,6 +138,8 @@
                           required
                           placeholder="Confirmar contraseña"
                         >
+                        <span class='ob_pass2 text-danger'>Ingrese nuevamente la contraseña.<br></span>
+                        <span class="long_pass2 text-danger">*La contraseña debe contener entre 8 y 65 caracteres.</span>
                         <span class="focus-border"></span>
                       </div>
                     </div>
@@ -196,6 +198,8 @@ export default {
   },
   methods: {
     registrar: function() {
+
+      let validation=this.validation();
       axios({
         method: "post",
         url: "http://68.183.124.242:8000/rest-auth/registration/",
@@ -220,7 +224,18 @@ export default {
             type: "warning"
           });
         });
+    },
+    validation: function(){
+      let name= document.querySelector(".ob_name").value.trim();
+
+      let value=true;
+
+      if (!name){
+        document.querySelector(".ob_name").style.display="block";
+      }
+      
     }
+
   }
 };
 </script>
@@ -228,6 +243,12 @@ export default {
 
 
 <style scoped>
+/*validation camps*/
+.ob_name, .long_name, .ob_lastname, .long_lastname, .ob_email, .long_email, .ob_pass,
+.long_pass, .ob_pass2, .long_pass2{
+  display: none;
+}
+
 body {
   overflow-x: hidden;
 }

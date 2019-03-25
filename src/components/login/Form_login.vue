@@ -9,7 +9,7 @@
             <input class="CMXD-material-input email" v-model="usuario_model.email" type="email" name="email" placeholder="Correo electrónico" required>
             <span class="focus-border"></span>
             <span class='email_type text-danger'>Ingrese un correo electrónico valido.<br></span>
-            <span class="long_email text-danger">*Este correo ha superado el máximo de caracteres permitido.</span>
+            <span class="long_email text-danger">*Este correo excede el máximo de caracteres permitido.</span>
         </div>
     </div>
 
@@ -124,7 +124,7 @@ export default {
         })
         .catch(e => {
           this.$notify({
-            message: "Usuario o contraseña invalida.",
+            message: "El usuario o la contraseña ingresada no coinciden con ninguna cuenta.",
             type: "warning"
           });
         });
@@ -139,7 +139,8 @@ export default {
       document.querySelector('.email_type').style.display='none';   
       document.querySelector(".long_email").style.display="none";
       document.querySelector(".long_pass").style.display="none";
-      document.querySelector(".ob_recap").style.display="none"; 
+      document.querySelector(".ob_recap").style.display="none";
+      console.log(typeEmail)
 
       if(user && user.length>65){
         document.querySelector(".long_email").style.display="block";
@@ -164,7 +165,8 @@ export default {
       return false
     },
     isValidEmail: function(mail) {
-          return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(mail); 
+        //return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(mail); 
+        return /\S+@\S+\.\S+/.test(mail);
     }
   }
 };
