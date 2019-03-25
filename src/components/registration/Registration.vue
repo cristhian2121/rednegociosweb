@@ -64,7 +64,7 @@
                       </div>
                       <div class="input-effect js-input">
                         <input
-                          class="CMXD-material-input"
+                          class="CMXD-material-input name"
                           type="text"
                           name="name"
                           required
@@ -86,7 +86,7 @@
                       </div>
                       <div class="input-effect js-input">
                         <input
-                          class="CMXD-material-input"
+                          class="CMXD-material-input lastname"
                           type="text"
                           name="lastname"
                           required
@@ -108,7 +108,7 @@
                       </div>
                       <div class="input-effect js-input">
                         <input
-                          class="CMXD-material-input"
+                          class="CMXD-material-input email"
                           v-model="usuario_model.email"
                           type="email"
                           name="email"
@@ -131,7 +131,7 @@
                       </div>
                       <div class="input-effect">
                         <input
-                          class="CMXD-material-input"
+                          class="CMXD-material-input pass"
                           v-model="usuario_model.password1"
                           type="password"
                           required
@@ -258,12 +258,19 @@ export default {
         });
       }
     },
+<<<<<<< HEAD
+    validation: function(){
+      let name= document.querySelector(".name").value.trim();
+
+      let value=true;
+=======
     validatePassword() {
       let firstName = document.getElementsByName("name")[0].value;
       let lastName = document.getElementsByName("lastname")[0].value;
       let username = document.getElementsByName("email")[1].value;
       let password1 = this.usuario_model.password1;
       let password2 = this.usuario_model.password2;
+>>>>>>> cc04c190b15048fe2ccc07418ecb24382805036b
 
       if (password1 === password2) {
         if (!firstName) return { state: false, message: "El campo nombre es requerido" };
