@@ -239,7 +239,7 @@ export default {
           .then(respuesta => {
             sessionStorage.setItem("user", this.usuario_model.email);
             if (this.btn_empresa == 1) {
-              this.$router.push({ path: "/registration/business" });
+              this.$router.push({ path: "/registration/businessapp" });
             } else {
               this.$router.push({ path: "home" });
             }

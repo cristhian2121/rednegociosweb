@@ -103,7 +103,7 @@
                                 </router-link>
                               </div>
                               <div class="col-md-6 text-center">
-                                <router-link :to="{ path: '/registration/business'}">
+                                <router-link :to="{ path: '/registration/businessapp'}">
                                   <div class="btnr CMXD-btn-business">Empresa</div>
                                 </router-link>
                               </div>
