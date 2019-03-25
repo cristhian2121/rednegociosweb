@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
+
 import Listar from '../components/prueba/Listar'
 import Home from '../components/home/Home'
 

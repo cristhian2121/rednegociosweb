@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import VueAgile from 'vue-agile'
 import App from './App.vue';
 import Router from 'vue-router';
 
@@ -8,9 +9,11 @@ import Login from './views/login/Login';
 import Home from './views/home/Home';
 
 import Registro_empresa from './components/registro_empresa/Registro_empresa';
-import Vista_detallada  from './components/vista_detallada/Vista_detallada';
+import Registro_empresa_App from './components/registro_empresa/Registro_Empresas_App';
+import Vista_detallada from './components/vista_detallada/Vista_detallada';
 import Registration from './components/registration/Registration';
-import Edit_profile from './components/editation/Editation'
+import Edit_profile from './components/editation/Editation';
+import Profile from './components/profile/Profile'
 
 //Agregar bootstrap
 import BootstrapVue from 'bootstrap-vue'
@@ -18,10 +21,20 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 // Element
-import { Button, Select, Option, Radio, RadioGroup, Input, Container,
-         Notification, upload, dialog,
-         Checkbox,
-         DatePicker} from 'element-ui';
+import {
+  Button,
+  Select,
+  Option,
+  Radio,
+  RadioGroup,
+  Input,
+  Container,
+  Notification,
+  upload,
+  dialog,
+  Checkbox,
+  DatePicker
+} from 'element-ui';
 import VeeValidate from 'vee-validate';
 // import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
@@ -29,6 +42,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 
 Vue.use(BootstrapVue);
 Vue.use(Router)
+Vue.use(VueAgile)
 Vue.config.lang = 'en';
 Vue.component(Input.name, Input);
 Vue.component(Container.name, Container);
@@ -47,8 +61,7 @@ Vue.use(VeeValidate);
 // Vue.use(ElementUI);
 
 var router = new Router({
-  routes: [
-    {
+  routes: [{
       path: '/',
       component: Login,
     },
@@ -70,8 +83,18 @@ var router = new Router({
       props: true
     },
     {
-      path: '/profile/edit/:empresa',
+      path: '/profile/edit/empresa',
       component: Edit_profile,
+      props: true
+    },
+    {
+      path: '/profile/user',
+      component: Profile,
+      props: true
+    },
+    {
+      path: '/registration/businessapp',
+      component: Registro_empresa_App,
       props: true
     }
   ]
@@ -84,4 +107,3 @@ new Vue({
   router,
   render: h => h(App)
 }).$mount('#app')
-

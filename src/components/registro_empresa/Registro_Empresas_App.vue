@@ -5,7 +5,7 @@
     <div class="bg-home"></div>
     <div class="container-general">
       <div class="text-center">
-        <h5>Editar Empresa</h5>
+        <h5>Registrar Empresa</h5>
       </div>
       <div class="title-business">Información general</div>
       <div class="row">
@@ -1020,7 +1020,7 @@
         </div>
       </div>
       <div class="btn-form-end">
-        <router-link class="btn CMXD-btn-business" :to="{ path: '/'}">Volver</router-link>
+        <router-link class="btn CMXD-btn-business" :to="{ path: '/home'}">Volver</router-link>
         <el-button
           type="primary"
           class="btn CMXD-btn-person"
@@ -1068,26 +1068,13 @@
 </template>
 
 <script>
-import { Empresa } from "../../models/empresa";
 import axios from "axios";
 import MyHeader from "@/components/header/Header";
-
 export default {
-  name: "edicion_empresa",
-
-  props: ["empresa"],
+  name: "registro_empresa",
   async mounted() {
-    this.nombre_empresa = this.$route.params.empresa;
-    if (this.nombre_empresa) {
-      try {
-        this.traer_empresas();
-        this.traer_ciudaes();
-        this.traer_tipos();
-      } catch (e) {
-        this.mensaje_error();
-      }
-      this.traer_servicios();
-    }
+    await this.traer_ciudaes();
+    await this.traer_tipos();
     this.carga = false;
   },
   components: {
@@ -1095,6 +1082,8 @@ export default {
   },
   data() {
     return {
+      showModal: true,
+      value10: "",
       empresaModel: {
         nombre: null,
         nit: null,
@@ -1109,8 +1098,6 @@ export default {
         fecha_registro: null
       },
       servicioModel: {
-        id_empresa: null,
-        id_servicio: null,
         nombre_ser_1: null,
         ser_1: null,
         imagen1: null,
@@ -1170,41 +1157,15 @@ export default {
       error_formulario: false,
       carga: true,
       id_empresa: null,
-      vista: false
+      id_archivo: null,
+      empresa_nombre: null
     };
   },
   methods: {
-    traer_empresas: function() {
-      axios
-        .get(
-          `http://68.183.124.242:8000/api/detalle/?nombre=${
-            this.nombre_empresa
-          }`
-        )
-        .then(respuesta => {
-          this.empresaModel = respuesta.data[0];
-        });
-    },
-    traer_servicios: function() {
-      axios
-        .get(
-          `http://68.183.124.242:8000/api/servicio/?nombre=${
-            this.nombre_empresa
-          }`
-        )
-        .then(respuesta => {
-          this.servicioModel = respuesta.data[5];
-          console.log(respuesta.data);
-          console.log(this.servicioModel);
-          if (this.servicioModel.length > 0) {
-            this.radio_servicios = this.servicioModel.length + 1;
-          }
-        });
-    },
-    enviar_formulario: async function() {
+    enviar_formulario: function() {
       this.carga = true;
       axios({
-        method: "get",
+        method: "post",
         url: "http://68.183.124.242:8000/api/empresa/",
         data: {
           nombre: this.empresaModel.nombre,
@@ -1215,24 +1176,23 @@ export default {
           email: this.empresaModel.email,
           mision: this.empresaModel.mision,
           id_tipo: this.empresaModel.id_tipo,
-          id_ciudad: this.empresaModel.id_ciudad
+          id_ciudad: this.empresaModel.id_ciudad,
+          id_archivo: this.id_archivo,
+          instagram: this.empresaModel.instagram,
+          facebook: this.empresaModel.facebook,
+          youtube: this.empresaModel.youtube
         }
-      })
-        .then(respuesta => {
-          this.id_empresa = respuesta.data.id_empresa;
-          // this.$route.router.go('/home');
+      }).then(respuesta => {
+        this.id_empresa = respuesta.data.id_empresa;
+        this.empresa_nombre = respuesta.data.nombre;
+        if (this.id_empresa) {
           this.enviar_servicios();
-          this.carga = false;
-        })
-        .catch(e => {
-          this.mensaje_error();
-          this.carga = false;
-        });
-      this.enviar_servicios();
+        }
+      });
     },
-    enviar_servicios: async function() {
+    enviar_servicios: function() {
       axios({
-        method: "get",
+        method: "post",
         url: "http://68.183.124.242:8000/api/servicio/",
         data: {
           id_empresa: this.id_empresa,
@@ -1246,26 +1206,18 @@ export default {
           ser_4: this.servicioModel.ser_4,
           nombre_ser_5: this.servicioModel.nombre_ser_5,
           ser_5: this.servicioModel.ser_5,
-          nombre_ser_1: this.servicioModel.nombre_ser_6,
-          ser_1: this.servicioModel.ser_6,
-          nombre_ser_2: this.servicioModel.nombre_ser_7,
-          ser_2: this.servicioModel.ser_7,
-          nombre_ser_3: this.servicioModel.nombre_ser_8,
-          ser_3: this.servicioModel.ser_8,
-          nombre_ser_4: this.servicioModel.nombre_ser_9,
-          ser_4: this.servicioModel.ser_9,
-          nombre_ser_5: this.servicioModel.nombre_ser_10,
-          ser_5: this.servicioModel.ser_10
+          nombre_ser_6: this.servicioModel.nombre_ser_6,
+          ser_6: this.servicioModel.ser_6,
+          nombre_ser_7: this.servicioModel.nombre_ser_7,
+          ser_7: this.servicioModel.ser_7,
+          nombre_ser_8: this.servicioModel.nombre_ser_8,
+          ser_8: this.servicioModel.ser_8,
+          nombre_ser_9: this.servicioModel.nombre_ser_9,
+          ser_9: this.servicioModel.ser_9,
+          nombre_ser_10: this.servicioModel.nombre_ser_10,
+          ser_10: this.servicioModel.ser_10
         }
-      })
-        .then(res => {
-          this.mensaje_exito();
-          this.carga = false;
-        })
-        .catch(e => {
-          this.carga = false;
-          this.mensaje_error();
-        });
+      });
     },
     traer_ciudaes: async function() {
       axios.get("http://68.183.124.242:8000/api/ciudad/").then(respuesta => {
@@ -1277,6 +1229,9 @@ export default {
         this.tipos = respuesta.data;
       });
     },
+    // usuario: async function(){
+    //   await axios.get("")
+    // }
     cambio_servicios: function() {
       switch (this.radio_servicios) {
         case 1:
@@ -1428,6 +1383,7 @@ export default {
   }
 };
 </script>
+
 <style scoped>
 .bg-home {
   position: fixed;
