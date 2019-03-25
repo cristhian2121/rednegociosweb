@@ -22,6 +22,7 @@
                 ></el-option>
               </el-select>
             </div>
+
             <div class="col-md-3 el-col-xs-12" v-if="ciudades">
               <el-select v-model="ciudadModel" clearable placeholder="Ciudad">
                 <el-option
@@ -40,6 +41,7 @@
                 icon="el-icon-search"
                 v-on:click="buscar_filtros"
               >Buscar</el-button>
+
             </div>
           </div>
         </div>
@@ -77,8 +79,7 @@
                     <a
                       href="#"
                       v-on:click="ir_pagina(empresa.nombre)"
-                      class="btn CMXD-btn-business"
-                    >Entrar</a>
+                      class="btn CMXD-btn-business">Entrar</a>
                   </div>
                 </div>
                 <hr>
@@ -136,8 +137,10 @@ export default {
   },
   methods: {
     buscar_filtros: function() {
-      if (this.ciudadModel) {
-        this.empresasAux = this.empresas.filter(
+      let filtroCiudad;
+      let filtroTipo;
+      if (this.ciudadModel && this.tipoModel) {
+        filtroCiudad = this.empresas.filter(
           empresa => empresa.id_ciudad == this.ciudadModel
         );
       } else if (this.tipoModel) {

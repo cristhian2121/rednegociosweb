@@ -194,7 +194,6 @@ export default {
   mounted() {
     
   },
-
   methods: {
     registrar: function() {
       axios({
@@ -537,6 +536,7 @@ body {
 a:hover {
   text-decoration: none;
 }
+
 </style>
 
 

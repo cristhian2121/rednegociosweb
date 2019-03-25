@@ -489,10 +489,6 @@ export default {
       showModal: false
     };
   },
-  mounted() {
-    this.nombre_empresa = this.$route.params.nombre;
-    if (this.nombre_empresa) this.traer_empresas();
-  },
   methods: {
     mostrar_servicios: function() {
       if (this.servicioModel) {
@@ -511,6 +507,7 @@ export default {
         )
         .then(respuesta => {
           this.empresas = respuesta.data[0];
+          console.log(this.empresas);          
           this.carga = false;
         });
     },
@@ -2479,7 +2476,6 @@ ol {
   margin: 0 0 2em 0;
   padding-left: 1.25em;
 }
-
 ol li {
   padding-left: 0.25em;
 }
@@ -2503,7 +2499,6 @@ ul.alt li {
   border-top: solid 1px rgba(144, 144, 144, 0.25);
   padding: 0.5em 0;
 }
-
 ul.alt li:first-child {
   border-top: 0;
   padding-top: 0;
@@ -2594,7 +2589,6 @@ ul.actions.fit.small {
 ul.actions.fit.small li {
   padding: 0 0 0 0.5em;
 }
-
 @media screen and (max-width: 480px) {
   ul.actions {
     margin: 0 0 2em 0;
@@ -2606,7 +2600,6 @@ ul.actions.fit.small li {
     text-align: center;
     width: 100%;
   }
-
   ul.actions li:first-child {
     padding-top: 0;
   }
@@ -2623,7 +2616,6 @@ ul.actions.fit.small li {
   ul.actions.small li {
     padding: 0.5em 0 0 0;
   }
-
   ul.actions.small li:first-child {
     padding-top: 0;
   }
