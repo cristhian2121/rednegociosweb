@@ -26,7 +26,8 @@
           </div>
         </div>
         <div class="CMXD-footer">
-          <div class="CMXD-copyright">Copyright © 2019 Med/Col
+          <div class="CMXD-copyright">
+            Copyright © 2019 Med/Col
             <br>
             <span>
               Desing by
@@ -70,8 +71,13 @@
                           placeholder="Nombres"
                         >
                         <span class="focus-border"></span>
-                        <span class='ob_name text-danger'>*Ingrese su nombre.<br></span>
-                        <span class="long_name text-danger">Este nombre excede el máximo de caracteres permitido.</span>
+                        <span class="ob_name text-danger">
+                          *Ingrese su nombre.
+                          <br>
+                        </span>
+                        <span
+                          class="long_name text-danger"
+                        >Este nombre excede el máximo de caracteres permitido.</span>
                       </div>
                     </div>
                     <div class="form-CMXD row col-md-6">
@@ -87,8 +93,13 @@
                           placeholder="Apellidos"
                         >
                         <span class="focus-border"></span>
-                        <span class='ob_lastname text-danger'>*Ingrese al menos un apellido.<br></span>
-                        <span class="long_lastname text-danger">Este apellido excede el máximo de caracteres permitido.</span>
+                        <span class="ob_lastname text-danger">
+                          *Ingrese al menos un apellido.
+                          <br>
+                        </span>
+                        <span
+                          class="long_lastname text-danger"
+                        >Este apellido excede el máximo de caracteres permitido.</span>
                       </div>
                     </div>
                     <div class="form-CMXD row col-md-12">
@@ -105,8 +116,13 @@
                           placeholder="Correo electrónico"
                         >
                         <span class="focus-border"></span>
-                        <span class='ob_email text-danger'>Ingrese un correo electrónico valido.<br></span>
-                        <span class="long_email text-danger">*Este correo excede el máximo de caracteres permitido.</span>
+                        <span class="ob_email text-danger">
+                          Ingrese un correo electrónico valido.
+                          <br>
+                        </span>
+                        <span
+                          class="long_email text-danger"
+                        >*Este correo excede el máximo de caracteres permitido.</span>
                       </div>
                     </div>
                     <div class="form-CMXD row col-md-6">
@@ -122,8 +138,13 @@
                           placeholder="Contraseña"
                         >
                         <span class="focus-border"></span>
-                        <span class='ob_pass text-danger'>Ingrese una contraseña.<br></span>
-                        <span class="long_pass text-danger">*La contraseña debe contener entre 8 y 65 caracteres.</span>
+                        <span class="ob_pass text-danger">
+                          Ingrese una contraseña.
+                          <br>
+                        </span>
+                        <span
+                          class="long_pass text-danger"
+                        >*La contraseña debe contener entre 8 y 65 caracteres.</span>
                       </div>
                     </div>
                     <div class="form-CMXD row col-md-6">
@@ -138,8 +159,13 @@
                           required
                           placeholder="Confirmar contraseña"
                         >
-                        <span class='ob_pass2 text-danger'>Ingrese nuevamente la contraseña.<br></span>
-                        <span class="long_pass2 text-danger">*La contraseña debe contener entre 8 y 65 caracteres.</span>
+                        <span class="ob_pass2 text-danger">
+                          Ingrese nuevamente la contraseña.
+                          <br>
+                        </span>
+                        <span
+                          class="long_pass2 text-danger"
+                        >*La contraseña debe contener entre 8 y 65 caracteres.</span>
                         <span class="focus-border"></span>
                       </div>
                     </div>
@@ -171,7 +197,7 @@
 </template>
 
 <script>
-import formLogin from '@/components/login/Form_login';
+import formLogin from "@/components/login/Form_login";
 import axios from "axios";
 
 export default {
@@ -193,49 +219,75 @@ export default {
     };
   },
 
-  mounted() {
-    
-  },
+  mounted() {},
   methods: {
     registrar: function() {
-
-      let validation=this.validation();
-      axios({
-        method: "post",
-        url: "http://68.183.124.242:8000/rest-auth/registration/",
-        data: {
-          username: this.usuario_model.email,
-          email: this.usuario_model.email,
-          password1: this.usuario_model.password1,
-          password2: this.usuario_model.password2
-        }
-      })
-        .then(respuesta => {
-          sessionStorage.setItem("user", this.usuario_model.email);
-          if (this.btn_empresa == 1) {
-            this.$router.push({ path: "/registration/business" });
-          } else {
-            this.$router.push({ path: "home" });
+      let validator = this.validatePassword();
+      if (validator.state) {
+        axios({
+          method: "post",
+          url: "http://68.183.124.242:8000/rest-auth/registration/",
+          data: {
+            firstName: document.getElementsByName("name")[0].value,
+            lastName: document.getElementsByName("lastname")[0].value,
+            username: document.getElementsByName("email")[1].value,
+            email: document.getElementsByName("email")[1].value,
+            password1: this.usuario_model.password1,
+            password2: this.usuario_model.password2
           }
         })
-        .catch(e => {
-          this.$notify({
-            message: "La contraseña no coincide",
-            type: "warning"
+          .then(respuesta => {
+            sessionStorage.setItem("user", this.usuario_model.email);
+            if (this.btn_empresa == 1) {
+              this.$router.push({ path: "/registration/business" });
+            } else {
+              this.$router.push({ path: "home" });
+            }
+          })
+          .catch(e => {
+            console.log(e)
+            this.$notify({
+              message: "Error",
+              type: "danger"
+            });
           });
+      } else {
+        this.$notify({
+          message: validator.message,
+          type: "error"
         });
-    },
-    validation: function(){
-      let name= document.querySelector(".ob_name").value.trim();
-
-      let value=true;
-
-      if (!name){
-        document.querySelector(".ob_name").style.display="block";
       }
-      
-    }
+    },
+    validatePassword() {
+      let firstName = document.getElementsByName("name")[0].value;
+      let lastName = document.getElementsByName("lastname")[0].value;
+      let username = document.getElementsByName("email")[1].value;
+      let password1 = this.usuario_model.password1;
+      let password2 = this.usuario_model.password2;
 
+      if (password1 === password2) {
+        if (!firstName) return { state: false, message: "El campo nombre es requerido" };
+        if (!lastName) return { state: false, message: "El campo apellido es requerido"};
+        if (!username) return { state: false, message: "El campo correo electronico es requerido" };
+        if (!password1) return { state: false, message: "El campo contraseña es requerido" };
+        if (!password2) return { state: false, message: "El campo validar contraseña es requerido" };
+        return {
+          state: true,
+          data: {
+              firstName: firstName,
+              lastName: lastName,
+              username: username,
+              password1: password1,
+              password2: password2
+            }
+        };
+      } else {
+        this.$notify({
+          message: "La contraseña no coincide",
+          type: "danger"
+        });
+      }
+    }
   }
 };
 </script>
@@ -244,8 +296,16 @@ export default {
 
 <style scoped>
 /*validation camps*/
-.ob_name, .long_name, .ob_lastname, .long_lastname, .ob_email, .long_email, .ob_pass,
-.long_pass, .ob_pass2, .long_pass2{
+.ob_name,
+.long_name,
+.ob_lastname,
+.long_lastname,
+.ob_email,
+.long_email,
+.ob_pass,
+.long_pass,
+.ob_pass2,
+.long_pass2 {
   display: none;
 }
 
@@ -557,7 +617,6 @@ body {
 a:hover {
   text-decoration: none;
 }
-
 </style>
 
 
