@@ -92,8 +92,8 @@
             ></iframe>
           </div>
           <div class="6u 12u$(medium)">
-            <!-- <p>{{ empresas.mision }}</p> -->
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+            <p>{{ empresas.mision }}</p>
+            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p> -->
           </div>
         </div>
       </div>
@@ -153,7 +153,7 @@
       </div>
     </section>
     
-    <section id="Blog" class="wrapper special">
+    <!-- <section id="Blog" class="wrapper special">
       <div class="container">
         <header class="major">
           <h2>Blog</h2>
@@ -221,7 +221,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
     <!-- Four -->
     <section id="contact" class="wrapper style3 special">
       <div class="container">
@@ -477,6 +477,8 @@ export default {
 
   async mounted() {
     this.carga = true;
+    this.nombre_empresa = this.$route.params.nombre;
+    await this.traer_empresas();
     await this.traer_servicios();
   },
   data() {
@@ -498,13 +500,8 @@ export default {
       }
     },
 
-    traer_empresas: function() {
-      axios
-        .get(
-          `http://68.183.124.242:8000/api/detalle/?nombre=${
-            this.nombre_empresa
-          }`
-        )
+    traer_empresas: async function() {
+      axios.get(`http://68.183.124.242:8000/api/detalle/?nombre=${this.nombre_empresa}`)
         .then(respuesta => {
           this.empresas = respuesta.data[0];
           console.log(this.empresas);          
