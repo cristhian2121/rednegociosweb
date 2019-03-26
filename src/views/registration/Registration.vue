@@ -1,48 +1,16 @@
 <template>
   <div id="CMXD-login" class="flex flex-center">
     <a class="freepick" href="http://www.freepik.com">Photo by Freepik</a>
-    <!--Back-->
-    <div class="CMXD-container-left">
-      <div class="CMXD-container-form flex flex-center">
-        <div class="CMXD-form-login">
-          <div class="CMXD-logo"></div>
-          <div class="CMXD-form-inputs">
-            <div class="row">
-              <div class="col-md-12 text-center">
-                <p>
-                  Eso que
-                  <span>necesitas</span>, en un solo lugar.
-                </p>
-              </div>
-              <div>
-                <br>
-                <formLogin></formLogin>
-                <!-- <div class="img-rigth col-md-4 col-sm-5 col-xs-5">
-                                <div style="height: 20%;"></div>
-                                <el-button type="info">Preguntas frecuentes</el-button>
-                </div>-->
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="CMXD-footer">
-          <div class="CMXD-copyright">
-            Copyright © 2019 Med/Col
-            <br>
-            <span>
-              Desing by
-              <a href="http://cmxdesign.000webhostapp.com/" target="_black">CMX-Desing</a>
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
+
+    <formLogin></formLogin>
+
     <div class="CMXD-bg-login"></div>
     <!-- app -->
     <div id="app">
       <div v-if="showModal" @close="showModal = true">
         <div class="modal-mask">
           <div class="modal-wrapper">
+
             <div class="modal-container">
               <!--button close-->
               <div class="close-modal">
@@ -57,138 +25,18 @@
                 <div>
                   <div class="title">Registro persona natural</div>
                   <br>
-                  <div class="row">
-                    <div class="form-CMXD row col-md-6">
-                      <div class="CMXD-icon-form">
-                        <i class="material-icons">person</i>
-                      </div>
-                      <div class="input-effect js-input">
-                        <input
-                          class="CMXD-material-input name"
-                          type="text"
-                          name="name"
-                          required
-                          placeholder="Nombres"
-                        >
-                        <span class="focus-border"></span>
-                        <span class="ob_name text-danger">
-                          *Ingrese su nombre.
-                          <br>
-                        </span>
-                        <span
-                          class="long_name text-danger"
-                        >Este nombre excede el máximo de caracteres permitido.</span>
-                      </div>
-                    </div>
-                    <div class="form-CMXD row col-md-6">
-                      <div class="CMXD-icon-form">
-                        <i class="material-icons">keyboard_arrow_right</i>
-                      </div>
-                      <div class="input-effect js-input">
-                        <input
-                          class="CMXD-material-input lastname"
-                          type="text"
-                          name="lastname"
-                          required
-                          placeholder="Apellidos"
-                        >
-                        <span class="focus-border"></span>
-                        <span class="ob_lastname text-danger">
-                          *Ingrese al menos un apellido.
-                          <br>
-                        </span>
-                        <span
-                          class="long_lastname text-danger"
-                        >Este apellido excede el máximo de caracteres permitido.</span>
-                      </div>
-                    </div>
-                    <div class="form-CMXD row col-md-12">
-                      <div class="CMXD-icon-form">
-                        <i class="material-icons">email</i>
-                      </div>
-                      <div class="input-effect js-input">
-                        <input
-                          class="CMXD-material-input email"
-                          v-model="usuario_model.email"
-                          type="email"
-                          name="email"
-                          required
-                          placeholder="Correo electrónico"
-                        >
-                        <span class="focus-border"></span>
-                        <span class="ob_email text-danger">
-                          Ingrese un correo electrónico valido.
-                          <br>
-                        </span>
-                        <span
-                          class="long_email text-danger"
-                        >*Este correo excede el máximo de caracteres permitido.</span>
-                      </div>
-                    </div>
-                    <div class="form-CMXD row col-md-6">
-                      <div class="CMXD-icon-form">
-                        <i class="material-icons">lock</i>
-                      </div>
-                      <div class="input-effect">
-                        <input
-                          class="CMXD-material-input pass"
-                          v-model="usuario_model.password1"
-                          type="password"
-                          required
-                          placeholder="Contraseña"
-                        >
-                        <span class="focus-border"></span>
-                        <span class="ob_pass text-danger">
-                          Ingrese una contraseña.
-                          <br>
-                        </span>
-                        <span
-                          class="long_pass text-danger"
-                        >*La contraseña debe contener entre 8 y 65 caracteres.</span>
-                      </div>
-                    </div>
-                    <div class="form-CMXD row col-md-6">
-                      <div class="CMXD-icon-form">
-                        <i class="material-icons">lock_open</i>
-                      </div>
-                      <div class="input-effect">
-                        <input
-                          class="CMXD-material-input"
-                          v-model="usuario_model.password2"
-                          type="password"
-                          required
-                          placeholder="Confirmar contraseña"
-                        >
-                        <span class="ob_pass2 text-danger">
-                          Ingrese nuevamente la contraseña.
-                          <br>
-                        </span>
-                        <span
-                          class="long_pass2 text-danger"
-                        >*La contraseña debe contener entre 8 y 65 caracteres.</span>
-                        <span class="focus-border"></span>
-                      </div>
-                    </div>
-                  </div>
+
+                  <formRegistration></formRegistration>
+
                   <div class="btn-form-end">
-                    <router-link class="btn CMXD-btn-business" :to="{ path: '/' }">Volver</router-link>
-                    <el-button
-                      type="primary"
-                      class="btn CMXD-btn-person"
-                      v-on:click="registrar()"
-                    >Registrarme</el-button>
+                     <router-link class="btn CMXD-btn-business" :to="{ path: '/' }">Volver</router-link>
+                      <el-button type="primary" class="btn CMXD-btn-person" v-on:click="registrar()">Registrarme</el-button>
                   </div>
-                  <!-- <section class="login-form">
-                    <p class="txt-cen">¿Quiere inscribir su empresa?</p>
-                    <div class="form-group txt-cen">
-                        <el-radio type="radio" v-model="btn_empresa" label="1">Si</el-radio>
-                        <el-radio type="radio" v-model="btn_empresa" label="2">No</el-radio>
-                    </div>
-                  </section>-->
+                  </div>
                 </div>
-              </div>
               <!--end form registartion-->
             </div>
+
           </div>
         </div>
       </div>
@@ -198,13 +46,16 @@
 
 <script>
 import formLogin from "@/components/login/Form_login";
+import formRegistration from "@/components/registration/Form_registration";
 import axios from "axios";
 
 export default {
-  name: "registration",
+  name: "businessRegistration",
   components: {
-    formLogin
+    formLogin,
+    formRegistration
   },
+  
   data() {
     return {
       usuario_model: {
@@ -213,7 +64,6 @@ export default {
         password1: null,
         password2: null
       },
-      respuesta: "",
       btn_empresa: "2",
       showModal: true
     };
@@ -222,6 +72,9 @@ export default {
   mounted() {},
   methods: {
     registrar: function() {
+      let validation = this.validation();
+      if (validation) return;
+
       let validator = this.validatePassword();
       if (validator.state) {
         axios({
@@ -239,7 +92,7 @@ export default {
           .then(respuesta => {
             sessionStorage.setItem("user", this.usuario_model.email);
             if (this.btn_empresa == 1) {
-              this.$router.push({ path: "/registration/businessapp" });
+              this.$router.push({ path: "/registration/business" });
             } else {
               this.$router.push({ path: "home" });
             }
@@ -258,6 +111,46 @@ export default {
         });
       }
     },
+    validation: function(){
+      let name = document.querySelector(".nameReg").value.trim();
+      let lastname = document.querySelector(".lastnameReg").value.trim();
+      let email = document.querySelector(".emailReg").value.trim();
+      let pass = document.querySelector(".passReg").value.trim();
+      let pass2 = document.querySelector(".pass2Reg").value.trim();
+
+      let typeEmail = this.isValidEmail(email);
+      let validator= false;
+
+      document.querySelector(".ob_name_reg").style.display="none";
+      document.querySelector(".ob_name_reg").style.display="none";
+      document.querySelector(".ob_lastname_reg").style.display="none";
+      document.querySelector(".long_lastname_reg").style.display="none";
+      document.querySelector(".ob_email_reg").style.display="none";
+      document.querySelector(".long_email_reg").style.display="none";
+      document.querySelector(".ob_pass_reg").style.display="none";
+      document.querySelector(".long_pass_reg").style.display="none";
+      document.querySelector(".ob_pass2_reg").style.display="none";
+      document.querySelector(".long_pass2_reg").style.display="none";
+
+      if (!name) {document.querySelector(".ob_name_reg").style.display = "block"; validator = true;}
+      if (!lastname) {document.querySelector(".ob_lastname_reg").style.display = "block"; validator = true;}
+      if (!email || email.length < 65) {
+        if (typeEmail == false) {
+          document.querySelector(".ob_email_reg").style.display = "block";
+          validator = true;
+        }
+      }
+      if (pass.length <8 || pass.length > 65) {document.querySelector(".long_pass_reg").style.display = "block"; validator = true;}
+      if (!pass2) {document.querySelector(".ob_pass2_reg").style.display = "block"; validator = true;}
+      //if (pass2.length <8 || pass2.length > 50) {document.querySelector(".ob_name_reg").style.display = "block"; validator = true;}
+
+      if (validator) return true;
+      return false;
+    },
+    isValidEmail: function(mail) {
+        //return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(mail); 
+        return /\S+@\S+\.\S+/.test(mail);
+    },
     validatePassword() {
       let firstName = document.getElementsByName("name")[0].value;
       let lastName = document.getElementsByName("lastname")[0].value;
@@ -266,7 +159,10 @@ export default {
       let password2 = this.usuario_model.password2;
 
       if (password1 === password2) {
-        if (!firstName) return { state: false, message: "El campo nombre es requerido" };
+        if (!firstName) {
+
+          return { state: false, fail: "firstName" };
+        } 
         if (!lastName) return { state: false, message: "El campo apellido es requerido"};
         if (!username) return { state: false, message: "El campo correo electronico es requerido" };
         if (!password1) return { state: false, message: "El campo contraseña es requerido" };
@@ -292,20 +188,10 @@ export default {
 };
 </script>
 
-
-
 <style scoped>
 /*validation camps*/
-.ob_name,
-.long_name,
-.ob_lastname,
-.long_lastname,
-.ob_email,
-.long_email,
-.ob_pass,
-.long_pass,
-.ob_pass2,
-.long_pass2 {
+.ob_name_reg,.ob_name_reg,.ob_lastname_reg,.long_lastname_reg,.ob_email_reg,
+.long_email_reg,.ob_pass_reg,.long_pass_reg,.ob_pass2_reg,.long_pass2_reg {
   display: none;
 }
 
@@ -618,5 +504,3 @@ a:hover {
   text-decoration: none;
 }
 </style>
-
-

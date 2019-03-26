@@ -1,46 +1,104 @@
 <template>
-  <div id="CMXD-login" class="flex flex-center">
-    <a class="freepick" href="http://www.freepik.com">Photo by Freepik</a>
- 
-    <formLogin></formLogin>
+    <div class="row">
+        <div class="form-CMXD row col-md-6">
+            <div class="CMXD-icon-form">
+                <i class="material-icons">person</i>
+            </div>
+            <div class="input-effect js-input">
+                <input class="CMXD-material-input nameReg" type="text" name="name" required placeholder="Nombres">
+                <span class="focus-border"></span>
+                <span class="ob_name_reg text-danger">*Ingrese su nombre.</span>
+                <span class="ob_name_reg text-danger">Este nombre excede el máximo de caracteres permitido.</span>
+            </div>
+        </div>
+        <div class="form-CMXD row col-md-6">
+            <div class="CMXD-icon-form">
+                <i class="material-icons">keyboard_arrow_right</i>
+            </div>
+            <div class="input-effect js-input">
+                <input class="CMXD-material-input lastnameReg" type="text" name="lastname" required placeholder="Apellidos">
+                <span class="focus-border"></span>
+                <span class="ob_lastname_reg text-danger">*Ingrese al menos un apellido.</span>
+                <span class="long_lastname_reg text-danger">Este apellido excede el máximo de caracteres permitido.</span>
+            </div>
+        </div>
+        <div class="form-CMXD row col-md-12">
+            <div class="CMXD-icon-form">
+                <i class="material-icons">email</i>
+            </div>
+            <div class="input-effect js-input">
+                <input class="CMXD-material-input emailReg" v-model="usuario_model.email" type="email" name="email" required placeholder="Correo electrónico">
+                <span class="focus-border"></span>
+                <span class="ob_email_reg text-danger">Ingrese un correo electrónico valido.</span>
+                <span class="long_email_reg text-danger">*Este correo excede el máximo de caracteres permitido.</span>
+            </div>
+        </div>
+        <div class="form-CMXD row col-md-6">
+            <div class="CMXD-icon-form">
+                <i class="material-icons">lock</i>
+            </div>
+            <div class="input-effect">
+                <input class="CMXD-material-input passReg" v-model="usuario_model.password1" type="password" required placeholder="Contraseña">
+                <span class="focus-border"></span>
+                <span class="ob_pass_reg text-danger">Ingrese una contraseña.</span>
+                <span class="long_pass_reg text-danger">*La contraseña debe contener entre 8 y 65 caracteres.</span>
+            </div>
+        </div>
+        <div class="form-CMXD row col-md-6">
+            <div class="CMXD-icon-form">
+                <i class="material-icons">lock_open</i>
+            </div>
+            <div class="input-effect">
+                <input class="CMXD-material-input pass2Reg" v-model="usuario_model.password2" type="password" required placeholder="Confirmar contraseña">
+                <span class="focus-border"></span>
+                <span class="ob_pass2_reg text-danger">Ingrese nuevamente la contraseña.</span>
+                <span class="long_pass2_reg text-danger">*La contraseña debe contener entre 8 y 65 caracteres.</span>
+            </div>
+        </div>
+    </div>
 
-    <div class="CMXD-bg-login"></div>
-  </div>
+        <!-- <section class="login-form">
+                    <p class="txt-cen">¿Quiere inscribir su empresa?</p>
+                    <div class="form-group txt-cen">
+                        <el-radio type="radio" v-model="btn_empresa" label="1">Si</el-radio>
+                        <el-radio type="radio" v-model="btn_empresa" label="2">No</el-radio>
+                    </div>
+                  </section>-->
 </template>
 
 <script>
-import formLogin from '@/components/login/Form_login';
+import formLogin from "@/components/login/Form_login";
+import axios from "axios";
 
 export default {
-  name: "login",
-  components: {
-    formLogin
-  },
+  name: "formRegistration",
+  data() {
+    return {
+      usuario_model: {
+        username: null,
+        email: null,
+        password1: null,
+        password2: null
+      },
+      showModal: true
+    };
+  }
 };
 </script>
 
 <style scoped>
+/*validation camps*/
+.ob_name_reg,.ob_name_reg,.ob_lastname_reg,.long_lastname_reg,.ob_email_reg,
+.long_email_reg,.ob_pass_reg,.long_pass_reg,.ob_pass2_reg,.long_pass2_reg {
+  display: none;
+}
+
 body {
   overflow-x: hidden;
 }
 .CMXD-padding {
   padding: 0 10px;
   margin-bottom: 10px;
-}
-
-/*validation*/
-.long_email,
-.long_pass {
-  display: none;
-}
-.ob_recap {
-  display: none;
-  color: #dc3545 !important;
-  font-size: 11px;
-}
-
-.email_type {
-  display: none;
 }
 
 /*Background*/
@@ -61,47 +119,11 @@ body {
   animation-duration: 1s;
   transition: 0.2s;
 }
-@-webkit-keyframes fade-bgl {
-  0% {
-    width: 120%;
-  }
-
-  100% {
-    width: 70%;
-  }
-}
-@keyframes fade-bgl {
-  0% {
-    width: 120%;
-  }
-
-  100% {
-    width: 70%;
-  }
-}
 @media (max-width: 800px) {
   #CMXD-login .CMXD-bg-login {
     width: 100% !important;
-    height: 50% !important;
+    height: 70% !important;
     transition: 0.2s;
-  }
-  @-webkit-keyframes fade-bgl {
-    0% {
-      height: 120%;
-    }
-
-    100% {
-      height: 50%;
-    }
-  }
-  @keyframes fade-bgl {
-    0% {
-      height: 120%;
-    }
-
-    100% {
-      height: 50%;
-    }
   }
 }
 /*End Background*/
@@ -132,32 +154,7 @@ body {
   animation-duration: 1s;
   transition: 0.2s;
 }
-@-webkit-keyframes fade-cont {
-  0% {
-    left: -60%;
-  }
 
-  100% {
-    left: 0;
-  }
-}
-@keyframes fade-cont {
-  0% {
-    left: -60%;
-  }
-
-  100% {
-    left: 0;
-  }
-}
-@media (max-width: 900px) {
-  #CMXD-login .CMXD-container-left {
-    width: 80%;
-  }
-  #CMXD-login .CMXD-container-form {
-    width: 54% !important;
-  }
-}
 @media (max-width: 800px) {
   #CMXD-login .CMXD-container-left {
     background: linear-gradient(
@@ -173,27 +170,9 @@ body {
     bottom: 40px;
     left: 0;
     top: auto;
-    width: 100% !important;
-    height: 75%;
+    width: 100%;
+    height: 60%;
     transition: 0.2s;
-  }
-  @-webkit-keyframes fade-cont {
-    0% {
-      bottom: -10%;
-    }
-
-    100% {
-      bottom: 40px;
-    }
-  }
-  @keyframes fade-cont {
-    0% {
-      bottom: -60%;
-    }
-
-    100% {
-      bottom: 40px;
-    }
   }
 }
 /*End Container General*/
@@ -226,7 +205,6 @@ body {
   margin-bottom: 250px;
   transition: 0.2s;
 }
-
 #CMXD-login .CMXD-form-inputs p {
   color: #6b6b6b !important;
   font-size: 13px;
@@ -264,7 +242,7 @@ body {
 }
 @media (max-width: 800px) {
   #CMXD-login .CMXD-container-form {
-    width: 100% !important;
+    width: 100%;
     transition: 0.2s;
   }
   .CMXD-icon-form {
@@ -299,7 +277,7 @@ body {
 }
 /* End Footer */
 
-/* Modal */
+/*MODAL*/
 .modal-mask {
   position: fixed;
   z-index: 9998;
@@ -310,36 +288,15 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
   display: table;
   transition: opacity 0.3s ease;
-  -webkit-animation-name: fade-bg-modal;
-  -webkit-animation-duration: 0.5s;
-  animation-name: fade-bg-modal;
-  animation-duration: 0.5s;
-  transition: 0.2s;
 }
-@-webkit-keyframes fade-bg-modal {
-  0% {
-    opacity: 0;
-  }
 
-  100% {
-    opacity: 1;
-  }
-}
-@keyframes fade-bg-modal {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
 .modal-wrapper {
   display: table-cell;
   vertical-align: middle;
 }
+
 .modal-container {
-  max-width: 400px;
+  max-width: 700px;
   height: auto;
   margin: 0px auto;
   padding: 20px 30px;
@@ -375,43 +332,44 @@ body {
     margin-top: 0%;
   }
 }
-label.register-tipe {
-  font-size: 12px;
-  color: grey;
-}
-.close-modal {
-  width: 100%;
-  text-align: right;
-}
-.close-modal button {
-  position: absolute;
-  margin-left: -15px;
-  margin-top: -10px;
-  background: none;
-  border: none;
-  height: 22px;
-  color: #9e9e9e;
-}
-.close-modal button:hover,
-.close-modal button:focus,
-.close-modal button:active {
-  outline: none;
-  box-shadow: 0 0 0;
-  color: #000000;
-  cursor: pointer;
-}
-.close-modal i.material-icons {
-  font-size: 20px;
-}
-.btnr {
-  width: 100%;
-  padding: 5px;
-  border-radius: 3px;
-  color: white;
-  text-decoration: none;
+@media (max-width: 800px) {
+  .modal-container {
+    max-width: 700px;
+    height: 100%;
+  }
+  @-webkit-keyframes fade-bg-modal-model {
+    0% {
+      position: absolute;
+      top: 100%;
+    }
+    20% {
+      position: absolute;
+      top: 100%;
+    }
+    100% {
+      position: absolute;
+      top: 0%;
+    }
+  }
+  @keyframes fade-bg-modal-model {
+    0% {
+      position: absolute;
+      top: 100%;
+    }
+    20% {
+      position: absolute;
+      top: 100%;
+    }
+    100% {
+      position: absolute;
+      top: 0%;
+    }
+  }
 }
 .CMXD-btn-person {
   background: #ff5800;
+  color: white;
+  border: none;
 }
 .CMXD-btn-person:hover,
 .CMXD-btn-person:focus,
@@ -426,6 +384,7 @@ label.register-tipe {
 }
 .CMXD-btn-business {
   background: #333333;
+  color: white;
 }
 .CMXD-btn-business:hover,
 .CMXD-btn-business:focus,
@@ -437,17 +396,11 @@ label.register-tipe {
   transition: 0.2s;
   outline: none;
   text-decoration: none;
+  color: white;
 }
 a:hover {
   text-decoration: none;
 }
-@media (max-width: 800px) {
-  .modal-container {
-    max-width: 270px;
-    height: auto !important;
-  }
-  .modal-body div div:first-child {
-    margin-bottom: 5px;
-  }
-}
 </style>
+
+

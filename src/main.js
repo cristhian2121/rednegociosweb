@@ -7,11 +7,12 @@ import Router from 'vue-router';
 //vistas
 import Login from './views/login/Login';
 import Home from './views/home/Home';
+import Registration from './views/registration/Registration';
+import Registro_empresa from './views/registration/Registration_business';
 
-import Registro_empresa from './components/registro_empresa/Registro_empresa';
 import Registro_empresa_App from './components/registro_empresa/Registro_Empresas_App';
 import Vista_detallada from './components/vista_detallada/Vista_detallada';
-import Registration from './components/registration/Registration';
+
 import Edit_profile from './components/editation/Editation';
 import Profile from './components/profile/Profile'
 
