@@ -52,18 +52,15 @@
         <div class="container">
           <div class="row align-items-center">
             <div class="active-popular-post-carusel row">
-              <div class="card-padding" v-for="empresa in empresasAux">
-                <div class="row card-business">
-                  <div class="thumb col-md-4 el-col-xs-8">
-                    <!-- <img class="img-responsive"
-                                          v-bind:src="'D:/proyectoRolo/Api/archivo/'+empresa.nombre_logo"
-                    style="width:150px; height:100px" alt=""/>-->
-                    <img width="100%" src="../../assets/logo-home.png" alt>
+              <div class="card-padding" :key="empresa.id_empresa" v-for="empresa in empresasAux">
+                <div class="row card-business" >                  
+                  <div class="thumb col-md-4 el-col-xs-8">                    
+                    <img width="100%" :src="'data:image;base64,'+empresa.base64Img" alt>
                   </div>
                   <div class="details col-md-8 el-col-xs-16">
                     <div class="testimonials__author">
                       <a
-                        href="#"
+                        href="JavaScript:Void(0)"
                         v-on:click="ir_pagina(empresa.nombre)"
                         class="name-description"
                       >{{ empresa.nombre }}</a>
@@ -137,16 +134,18 @@ export default {
   },
   methods: {
     buscar_filtros: function() {
-      let filtroCiudad;
-      let filtroTipo;
+      let filtroCiudad =[];
+      let filtroTipo = [];
       if (this.ciudadModel && this.tipoModel) {
-        filtroCiudad = this.empresas.filter(
-          empresa => empresa.id_ciudad == this.ciudadModel
-        );
-      } else if (this.tipoModel) {
-        this.empresasAux = this.empresas.filter(
-          empresa => empresa.id_tipo == this.tipoModel
-        );
+        filtroCiudad = this.empresas.filter( empresa => empresa.id_ciudad == this.ciudadModel );
+        this.empresasAux = filtroCiudad.filter( empresa => empresa.id_tipo == this.tipoModel );
+        return true;
+      } else if (this.tipoModel && !this.ciudadModel) {
+        this.empresasAux = this.empresas.filter( empresa => empresa.id_tipo == this.tipoModel );
+        return true;
+      } else if (!this.tipoModel && this.ciudadModel) {
+        this.empresasAux = this.empresas.filter( empresa => empresa.id_ciudad == this.ciudadModel );
+        return true;
       } else {
         this.empresasAux = this.empresas;
       }
