@@ -9,7 +9,7 @@
                     <i class="material-icons">domain</i>
                 </div>
                 <div class="input-effect js-input">
-                    <input class="CMXD-material-input" name="nombre" type="text" placeholder="Nombre de la empresa" v-model="empresaModel.nombre" v-validate="'required|max:20'">
+                    <input class="CMXD-material-input" name="nombre" type="text" placeholder="Nombre de la empresa" v-model="empresaModel.nombre" v-validate="'required'">
                     <span class="focus-border"></span>
                     <span v-show="errors.has('nombre')" class="text-warning"></span>
                     <span v-show="errors.has('nombre')" class="text-danger">Debes ingresar el nombre de tu empresa o negocio</span>
@@ -24,7 +24,7 @@
                 <div class="input-effect js-input">
                     <input class="CMXD-material-input" name="nit" type="number" v-model="empresaModel.nit" v-validate="'required|max:10'" placeholder="NIT o RUT">
                     <span class="focus-border"></span>
-                    <span v-show="errors.has('nit')" class="text-danger">*Maximo 10 caracteres</span>
+                    <span v-show="errors.has('nit')" class="text-danger">*El NIT o RUT deben contener 10 caracteres.</span>
                 </div>
             </div>
             <div class="clear-fix"></div>
@@ -75,7 +75,7 @@
                     <input class="CMXD-material-input" name="telefono" type="number" placeholder="Teléfono" v-model="empresaModel.telefono" v-validate="'max:7'">
                     <span class="focus-border"></span>
                     <i v-show="errors.has('telefono')" class="text-warning"></i>
-                    <span v-show="errors.has('telefono')" class="text-danger">*Máximo 7 caracteres</span>
+                    <span v-show="errors.has('telefono')" class="text-danger">El teléfono debe contener 7 caracteres.</span>
                 </div>
             </div>
 
@@ -88,7 +88,7 @@
                     <input class="CMXD-material-input" id="cel_emp" name="celular" type="number" placeholder="Celular / Whatsapp" v-model="empresaModel.celular" v-validate="'max:10'">
                     <span class="focus-border"></span>
                     <i v-show="errors.has('celular')" class="text-warning"></i>
-                    <span v-show="errors.has('celular')" class="text-danger">*Máximo 10 caracteres</span>
+                    <span v-show="errors.has('celular')" class="text-danger">El celular debe contener máximo 10 caracteres</span>
                 </div>
             </div>
             <div class="clear-fix"></div>
@@ -102,7 +102,7 @@
                     <input class="CMXD-material-input" id="email_emp" name="email" type="email" placeholder="Correo electrónico de la empresa" v-model="empresaModel.email" v-validate="'email'">
                     <span class="focus-border"></span>
                     <i v-show="errors.has('email')" class="text-warning"></i>
-                    <span v-show="errors.has('email')" class="text-danger">*Campo requerido</span>
+                    <span v-show="errors.has('email')" class="text-danger">Ingrese un correo electrónico valido.</span>
                 </div>
             </div>
             <div class="clear-fix"></div>
@@ -126,12 +126,13 @@
             </div>
 
             <!--Logo-->
-            <div class="form-CMXD row col-md-6">
-                <el-upload action="http://sfo2.digitaloceanspaces.com" multiple :limit="1" class="btn-services" :on-exceed="exceso_archivos" :on-success="logo_cargado">
-                    <el-button size="small" class="CMXD-btn-ok">Click para cargar logo de la empresa</el-button>
+            <!-- <div class="form-CMXD row col-md-6">
+                <el-upload action="http://sfo2.digitaloceanspaces.com" name="logo" multiple :limit="1" class="btn-services" :on-exceed="exceso_archivos" :on-success="logo_cargado" v-validate="'required'">
+                    <el-button size="small" class="CMXD-btn-ok">Cargar logo</el-button>
                     <div slot="tip" class="el-upload__tip text-center">Solo archivos jpg/png con un tamaño menor de 500kb</div>
                 </el-upload>
-            </div>
+                <span v-show="errors.has('logo')" class="text-danger">*No se ha seleccionado un logo.</span>
+            </div> -->
             <div class="clear-fix"></div>
 
             <div class="form-CMXD row col-md-6">
@@ -139,7 +140,7 @@
                     <i class="material-icons">insert_link</i>
                 </div>
                 <div class="input-effect js-input">
-                    <input class="CMXD-material-input" id="email_emp" name="email" type="email" placeholder="Dominio o URL de la empresa" v-validate="'email'">
+                    <input class="CMXD-material-input" id="url_emp" name="url" type="text" placeholder="Dominio o URL de la empresa">
                 </div>
             </div>
 
@@ -162,7 +163,7 @@
                     <input class="CMXD-material-input" type="textarea" name="mision" placeholder="Escriba un resumen detallado sobre quienes son" v-model="empresaModel.mision" v-validate="'required|max:200'">
                     <span class="focus-border"></span>
                     <i v-show="errors.has('mision')" class="text-warning"></i>
-                    <span v-show="errors.has('mision')" class="text-danger">*Maximo 200 caracteres</span>
+                    <span v-show="errors.has('mision')" class="text-danger">Escriba una descripción corta sobre la empresa o negocio.</span>
                 </div>
             </div>
             <div class="clear-fix"></div>
@@ -182,7 +183,7 @@
                     <input class="CMXD-material-input" name="nombre_ser_1" type="text" placeholder="Nombre servicio" v-model="servicioModel.nombre_ser_1" v-validate="'required|max:20'">
                     <span class="focus-border"></span>
                     <i v-show="errors.has('nombre_ser_1')" class="text-warning"></i>
-                    <span v-show="errors.has('nombre_ser_1')" class="text-danger">*Maximo 20 caracteres</span>
+                    <span v-show="errors.has('nombre_ser_1')" class="text-danger">*Ingrese al menos un servicio.</span>
                 </div>
             </div>
             <div class="form-CMXD row col-md-6">
@@ -197,10 +198,10 @@
                     <i class="material-icons">title</i>
                 </div>
                 <div class="input-effect js-input textarea-animation">
-                    <textarea class="CMXD-material-input" name="ser_1" placeholder="Describa el servicio" v-model="servicioModel.ser_1" v-validate="'required|max:20'"></textarea>
+                    <textarea class="CMXD-material-input" name="ser_1" placeholder="Describa el servicio" v-model="servicioModel.ser_1" ></textarea>
                     <span class="focus-border"></span>
                     <i v-show="errors.has('ser_3')" class="text-warning"></i>
-                    <span v-show="errors.has('ser_3')" class="text-danger">*Maximo 20 caracteres</span>
+                    <span v-show="errors.has('ser_3')" class="text-danger"></span>
                 </div>
             </div>
             <div class="clear-fix"></div>
@@ -218,10 +219,10 @@
                 </div>
                 <div class="input-effect js-input">
                     <label>Servicio 2</label>
-                    <input class="CMXD-material-input" name="nombre_ser_2" type="text" placeholder="Nombre servicio" v-model="servicioModel.nombre_ser_2" v-validate="'required|max:20'">
+                    <input class="CMXD-material-input" name="nombre_ser_2" type="text" placeholder="Nombre servicio">
                     <span class="focus-border"></span>
                     <i v-show="errors.has('nombre_ser_2')" class="text-warning"></i>
-                    <span v-show="errors.has('nombre_ser_2')" class="text-danger">*Maximo 20 caracteres</span>
+                    <span v-show="errors.has('nombre_ser_2')" class="text-danger"></span>
                 </div>
             </div>
             <div class="form-CMXD row col-md-6">
@@ -236,7 +237,7 @@
                     <i class="material-icons">title</i>
                 </div>
                 <div class="input-effect js-input textarea-animation">
-                    <textarea class="CMXD-material-input" name="ser_2" placeholder="Describa el servicio" v-model="servicioModel.ser_2" v-validate="'required|max:20'"></textarea>
+                    <textarea class="CMXD-material-input" name="ser_2" placeholder="Describa el servicio" v-model="servicioModel.ser_2"></textarea>
                     <span class="focus-border"></span>
                     <i v-show="errors.has('ser_3')" class="text-warning"></i>
                     <span v-show="errors.has('ser_3')" class="text-danger">*Maximo 20 caracteres</span>
@@ -257,10 +258,10 @@
                 </div>
                 <div class="input-effect js-input">
                     <label>Servicio 3</label>
-                    <input class="CMXD-material-input" name="nombre_ser_3" type="text" placeholder="Nombre servicio" v-model="servicioModel.nombre_ser_3" v-validate="'required|max:20'">
+                    <input class="CMXD-material-input" name="nombre_ser_3" type="text" placeholder="Nombre servicio" v-model="servicioModel.nombre_ser_3">
                     <span class="focus-border"></span>
                     <i v-show="errors.has('nombre_ser_3')" class="text-warning"></i>
-                    <span v-show="errors.has('nombre_ser_3')" class="text-danger">*Maximo 20 caracteres</span>
+                    <span v-show="errors.has('nombre_ser_3')" class="text-danger"></span>
                 </div>
             </div>
             <div class="form-CMXD row col-md-6">
@@ -275,10 +276,10 @@
                     <i class="material-icons">title</i>
                 </div>
                 <div class="input-effect js-input textarea-animation">
-                    <textarea class="CMXD-material-input" name="ser_3" placeholder="Describa el servicio" v-model="servicioModel.ser_3" v-validate="'required|max:20'"></textarea>
+                    <textarea class="CMXD-material-input" name="ser_3" placeholder="Describa el servicio" v-model="servicioModel.ser_3" ></textarea>
                     <span class="focus-border"></span>
                     <i v-show="errors.has('ser_3')" class="text-warning"></i>
-                    <span v-show="errors.has('ser_3')" class="text-danger">*Maximo 20 caracteres</span>
+                    <span v-show="errors.has('ser_3')" class="text-danger"></span>
                 </div>
             </div>
             <div class="clear-fix"></div>
@@ -296,10 +297,10 @@
                 </div>
                 <div class="input-effect js-input">
                     <label>Servicio 4</label>
-                    <input class="CMXD-material-input" name="nombre_ser_4" type="text" placeholder="Nombre servicio" v-model="servicioModel.nombre_ser_4" v-validate="'required|max:20'">
+                    <input class="CMXD-material-input" name="nombre_ser_4" type="text" placeholder="Nombre servicio">
                     <span class="focus-border"></span>
                     <i v-show="errors.has('nombre_ser_4')" class="text-warning"></i>
-                    <span v-show="errors.has('nombre_ser_4')" class="text-danger">*Maximo 20 caracteres</span>
+                    <span v-show="errors.has('nombre_ser_4')" class="text-danger"></span>
                 </div>
             </div>
             <div class="form-CMXD row col-md-6">
@@ -314,10 +315,10 @@
                     <i class="material-icons">title</i>
                 </div>
                 <div class="input-effect js-input textarea-animation">
-                    <textarea class="CMXD-material-input" name="ser_4" placeholder="Describa el servicio" v-model="servicioModel.ser_4" v-validate="'required|max:20'"></textarea>
+                    <textarea class="CMXD-material-input" name="ser_4" placeholder="Describa el servicio" v-model="servicioModel.ser_4"></textarea>
                     <span class="focus-border"></span>
                     <i v-show="errors.has('ser_3')" class="text-warning"></i>
-                    <span v-show="errors.has('ser_3')" class="text-danger">*Maximo 20 caracteres</span>
+                    <span v-show="errors.has('ser_3')" class="text-danger"></span>
                 </div>
             </div>
             <div class="clear-fix"></div>
@@ -335,10 +336,10 @@
                 </div>
                 <div class="input-effect js-input">
                     <label>Servicio 5</label>
-                    <input class="CMXD-material-input" name="nombre_ser_5" type="text" placeholder="Nombre servicio" v-model="servicioModel.nombre_ser_5" v-validate="'required|max:20'">
+                    <input class="CMXD-material-input" name="nombre_ser_5" type="text" placeholder="Nombre servicio" v-model="servicioModel.nombre_ser_5">
                     <span class="focus-border"></span>
                     <i v-show="errors.has('nombre_ser_5')" class="text-warning"></i>
-                    <span v-show="errors.has('nombre_ser_5')" class="text-danger">*Maximo 20 caracteres</span>
+                    <span v-show="errors.has('nombre_ser_5')" class="text-danger"></span>
                 </div>
             </div>
             <div class="form-CMXD row col-md-6">
@@ -353,10 +354,10 @@
                     <i class="material-icons">title</i>
                 </div>
                 <div class="input-effect js-input textarea-animation">
-                    <textarea class="CMXD-material-input" name="ser_5" placeholder="Describa el servicio" v-model="servicioModel.ser_5" v-validate="'required|max:20'"></textarea>
+                    <textarea class="CMXD-material-input" name="ser_5" placeholder="Describa el servicio" v-model="servicioModel.ser_5"></textarea>
                     <span class="focus-border"></span>
                     <i v-show="errors.has('ser_3')" class="text-warning"></i>
-                    <span v-show="errors.has('ser_3')" class="text-danger">*Maximo 20 caracteres</span>
+                    <span v-show="errors.has('ser_3')" class="text-danger"></span>
                 </div>
             </div>
             <div class="clear-fix"></div>
@@ -374,10 +375,10 @@
                 </div>
                 <div class="input-effect js-input">
                     <label>Servicio 6</label>
-                    <input class="CMXD-material-input" name="nombre_ser_6" type="text" placeholder="Nombre servicio" v-model="servicioModel.nombre_ser_6" v-validate="'required|max:20'">
+                    <input class="CMXD-material-input" name="nombre_ser_6" type="text" placeholder="Nombre servicio" v-model="servicioModel.nombre_ser_6">
                     <span class="focus-border"></span>
                     <i v-show="errors.has('nombre_ser_6')" class="text-warning"></i>
-                    <span v-show="errors.has('nombre_ser_6')" class="text-danger">*Maximo 20 caracteres</span>
+                    <span v-show="errors.has('nombre_ser_6')" class="text-danger"></span>
                 </div>
             </div>
             <div class="form-CMXD row col-md-6">
@@ -392,10 +393,10 @@
                     <i class="material-icons">title</i>
                 </div>
                 <div class="input-effect js-input textarea-animation">
-                    <textarea class="CMXD-material-input" name="ser_6" placeholder="Describa el servicio" v-model="servicioModel.ser_6" v-validate="'required|max:20'"></textarea>
+                    <textarea class="CMXD-material-input" name="ser_6" placeholder="Describa el servicio" v-model="servicioModel.ser_6"></textarea>
                     <span class="focus-border"></span>
                     <i v-show="errors.has('ser_3')" class="text-warning"></i>
-                    <span v-show="errors.has('ser_3')" class="text-danger">*Maximo 20 caracteres</span>
+                    <span v-show="errors.has('ser_3')" class="text-danger"></span>
                 </div>
             </div>
             <div class="clear-fix"></div>
@@ -413,10 +414,10 @@
                 </div>
                 <div class="input-effect js-input">
                     <label>Servicio 7</label>
-                    <input class="CMXD-material-input" name="nombre_ser_7" type="text" placeholder="Nombre servicio" v-model="servicioModel.nombre_ser_7" v-validate="'required|max:20'">
+                    <input class="CMXD-material-input" name="nombre_ser_7" type="text" placeholder="Nombre servicio" v-model="servicioModel.nombre_ser_7">
                     <span class="focus-border"></span>
                     <i v-show="errors.has('nombre_ser_7')" class="text-warning"></i>
-                    <span v-show="errors.has('nombre_ser_7')" class="text-danger">*Maximo 20 caracteres</span>
+                    <span v-show="errors.has('nombre_ser_7')" class="text-danger"></span>
                 </div>
             </div>
             <div class="form-CMXD row col-md-6">
@@ -431,10 +432,10 @@
                     <i class="material-icons">title</i>
                 </div>
                 <div class="input-effect js-input textarea-animation">
-                    <textarea class="CMXD-material-input" name="ser_7" placeholder="Describa el servicio" v-model="servicioModel.ser_7" v-validate="'required|max:20'"></textarea>
+                    <textarea class="CMXD-material-input" name="ser_7" placeholder="Describa el servicio" v-model="servicioModel.ser_7"></textarea>
                     <span class="focus-border"></span>
                     <i v-show="errors.has('ser_3')" class="text-warning"></i>
-                    <span v-show="errors.has('ser_3')" class="text-danger">*Maximo 20 caracteres</span>
+                    <span v-show="errors.has('ser_3')" class="text-danger"></span>
                 </div>
             </div>
             <div class="clear-fix"></div>
@@ -452,10 +453,10 @@
                 </div>
                 <div class="input-effect js-input">
                     <label>Servicio 8</label>
-                    <input class="CMXD-material-input" name="nombre_ser_8" type="text" placeholder="Nombre servicio" v-model="servicioModel.nombre_ser_8" v-validate="'required|max:20'">
+                    <input class="CMXD-material-input" name="nombre_ser_8" type="text" placeholder="Nombre servicio" v-model="servicioModel.nombre_ser_8">
                     <span class="focus-border"></span>
                     <i v-show="errors.has('nombre_ser_8')" class="text-warning"></i>
-                    <span v-show="errors.has('nombre_ser_8')" class="text-danger">*Maximo 20 caracteres</span>
+                    <span v-show="errors.has('nombre_ser_8')" class="text-danger"></span>
                 </div>
             </div>
             <div class="form-CMXD row col-md-6">
@@ -470,10 +471,10 @@
                     <i class="material-icons">title</i>
                 </div>
                 <div class="input-effect js-input textarea-animation">
-                    <textarea class="CMXD-material-input" name="ser_8" placeholder="Describa el servicio" v-model="servicioModel.ser_8" v-validate="'required|max:20'"></textarea>
+                    <textarea class="CMXD-material-input" name="ser_8" placeholder="Describa el servicio" v-model="servicioModel.ser_8"></textarea>
                     <span class="focus-border"></span>
                     <i v-show="errors.has('ser_3')" class="text-warning"></i>
-                    <span v-show="errors.has('ser_3')" class="text-danger">*Maximo 20 caracteres</span>
+                    <span v-show="errors.has('ser_3')" class="text-danger"></span>
                 </div>
             </div>
             <div class="clear-fix"></div>
@@ -491,10 +492,10 @@
                 </div>
                 <div class="input-effect js-input">
                     <label>Servicio 9</label>
-                    <input class="CMXD-material-input" name="nombre_ser_9" type="text" placeholder="Nombre servicio" v-model="servicioModel.nombre_ser_9" v-validate="'required|max:20'">
+                    <input class="CMXD-material-input" name="nombre_ser_9" type="text" placeholder="Nombre servicio">
                     <span class="focus-border"></span>
                     <i v-show="errors.has('nombre_ser_9')" class="text-warning"></i>
-                    <span v-show="errors.has('nombre_ser_9')" class="text-danger">*Maximo 20 caracteres</span>
+                    <span v-show="errors.has('nombre_ser_9')" class="text-danger"></span>
                 </div>
             </div>
             <div class="form-CMXD row col-md-6">
@@ -509,10 +510,10 @@
                     <i class="material-icons">title</i>
                 </div>
                 <div class="input-effect js-input textarea-animation">
-                    <textarea class="CMXD-material-input" name="ser_9" placeholder="Describa el servicio" v-model="servicioModel.ser_9" v-validate="'required|max:20'"></textarea>
+                    <textarea class="CMXD-material-input" name="ser_9" placeholder="Describa el servicio" v-model="servicioModel.ser_9"></textarea>
                     <span class="focus-border"></span>
                     <i v-show="errors.has('ser_3')" class="text-warning"></i>
-                    <span v-show="errors.has('ser_3')" class="text-danger">*Maximo 20 caracteres</span>
+                    <span v-show="errors.has('ser_3')" class="text-danger"></span>
                 </div>
             </div>
             <div class="clear-fix"></div>
@@ -530,10 +531,10 @@
                 </div>
                 <div class="input-effect js-input">
                     <label>Servicio 10</label>
-                    <input class="CMXD-material-input" name="nombre_ser_10" type="text" placeholder="Nombre servicio" v-model="servicioModel.nombre_ser_10" v-validate="'required|max:20'">
+                    <input class="CMXD-material-input" name="nombre_ser_10" type="text" placeholder="Nombre servicio" v-model="servicioModel.nombre_ser_10">
                     <span class="focus-border"></span>
                     <i v-show="errors.has('nombre_ser_10')" class="text-warning"></i>
-                    <span v-show="errors.has('nombre_ser_10')" class="text-danger">*Maximo 20 caracteres</span>
+                    <span v-show="errors.has('nombre_ser_10')" class="text-danger"></span>
                 </div>
             </div>
             <div class="form-CMXD row col-md-6">
@@ -548,10 +549,10 @@
                     <i class="material-icons">title</i>
                 </div>
                 <div class="input-effect js-input textarea-animation">
-                    <textarea class="CMXD-material-input" name="ser_10" placeholder="Describa el servicio" v-model="servicioModel.ser_10" v-validate="'required|max:20'"></textarea>
+                    <textarea class="CMXD-material-input" name="ser_10" placeholder="Describa el servicio" v-model="servicioModel.ser_10"></textarea>
                     <span class="focus-border"></span>
                     <i v-show="errors.has('ser_3')" class="text-warning"></i>
-                    <span v-show="errors.has('ser_3')" class="text-danger">*Maximo 20 caracteres</span>
+                    <span v-show="errors.has('ser_3')" class="text-danger"></span>
                 </div>
             </div>
             <div class="clear-fix"></div>
@@ -573,7 +574,7 @@
                     <input class="CMXD-material-input" name="facebook" type="text" placeholder="Ruta" v-model="empresaModel.facebook" v-validate="'max:100'">
                     <span class="focus-border"></span>
                     <span v-show="errors.has('facebook')" class="text-warning"></span>
-                    <span v-show="errors.has('facebook')" class="text-danger">*Maximo 100 caracteres</span>
+                    <span v-show="errors.has('facebook')" class="text-danger">*La URL debe contener máximo 100 caracteres</span>
                 </div>
             </div>
             <div class="form-CMXD row col-md-6">
@@ -584,7 +585,7 @@
                     <label>Instagram</label>
                     <input class="CMXD-material-input" name="twitter" type="text" placeholder="Ruta" v-model="empresaModel.instagram" v-validate="'max:100'">
                     <span v-show="errors.has('twitter')" class="text-warning"></span>
-                    <span v-show="errors.has('twitter')" class="text-danger">*Maximo 100 caracteres</span>
+                    <span v-show="errors.has('twitter')" class="text-danger">*La URL debe contener máximo 100 caracteres</span>
                 </div>
             </div>
             <div class="form-CMXD row col-md-6">
@@ -595,7 +596,7 @@
                     <label>Twitter</label>
                     <input class="CMXD-material-input" placeholder="Ruta" name="youtube" type="text" v-model="empresaModel.youtube" v-validate="'max:100'">
                     <span v-show="errors.has('twitter')" class="text-warning"></span>
-                    <span v-show="errors.has('twitter')" class="text-danger">*Maximo 100 caracteres</span>
+                    <span v-show="errors.has('twitter')" class="text-danger">*La URL debe contener máximo 100 caracteres</span>
                 </div>
             </div>
             <div class="form-CMXD row col-md-6">
@@ -606,7 +607,7 @@
                     <label>Whatsapp</label>
                     <input class="CMXD-material-input" placeholder="Ruta" name="youtube" type="text" v-model="empresaModel.youtube" v-validate="'max:100'">
                     <span v-show="errors.has('twitter')" class="text-warning"></span>
-                    <span v-show="errors.has('twitter')" class="text-danger">*Maximo 100 caracteres</span>
+                    <span v-show="errors.has('twitter')" class="text-danger">*La URL debe contener máximo 100 caracteres</span>
                 </div>
             </div>
             <div class="form-CMXD row col-md-6">
@@ -743,31 +744,32 @@ export default {
   methods: {
     enviar_formulario: function() {
       this.carga = true;
-      axios({
-        method: "post",
-        url: "http://68.183.124.242:8000/api/empresa/",
-        data: {
-          nombre: this.empresaModel.nombre,
-          nit: this.empresaModel.nit,
-          direccion: this.empresaModel.direccion,
-          telefono: this.empresaModel.telefono,
-          celular: this.empresaModel.celular,
-          email: this.empresaModel.email,
-          mision: this.empresaModel.mision,
-          id_tipo: this.empresaModel.id_tipo,
-          id_ciudad: this.empresaModel.id_ciudad,
-          id_archivo: this.id_archivo,
-          instagram: this.empresaModel.instagram,
-          facebook: this.empresaModel.facebook,
-          youtube: this.empresaModel.youtube
-        }
-      }).then(respuesta => {
-        this.id_empresa = respuesta.data.id_empresa;
-        this.empresa_nombre = respuesta.data.nombre;
-        if (this.id_empresa) {
-          this.enviar_servicios();
-        }
-      });
+      console.log(this.empresaModel)
+    //   axios({
+    //     method: "post",
+    //     url: "http://68.183.124.242:8000/api/empresa/",
+    //     data: {
+    //       nombre: this.empresaModel.nombre,
+    //       nit: this.empresaModel.nit,
+    //       direccion: this.empresaModel.direccion,
+    //       telefono: this.empresaModel.telefono,
+    //       celular: this.empresaModel.celular,
+    //       email: this.empresaModel.email,
+    //       mision: this.empresaModel.mision,
+    //       id_tipo: this.empresaModel.id_tipo,
+    //       id_ciudad: this.empresaModel.id_ciudad,
+    //       id_archivo: this.id_archivo,
+    //       instagram: this.empresaModel.instagram,
+    //       facebook: this.empresaModel.facebook,
+    //       youtube: this.empresaModel.youtube
+    //     }
+    //   }).then(respuesta => {
+    //     this.id_empresa = respuesta.data.id_empresa;
+    //     this.empresa_nombre = respuesta.data.nombre;
+    //     if (this.id_empresa) {
+    //       this.enviar_servicios();
+    //     }
+    //   });
     },
 
     enviar_servicios: function() {

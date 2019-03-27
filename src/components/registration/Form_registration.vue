@@ -38,7 +38,7 @@
                 <i class="material-icons">lock</i>
             </div>
             <div class="input-effect">
-                <input class="CMXD-material-input passReg" v-model="usuario_model.password1" type="password" required placeholder="Contraseña">
+                <input class="CMXD-material-input passReg" id="pass_registration" v-model="usuario_model.password1" type="password" required placeholder="Contraseña">
                 <span class="focus-border"></span>
                 <span class="ob_pass_reg text-danger">Ingrese una contraseña.</span>
                 <span class="long_pass_reg text-danger">*La contraseña debe contener entre 8 y 65 caracteres.</span>
@@ -49,7 +49,7 @@
                 <i class="material-icons">lock_open</i>
             </div>
             <div class="input-effect">
-                <input class="CMXD-material-input pass2Reg" v-model="usuario_model.password2" type="password" required placeholder="Confirmar contraseña">
+                <input class="CMXD-material-input pass2Reg" id="pass2_registration" v-model="usuario_model.password2" type="password" required placeholder="Confirmar contraseña">
                 <span class="focus-border"></span>
                 <span class="ob_pass2_reg text-danger">Ingrese nuevamente la contraseña.</span>
                 <span class="long_pass2_reg text-danger">*La contraseña debe contener entre 8 y 65 caracteres.</span>

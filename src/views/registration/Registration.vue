@@ -75,8 +75,6 @@ export default {
       let validation = this.validation();
       if (validation) return;
 
-      let validator = this.validatePassword();
-      if (validator.state) {
         axios({
           method: "post",
           url: "http://68.183.124.242:8000/rest-auth/registration/",
@@ -85,8 +83,8 @@ export default {
             lastName: document.getElementsByName("lastname")[0].value,
             username: document.getElementsByName("email")[1].value,
             email: document.getElementsByName("email")[1].value,
-            password1: this.usuario_model.password1,
-            password2: this.usuario_model.password2
+            password1: document.getElementById('pass_registration').value,
+            password2: document.getElementById('pass2_registration').value
           }
         })
           .then(respuesta => {
@@ -100,16 +98,10 @@ export default {
           .catch(e => {
             console.log(e)
             this.$notify({
-              message: "Error",
-              type: "danger"
+              message: "La contraseña no coincide",
+              type: "warning"
             });
-          });
-      } else {
-        this.$notify({
-          message: validator.message,
-          type: "error"
-        });
-      }
+          })
     },
     validation: function(){
       let name = document.querySelector(".nameReg").value.trim();
