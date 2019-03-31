@@ -75,6 +75,7 @@ var router = new Router({
       component: Registro_empresa
     },
     {
+      name: 'home',
       path: '/home',
       component: Home
     },

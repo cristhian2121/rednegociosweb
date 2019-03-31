@@ -79,8 +79,8 @@ export default {
           method: "post",
           url: "http://68.183.124.242:8000/rest-auth/registration/",
           data: {
-            firstName: document.getElementsByName("name")[0].value,
-            lastName: document.getElementsByName("lastname")[0].value,
+            first_name: document.getElementsByName("name")[0].value,
+            last_name: document.getElementsByName("lastname")[0].value,
             username: document.getElementsByName("email")[1].value,
             email: document.getElementsByName("email")[1].value,
             password1: document.getElementById('pass_registration').value,
@@ -162,9 +162,10 @@ export default {
         return {
           state: true,
           data: {
-              firstName: firstName,
-              lastName: lastName,
+              first_name: firstName,
+              last_name: lastName,
               username: username,
+              email: username,
               password1: password1,
               password2: password2
             }
