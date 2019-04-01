@@ -205,13 +205,13 @@
       </div>
 
       <!--Logo-->
-      <!-- <div class="form-CMXD row col-md-6">
+      <div class="form-CMXD row col-md-6">
                 <el-upload action="http://sfo2.digitaloceanspaces.com" name="logo" multiple :limit="1" class="btn-services" :on-exceed="exceso_archivos" :on-success="logo_cargado" v-validate="'required'">
                     <el-button size="small" class="CMXD-btn-ok">Cargar logo</el-button>
                     <div slot="tip" class="el-upload__tip text-center">Solo archivos jpg/png con un tamaño menor de 500kb</div>
                 </el-upload>
                 <span v-show="errors.has('logo')" class="text-danger">*No se ha seleccionado un logo.</span>
-      </div>-->
+      </div>
       <div class="clear-fix"></div>
 
       <div class="form-CMXD row col-md-6">
@@ -231,7 +231,7 @@
 
       <!--Logo-->
       <div class="form-CMXD row col-md-6">
-        <el-upload
+        <!-- <el-upload
           action="http://sfo2.digitaloceanspaces.com"
           multiple
           :limit="1"
@@ -241,7 +241,7 @@
         >
           <el-button size="small" class="CMXD-btn-ok">Banner</el-button>
           <div slot="tip" class="el-upload__tip text-center">Maximo 3 archivos</div>
-        </el-upload>
+        </el-upload> -->
       </div>
       <div class="clear-fix"></div>
 
