@@ -59,11 +59,10 @@
                   </div>
                   <div class="details col-md-8 el-col-xs-16">
                     <div class="testimonials__author">
-                      <a
-                        href="JavaScript:Void(0)"
-                        v-on:click="ir_pagina(empresa.nombre)"
-                        class="name-description"
-                      >{{ empresa.nombre }}</a>
+                      <router-link :to="{ path: `/${empresa.nombre}` }">
+                        <a href="JavaScript:Void(0)" class="name-description">{{ empresa.nombre }}</a>
+                      </router-link>
+                      <!-- <a href="JavaScript:Void(0)" class="name-description">{{ empresa.nombre }}</a> -->
                       <span>Nit. {{empresa.nit}}</span>
                       <span>{{ empresa.tipo }}</span>
                     </div>
@@ -73,10 +72,10 @@
                     <div class="description-business">
                       <p>{{ empresa.mision }}</p>
                     </div>
-                    <a
-                      href="#"
-                      v-on:click="ir_pagina(empresa.nombre)"
-                      class="btn CMXD-btn-business">Entrar</a>
+                    <router-link :to="{ path: `/${empresa.nombre}` }">
+                      <a href="#"class="btn CMXD-btn-business">Entrar</a>
+                    </router-link>
+                    <!-- <a href="#"class="btn CMXD-btn-business">Entrar</a> -->
                   </div>
                 </div>
                 <hr>
