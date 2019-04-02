@@ -197,7 +197,7 @@
         <!--Logo-->
         <div class="form-CMXD row col-md-6">
           <el-upload
-            action="http://sfo2.digitaloceanspaces.com"
+            action="http://68.183.124.242:8000/api/archivo/"
             multiple
             :limit="1"
             class="btn-services"
@@ -229,9 +229,9 @@
           </div>
         </div>
 
-        <!--Logo-->
+        <!--banner-->
         <div class="form-CMXD row col-md-6">
-          <el-upload
+          <!-- <el-upload
             action="http://sfo2.digitaloceanspaces.com"
             multiple
             :limit="1"
@@ -241,7 +241,7 @@
           >
             <el-button size="small" class="CMXD-btn-ok">Banner</el-button>
             <div slot="tip" class="el-upload__tip text-center">Maximo 3 archivos</div>
-          </el-upload>
+          </el-upload> -->
         </div>
         <div class="clear-fix"></div>
 
@@ -1148,6 +1148,7 @@ export default {
   methods: {
     enviar_formulario: function() {
       this.carga = true;
+      let user_id = sessionStorage.getItem('user');;
       axios({
         method: "post",
         url: "http://68.183.124.242:8000/api/empresa/",
@@ -1162,6 +1163,7 @@ export default {
           id_tipo: this.empresaModel.id_tipo,
           id_ciudad: this.empresaModel.id_ciudad,
           id_archivo: this.id_archivo,
+          user_id: user_id,
           instagram: this.empresaModel.instagram,
           facebook: this.empresaModel.facebook,
           youtube: this.empresaModel.youtube

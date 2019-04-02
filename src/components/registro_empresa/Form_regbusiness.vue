@@ -206,11 +206,10 @@
 
       <!--Logo-->
       <div class="form-CMXD row col-md-6">
-                <el-upload action="http://sfo2.digitaloceanspaces.com" name="logo" multiple :limit="1" class="btn-services" :on-exceed="exceso_archivos" :on-success="logo_cargado" v-validate="'required'">
+                <el-upload action="http://68.183.124.242:8000/api/archivo/" name="logo" multiple :limit="1" class="btn-services" :on-exceed="exceso_archivos" :on-success="logo_cargado">
                     <el-button size="small" class="CMXD-btn-ok">Cargar logo</el-button>
                     <div slot="tip" class="el-upload__tip text-center">Solo archivos jpg/png con un tamaño menor de 500kb</div>
                 </el-upload>
-                <span v-show="errors.has('logo')" class="text-danger">*No se ha seleccionado un logo.</span>
       </div>
       <div class="clear-fix"></div>
 
@@ -227,22 +226,7 @@
             placeholder="Dominio o URL de la empresa"
           >
         </div>
-      </div>
-
-      <!--Logo-->
-      <div class="form-CMXD row col-md-6">
-        <!-- <el-upload
-          action="http://sfo2.digitaloceanspaces.com"
-          multiple
-          :limit="1"
-          class="btn-services"
-          :on-exceed="exceso_archivos"
-          :on-success="logo_cargado"
-        >
-          <el-button size="small" class="CMXD-btn-ok">Banner</el-button>
-          <div slot="tip" class="el-upload__tip text-center">Maximo 3 archivos</div>
-        </el-upload> -->
-      </div>
+      </div>     
       <div class="clear-fix"></div>
 
       <!--Sobre nosotros-->
@@ -868,17 +852,17 @@
           <label>Instagram</label>
           <input
             class="CMXD-material-input"
-            name="twitter"
+            name="instagram"
             type="text"
             placeholder="Ruta"
             v-model="empresaModel.instagram"
             v-validate="'max:100'"
           >
-          <span v-show="errors.has('twitter')" class="text-warning"></span>
+          <span v-show="errors.has('instagram')" class="text-warning"></span>
           <span
-            v-show="errors.has('twitter')"
+            v-show="errors.has('instagram')"
             class="text-danger"
-          >*La URL debe contener máximo 100 caracteres</span>
+          >*La URL debe contener un máximo de 100 caracteres</span>
         </div>
       </div>
       <div class="form-CMXD row col-md-6">
@@ -890,9 +874,8 @@
           <input
             class="CMXD-material-input"
             placeholder="Ruta"
-            name="youtube"
+            name="twitter"
             type="text"
-            v-model="empresaModel.youtube"
             v-validate="'max:100'"
           >
           <span v-show="errors.has('twitter')" class="text-warning"></span>
@@ -911,14 +894,13 @@
           <input
             class="CMXD-material-input"
             placeholder="Ruta"
-            name="youtube"
+            name="whatsapp"
             type="text"
-            v-model="empresaModel.youtube"
             v-validate="'max:100'"
           >
-          <span v-show="errors.has('twitter')" class="text-warning"></span>
+          <span v-show="errors.has('whatsapp')" class="text-warning"></span>
           <span
-            v-show="errors.has('twitter')"
+            v-show="errors.has('whatsapp')"
             class="text-danger"
           >*La URL debe contener máximo 100 caracteres</span>
         </div>
@@ -937,8 +919,8 @@
             v-model="empresaModel.youtube"
             v-validate="'max:100'"
           >
-          <span v-show="errors.has('twitter')" class="text-warning"></span>
-          <span v-show="errors.has('twitter')" class="text-danger">*Maximo 100 caracteres</span>
+          <span v-show="errors.has('youtube')" class="text-warning"></span>
+          <span v-show="errors.has('youtube')" class="text-danger">*Maximo 100 caracteres</span>
         </div>
       </div>
     </div>
@@ -1068,19 +1050,9 @@ export default {
   methods: {
     enviar_formulario: function() {
       this.carga = true;
-      this.guardar_usuario()
-        .then(function(respuesta) {
-            console.log("bien");
-          
-        })
-        .then(function(response) {
-          console.log("bien");
-        })
-        .catch(function(e) {
-          console.log("mal");
-        });
+      this.guardar_usuario()      
     },
-    guardar_empresa: function() {
+    guardar_empresa: function(email) {
       axios({
         method: "post",
         url: "http://68.183.124.242:8000/api/empresa/",
@@ -1095,6 +1067,7 @@ export default {
           id_tipo: this.empresaModel.id_tipo,
           id_ciudad: this.empresaModel.id_ciudad,
           id_archivo: this.id_archivo,
+          user_id: email,
           instagram: this.empresaModel.instagram,
           facebook: this.empresaModel.facebook,
           youtube: this.empresaModel.youtube
@@ -1128,7 +1101,7 @@ export default {
       })
         .then(respuesta => {
           sessionStorage.setItem("user", email);
-          this.guardar_empresa();
+          this.guardar_empresa(email);
           // this.$router.push({ path: "home" });
         })
         .catch(e => {
@@ -1180,9 +1153,6 @@ export default {
         this.tipos = respuesta.data;
       });
     },
-    // usuario: async function(){
-    //   await axios.get("")
-    // }
     cambio_servicios: function() {
       switch (this.radio_servicios) {
         case 1:
@@ -1326,7 +1296,7 @@ export default {
     },
     validateBeforeSubmit() {
       let validation = this.validation();
-      //if (validation) return;
+      if (validation) return;
       this.$validator.validateAll().then(result => {
         if (result) {
           this.enviar_formulario();
@@ -1345,17 +1315,6 @@ export default {
 
       let typeEmail = this.isValidEmail(email);
       let validator = false;
-
-      document.querySelector(".ob_name_reg").style.display = "none";
-      document.querySelector(".ob_name_reg").style.display = "none";
-      document.querySelector(".ob_lastname_reg").style.display = "none";
-      document.querySelector(".long_lastname_reg").style.display = "none";
-      document.querySelector(".ob_email_reg").style.display = "none";
-      document.querySelector(".long_email_reg").style.display = "none";
-      document.querySelector(".ob_pass_reg").style.display = "none";
-      document.querySelector(".long_pass_reg").style.display = "none";
-      document.querySelector(".ob_pass2_reg").style.display = "none";
-      document.querySelector(".long_pass2_reg").style.display = "none";
 
       if (!name) {
         document.querySelector(".ob_name_reg").style.display = "block";
@@ -1379,7 +1338,17 @@ export default {
         document.querySelector(".ob_pass2_reg").style.display = "block";
         validator = true;
       }
-      //if (pass2.length <8 || pass2.length > 50) {document.querySelector(".ob_name_reg").style.display = "block"; validator = true;}
+      if (pass2.length <8 || pass2.length > 50) {
+        document.querySelector(".ob_name_reg").style.display = "block";
+        validator = true;
+      }
+      if(pass != pass2) {
+        this.$notify.error({
+          title: "Ops",
+          message: "Las contraseñas no coinciden"
+        });
+        validator = true;
+      }
 
       if (validator) return true;
       return false;
