@@ -920,14 +920,14 @@
             <label>Instagram</label>
             <input
               class="CMXD-material-input"
-              name="twitter"
+              name="instagram"
               type="text"
               placeholder="Ruta"
               v-model="empresaModel.instagram"
               v-validate="'max:100'"
             >
-            <span v-show="errors.has('twitter')" class="text-warning"></span>
-            <span v-show="errors.has('twitter')" class="text-danger">*Maximo 100 caracteres</span>
+            <span v-show="errors.has('instagram')" class="text-warning"></span>
+            <span v-show="errors.has('instagram')" class="text-danger">*Maximo 100 caracteres</span>
           </div>
         </div>
         <div class="form-CMXD row col-md-6">
@@ -939,9 +939,8 @@
             <input
               class="CMXD-material-input"
               placeholder="Ruta"
-              name="youtube"
+              name="twitter"
               type="text"
-              v-model="empresaModel.youtube"
               v-validate="'max:100'"
             >
             <span v-show="errors.has('twitter')" class="text-warning"></span>
@@ -957,13 +956,12 @@
             <input
               class="CMXD-material-input"
               placeholder="Ruta"
-              name="youtube"
+              name="whatsapp"
               type="text"
-              v-model="empresaModel.youtube"
               v-validate="'max:100'"
             >
-            <span v-show="errors.has('twitter')" class="text-warning"></span>
-            <span v-show="errors.has('twitter')" class="text-danger">*Maximo 100 caracteres</span>
+            <span v-show="errors.has('whatsapp')" class="text-warning"></span>
+            <span v-show="errors.has('whatsapp')" class="text-danger">*Maximo 100 caracteres</span>
           </div>
         </div>
         <div class="form-CMXD row col-md-6">
@@ -980,8 +978,8 @@
               v-model="empresaModel.youtube"
               v-validate="'max:100'"
             >
-            <span v-show="errors.has('twitter')" class="text-warning"></span>
-            <span v-show="errors.has('twitter')" class="text-danger">*Maximo 100 caracteres</span>
+            <span v-show="errors.has('youtube')" class="text-warning"></span>
+            <span v-show="errors.has('youtube')" class="text-danger">*Maximo 100 caracteres</span>
           </div>
         </div>
       </div>
