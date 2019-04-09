@@ -105,18 +105,20 @@
           <h2>Nuestros servicios</h2>
         </header>
         <div class="feature-grid">
-          <div class="feature">
+          <div v-if="carga">
+             <div class="feature" :key="servicio.nombre" v-for="servicio in listadoServicos">
             <div class="image rounded">
               <img src="@/assets/logo-home.png" alt>
             </div>
             <div class="content">
               <header>
-                <h4>Servicio 1</h4>
+                <h4>{{ servicio.nombre }}</h4>
               </header>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore esse tenetur accusantium porro omnis, unde mollitia totam sit nesciunt consectetur.</p>
+              <p>{{ servicio.descripcion }} </p>
             </div>
           </div>
-          <div class="feature">
+          </div>
+          <!-- <div class="feature">
             <div class="image rounded">
               <img src="@/assets/logo-home.png" alt>
             </div>
@@ -148,7 +150,7 @@
               </header>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore esse tenetur accusantium porro omnis, unde mollitia totam sit nesciunt consectetur.</p>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </section>
@@ -359,7 +361,7 @@
         <br>
         <ul class="icons">
           <li>
-            <a href="#">
+            <a href="#" v-on:click="ir_red(empresa.facebook)">
               <div>
                 <img src="@/assets/facebookb.png" alt>
               </div>
@@ -404,11 +406,8 @@
         </div>
         <div class="col-md-4 sub-menu">
           <label for="">Servicios</label>
-          <ul>
-            <li>Servicio 1</li>
-            <li>Servicio 2</li>
-            <li>Servicio 3</li>
-            <li>Servicio 4</li>
+          <ul :key="servicioN.nombre" v-for="servicioN in listadoServicos">
+            <li>{{ servicioN.nombre }}</li>
           </ul>
         </div>
         <div class="col-md-4 sub-menu">
@@ -476,10 +475,8 @@ export default {
   props: ["id_empresa"],
 
   async mounted() {
-    this.carga = true;
-    this.nombre_empresa = this.$route.params.nombre;
+    this.nombre_empresa = this.$route.params.nombre;    
     await this.traer_empresas();
-    await this.traer_servicios();
   },
   data() {
     return {
@@ -487,8 +484,9 @@ export default {
       empresasAux: [Object],
       servicios: [Object],
       nombre_empresa: "",
-      carga: true,
-      showModal: false
+      carga: false,
+      showModal: false,
+      listadoServicos: null
     };
   },
   methods: {
@@ -504,16 +502,101 @@ export default {
       axios.get(`http://68.183.124.242:8000/api/detalle/?nombre=${this.nombre_empresa}`)
         .then(respuesta => {
           this.empresas = respuesta.data[0];
-          console.log(this.empresas);          
-          this.carga = false;
+          console.log(this.empresas)
+          this.traer_servicios();  
         });
     },
 
-    traer_servicios: async function() {
-      axios.get("http://68.183.124.242:8000/api/servicio/").then(respuesta => {
+    traer_servicios: function() {
+      console.log(`http://68.183.124.242:8000/api/servicio/?id_empresa=${this.empresas.id_empresa}`)
+      axios.get(`http://68.183.124.242:8000/api/servicio/?id_empresa=${this.empresas.id_empresa}`)
+      .then(respuesta => {
         this.servicios = respuesta.data[0];
-        this.carga = false;
+        this.listadoServicos = this.contarServicios();
+        this.carga = true;
+      })
+      .catch (function(ee){
+        console.log(ee);
       });
+    },
+    ir_red: function(red) {
+      const irRed = red;
+      //console.log(irRed)
+      this.$router.push({ path: `/${irRed}` });
+    },
+    contarServicios: function () {
+      let longitud = [];
+      if (this.servicios.nombre_ser_1) {
+        let servicio = {
+            nombre: this.servicios.nombre_ser_1,
+            descripcion: this.servicios.ser_1
+          }
+          longitud.push(servicio);
+      }
+      if (this.servicios.nombre_ser_2) {
+        let servicio = {
+            nombre: this.servicios.nombre_ser_2,
+            descripcion: this.servicios.ser_2
+          }
+          longitud.push(servicio);
+      }
+      if (this.servicios.nombre_ser_3) {
+        let servicio = {
+            nombre: this.servicios.nombre_ser_3,
+            descripcion: this.servicios.ser_3
+          }
+          longitud.push(servicio);
+      }
+      if (this.servicios.nombre_ser_4) {
+        let servicio = {
+            nombre: this.servicios.nombre_ser_4,
+            descripcion: this.servicios.ser_4
+          }
+          longitud.push(servicio);
+      }
+      if (this.servicios.nombre_ser_5) {
+        let servicio = {
+            nombre: this.servicios.nombre_ser_5,
+            descripcion: this.servicios.ser_5
+          }
+          longitud.push(servicio);
+      }
+      if (this.servicios.nombre_ser_6) {
+        let servicio = {
+            nombre: this.servicios.nombre_ser_6,
+            descripcion: this.servicios.ser_6
+          }
+          longitud.push(servicio);
+      }
+      if (this.servicios.nombre_ser_7) {
+        let servicio = {
+            nombre: this.servicios.nombre_ser_7,
+            descripcion: this.servicios.ser_7
+          }
+          longitud.push(servicio);
+      }
+      if (this.servicios.nombre_ser_8) {
+        let servicio = {
+            nombre: this.servicios.nombre_ser_8,
+            descripcion: this.servicios.ser_8
+          }
+          longitud.push(servicio);
+      }
+      if (this.servicios.nombre_ser_9) {
+        let servicio = {
+            nombre: this.servicios.nombre_ser_9,
+            descripcion: this.servicios.ser_9
+          }
+          longitud.push(servicio);
+      }
+      if (this.servicios.nombre_ser_10) {
+        let servicio = {
+            nombre: this.servicios.nombre_ser_10,
+            descripcion: this.servicios.ser_10
+          }
+          longitud.push(servicio);
+      }     
+      return longitud;
     }
   }
 };
