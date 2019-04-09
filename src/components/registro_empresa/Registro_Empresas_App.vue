@@ -220,11 +220,10 @@
           <div class="input-effect js-input">
             <input
               class="CMXD-material-input"
-              id="email_emp"
-              name="email"
-              type="email"
+              id="link_emp"
+              name="dominio"
+              type="text"
               placeholder="Dominio o URL de la empresa"
-              v-validate="'email'"
             >
           </div>
         </div>
@@ -1057,6 +1056,7 @@ export default {
   async mounted() {
     await this.traer_ciudaes();
     await this.traer_tipos();
+    await this.traerUsuario();
     this.carga = false;
   },
   components: {
@@ -1140,13 +1140,13 @@ export default {
       carga: true,
       id_empresa: null,
       id_archivo: null,
-      empresa_nombre: null
+      empresa_nombre: null,
+      id_usuario: null
     };
   },
   methods: {
     enviar_formulario: function() {
       this.carga = true;
-      let user_id = sessionStorage.getItem('user');;
       axios({
         method: "post",
         url: "http://68.183.124.242:8000/api/empresa/",
@@ -1161,7 +1161,7 @@ export default {
           id_tipo: this.empresaModel.id_tipo,
           id_ciudad: this.empresaModel.id_ciudad,
           id_archivo: this.id_archivo,
-          user_id: user_id,
+          user_id: this.id_usuario,
           instagram: this.empresaModel.instagram,
           facebook: this.empresaModel.facebook,
           youtube: this.empresaModel.youtube
@@ -1201,6 +1201,13 @@ export default {
           nombre_ser_10: this.servicioModel.nombre_ser_10,
           ser_10: this.servicioModel.ser_10
         }
+      })
+      .then(function(res) {
+        this.mensaje_exito();
+        this.$router.push({ name: "home" });
+      })
+      .catch(function(err) {
+        this.mensaje_error();
       });
     },
     traer_ciudaes: async function() {
@@ -1213,9 +1220,13 @@ export default {
         this.tipos = respuesta.data;
       });
     },
-    // usuario: async function(){
-    //   await axios.get("")
-    // }
+    traerUsuario: async function(){
+      let email = sessionStorage.getItem('user');
+      axios.get(`http://68.183.124.242:8000/api/usuario/?email=${email}`)
+      .then(res => {
+        this.id_usuario = res.data[0].id;
+      });
+    },
     cambio_servicios: function() {
       switch (this.radio_servicios) {
         case 1:

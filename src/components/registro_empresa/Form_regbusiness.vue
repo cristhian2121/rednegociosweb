@@ -206,10 +206,21 @@
 
       <!--Logo-->
       <div class="form-CMXD row col-md-6">
-                <el-upload action="http://68.183.124.242:8000/api/archivo/" name="logo" multiple :limit="1" class="btn-services" :on-exceed="exceso_archivos" :on-success="logo_cargado">
-                    <el-button size="small" class="CMXD-btn-ok">Cargar logo</el-button>
-                    <div slot="tip" class="el-upload__tip text-center">Solo archivos jpg/png con un tamaño menor de 500kb</div>
-                </el-upload>
+        <el-upload
+          action="http://68.183.124.242:8000/api/archivo/"
+          name="logo"
+          multiple
+          :limit="1"
+          class="btn-services"
+          :on-exceed="exceso_archivos"
+          :on-success="logo_cargado"
+        >
+          <el-button size="small" class="CMXD-btn-ok">Cargar logo</el-button>
+          <div
+            slot="tip"
+            class="el-upload__tip text-center"
+          >Solo archivos jpg/png con un tamaño menor de 500kb</div>
+        </el-upload>
       </div>
       <div class="clear-fix"></div>
 
@@ -226,7 +237,7 @@
             placeholder="Dominio o URL de la empresa"
           >
         </div>
-      </div>     
+      </div>
       <div class="clear-fix"></div>
 
       <!--Sobre nosotros-->
@@ -1044,15 +1055,16 @@ export default {
       carga: true,
       id_empresa: null,
       id_archivo: null,
-      empresa_nombre: null
+      empresa_nombre: null,
+      email_usuario: null
     };
   },
   methods: {
     enviar_formulario: function() {
       this.carga = true;
-      this.guardar_usuario()      
+      this.guardar_usuario();
     },
-    guardar_empresa: function(email) {
+    guardar_empresa: function(user_id) {
       axios({
         method: "post",
         url: "http://68.183.124.242:8000/api/empresa/",
@@ -1067,7 +1079,7 @@ export default {
           id_tipo: this.empresaModel.id_tipo,
           id_ciudad: this.empresaModel.id_ciudad,
           id_archivo: this.id_archivo,
-          user_id: email,
+          user_id: user_id,
           instagram: this.empresaModel.instagram,
           facebook: this.empresaModel.facebook,
           youtube: this.empresaModel.youtube
@@ -1086,7 +1098,7 @@ export default {
       let email = document.querySelector(".emailReg").value.trim();
       let pass = document.querySelector(".passReg").value.trim();
       let pass2 = document.querySelector(".pass2Reg").value.trim();
-
+      this.email_usuario = email;
       axios({
         method: "post",
         url: "http://68.183.124.242:8000/rest-auth/registration/",
@@ -1100,9 +1112,8 @@ export default {
         }
       })
         .then(respuesta => {
-          sessionStorage.setItem("user", email);
-          this.guardar_empresa(email);
-          // this.$router.push({ path: "home" });
+          sessionStorage.setItem("user", this.email_usuario);
+          this.traerUsuario(this.email_usuario);
         })
         .catch(e => {
           console.log(e);
@@ -1112,7 +1123,14 @@ export default {
           });
         });
     },
-
+    traerUsuario(email) {
+      axios
+        .get(`http://68.183.124.242:8000/api/usuario?email=${email}`)
+        .then(res => {
+          this.id_usuario = res.data[0].id;
+          this.guardar_empresa(this.id_usuario);
+        });
+    },
     enviar_servicios: function() {
       axios({
         method: "post",
@@ -1140,8 +1158,7 @@ export default {
           nombre_ser_10: this.servicioModel.nombre_ser_10,
           ser_10: this.servicioModel.ser_10
         }
-      })
-      .then( respuesta =>  this.$router.push({ name: "home" }))
+      }).then(respuesta => this.$router.push({ name: "home" }));
     },
     traer_ciudaes: async function() {
       axios.get("http://68.183.124.242:8000/api/ciudad/").then(respuesta => {
@@ -1338,11 +1355,11 @@ export default {
         document.querySelector(".ob_pass2_reg").style.display = "block";
         validator = true;
       }
-      if (pass2.length <8 || pass2.length > 50) {
+      if (pass2.length < 8 || pass2.length > 50) {
         document.querySelector(".ob_name_reg").style.display = "block";
         validator = true;
       }
-      if(pass != pass2) {
+      if (pass != pass2) {
         this.$notify.error({
           title: "Ops",
           message: "Las contraseñas no coinciden"
