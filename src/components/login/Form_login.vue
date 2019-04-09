@@ -1,79 +1,113 @@
 <template>
-<div id="form_login">
-  <div  class="row CMXD-padding-container">
-    <div class="form-CMXD row col-md-12">
-        <div class="CMXD-icon-form">
-            <i class="material-icons">person</i>
-        </div>
-        <div class="input-effect">
-            <input class="CMXD-material-input email" v-model="usuario_model.email" type="email" name="email" placeholder="Correo electrónico" required>
-            <span class="focus-border"></span>
-            <span class='email_type text-danger'>Ingrese un correo electrónico valido.<br></span>
-            <span class="long_email text-danger">*Este correo ha superado el máximo de caracteres permitido.</span>
-        </div>
-    </div>
-
-    <div class="form-CMXD row col-md-12">
-        <div class="CMXD-icon-form">
-            <i class="material-icons">lock</i>
-        </div>
-        <div class="input-effect">
-            <input class="CMXD-material-input password" v-model="usuario_model.password" type="password" id="password1" placeholder="Contraseña" required>
-            <span class="focus-border"></span>
-            <span class="long_pass text-danger">*La contraseña debe contener entre 8 y 65 caracteres</span>
-        </div>
-    </div>
-
-    <div class="col-md-12">
-      <div class="cont-center g-recaptcha" id="recha" data-sitekey="6LdOw3UUAAAAADpYeBKGykbrkXelEx6mtlrVI4rb"></div>
-      <span class="ob_recap">*No se ha verificado el Captcha</span>        
-    </div>
-
-    <div class="col-md-12">
-        <br>
-        <el-button type="submit" class="btn-lg btn-block CMXD-btn-ok" v-on:click="ingresar()">Ingresar</el-button>
-    </div>
-
-    <div class="row col-md-12 text-center CMXD-sub-links">
-        <div class="col-md-6">
-            <a id="show-modal" @click="showModal = true">Registrarme</a>
-        </div>
-        <div class="col-md-6">
-            <a href="#">Olvide Contraseña</a>
-        </div>
-    </div>
-  </div>
-  
-  <div>
-    <div v-if="showModal" @close="showModal = false">
-        <div class="modal-mask">
-            <div class="modal-wrapper">
-                <div class="modal-container">
-                    <div class="close-modal">
-                        <button @click="showModal = false">
-                            <i class="material-icons">close</i>
-                        </button>
+<div class="CMXD-container-left">
+    <div class="CMXD-container-form flex flex-center">
+        <div class="CMXD-form-login">
+            <div class="CMXD-logo"></div>
+            <div class="CMXD-form-inputs">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <p>
+                            Eso que
+                            <span>necesitas</span>, en un solo lugar.
+                        </p>
                     </div>
-                    <div class="modal-body">
-                        <label class="register-tipe" for>Selecciona el tipo de registro</label>
-                        <div class="row">
-                            <div class="col-md-6 text-center">
-                                <router-link :to="{ path: '/registration'}">
-                                    <div class="btnr CMXD-btn-person">Persona natural</div>
-                                </router-link>
+                    <div>
+                        <br>
+                        <div id="form_login">
+                            <div class="row CMXD-padding-container">
+                                <div class="form-CMXD row col-md-12">
+                                    <div class="CMXD-icon-form">
+                                        <i class="material-icons">person</i>
+                                    </div>
+                                    <div class="input-effect">
+                                        <input class="CMXD-material-input email" v-model="usuario_model.email" type="email" name="email" placeholder="Correo electrónico" required>
+                                        <span class="focus-border"></span>
+                                        <span class='email_type text-danger'>Ingrese un correo electrónico valido.<br></span>
+                                        <span class="long_email text-danger">*Este correo excede el máximo de caracteres permitido.</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-CMXD row col-md-12">
+                                    <div class="CMXD-icon-form">
+                                        <i class="material-icons">lock</i>
+                                    </div>
+                                    <div class="input-effect">
+                                        <input class="CMXD-material-input password" v-model="usuario_model.password" type="password" id="password1" placeholder="Contraseña" required>
+                                        <span class="focus-border"></span>
+                                        <span class="long_pass text-danger">*La contraseña debe contener entre 8 y 65 caracteres</span>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="cont-center g-recaptcha" id="recha" data-sitekey="6LdOw3UUAAAAADpYeBKGykbrkXelEx6mtlrVI4rb"></div>
+                                    <span class="ob_recap">*No se ha verificado el Captcha</span>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <br>
+                                    <el-button type="submit" class="btn-lg btn-block CMXD-btn-ok" v-on:click="ingresar()">Ingresar</el-button>
+                                </div>
+
+                                <div class="row col-md-12 text-center CMXD-sub-links">
+                                    <div class="col-md-6">
+                                        <a id="show-modal" @click="showModal = true">Registrarme</a>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <a href="#">Olvide Contraseña</a>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-md-6 text-center">
-                                <router-link :to="{ path: '/registration/business'}">
-                                    <div class="btnr CMXD-btn-business">Empresa</div>
-                                </router-link>
+
+                            <div>
+                                <div v-if="showModal" @close="showModal = false">
+                                    <div class="modal-mask">
+                                        <div class="modal-wrapper">
+                                            <div class="modal-container">
+                                                <div class="close-modal">
+                                                    <button @click="showModal = false">
+                                                        <i class="material-icons">close</i>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <label class="register-tipe" for>Selecciona el tipo de registro</label>
+                                                    <div class="row">
+                                                        <div class="col-md-6 text-center">
+                                                            <router-link :to="{ path: '/registration'}">
+                                                                <div class="btnr CMXD-btn-person">Persona natural</div>
+                                                            </router-link>
+                                                        </div>
+                                                        <div class="col-md-6 text-center">
+                                                            <router-link :to="{ path: '/registration/bussines'}">
+                                                                <div class="btnr CMXD-btn-business">Empresa</div>
+                                                            </router-link>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
+                        <!-- <div class="img-rigth col-md-4 col-sm-5 col-xs-5">
+                                <div style="height: 20%;"></div>
+                                <el-button type="info">Preguntas frecuentes</el-button>
+                </div>-->
                     </div>
                 </div>
             </div>
         </div>
+        <div class="CMXD-footer">
+            <div class="CMXD-copyright">Copyright © 2019 Med/Col
+                <br>
+                <span>
+              Desing by
+              <a href="http://cmxdesign.000webhostapp.com/" target="_black">CMX-Desing</a>
+            </span>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 </template>
 
@@ -96,18 +130,14 @@ export default {
 
   mounted() {
     sessionStorage.removeItem("user");
-    // let captcha = `<div class="cont-center g-recaptcha" data-sitekey="6LdOw3UUAAAAADpYeBKGykbrkXelEx6mtlrVI4rb"></div>`;
-    // let capthaNodo = document.querySelector('.amor');
-    // capthaNodo.firstElementChild.remove();
-    // capthaNodo.innerHTML = captcha;
-    // document.location.reload();
-    //grecaptcha.reset();
+    grecaptcha.render("recha", {
+      sitekey: "6LdOw3UUAAAAADpYeBKGykbrkXelEx6mtlrVI4rb"
+    });
   },
   methods: {
     ingresar: function() {
-      
-      let validation=this.validation();
-      if (validation) return false
+      let validation = this.validation();
+      if (validation) return false;
 
       axios({
         method: "post",
@@ -124,12 +154,12 @@ export default {
         })
         .catch(e => {
           this.$notify({
-            message: "Usuario o contraseña invalida.",
+            message: "El usuario o la contraseña ingresada no coinciden con ninguna cuenta.",
             type: "warning"
           });
         });
     },
-    validation: function(){
+    validation: function() {
       let user = document.querySelector(".email").value.trim();
       let pass = document.querySelector(".password").value.trim();
       let recap = grecaptcha.getResponse();
@@ -139,32 +169,34 @@ export default {
       document.querySelector('.email_type').style.display='none';   
       document.querySelector(".long_email").style.display="none";
       document.querySelector(".long_pass").style.display="none";
-      document.querySelector(".ob_recap").style.display="none"; 
+      document.querySelector(".ob_recap").style.display="none";
+      console.log(typeEmail)
 
       if(user && user.length>65){
         document.querySelector(".long_email").style.display="block";
         validator = true;
       }
-      if(pass.length<8 || pass.length>50){
-        document.querySelector(".long_pass").style.display="block";    
-        validator = true;    
-      }
-      if(!recap){
-        document.querySelector(".ob_recap").style.display="block";    
+      if (pass.length < 8 || pass.length > 50) {
+        document.querySelector(".long_pass").style.display = "block";
         validator = true;
       }
-      if(!user || user.length<65){
-        if (typeEmail==false){
-          document.querySelector('.email_type').style.display='block';
+      if (!recap) {
+        document.querySelector(".ob_recap").style.display = "block";
+        validator = true;
+      }
+      if (!user || user.length < 65) {
+        if (typeEmail == false) {
+          document.querySelector(".email_type").style.display = "block";
           validator = true;
         }
       }
-      
-      if(validator) return true
-      return false
+
+      if (validator) return true;
+      return false;
     },
     isValidEmail: function(mail) {
-          return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(mail); 
+        //return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(mail); 
+        return /\S+@\S+\.\S+/.test(mail);
     }
   }
 };
@@ -181,16 +213,17 @@ body {
 }
 
 /*validation*/
-.long_email, .long_pass{
+.long_email,
+.long_pass {
   display: none;
 }
-.ob_recap{
+.ob_recap {
   display: none;
-  color:#dc3545 !important;
+  color: #dc3545 !important;
   font-size: 11px;
 }
 
-.email_type{
+.email_type {
   display: none;
 }
 

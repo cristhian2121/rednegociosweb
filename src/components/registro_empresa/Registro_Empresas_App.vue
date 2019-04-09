@@ -197,7 +197,7 @@
         <!--Logo-->
         <div class="form-CMXD row col-md-6">
           <el-upload
-            action="http://sfo2.digitaloceanspaces.com"
+            action="http://68.183.124.242:8000/api/archivo/"
             multiple
             :limit="1"
             class="btn-services"
@@ -220,18 +220,17 @@
           <div class="input-effect js-input">
             <input
               class="CMXD-material-input"
-              id="email_emp"
-              name="email"
-              type="email"
+              id="link_emp"
+              name="dominio"
+              type="text"
               placeholder="Dominio o URL de la empresa"
-              v-validate="'email'"
             >
           </div>
         </div>
 
-        <!--Logo-->
+        <!--banner-->
         <div class="form-CMXD row col-md-6">
-          <el-upload
+          <!-- <el-upload
             action="http://sfo2.digitaloceanspaces.com"
             multiple
             :limit="1"
@@ -241,7 +240,7 @@
           >
             <el-button size="small" class="CMXD-btn-ok">Banner</el-button>
             <div slot="tip" class="el-upload__tip text-center">Maximo 3 archivos</div>
-          </el-upload>
+          </el-upload> -->
         </div>
         <div class="clear-fix"></div>
 
@@ -285,11 +284,11 @@
               type="text"
               placeholder="Nombre servicio"
               v-model="servicioModel.nombre_ser_1"
-              v-validate="'required|max:20'"
+              v-validate="'required|max:120'"
             >
             <span class="focus-border"></span>
             <i v-show="errors.has('nombre_ser_1')" class="text-warning"></i>
-            <span v-show="errors.has('nombre_ser_1')" class="text-danger">*Maximo 20 caracteres</span>
+            <span v-show="errors.has('nombre_ser_1')" class="text-danger">*Maximo 120 caracteres</span>
           </div>
         </div>
         <div class="form-CMXD row col-md-6">
@@ -318,11 +317,11 @@
               name="ser_1"
               placeholder="Describa el servicio"
               v-model="servicioModel.ser_1"
-              v-validate="'required|max:20'"
+              v-validate="'required|max:120'"
             ></textarea>
             <span class="focus-border"></span>
-            <i v-show="errors.has('ser_3')" class="text-warning"></i>
-            <span v-show="errors.has('ser_3')" class="text-danger">*Maximo 20 caracteres</span>
+            <i v-show="errors.has('ser_1')" class="text-warning"></i>
+            <span v-show="errors.has('ser_1')" class="text-danger">*Maximo 120 caracteres</span>
           </div>
         </div>
         <div class="clear-fix"></div>
@@ -346,11 +345,11 @@
               type="text"
               placeholder="Nombre servicio"
               v-model="servicioModel.nombre_ser_2"
-              v-validate="'required|max:20'"
+              
             >
             <span class="focus-border"></span>
-            <i v-show="errors.has('nombre_ser_2')" class="text-warning"></i>
-            <span v-show="errors.has('nombre_ser_2')" class="text-danger">*Maximo 20 caracteres</span>
+            <!-- <i v-show="errors.has('nombre_ser_2')" class="text-warning"></i> -->
+            <!-- <span v-show="errors.has('nombre_ser_2')" class="text-danger">*Maximo 20 caracteres</span> -->
           </div>
         </div>
         <div class="form-CMXD row col-md-6">
@@ -379,11 +378,10 @@
               name="ser_2"
               placeholder="Describa el servicio"
               v-model="servicioModel.ser_2"
-              v-validate="'required|max:20'"
             ></textarea>
             <span class="focus-border"></span>
-            <i v-show="errors.has('ser_3')" class="text-warning"></i>
-            <span v-show="errors.has('ser_3')" class="text-danger">*Maximo 20 caracteres</span>
+            <!-- <i v-show="errors.has('ser_3')" class="text-warning"></i>
+            <span v-show="errors.has('ser_3')" class="text-danger">*Maximo 20 caracteres</span> -->
           </div>
         </div>
         <div class="clear-fix"></div>
@@ -407,11 +405,10 @@
               type="text"
               placeholder="Nombre servicio"
               v-model="servicioModel.nombre_ser_3"
-              v-validate="'required|max:20'"
             >
             <span class="focus-border"></span>
-            <i v-show="errors.has('nombre_ser_3')" class="text-warning"></i>
-            <span v-show="errors.has('nombre_ser_3')" class="text-danger">*Maximo 20 caracteres</span>
+            <!-- <i v-show="errors.has('nombre_ser_3')" class="text-warning"></i>
+            <span v-show="errors.has('nombre_ser_3')" class="text-danger">*Maximo 20 caracteres</span> -->
           </div>
         </div>
         <div class="form-CMXD row col-md-6">
@@ -440,11 +437,10 @@
               name="ser_3"
               placeholder="Describa el servicio"
               v-model="servicioModel.ser_3"
-              v-validate="'required|max:20'"
             ></textarea>
             <span class="focus-border"></span>
-            <i v-show="errors.has('ser_3')" class="text-warning"></i>
-            <span v-show="errors.has('ser_3')" class="text-danger">*Maximo 20 caracteres</span>
+            <!-- <i v-show="errors.has('ser_3')" class="text-warning"></i>
+            <span v-show="errors.has('ser_3')" class="text-danger">*Maximo 20 caracteres</span> -->
           </div>
         </div>
         <div class="clear-fix"></div>
@@ -501,11 +497,10 @@
               name="ser_4"
               placeholder="Describa el servicio"
               v-model="servicioModel.ser_4"
-              v-validate="'required|max:20'"
             ></textarea>
             <span class="focus-border"></span>
-            <i v-show="errors.has('ser_3')" class="text-warning"></i>
-            <span v-show="errors.has('ser_3')" class="text-danger">*Maximo 20 caracteres</span>
+            <!-- <i v-show="errors.has('ser_3')" class="text-warning"></i>
+            <span v-show="errors.has('ser_3')" class="text-danger">*Maximo 20 caracteres</span> -->
           </div>
         </div>
         <div class="clear-fix"></div>
@@ -529,11 +524,10 @@
               type="text"
               placeholder="Nombre servicio"
               v-model="servicioModel.nombre_ser_5"
-              v-validate="'required|max:20'"
             >
             <span class="focus-border"></span>
-            <i v-show="errors.has('nombre_ser_5')" class="text-warning"></i>
-            <span v-show="errors.has('nombre_ser_5')" class="text-danger">*Maximo 20 caracteres</span>
+            <!-- <i v-show="errors.has('nombre_ser_5')" class="text-warning"></i>
+            <span v-show="errors.has('nombre_ser_5')" class="text-danger">*Maximo 20 caracteres</span> -->
           </div>
         </div>
         <div class="form-CMXD row col-md-6">
@@ -562,11 +556,10 @@
               name="ser_5"
               placeholder="Describa el servicio"
               v-model="servicioModel.ser_5"
-              v-validate="'required|max:20'"
             ></textarea>
             <span class="focus-border"></span>
-            <i v-show="errors.has('ser_3')" class="text-warning"></i>
-            <span v-show="errors.has('ser_3')" class="text-danger">*Maximo 20 caracteres</span>
+            <!-- <i v-show="errors.has('ser_3')" class="text-warning"></i>
+            <span v-show="errors.has('ser_3')" class="text-danger">*Maximo 20 caracteres</span> -->
           </div>
         </div>
         <div class="clear-fix"></div>
@@ -590,11 +583,10 @@
               type="text"
               placeholder="Nombre servicio"
               v-model="servicioModel.nombre_ser_6"
-              v-validate="'required|max:20'"
             >
             <span class="focus-border"></span>
-            <i v-show="errors.has('nombre_ser_6')" class="text-warning"></i>
-            <span v-show="errors.has('nombre_ser_6')" class="text-danger">*Maximo 20 caracteres</span>
+            <!-- <i v-show="errors.has('nombre_ser_6')" class="text-warning"></i>
+            <span v-show="errors.has('nombre_ser_6')" class="text-danger">*Maximo 20 caracteres</span> -->
           </div>
         </div>
         <div class="form-CMXD row col-md-6">
@@ -623,11 +615,10 @@
               name="ser_6"
               placeholder="Describa el servicio"
               v-model="servicioModel.ser_6"
-              v-validate="'required|max:20'"
             ></textarea>
             <span class="focus-border"></span>
-            <i v-show="errors.has('ser_3')" class="text-warning"></i>
-            <span v-show="errors.has('ser_3')" class="text-danger">*Maximo 20 caracteres</span>
+            <!-- <i v-show="errors.has('ser_3')" class="text-warning"></i>
+            <span v-show="errors.has('ser_3')" class="text-danger">*Maximo 20 caracteres</span> -->
           </div>
         </div>
         <div class="clear-fix"></div>
@@ -651,11 +642,10 @@
               type="text"
               placeholder="Nombre servicio"
               v-model="servicioModel.nombre_ser_7"
-              v-validate="'required|max:20'"
             >
             <span class="focus-border"></span>
-            <i v-show="errors.has('nombre_ser_7')" class="text-warning"></i>
-            <span v-show="errors.has('nombre_ser_7')" class="text-danger">*Maximo 20 caracteres</span>
+            <!-- <i v-show="errors.has('nombre_ser_7')" class="text-warning"></i>
+            <span v-show="errors.has('nombre_ser_7')" class="text-danger">*Maximo 20 caracteres</span> -->
           </div>
         </div>
         <div class="form-CMXD row col-md-6">
@@ -684,11 +674,10 @@
               name="ser_7"
               placeholder="Describa el servicio"
               v-model="servicioModel.ser_7"
-              v-validate="'required|max:20'"
             ></textarea>
             <span class="focus-border"></span>
-            <i v-show="errors.has('ser_3')" class="text-warning"></i>
-            <span v-show="errors.has('ser_3')" class="text-danger">*Maximo 20 caracteres</span>
+            <!-- <i v-show="errors.has('ser_3')" class="text-warning"></i>
+            <span v-show="errors.has('ser_3')" class="text-danger">*Maximo 20 caracteres</span> -->
           </div>
         </div>
         <div class="clear-fix"></div>
@@ -712,11 +701,10 @@
               type="text"
               placeholder="Nombre servicio"
               v-model="servicioModel.nombre_ser_8"
-              v-validate="'required|max:20'"
             >
             <span class="focus-border"></span>
-            <i v-show="errors.has('nombre_ser_8')" class="text-warning"></i>
-            <span v-show="errors.has('nombre_ser_8')" class="text-danger">*Maximo 20 caracteres</span>
+            <!-- <i v-show="errors.has('nombre_ser_8')" class="text-warning"></i>
+            <span v-show="errors.has('nombre_ser_8')" class="text-danger">*Maximo 20 caracteres</span> -->
           </div>
         </div>
         <div class="form-CMXD row col-md-6">
@@ -745,11 +733,10 @@
               name="ser_8"
               placeholder="Describa el servicio"
               v-model="servicioModel.ser_8"
-              v-validate="'required|max:20'"
             ></textarea>
             <span class="focus-border"></span>
-            <i v-show="errors.has('ser_3')" class="text-warning"></i>
-            <span v-show="errors.has('ser_3')" class="text-danger">*Maximo 20 caracteres</span>
+            <!-- <i v-show="errors.has('ser_3')" class="text-warning"></i>
+            <span v-show="errors.has('ser_3')" class="text-danger">*Maximo 20 caracteres</span> -->
           </div>
         </div>
         <div class="clear-fix"></div>
@@ -773,11 +760,10 @@
               type="text"
               placeholder="Nombre servicio"
               v-model="servicioModel.nombre_ser_9"
-              v-validate="'required|max:20'"
             >
             <span class="focus-border"></span>
-            <i v-show="errors.has('nombre_ser_9')" class="text-warning"></i>
-            <span v-show="errors.has('nombre_ser_9')" class="text-danger">*Maximo 20 caracteres</span>
+            <!-- <i v-show="errors.has('nombre_ser_9')" class="text-warning"></i>
+            <span v-show="errors.has('nombre_ser_9')" class="text-danger">*Maximo 20 caracteres</span> -->
           </div>
         </div>
         <div class="form-CMXD row col-md-6">
@@ -806,11 +792,10 @@
               name="ser_9"
               placeholder="Describa el servicio"
               v-model="servicioModel.ser_9"
-              v-validate="'required|max:20'"
             ></textarea>
             <span class="focus-border"></span>
-            <i v-show="errors.has('ser_3')" class="text-warning"></i>
-            <span v-show="errors.has('ser_3')" class="text-danger">*Maximo 20 caracteres</span>
+            <!-- <i v-show="errors.has('ser_3')" class="text-warning"></i>
+            <span v-show="errors.has('ser_3')" class="text-danger">*Maximo 20 caracteres</span> -->
           </div>
         </div>
         <div class="clear-fix"></div>
@@ -834,11 +819,10 @@
               type="text"
               placeholder="Nombre servicio"
               v-model="servicioModel.nombre_ser_10"
-              v-validate="'required|max:20'"
             >
             <span class="focus-border"></span>
-            <i v-show="errors.has('nombre_ser_10')" class="text-warning"></i>
-            <span v-show="errors.has('nombre_ser_10')" class="text-danger">*Maximo 20 caracteres</span>
+            <!-- <i v-show="errors.has('nombre_ser_10')" class="text-warning"></i>
+            <span v-show="errors.has('nombre_ser_10')" class="text-danger">*Maximo 20 caracteres</span> -->
           </div>
         </div>
         <div class="form-CMXD row col-md-6">
@@ -867,11 +851,10 @@
               name="ser_10"
               placeholder="Describa el servicio"
               v-model="servicioModel.ser_10"
-              v-validate="'required|max:20'"
             ></textarea>
             <span class="focus-border"></span>
-            <i v-show="errors.has('ser_3')" class="text-warning"></i>
-            <span v-show="errors.has('ser_3')" class="text-danger">*Maximo 20 caracteres</span>
+            <!-- <i v-show="errors.has('ser_3')" class="text-warning"></i>
+            <span v-show="errors.has('ser_3')" class="text-danger">*Maximo 20 caracteres</span> -->
           </div>
         </div>
         <div class="clear-fix"></div>
@@ -936,14 +919,14 @@
             <label>Instagram</label>
             <input
               class="CMXD-material-input"
-              name="twitter"
+              name="instagram"
               type="text"
               placeholder="Ruta"
               v-model="empresaModel.instagram"
               v-validate="'max:100'"
             >
-            <span v-show="errors.has('twitter')" class="text-warning"></span>
-            <span v-show="errors.has('twitter')" class="text-danger">*Maximo 100 caracteres</span>
+            <span v-show="errors.has('instagram')" class="text-warning"></span>
+            <span v-show="errors.has('instagram')" class="text-danger">*Maximo 100 caracteres</span>
           </div>
         </div>
         <div class="form-CMXD row col-md-6">
@@ -955,9 +938,8 @@
             <input
               class="CMXD-material-input"
               placeholder="Ruta"
-              name="youtube"
+              name="twitter"
               type="text"
-              v-model="empresaModel.youtube"
               v-validate="'max:100'"
             >
             <span v-show="errors.has('twitter')" class="text-warning"></span>
@@ -973,13 +955,12 @@
             <input
               class="CMXD-material-input"
               placeholder="Ruta"
-              name="youtube"
+              name="whatsapp"
               type="text"
-              v-model="empresaModel.youtube"
               v-validate="'max:100'"
             >
-            <span v-show="errors.has('twitter')" class="text-warning"></span>
-            <span v-show="errors.has('twitter')" class="text-danger">*Maximo 100 caracteres</span>
+            <span v-show="errors.has('whatsapp')" class="text-warning"></span>
+            <span v-show="errors.has('whatsapp')" class="text-danger">*Maximo 100 caracteres</span>
           </div>
         </div>
         <div class="form-CMXD row col-md-6">
@@ -996,8 +977,8 @@
               v-model="empresaModel.youtube"
               v-validate="'max:100'"
             >
-            <span v-show="errors.has('twitter')" class="text-warning"></span>
-            <span v-show="errors.has('twitter')" class="text-danger">*Maximo 100 caracteres</span>
+            <span v-show="errors.has('youtube')" class="text-warning"></span>
+            <span v-show="errors.has('youtube')" class="text-danger">*Maximo 100 caracteres</span>
           </div>
         </div>
       </div>
@@ -1075,6 +1056,7 @@ export default {
   async mounted() {
     await this.traer_ciudaes();
     await this.traer_tipos();
+    await this.traerUsuario();
     this.carga = false;
   },
   components: {
@@ -1158,7 +1140,8 @@ export default {
       carga: true,
       id_empresa: null,
       id_archivo: null,
-      empresa_nombre: null
+      empresa_nombre: null,
+      id_usuario: null
     };
   },
   methods: {
@@ -1178,6 +1161,7 @@ export default {
           id_tipo: this.empresaModel.id_tipo,
           id_ciudad: this.empresaModel.id_ciudad,
           id_archivo: this.id_archivo,
+          user_id: this.id_usuario,
           instagram: this.empresaModel.instagram,
           facebook: this.empresaModel.facebook,
           youtube: this.empresaModel.youtube
@@ -1217,6 +1201,13 @@ export default {
           nombre_ser_10: this.servicioModel.nombre_ser_10,
           ser_10: this.servicioModel.ser_10
         }
+      })
+      .then(function(res) {
+        this.mensaje_exito();
+        this.$router.push({ name: "home" });
+      })
+      .catch(function(err) {
+        this.mensaje_error();
       });
     },
     traer_ciudaes: async function() {
@@ -1229,9 +1220,13 @@ export default {
         this.tipos = respuesta.data;
       });
     },
-    // usuario: async function(){
-    //   await axios.get("")
-    // }
+    traerUsuario: async function(){
+      let email = sessionStorage.getItem('user');
+      axios.get(`http://68.183.124.242:8000/api/usuario/?email=${email}`)
+      .then(res => {
+        this.id_usuario = res.data[0].id;
+      });
+    },
     cambio_servicios: function() {
       switch (this.radio_servicios) {
         case 1:
@@ -1369,6 +1364,9 @@ export default {
         title: "Alerta",
         message: "Ha excedido el limite e archivos"
       });
+    },
+    logo_cargado(res, file) {
+      this.id_archivo = res;
     },
     validateBeforeSubmit() {
       this.$validator.validateAll().then(result => {

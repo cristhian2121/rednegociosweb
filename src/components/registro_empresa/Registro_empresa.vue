@@ -1559,6 +1559,9 @@ export default {
         message: "Ha excedido el limite e archivos"
       });
     },
+    logo_cargado(res, file) {
+      this.id_archivo = res;
+    },
     validateBeforeSubmit() {
       this.$validator.validateAll().then(result => {
         if (result) {
