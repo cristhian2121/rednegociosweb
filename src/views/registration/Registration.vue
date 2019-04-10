@@ -88,7 +88,7 @@ export default {
           }
         })
           .then(respuesta => {
-            sessionStorage.setItem("user", this.usuario_model.email);
+            sessionStorage.setItem("user", document.getElementsByName("email")[1].value);
             if (this.btn_empresa == 1) {
               this.$router.push({ path: "/registration/business" });
             } else {
