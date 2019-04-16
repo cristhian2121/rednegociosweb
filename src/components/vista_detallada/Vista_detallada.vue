@@ -361,7 +361,7 @@
         <br>
         <ul class="icons">
           <li>
-            <a href="#" v-on:click="ir_red(empresa.facebook)">
+            <a v-bind:href="empresas.facebook">
               <div>
                 <img src="@/assets/facebookb.png" alt>
               </div>
@@ -369,7 +369,7 @@
             <br>
           </li>
           <li>
-            <a href="#">
+            <a v-bind:href="empresas.instagram">
               <div>
                 <img src="@/assets/twitterb.png" alt>
               </div>
@@ -377,7 +377,7 @@
             <br>
           </li>
           <li>
-            <a href="#">
+            <a v-bind:href="empresas.instagram">
               <div>
                 <img src="@/assets/instagramb.png" alt>
               </div>
@@ -385,7 +385,7 @@
             <br>
           </li>
           <li>
-            <a href="#">
+            <a v-bind:href="empresas.youtube">
               <div>
                 <img src="@/assets/youtubeb.png" alt>
               </div>
@@ -508,7 +508,7 @@ export default {
     },
 
     traer_servicios: function() {
-      console.log(`http://68.183.124.242:8000/api/servicio/?id_empresa=${this.empresas.id_empresa}`)
+      //console.log(`http://68.183.124.242:8000/api/servicio/?id_empresa=${this.empresas.id_empresa}`)
       axios.get(`http://68.183.124.242:8000/api/servicio/?id_empresa=${this.empresas.id_empresa}`)
       .then(respuesta => {
         this.servicios = respuesta.data[0];
@@ -519,11 +519,12 @@ export default {
         console.log(ee);
       });
     },
-    ir_red: function(red) {
-      const irRed = red;
-      //console.log(irRed)
-      this.$router.push({ path: `/${irRed}` });
-    },
+    // ir_red: function(red) {
+    //   console.log("aaaaa")
+    //   const irRed = red;
+    //   console.log(irRed)
+    //   this.$router.push({ path: `irRed` });
+    // },
     contarServicios: function () {
       let longitud = [];
       if (this.servicios.nombre_ser_1) {
