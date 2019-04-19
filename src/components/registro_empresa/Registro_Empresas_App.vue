@@ -1202,11 +1202,11 @@ export default {
           ser_10: this.servicioModel.ser_10
         }
       })
-      .then(function(res) {
+      .then(res => {
         this.mensaje_exito();
         this.$router.push({ name: "home" });
       })
-      .catch(function(err) {
+      .catch( err => {
         this.mensaje_error();
       });
     },
@@ -1347,19 +1347,19 @@ export default {
         type: "success"
       });
     },
-    mensaje_error() {
+    mensaje_error: function() {
       this.$notify.error({
         title: "Ops",
         message: "Ha ocurrido un error intentalo nuevamente"
       });
     },
-    mensaje_informacion() {
+    mensaje_informacion: function() {
       this.$notify.info({
         title: "Por favor",
         message: "Valida los campos del formulario"
       });
     },
-    exceso_archivos() {
+    exceso_archivos: function() {
       this.$notify.warning({
         title: "Alerta",
         message: "Ha excedido el limite e archivos"
@@ -1368,7 +1368,7 @@ export default {
     logo_cargado(res, file) {
       this.id_archivo = res;
     },
-    validateBeforeSubmit() {
+    validateBeforeSubmit: function() {
       this.$validator.validateAll().then(result => {
         if (result) {
           this.enviar_formulario();
