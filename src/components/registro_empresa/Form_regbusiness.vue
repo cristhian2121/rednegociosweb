@@ -207,14 +207,13 @@
       <!--Logo-->
       <div class="form-CMXD row col-md-6">
         <el-upload
-          action="http://68.183.124.242:8000/api/archivo/"
-          name="logo"
-          multiple
-          :limit="1"
-          class="btn-services"
-          :on-exceed="exceso_archivos"
-          :on-success="logo_cargado"
-        >
+            action="http://68.183.124.242:8000/api/archivo/"
+            multiple
+            :limit="1"
+            class="btn-services"
+            :on-exceed="exceso_archivos"
+            :on-success="logo_cargado"
+          >
           <el-button size="small" class="CMXD-btn-ok">Cargar logo</el-button>
           <div
             slot="tip"
@@ -300,6 +299,7 @@
           :limit="1"
           class="btn-services"
           :on-exceed="exceso_archivos"
+          :on-success="logo_cargado"
         >
           <el-button class="el-button el-button--default el-button--small CMXD-btn-business" plain>
             <span class="el-icon-upload"></span>
