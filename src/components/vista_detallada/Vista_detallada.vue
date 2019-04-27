@@ -502,7 +502,6 @@ export default {
       axios.get(`http://68.183.124.242:8000/api/detalle/?nombre=${this.nombre_empresa}`)
         .then(respuesta => {
           this.empresas = respuesta.data[0];
-          console.log(this.empresas)
           this.traer_servicios();  
         });
     },
@@ -516,7 +515,6 @@ export default {
         this.carga = true;
       })
       .catch (function(ee){
-        console.log(ee);
       });
     },
     // ir_red: function(red) {

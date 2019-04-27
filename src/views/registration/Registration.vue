@@ -96,7 +96,6 @@ export default {
             }
           })
           .catch(e => {
-            console.log(e)
             this.$notify({
               message: "La contraseña no coincide",
               type: "warning"
