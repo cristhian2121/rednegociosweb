@@ -97,8 +97,8 @@ export default {
           })
           .catch(e => {
             this.$notify({
-              message: "La contraseña no coincide",
-              type: "warning"
+              message: "Error,por favor intentalo mas tarde",
+              type: "error"
             });
           })
     },
@@ -131,6 +131,7 @@ export default {
           validator = true;
         }
       }
+      if (pass != pass2) { this.$notify({ message: "La contraseña no coincide", type: "error" }); validator = true }
       if (pass.length <8 || pass.length > 65) {document.querySelector(".long_pass_reg").style.display = "block"; validator = true;}
       if (!pass2) {document.querySelector(".ob_pass2_reg").style.display = "block"; validator = true;}
       //if (pass2.length <8 || pass2.length > 50) {document.querySelector(".ob_name_reg").style.display = "block"; validator = true;}
@@ -172,7 +173,7 @@ export default {
       } else {
         this.$notify({
           message: "La contraseña no coincide",
-          type: "danger"
+          type: "error"
         });
       }
     }

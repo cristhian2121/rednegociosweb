@@ -22,15 +22,15 @@ export default {
   },
   methods: {
     traer_empresas: async function() {
-      axios
-        .get(
-          `http://68.183.124.242:8000/api/detalle/?email_user=${this.usuario}`
-        )
-        .then(respuesta => {
-          this.empresas = respuesta.data[0];
-          this.$router.push({ path: `/empresa/${this.empresas.nombre}` });
-          this.loader = false;
-        });
+      // axios
+      //   .get(
+      //     `http://68.183.124.242:8000/api/detalle/?email_user=${this.usuario}`
+      //   )
+      //   .then(respuesta => {
+      //     this.empresas = respuesta.data[0];
+      //     if(this.empresas.length > 0) this.$router.push({ path: `/empresa/${this.empresas.nombre}` });
+      //     this.loader = false;
+      //   });
     }
   }
 };

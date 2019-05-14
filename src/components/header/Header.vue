@@ -40,10 +40,10 @@
     </div>
     <div id="footer">
       Copyright © 2019 Med/Col |
-            <span>
-              Desing by
-              <a href="http://cmxdesign.000webhostapp.com/" target="_black">CMX-Desing</a>
-            </span>
+      <span>
+        Desing by
+        <a href="http://cmxdesign.000webhostapp.com/" target="_black">CMX-Desing</a>
+      </span>
     </div>
   </header>
 </template>
@@ -69,11 +69,18 @@ export default {
       sessionStorage.removeItem("user");
     },
     usuario_empresa: async function() {
-      await axios.get(`http://68.183.124.242:8000/api/empresa_usuario/?email=${this.email_user}`)
+      await axios
+        .get(
+          `http://68.183.124.242:8000/api/empresa_usuario/?email=${
+            this.email_user
+          }`
+        )
         .then(resp => {
-          if (resp.data[0].email == this.email_user) {
-            this.nombre_empresa = resp.data[0].nombre;
-            this.tiene_empresa = true;
+          if (resp.data.length > 0) {
+            if (resp.data[0].email == this.email_user) {
+              this.nombre_empresa = resp.data[0].nombre;
+              this.tiene_empresa = true;
+            }
           }
         });
     }
