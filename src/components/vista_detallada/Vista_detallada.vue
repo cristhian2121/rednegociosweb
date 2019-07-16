@@ -499,7 +499,7 @@ export default {
     },
 
     traer_empresas: async function() {
-      axios.get(`http://68.183.124.242:8000/api/detalle/?nombre=${this.nombre_empresa}`)
+      axios.get(`http://localhost:8000/api/detalle/?nombre=${this.nombre_empresa}`)
         .then(respuesta => {
           this.empresas = respuesta.data[0];
           this.traer_servicios();  
@@ -507,8 +507,8 @@ export default {
     },
 
     traer_servicios: function() {
-      //console.log(`http://68.183.124.242:8000/api/servicio/?id_empresa=${this.empresas.id_empresa}`)
-      axios.get(`http://68.183.124.242:8000/api/servicio/?id_empresa=${this.empresas.id_empresa}`)
+      //console.log(`http://localhost:8000/api/servicio/?id_empresa=${this.empresas.id_empresa}`)
+      axios.get(`http://localhost:8000/api/servicio/?id_empresa=${this.empresas.id_empresa}`)
       .then(respuesta => {
         this.servicios = respuesta.data[0];
         this.listadoServicos = this.contarServicios();

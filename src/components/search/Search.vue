@@ -126,8 +126,8 @@ export default {
       ciudadModel: "",
       tipoModel: "",
       pequ: Ciudad,
-      empresas: [Object],
-      empresasAux: [Object],
+      empresas: [],
+      empresasAux: [],
       carga: true
     };
   },
@@ -151,19 +151,20 @@ export default {
     },
 
     traer_Empresas: async function() {
-      axios.get("http://68.183.124.242:8000/api/detalle/").then(respuesta => {
-        this.empresas = respuesta.data;        
-        this.empresasAux = this.empresas;
+      axios.get("http://localhost:8000/api/detalle/").then(respuesta => {
+        this.empresasAux = respuesta.data;
+        console.log('this.empresas')
+        console.log(this.empresas)
         this.carga = false;
       });
     },
     traer_tipos: async function() {
-      axios.get("http://68.183.124.242:8000/api/tipo/").then(respuesta => {
+      axios.get("http://localhost:8000/api/tipo/").then(respuesta => {
         this.tipos = respuesta.data;
       });
     },
     traer_ciudades: async function() {
-      axios.get("http://68.183.124.242:8000/api/ciudad/").then(respuesta => {
+      axios.get("http://localhost:8000/api/ciudad/").then(respuesta => {
         this.ciudades = respuesta.data;
       });
     },
