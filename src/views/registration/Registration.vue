@@ -10,7 +10,6 @@
       <div v-if="showModal" @close="showModal = true">
         <div class="modal-mask">
           <div class="modal-wrapper">
-
             <div class="modal-container">
               <!--button close-->
               <div class="close-modal">
@@ -24,19 +23,22 @@
               <div class="modal-body">
                 <div>
                   <div class="title">Registro persona natural</div>
-                  <br>
+                  <br />
 
                   <formRegistration></formRegistration>
 
                   <div class="btn-form-end">
-                     <router-link class="btn CMXD-btn-business" :to="{ path: '/' }">Volver</router-link>
-                      <el-button type="primary" class="btn CMXD-btn-person" v-on:click="registrar()">Registrarme</el-button>
-                  </div>
+                    <router-link class="btn CMXD-btn-business" :to="{ path: '/' }">Volver</router-link>
+                    <el-button
+                      type="primary"
+                      class="btn CMXD-btn-person"
+                      v-on:click="registrar()"
+                    >Registrarme</el-button>
                   </div>
                 </div>
+              </div>
               <!--end form registartion-->
             </div>
-
           </div>
         </div>
       </div>
@@ -55,7 +57,7 @@ export default {
     formLogin,
     formRegistration
   },
-  
+
   data() {
     return {
       usuario_model: {
@@ -75,34 +77,56 @@ export default {
       let validation = this.validation();
       if (validation) return;
 
-        axios({
-          method: "post",
-          url: "http://localhost:8000/rest-auth/registration/",
-          data: {
-            // first_name: document.getElementsByName("name")[0].value,
-            // last_name: document.getElementsByName("lastname")[0].value,
-            username: document.getElementsByName("email")[1].value,
-            email: document.getElementsByName("email")[1].value,
-            password1: document.getElementById('pass_registration').value,
-            password2: document.getElementById('pass2_registration').value
+      axios({
+        method: "post",
+        url: "http://localhost:8000/rest-auth/registration/",
+        data: {
+          // first_name: document.getElementsByName("name")[0].value,
+          // last_name: document.getElementsByName("lastname")[0].value,
+          username: document.getElementsByName("email")[1].value,
+          email: document.getElementsByName("email")[1].value,
+          password1: document.getElementById("pass_registration").value,
+          password2: document.getElementById("pass2_registration").value
+        }
+      })
+        .then(respuesta => {
+          sessionStorage.setItem(
+            "user",
+            document.getElementsByName("email")[1].value
+          );
+          if (this.btn_empresa == 1) {
+            this.$router.push({ path: "/registration/business" });
+          } else {
+            this.$router.push({ path: "home" });
           }
         })
-          .then(respuesta => {
-            sessionStorage.setItem("user", document.getElementsByName("email")[1].value);
-            if (this.btn_empresa == 1) {
-              this.$router.push({ path: "/registration/business" });
-            } else {
-              this.$router.push({ path: "home" });
+        .catch(e => {
+          let mensaje = "Error,por favor intentalo mas tarde";
+          if (e.response.data) {
+            if (e.response.data.email) {
+              if (
+                e.response.data.email[0] ==
+                "A user is already registered with this e-mail address."
+              )
+                mensaje = "El usuario ya existe";
+              this.notify(mensaje, "error");
+              return;
             }
-          })
-          .catch(e => {
-            this.$notify({
-              message: "Error,por favor intentalo mas tarde",
-              type: "error"
-            });
-          })
+            if (e.response.data.password1) {
+              if (
+                e.response.data.password1[0] == "This password is too common."
+              ) {
+                mensaje =
+                  "La contraseña debe ser alfanumérica y mayor a 7 caracteres";
+                this.notify(mensaje, "error");
+                return;
+              }
+            }
+          }
+          this.notify(mensaje, "error");
+        });
     },
-    validation: function(){
+    validation: function() {
       let name = document.querySelector(".nameReg").value.trim();
       let lastname = document.querySelector(".lastnameReg").value.trim();
       let email = document.querySelector(".emailReg").value.trim();
@@ -110,38 +134,53 @@ export default {
       let pass2 = document.querySelector(".pass2Reg").value.trim();
 
       let typeEmail = this.isValidEmail(email);
-      let validator= false;
+      let validator = false;
 
-      document.querySelector(".ob_name_reg").style.display="none";
-      document.querySelector(".ob_name_reg").style.display="none";
-      document.querySelector(".ob_lastname_reg").style.display="none";
-      document.querySelector(".long_lastname_reg").style.display="none";
-      document.querySelector(".ob_email_reg").style.display="none";
-      document.querySelector(".long_email_reg").style.display="none";
-      document.querySelector(".ob_pass_reg").style.display="none";
-      document.querySelector(".long_pass_reg").style.display="none";
-      document.querySelector(".ob_pass2_reg").style.display="none";
-      document.querySelector(".long_pass2_reg").style.display="none";
+      document.querySelector(".ob_name_reg").style.display = "none";
+      document.querySelector(".ob_name_reg").style.display = "none";
+      document.querySelector(".ob_lastname_reg").style.display = "none";
+      document.querySelector(".long_lastname_reg").style.display = "none";
+      document.querySelector(".ob_email_reg").style.display = "none";
+      document.querySelector(".long_email_reg").style.display = "none";
+      document.querySelector(".ob_pass_reg").style.display = "none";
+      document.querySelector(".long_pass_reg").style.display = "none";
+      document.querySelector(".ob_pass2_reg").style.display = "none";
+      document.querySelector(".long_pass2_reg").style.display = "none";
 
-      if (!name) {document.querySelector(".ob_name_reg").style.display = "block"; validator = true;}
-      if (!lastname) {document.querySelector(".ob_lastname_reg").style.display = "block"; validator = true;}
+      if (!name) {
+        document.querySelector(".ob_name_reg").style.display = "block";
+        validator = true;
+      }
+      if (!lastname) {
+        document.querySelector(".ob_lastname_reg").style.display = "block";
+        validator = true;
+      }
       if (!email || email.length < 65) {
         if (typeEmail == false) {
           document.querySelector(".ob_email_reg").style.display = "block";
           validator = true;
         }
       }
-      if (pass != pass2) { this.$notify({ message: "La contraseña no coincide", type: "error" }); validator = true }
-      if (pass.length <8 || pass.length > 65) {document.querySelector(".long_pass_reg").style.display = "block"; validator = true;}
-      if (!pass2) {document.querySelector(".ob_pass2_reg").style.display = "block"; validator = true;}
+      if (pass != pass2) {
+        this.$notify({ message: "La contraseña no coincide", type: "error" });
+        validator = true;
+      }
+      if (pass.length < 8 || pass.length > 65) {
+        document.querySelector(".long_pass_reg").style.display = "block";
+        validator = true;
+      }
+      if (!pass2) {
+        document.querySelector(".ob_pass2_reg").style.display = "block";
+        validator = true;
+      }
       //if (pass2.length <8 || pass2.length > 50) {document.querySelector(".ob_name_reg").style.display = "block"; validator = true;}
 
       if (validator) return true;
       return false;
     },
     isValidEmail: function(mail) {
-        //return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(mail); 
-        return /\S+@\S+\.\S+/.test(mail);
+      //return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(mail);
+      return /\S+@\S+\.\S+/.test(mail);
     },
     validatePassword() {
       let firstName = document.getElementsByName("name")[0].value;
@@ -152,23 +191,32 @@ export default {
 
       if (password1 === password2) {
         if (!firstName) {
-
           return { state: false, fail: "firstName" };
-        } 
-        if (!lastName) return { state: false, message: "El campo apellido es requerido"};
-        if (!username) return { state: false, message: "El campo correo electronico es requerido" };
-        if (!password1) return { state: false, message: "El campo contraseña es requerido" };
-        if (!password2) return { state: false, message: "El campo validar contraseña es requerido" };
+        }
+        if (!lastName)
+          return { state: false, message: "El campo apellido es requerido" };
+        if (!username)
+          return {
+            state: false,
+            message: "El campo correo electronico es requerido"
+          };
+        if (!password1)
+          return { state: false, message: "El campo contraseña es requerido" };
+        if (!password2)
+          return {
+            state: false,
+            message: "El campo validar contraseña es requerido"
+          };
         return {
           state: true,
           data: {
-              first_name: firstName,
-              last_name: lastName,
-              username: username,
-              email: username,
-              password1: password1,
-              password2: password2
-            }
+            first_name: firstName,
+            last_name: lastName,
+            username: username,
+            email: username,
+            password1: password1,
+            password2: password2
+          }
         };
       } else {
         this.$notify({
@@ -176,6 +224,12 @@ export default {
           type: "error"
         });
       }
+    },
+    notify(message, type) {
+      this.$notify({
+        message: message,
+        type: type
+      });
     }
   }
 };
@@ -183,8 +237,16 @@ export default {
 
 <style scoped>
 /*validation camps*/
-.ob_name_reg,.ob_name_reg,.ob_lastname_reg,.long_lastname_reg,.ob_email_reg,
-.long_email_reg,.ob_pass_reg,.long_pass_reg,.ob_pass2_reg,.long_pass2_reg {
+.ob_name_reg,
+.ob_name_reg,
+.ob_lastname_reg,
+.long_lastname_reg,
+.ob_email_reg,
+.long_email_reg,
+.ob_pass_reg,
+.long_pass_reg,
+.ob_pass2_reg,
+.long_pass2_reg {
   display: none;
 }
 

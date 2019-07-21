@@ -153,8 +153,7 @@ export default {
     traer_Empresas: async function() {
       axios.get("http://localhost:8000/api/detalle/").then(respuesta => {
         this.empresasAux = respuesta.data;
-        console.log('this.empresas')
-        console.log(this.empresas)
+        this.empresas = this.empresasAux
         this.carga = false;
       });
     },
