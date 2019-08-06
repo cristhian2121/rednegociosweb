@@ -1103,8 +1103,8 @@ export default {
         method: "post",
         url: "http://localhost:8000/rest-auth/registration/",
         data: {
-          // first_name: name,
-          // last_name: lastname,
+          first_name: name,
+          last_name: lastname,
           username: email,
           email: email,
           password1: pass,

@@ -81,8 +81,8 @@ export default {
         method: "post",
         url: "http://localhost:8000/rest-auth/registration/",
         data: {
-          // first_name: document.getElementsByName("name")[0].value,
-          // last_name: document.getElementsByName("lastname")[0].value,
+          first_name: document.getElementsByName("name")[0].value,
+          last_name: document.getElementsByName("lastname")[0].value,
           username: document.getElementsByName("email")[1].value,
           email: document.getElementsByName("email")[1].value,
           password1: document.getElementById("pass_registration").value,

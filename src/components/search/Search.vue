@@ -155,7 +155,8 @@ export default {
         this.empresasAux = respuesta.data;
         this.empresas = this.empresasAux
         this.carga = false;
-      });
+      })
+      .catch(e => console.log('Error: ', e));
     },
     traer_tipos: async function() {
       axios.get("http://localhost:8000/api/tipo/").then(respuesta => {
