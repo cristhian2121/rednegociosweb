@@ -6,19 +6,21 @@
       <h1>
         <strong>
           <!-- <a href>{{ empresas.nombre }}</a> -->
-          <a href=""><img src="@/assets/logo-linew.png" class="im-logo-header"></a>
+          <a href>
+            <img src="@/assets/logo-linew.png" class="im-logo-header" />
+          </a>
         </strong>
       </h1>
       <nav id="nav">
         <ul>
-          <li>
+          <li v-if="existeUsuario">
             <router-link :to="{ path: '/home' }">Inicio</router-link>
           </li>
           <li>
             <a href="#about">Nosotros</a>
           </li>
           <li>
-            <a href="services">Servicios</a>
+            <a href="#services">Servicios</a>
           </li>
           <li>
             <a href="#contact">Contacto</a>
@@ -65,13 +67,19 @@
           <br>
         </li>
       </ul>
-    </section> -->
-    <section class="">
-        <agile :arrows="false" :speed="750" :fade="true" :autoplay="true" :pauseOnHover="false">
-          <div class="slide slide--1"><img width="100%" src="@/assets/slide1.png" alt></div>
-          <div class="slide slide--2"><img width="100%" src="@/assets/slide2.png" alt></div>
-          <div class="slide slide--3"><img width="100%" src="@/assets/slide3.png" alt></div>
-        </agile>
+    </section>-->
+    <section class>
+      <agile :arrows="false" :speed="750" :fade="true" :autoplay="true" :pauseOnHover="false">
+        <div class="slide slide--1">
+          <img width="100%" src="@/assets/slide1.png" alt />
+        </div>
+        <div class="slide slide--2">
+          <img width="100%" src="@/assets/slide2.png" alt />
+        </div>
+        <div class="slide slide--3">
+          <img width="100%" src="@/assets/slide3.png" alt />
+        </div>
+      </agile>
     </section>
 
     <!-- One -->
@@ -81,7 +89,7 @@
           <h2>¿Quienes somos?</h2>
         </header>
         <div class="row 200%">
-          <div class="6u 12u$(medium)">
+          <!-- <div class="6u 12u$(medium)">
             <iframe
               width="95%"
               height="220px"
@@ -90,8 +98,8 @@
               allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen
             ></iframe>
-          </div>
-          <div class="6u 12u$(medium)">
+          </div>-->
+          <div class="12u 12u$(medium)">
             <p>{{ empresas.mision }}</p>
             <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p> -->
           </div>
@@ -106,17 +114,17 @@
         </header>
         <div class="feature-grid">
           <div v-if="carga">
-             <div class="feature" :key="servicio.nombre" v-for="servicio in listadoServicos">
-            <div class="image rounded">
-              <img src="@/assets/logo-home.png" alt>
+            <div class="feature" :key="servicio.nombre" v-for="servicio in listadoServicos">
+              <div class="image rounded">
+                <img src="@/assets/logo-home.png" alt />
+              </div>
+              <div class="content">
+                <header>
+                  <h4>{{ servicio.nombre }}</h4>
+                </header>
+                <p>{{ servicio.descripcion }}</p>
+              </div>
             </div>
-            <div class="content">
-              <header>
-                <h4>{{ servicio.nombre }}</h4>
-              </header>
-              <p>{{ servicio.descripcion }} </p>
-            </div>
-          </div>
           </div>
           <!-- <div class="feature">
             <div class="image rounded">
@@ -150,11 +158,11 @@
               </header>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore esse tenetur accusantium porro omnis, unde mollitia totam sit nesciunt consectetur.</p>
             </div>
-          </div> -->
+          </div>-->
         </div>
       </div>
     </section>
-    
+
     <!-- <section id="Blog" class="wrapper special">
       <div class="container">
         <header class="major">
@@ -223,7 +231,7 @@
           </div>
         </div>
       </div>
-    </section> -->
+    </section>-->
     <!-- Four -->
     <section id="contact" class="wrapper style3 special">
       <div class="container">
@@ -277,59 +285,59 @@
                 <i class="material-icons">person</i>
               </div>
               <div class="input-effect js-input">
-                <input class="CMXD-material-input" placeholder="Nombre">
+                <input class="CMXD-material-input" placeholder="Nombre" />
                 <span class="focus-border"></span>
                 <span v-show="errors.has('nit')" class="text-danger">*Maximo 10 caracteres</span>
               </div>
             </div>
             <div class="col-md-12">
-              <br>
+              <br />
             </div>
             <div class="form-CMXD row col-md-12">
               <div class="CMXD-icon-form">
                 <i class="material-icons">email</i>
               </div>
               <div class="input-effect js-input">
-                <input class="CMXD-material-input" type="email" placeholder="Correo Electrónico">
+                <input class="CMXD-material-input" type="email" placeholder="Correo Electrónico" />
                 <span class="focus-border"></span>
                 <span v-show="errors.has('nit')" class="text-danger">*Maximo 10 caracteres</span>
               </div>
             </div>
             <div class="col-md-12">
-              <br>
+              <br />
             </div>
             <div class="form-CMXD row col-md-12">
               <div class="CMXD-icon-form">
                 <i class="material-icons">phone</i>
               </div>
               <div class="input-effect js-input">
-                <input class="CMXD-material-input" type="number" placeholder="Télefono">
+                <input class="CMXD-material-input" type="number" placeholder="Télefono" />
                 <span class="focus-border"></span>
                 <span v-show="errors.has('nit')" class="text-danger">*Maximo 10 caracteres</span>
               </div>
             </div>
             <div class="col-md-12">
-              <br>
+              <br />
             </div>
             <div class="form-CMXD row col-md-12">
               <div class="CMXD-icon-form">
                 <i class="material-icons">title</i>
               </div>
               <div class="input-effect js-input">
-                <input class="CMXD-material-input" type="text" placeholder="Asunto">
+                <input class="CMXD-material-input" type="text" placeholder="Asunto" />
                 <span class="focus-border"></span>
                 <span v-show="errors.has('nit')" class="text-danger">*Maximo 10 caracteres</span>
               </div>
             </div>
             <div class="col-md-12">
-              <br>
+              <br />
             </div>
             <div class="form-CMXD row col-md-12">
               <div class="CMXD-icon-form">
                 <i class="material-icons">format_italic</i>
               </div>
               <div class="input-effect js-input">
-                <textarea class="CMXD-material-input" placeholder="Escribe un mensaje..."/>
+                <textarea class="CMXD-material-input" placeholder="Escribe un mensaje..." />
                 <span class="focus-border"></span>
                 <span v-show="errors.has('nit')" class="text-danger">*Maximo 10 caracteres</span>
               </div>
@@ -356,62 +364,63 @@
     </section>
     <!-- Footer -->
     <footer id="footer">
-      <div class="container">Siguenos en nuestras redes
-        <br>
-        <br>
+      <div class="container">
+        Siguenos en nuestras redes
+        <br />
+        <br />
         <ul class="icons">
           <li>
             <a v-bind:href="empresas.facebook">
               <div>
-                <img src="@/assets/facebookb.png" alt>
+                <img src="@/assets/facebookb.png" alt />
               </div>
             </a>
-            <br>
+            <br />
           </li>
           <li>
             <a v-bind:href="empresas.instagram">
               <div>
-                <img src="@/assets/twitterb.png" alt>
+                <img src="@/assets/twitterb.png" alt />
               </div>
             </a>
-            <br>
+            <br />
           </li>
           <li>
             <a v-bind:href="empresas.instagram">
               <div>
-                <img src="@/assets/instagramb.png" alt>
+                <img src="@/assets/instagramb.png" alt />
               </div>
             </a>
-            <br>
+            <br />
           </li>
           <li>
             <a v-bind:href="empresas.youtube">
               <div>
-                <img src="@/assets/youtubeb.png" alt>
+                <img src="@/assets/youtubeb.png" alt />
               </div>
             </a>
-            <br>
+            <br />
           </li>
         </ul>
       </div>
     </footer>
     <div class="whatsapp-number">
-      <img height="100%" src="@/assets/wb.png" alt="">
+      <img height="100%" src="@/assets/wb.png" alt />
       <p>{{ empresas.celular }}</p>
     </div>
     <div class="footer-page">
       <div class="row container">
         <div class="col-md-4 text-center logo">
-           <img src="@/assets/logo-linew.png" class="im-logo">
+          <img src="@/assets/logo-linew.png" class="im-logo" />
         </div>
         <div class="col-md-4 sub-menu">
-          <label for="">Servicios</label>
+          <label for>Servicios</label>
           <ul :key="servicioN.nombre" v-for="servicioN in listadoServicos">
             <li>{{ servicioN.nombre }}</li>
           </ul>
         </div>
         <div class="col-md-4 sub-menu">
-          <label for="">Mapa del sitio</label>
+          <label for>Mapa del sitio</label>
           <ul>
             <li>
               <router-link :to="{ path: '/home' }">Inicio</router-link>
@@ -448,11 +457,11 @@
                 <div class="modal-body">
                   <div class="row">
                     <div class="col-md-12 title">
-                       <label>Title blog</label>
+                      <label>Title blog</label>
                     </div>
                     <div class="col-md-12 image">
-                      <img width="100%" src="@/assets/bg-page-header.jpg" alt>
-                    </div> 
+                      <img width="100%" src="@/assets/bg-page-header.jpg" alt />
+                    </div>
                     <div class="col-md-12 text">
                       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
                     </div>
@@ -475,8 +484,9 @@ export default {
   props: ["id_empresa"],
 
   async mounted() {
-    this.nombre_empresa = this.$route.params.nombre;    
+    this.nombre_empresa = this.$route.params.nombre;
     await this.traer_empresas();
+    this.validar_usuario();
   },
   data() {
     return {
@@ -486,7 +496,8 @@ export default {
       nombre_empresa: "",
       carga: false,
       showModal: false,
-      listadoServicos: null
+      listadoServicos: null,
+      existeUsuario : false
     };
   },
   methods: {
@@ -499,103 +510,113 @@ export default {
     },
 
     traer_empresas: async function() {
-      axios.get(`http://localhost:8000/api/detalle/?nombre=${this.nombre_empresa}`)
+      axios
+        .get(`http://localhost:8000/api/detalle/?nombre=${this.nombre_empresa}`)
         .then(respuesta => {
           this.empresas = respuesta.data[0];
-          this.traer_servicios();  
+          this.traer_servicios();
         });
     },
 
     traer_servicios: function() {
       //console.log(`http://localhost:8000/api/servicio/?id_empresa=${this.empresas.id_empresa}`)
-      axios.get(`http://localhost:8000/api/servicio/?id_empresa=${this.empresas.id_empresa}`)
-      .then(respuesta => {
-        this.servicios = respuesta.data[0];
-        this.listadoServicos = this.contarServicios();
-        this.carga = true;
-      })
-      .catch (function(ee){
-      });
+      axios
+        .get(
+          `http://localhost:8000/api/servicio/?id_empresa=${this.empresas.id_empresa}`
+        )
+        .then(respuesta => {
+          this.servicios = respuesta.data[0];
+          this.listadoServicos = this.contarServicios();
+          this.carga = true;
+        })
+        .catch(function(ee) {});
     },
-    // ir_red: function(red) {
-    //   console.log("aaaaa")
-    //   const irRed = red;
-    //   console.log(irRed)
-    //   this.$router.push({ path: `irRed` });
-    // },
-    contarServicios: function () {
+
+    contarServicios: function() {
       let longitud = [];
       if (this.servicios.nombre_ser_1) {
         let servicio = {
-            nombre: this.servicios.nombre_ser_1,
-            descripcion: this.servicios.ser_1
-          }
-          longitud.push(servicio);
+          nombre: this.servicios.nombre_ser_1,
+          descripcion: this.servicios.ser_1
+        };
+        longitud.push(servicio);
       }
       if (this.servicios.nombre_ser_2) {
         let servicio = {
-            nombre: this.servicios.nombre_ser_2,
-            descripcion: this.servicios.ser_2
-          }
-          longitud.push(servicio);
+          nombre: this.servicios.nombre_ser_2,
+          descripcion: this.servicios.ser_2
+        };
+        longitud.push(servicio);
       }
       if (this.servicios.nombre_ser_3) {
         let servicio = {
-            nombre: this.servicios.nombre_ser_3,
-            descripcion: this.servicios.ser_3
-          }
-          longitud.push(servicio);
+          nombre: this.servicios.nombre_ser_3,
+          descripcion: this.servicios.ser_3
+        };
+        longitud.push(servicio);
       }
       if (this.servicios.nombre_ser_4) {
         let servicio = {
-            nombre: this.servicios.nombre_ser_4,
-            descripcion: this.servicios.ser_4
-          }
-          longitud.push(servicio);
+          nombre: this.servicios.nombre_ser_4,
+          descripcion: this.servicios.ser_4
+        };
+        longitud.push(servicio);
       }
       if (this.servicios.nombre_ser_5) {
         let servicio = {
-            nombre: this.servicios.nombre_ser_5,
-            descripcion: this.servicios.ser_5
-          }
-          longitud.push(servicio);
+          nombre: this.servicios.nombre_ser_5,
+          descripcion: this.servicios.ser_5
+        };
+        longitud.push(servicio);
       }
       if (this.servicios.nombre_ser_6) {
         let servicio = {
-            nombre: this.servicios.nombre_ser_6,
-            descripcion: this.servicios.ser_6
-          }
-          longitud.push(servicio);
+          nombre: this.servicios.nombre_ser_6,
+          descripcion: this.servicios.ser_6
+        };
+        longitud.push(servicio);
       }
       if (this.servicios.nombre_ser_7) {
         let servicio = {
-            nombre: this.servicios.nombre_ser_7,
-            descripcion: this.servicios.ser_7
-          }
-          longitud.push(servicio);
+          nombre: this.servicios.nombre_ser_7,
+          descripcion: this.servicios.ser_7
+        };
+        longitud.push(servicio);
       }
       if (this.servicios.nombre_ser_8) {
         let servicio = {
-            nombre: this.servicios.nombre_ser_8,
-            descripcion: this.servicios.ser_8
-          }
-          longitud.push(servicio);
+          nombre: this.servicios.nombre_ser_8,
+          descripcion: this.servicios.ser_8
+        };
+        longitud.push(servicio);
       }
       if (this.servicios.nombre_ser_9) {
         let servicio = {
-            nombre: this.servicios.nombre_ser_9,
-            descripcion: this.servicios.ser_9
-          }
-          longitud.push(servicio);
+          nombre: this.servicios.nombre_ser_9,
+          descripcion: this.servicios.ser_9
+        };
+        longitud.push(servicio);
       }
       if (this.servicios.nombre_ser_10) {
         let servicio = {
-            nombre: this.servicios.nombre_ser_10,
-            descripcion: this.servicios.ser_10
-          }
-          longitud.push(servicio);
-      }     
+          nombre: this.servicios.nombre_ser_10,
+          descripcion: this.servicios.ser_10
+        };
+        longitud.push(servicio);
+      }
       return longitud;
+    },
+
+    validar_usuario: function() {
+      const user = sessionStorage.getItem("user");
+      if (!user) this.existeUsuario = false;
+      axios
+        .get(`http://localhost:8000/api/empresa_usuario/?email=${user}`)
+        .then(res => {
+          if (res.data.length > 0) this.existeUsuario = true;
+          else this.existeUsuario = false;
+        })
+        .catch(e => console.log('Error: ', e));
     }
   }
 };
@@ -603,23 +624,23 @@ export default {
 
 <style scoped>
 img.im-logo-header {
-    height: 100%;
-    padding: 20px;
+  height: 100%;
+  padding: 20px;
 }
 .col-md-12.text {
-    text-align: justify;
-    padding: 0px 20px;
-    font-size: 14px;
+  text-align: justify;
+  padding: 0px 20px;
+  font-size: 14px;
 }
 .col-md-12.image {
-    padding: 0 20px 20px;
+  padding: 0 20px 20px;
 }
 .col-md-12.title label {
-    text-align: center;
-    width: 100%;
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 15px;
+  text-align: center;
+  width: 100%;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 15px;
 }
 /* Modal */
 .modal-mask {
@@ -733,64 +754,64 @@ label.register-tipe {
   text-decoration: none;
 }
 div#footer-copy {
-    background: black;
-    color: rgba(255, 255, 255, 0.58);
-    text-align: center;
-    font-size: 12px;
-    padding: 5px;
+  background: black;
+  color: rgba(255, 255, 255, 0.58);
+  text-align: center;
+  font-size: 12px;
+  padding: 5px;
 }
-div#footer-copy a{
-    color: rgba(255, 255, 255);
-    text-decoration: none;
-    font-weight: 600;
+div#footer-copy a {
+  color: rgba(255, 255, 255);
+  text-decoration: none;
+  font-weight: 600;
 }
-.footer-page .container{
-    padding: 40px 0 15px;
+.footer-page .container {
+  padding: 40px 0 15px;
 }
 .col-md-4.sub-menu {
-    padding: 0 25px;
-    color: grey;
+  padding: 0 25px;
+  color: grey;
 }
 .col-md-4.sub-menu label {
-    font-weight: 300;
-    position: relative;
-    left: -7px;
-    margin-bottom: 7px;
+  font-weight: 300;
+  position: relative;
+  left: -7px;
+  margin-bottom: 7px;
 }
-.col-md-4.sub-menu ul{
-    color: white;
-    font-size: 12px
+.col-md-4.sub-menu ul {
+  color: white;
+  font-size: 12px;
 }
-.col-md-4.sub-menu ul a{
-    color: white;
-    font-size: 12px;
-    text-decoration: none;
+.col-md-4.sub-menu ul a {
+  color: white;
+  font-size: 12px;
+  text-decoration: none;
 }
 .col-md-4.text-center.logo {
-    padding: 33px 0px 0;
+  padding: 33px 0px 0;
 }
 .footer-page {
-    background: #313131;
+  background: #313131;
 }
 .whatsapp-number {
-    position: fixed;
-    width: 230px;
-    height: 45px;
-    padding-left: 5px;
-    top: 50%;
-    background-size: cover;
-    border-radius: 50px 0px 0px 50px;
-    background: #00dc0c;
-    color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-    right: -178px;
+  position: fixed;
+  width: 230px;
+  height: 45px;
+  padding-left: 5px;
+  top: 50%;
+  background-size: cover;
+  border-radius: 50px 0px 0px 50px;
+  background: #00dc0c;
+  color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  right: -178px;
 }
 .whatsapp-number:hover {
-    -webkit-animation-name: fade-wp;
-    -webkit-animation-duration: 10s;
-    animation-name: fade-wp;
-    animation-duration: 10s;
-    transition: .2s;
+  -webkit-animation-name: fade-wp;
+  -webkit-animation-duration: 10s;
+  animation-name: fade-wp;
+  animation-duration: 10s;
+  transition: 0.2s;
 }
 @-webkit-keyframes fade-wp {
   0% {
@@ -817,17 +838,17 @@ div#footer-copy a{
   }
 }
 ul.icons {
-    margin: 0 !important;
+  margin: 0 !important;
 }
 .whatsapp-number p {
-    float: right;
-    padding: 10px;
-    width: 180px;
-    text-align: center;
+  float: right;
+  padding: 10px;
+  width: 180px;
+  text-align: center;
 }
 .whatsapp-number img {
-    float: left;
-    border-radius: 50px;
+  float: left;
+  border-radius: 50px;
 }
 button.el-button.btn.CMXD-btn-grey.el-button--default {
   font-size: 12px;
@@ -3029,14 +3050,14 @@ body.is-touch .wrapper.style3 {
 }
 
 #header.alt {
-      background-color: transparent;
-    border: 0;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    height: 3.25em;
-    line-height: 3.25em;
-    position: relative;
-    background: #313131;
+  background-color: transparent;
+  border: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  height: 3.25em;
+  line-height: 3.25em;
+  position: relative;
+  background: #313131;
 }
 section#contact .major p {
   font-size: 14px;
@@ -3321,7 +3342,7 @@ body.is-touch #banner {
   }
   #header.alt[data-v-61b63126] {
     height: 5.25em;
-}
+  }
   h1 {
     text-align: center;
     height: 70px !important;
@@ -3432,7 +3453,7 @@ body.is-touch #banner {
     padding: 0;
   }
 }
-body{
+body {
   overflow-x: hidden !important;
 }
 </style>
