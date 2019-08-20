@@ -1,74 +1,115 @@
 <template>
-    <div class="row">
-        <div class="form-CMXD row col-md-6">
-            <div class="CMXD-icon-form">
-                <i class="material-icons">person</i>
-            </div>
-            <div class="input-effect js-input">
-                <input class="CMXD-material-input nameReg" type="text" name="name" required placeholder="Nombres">
-                <span class="focus-border"></span>
-                <span class="ob_name_reg text-danger">*Ingrese su nombre.</span>
-                <span class="ob_name_reg text-danger">Este nombre excede el máximo de caracteres permitido.</span>
-            </div>
-        </div>
-        <div class="form-CMXD row col-md-6">
-            <div class="CMXD-icon-form">
-                <i class="material-icons">keyboard_arrow_right</i>
-            </div>
-            <div class="input-effect js-input">
-                <input class="CMXD-material-input lastnameReg" type="text" name="lastname" required placeholder="Apellidos">
-                <span class="focus-border"></span>
-                <span class="ob_lastname_reg text-danger">*Ingrese al menos un apellido.</span>
-                <span class="long_lastname_reg text-danger">Este apellido excede el máximo de caracteres permitido.</span>
-            </div>
-        </div>
-        <div class="form-CMXD row col-md-12">
-            <div class="CMXD-icon-form">
-                <i class="material-icons">email</i>
-            </div>
-            <div class="input-effect js-input">
-                <input class="CMXD-material-input emailReg" v-model="usuario_model.email" type="email" name="email" required placeholder="Correo electrónico">
-                <span class="focus-border"></span>
-                <span class="ob_email_reg text-danger">Ingrese un correo electrónico valido.</span>
-                <span class="long_email_reg text-danger">*Este correo excede el máximo de caracteres permitido.</span>
-            </div>
-        </div>
-        <div class="form-CMXD row col-md-6">
-            <div class="CMXD-icon-form">
-                <i class="material-icons">lock</i>
-            </div>
-            <div class="input-effect">
-                <input class="CMXD-material-input passReg" id="pass_registration" v-model="usuario_model.password1" type="password" required placeholder="Contraseña">
-                <span class="focus-border"></span>
-                <span class="ob_pass_reg text-danger">Ingrese una contraseña.</span>
-                <span class="long_pass_reg text-danger">*La contraseña debe contener entre 8 y 65 caracteres.</span>
-            </div>
-        </div>
-        <div class="form-CMXD row col-md-6">
-            <div class="CMXD-icon-form">
-                <i class="material-icons">lock_open</i>
-            </div>
-            <div class="input-effect">
-                <input class="CMXD-material-input pass2Reg" id="pass2_registration" v-model="usuario_model.password2" type="password" required placeholder="Confirmar contraseña">
-                <span class="focus-border"></span>
-                <span class="ob_pass2_reg text-danger">Ingrese nuevamente la contraseña.</span>
-                <span class="long_pass2_reg text-danger">*La contraseña debe contener entre 8 y 65 caracteres.</span>
-            </div>
-        </div>
+  <div class="row">
+    <div class="form-CMXD row col-md-6">
+      <div class="CMXD-icon-form">
+        <i class="material-icons">person</i>
+      </div>
+      <div class="input-effect js-input">
+        <input
+          class="CMXD-material-input nameReg"
+          type="text"
+          name="name"
+          required
+          placeholder="Nombres"
+        />
+        <span class="focus-border"></span>
+        <span class="ob_name_reg text-danger">*Ingrese su nombre.</span>
+        <span class="ob_name_reg text-danger">Este nombre excede el máximo de caracteres permitido.</span>
+      </div>
     </div>
+    <div class="form-CMXD row col-md-6">
+      <div class="CMXD-icon-form">
+        <i class="material-icons">keyboard_arrow_right</i>
+      </div>
+      <div class="input-effect js-input">
+        <input
+          class="CMXD-material-input lastnameReg"
+          type="text"
+          name="lastname"
+          required
+          placeholder="Apellidos"
+        />
+        <span class="focus-border"></span>
+        <span class="ob_lastname_reg text-danger">*Ingrese al menos un apellido.</span>
+        <span
+          class="long_lastname_reg text-danger"
+        >Este apellido excede el máximo de caracteres permitido.</span>
+      </div>
+    </div>
+    <div class="form-CMXD row col-md-12">
+      <div class="CMXD-icon-form">
+        <i class="material-icons">email</i>
+      </div>
+      <div class="input-effect js-input">
+        <input
+          class="CMXD-material-input emailReg"
+          v-model="usuario_model.email"
+          type="email"
+          name="email"
+          required
+          placeholder="Correo electrónico"
+        />
+        <span class="focus-border"></span>
+        <span class="ob_email_reg text-danger">Ingrese un correo electrónico valido.</span>
+        <span
+          class="long_email_reg text-danger"
+        >*Este correo excede el máximo de caracteres permitido.</span>
+      </div>
+    </div>
+    <div class="form-CMXD row col-md-6">
+      <div class="CMXD-icon-form">
+        <i class="material-icons">lock</i>
+      </div>
+      <div class="input-effect">
+        <input
+          class="CMXD-material-input passReg"
+          id="pass_registration"
+          v-model="usuario_model.password1"
+          type="password"
+          required
+          placeholder="Contraseña"
+        />
+        <span class="focus-border"></span>
+        <span class="ob_pass_reg text-danger">Ingrese una contraseña.</span>
+        <span
+          class="long_pass_reg text-danger"
+        >*La contraseña debe contener entre 8 y 65 caracteres.</span>
+      </div>
+    </div>
+    <div class="form-CMXD row col-md-6">
+      <div class="CMXD-icon-form">
+        <i class="material-icons">lock_open</i>
+      </div>
+      <div class="input-effect">
+        <input
+          class="CMXD-material-input pass2Reg"
+          id="pass2_registration"
+          v-model="usuario_model.password2"
+          type="password"
+          required
+          placeholder="Confirmar contraseña"
+        />
+        <span class="focus-border"></span>
+        <span class="ob_pass2_reg text-danger">Ingrese nuevamente la contraseña.</span>
+        <span
+          class="long_pass2_reg text-danger"
+        >*La contraseña debe contener entre 8 y 65 caracteres.</span>
+      </div>
+    </div>
+  </div>
 
-        <!-- <section class="login-form">
+  <!-- <section class="login-form">
                     <p class="txt-cen">¿Quiere inscribir su empresa?</p>
                     <div class="form-group txt-cen">
                         <el-radio type="radio" v-model="btn_empresa" label="1">Si</el-radio>
                         <el-radio type="radio" v-model="btn_empresa" label="2">No</el-radio>
                     </div>
-                  </section>-->
+  </section>-->
 </template>
 
 <script>
-import formLogin from "@/components/login/Form_login";
-import axios from "axios";
+// import formLogin from "@/components/login/Form_login";
+// import axios from "axios";
 
 export default {
   name: "formRegistration",
@@ -80,16 +121,30 @@ export default {
         password1: null,
         password2: null
       },
-      showModal: true
+      showModal: true,
+      amor: ""
     };
+  },
+  methods: {
+    mirar(){
+
+    }
   }
 };
 </script>
 
 <style scoped>
 /*validation camps*/
-.ob_name_reg,.ob_name_reg,.ob_lastname_reg,.long_lastname_reg,.ob_email_reg,
-.long_email_reg,.ob_pass_reg,.long_pass_reg,.ob_pass2_reg,.long_pass2_reg {
+.ob_name_reg,
+.ob_name_reg,
+.ob_lastname_reg,
+.long_lastname_reg,
+.ob_email_reg,
+.long_email_reg,
+.ob_pass_reg,
+.long_pass_reg,
+.ob_pass2_reg,
+.long_pass2_reg {
   display: none;
 }
 

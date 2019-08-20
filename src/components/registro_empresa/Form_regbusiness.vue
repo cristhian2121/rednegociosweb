@@ -1,5 +1,7 @@
 <template>
+
   <div>
+    <Loader v-if="loader"></Loader>
     <div class="title-business">Información general</div>
     <br>
     <div class="row">
@@ -964,18 +966,21 @@
 <script>
 import formLogin from "@/components/login/Form_login";
 import formRegistration from "@/components/registration/Form_registration";
+import Loader from '@/components/comunes/loader'
 
 import axios from "axios";
 export default {
   name: "registro_empresa",
   components: {
     formLogin,
-    formRegistration
+    formRegistration,
+    Loader
   },
   async mounted() {
     await this.traer_ciudaes();
     await this.traer_tipos();
     this.carga = false;
+    this.loader = false
   },
   data() {
     return {
@@ -1056,12 +1061,14 @@ export default {
       id_empresa: null,
       id_archivo: null,
       empresa_nombre: null,
-      email_usuario: null
+      email_usuario: null,
+      loader: true
     };
   },
   methods: {
     enviar_formulario: function() {
       this.carga = true;
+      this.loader = true;
       this.guardar_usuario();
     },
     guardar_empresa: function(user_id) {
@@ -1116,6 +1123,7 @@ export default {
           this.traerUsuario(this.email_usuario);
         })
         .catch(e => {
+          this.loader = false
           console.log(e);
           this.$notify({
             message: "No se puede registrar intentalo mas tarde",
@@ -1129,7 +1137,9 @@ export default {
         .then(res => {
           this.id_usuario = res.data[0].id;
           this.guardar_empresa(this.id_usuario);
-        });
+        })
+        .catch(err => this.loader = false)
+        ;
     },
     enviar_servicios: function() {
       axios({
@@ -1158,7 +1168,11 @@ export default {
           nombre_ser_10: this.servicioModel.nombre_ser_10,
           ser_10: this.servicioModel.ser_10
         }
-      }).then(respuesta => this.$router.push({ name: "home" }));
+      }).then(respuesta => {
+        this.loader = false
+        this.$router.push({ name: "home" })
+      })
+      .catch(err => this.loader = false)
     },
     traer_ciudaes: async function() {
       axios.get("http://localhost:8000/api/ciudad/").then(respuesta => {

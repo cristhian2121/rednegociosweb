@@ -22,7 +22,7 @@
               <div class="modal-body" v-if="!carga">
                 <div class="title">Registro empresa o negocio</div>
                 <br>
-                <formRegistration></formRegistration>
+                <formRegistration :someValue="amor" @update="metodo"></formRegistration>
                 <br>
                 <formRegbusiness></formRegbusiness>
 
@@ -80,6 +80,7 @@ export default {
   async mounted() {
     await this.traer_ciudaes();
     await this.traer_tipos();
+    this.loader =false
     this.carga = false;
   },
   data() {
@@ -160,12 +161,14 @@ export default {
       carga: true,
       id_empresa: null,
       id_archivo: null,
-      empresa_nombre: null
+      empresa_nombre: null,
+      loader: true
     };
   },
   methods: {
     enviar_formulario: function() {
-      this.carga = true;
+      this.carga = true
+      this.loader = true
       axios({
         method: "post",
         url: "http://localhost:8000/api/empresa/",
@@ -190,7 +193,8 @@ export default {
         if (this.id_empresa) {
           this.enviar_servicios();
         }
-      });
+      })
+      .catch(err => this.loader = false)
     },
 
     enviar_servicios: function() {
@@ -220,7 +224,9 @@ export default {
           nombre_ser_10: this.servicioModel.nombre_ser_10,
           ser_10: this.servicioModel.ser_10
         }
-      });
+      })
+      .then(res => this.loader = false)
+      .catch(res => this.loader = false)
     },
     traer_ciudaes: async function() {
       axios.get("http://localhost:8000/api/ciudad/").then(respuesta => {
