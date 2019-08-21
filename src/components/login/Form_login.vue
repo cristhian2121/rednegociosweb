@@ -170,7 +170,6 @@ export default {
       document.querySelector(".long_email").style.display="none";
       document.querySelector(".long_pass").style.display="none";
       document.querySelector(".ob_recap").style.display="none";
-      console.log(typeEmail)
 
       if(user && user.length>65){
         document.querySelector(".long_email").style.display="block";

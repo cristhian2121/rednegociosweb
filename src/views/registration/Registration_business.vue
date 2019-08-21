@@ -22,7 +22,7 @@
               <div class="modal-body" v-if="!carga">
                 <div class="title">Registro empresa o negocio</div>
                 <br>
-                <formRegistration :someValue="amor" @update="metodo"></formRegistration>
+                <formRegistration></formRegistration>
                 <br>
                 <formRegbusiness></formRegbusiness>
 

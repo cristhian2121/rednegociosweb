@@ -1194,8 +1194,6 @@ export default {
         )
         .then(respuesta => {
           this.servicioModel = respuesta.data[5];
-          console.log(respuesta.data);
-          console.log(this.servicioModel);
           if (this.servicioModel.length > 0) {
             this.radio_servicios = this.servicioModel.length + 1;
           }

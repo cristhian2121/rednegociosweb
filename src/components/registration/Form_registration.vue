@@ -121,8 +121,7 @@ export default {
         password1: null,
         password2: null
       },
-      showModal: true,
-      amor: ""
+      showModal: true
     };
   },
   methods: {

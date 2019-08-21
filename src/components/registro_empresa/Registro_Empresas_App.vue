@@ -1237,8 +1237,6 @@ export default {
       let email = sessionStorage.getItem('user');
       axios.get(`http://localhost:8000/api/usuario/?email=${email}`)
       .then(res => {
-        console.log('res')
-        console.log(res)
         this.id_usuario = res.data[0].id;
       });
     },
