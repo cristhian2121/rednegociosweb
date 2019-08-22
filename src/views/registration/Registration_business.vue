@@ -80,6 +80,7 @@ export default {
   async mounted() {
     await this.traer_ciudaes();
     await this.traer_tipos();
+    this.loader =false
     this.carga = false;
   },
   data() {
@@ -160,15 +161,17 @@ export default {
       carga: true,
       id_empresa: null,
       id_archivo: null,
-      empresa_nombre: null
+      empresa_nombre: null,
+      loader: true
     };
   },
   methods: {
     enviar_formulario: function() {
-      this.carga = true;
+      this.carga = true
+      this.loader = true
       axios({
         method: "post",
-        url: "http://68.183.124.242:8000/api/empresa/",
+        url: "http://localhost:8000/api/empresa/",
         data: {
           nombre: this.empresaModel.nombre,
           nit: this.empresaModel.nit,
@@ -190,13 +193,14 @@ export default {
         if (this.id_empresa) {
           this.enviar_servicios();
         }
-      });
+      })
+      .catch(err => this.loader = false)
     },
 
     enviar_servicios: function() {
       axios({
         method: "post",
-        url: "http://68.183.124.242:8000/api/servicio/",
+        url: "http://localhost:8000/api/servicio/",
         data: {
           id_empresa: this.id_empresa,
           nombre_ser_1: this.servicioModel.nombre_ser_1,
@@ -220,15 +224,17 @@ export default {
           nombre_ser_10: this.servicioModel.nombre_ser_10,
           ser_10: this.servicioModel.ser_10
         }
-      });
+      })
+      .then(res => this.loader = false)
+      .catch(res => this.loader = false)
     },
     traer_ciudaes: async function() {
-      axios.get("http://68.183.124.242:8000/api/ciudad/").then(respuesta => {
+      axios.get("http://localhost:8000/api/ciudad/").then(respuesta => {
         this.ciudades = respuesta.data;
       });
     },
     traer_tipos: async function() {
-      axios.get("http://68.183.124.242:8000/api/tipo/").then(respuesta => {
+      axios.get("http://localhost:8000/api/tipo/").then(respuesta => {
         this.tipos = respuesta.data;
       });
     },

@@ -1,5 +1,6 @@
 <template>
   <div id="CMXD-login" class="flex flex-center">
+    <Loader v-if="loader"></Loader>
     <a class="freepick" href="http://www.freepik.com">Photo by Freepik</a>
  
     <formLogin></formLogin>
@@ -10,11 +11,12 @@
 
 <script>
 import formLogin from '@/components/login/Form_login';
-
+import Loader from '@/components/comunes/loader'
 export default {
   name: "login",
   components: {
-    formLogin
+    formLogin,
+    Loader
   },
 };
 </script>

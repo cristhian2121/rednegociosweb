@@ -1,7 +1,8 @@
 <template>
   <div>
+    <Loader v-if="loader"></Loader>
     <div class="title-business">Información general</div>
-    <br>
+    <br />
     <div class="row">
       <!--Info empresa-->
       <div class="form-CMXD row col-md-6">
@@ -16,7 +17,7 @@
             placeholder="Nombre de la empresa"
             v-model="empresaModel.nombre"
             v-validate="'required'"
-          >
+          />
           <span class="focus-border"></span>
           <span v-show="errors.has('nombre')" class="text-warning"></span>
           <span
@@ -39,7 +40,7 @@
             v-model="empresaModel.nit"
             v-validate="'required|max:10'"
             placeholder="NIT o RUT"
-          >
+          />
           <span class="focus-border"></span>
           <span
             v-show="errors.has('nit')"
@@ -96,7 +97,7 @@
             type="text"
             placeholder="Dirección"
             v-model="empresaModel.direccion"
-          >
+          />
           <span class="focus-border"></span>
           <i v-show="errors.has('direccion')" class="text-warning"></i>
         </div>
@@ -116,7 +117,7 @@
             placeholder="Teléfono"
             v-model="empresaModel.telefono"
             v-validate="'max:7'"
-          >
+          />
           <span class="focus-border"></span>
           <i v-show="errors.has('telefono')" class="text-warning"></i>
           <span
@@ -140,7 +141,7 @@
             placeholder="Celular / Whatsapp"
             v-model="empresaModel.celular"
             v-validate="'max:10'"
-          >
+          />
           <span class="focus-border"></span>
           <i v-show="errors.has('celular')" class="text-warning"></i>
           <span
@@ -165,7 +166,7 @@
             placeholder="Correo electrónico de la empresa"
             v-model="empresaModel.email"
             v-validate="'email'"
-          >
+          />
           <span class="focus-border"></span>
           <i v-show="errors.has('email')" class="text-warning"></i>
           <span
@@ -176,10 +177,10 @@
       </div>
       <div class="clear-fix"></div>
     </div>
-    <br>
+    <br />
     <!--Sobre nosotros-->
     <div class="title-business">Sobre la empresa</div>
-    <br>
+    <br />
     <div class="row">
       <!--sección-->
       <div class="form-CMXD row col-md-6">
@@ -207,13 +208,13 @@
       <!--Logo-->
       <div class="form-CMXD row col-md-6">
         <el-upload
-            action="http://68.183.124.242:8000/api/archivo/"
-            multiple
-            :limit="1"
-            class="btn-services"
-            :on-exceed="exceso_archivos"
-            :on-success="logo_cargado"
-          >
+          action="http://localhost:8000/api/archivo/"
+          multiple
+          :limit="1"
+          class="btn-services"
+          :on-exceed="exceso_archivos"
+          :on-success="logo_cargado"
+        >
           <el-button size="small" class="CMXD-btn-ok">Cargar logo</el-button>
           <div
             slot="tip"
@@ -234,7 +235,7 @@
             name="url"
             type="text"
             placeholder="Dominio o URL de la empresa"
-          >
+          />
         </div>
       </div>
       <div class="clear-fix"></div>
@@ -253,7 +254,7 @@
             placeholder="Escriba un resumen detallado sobre quienes son"
             v-model="empresaModel.mision"
             v-validate="'required|max:200'"
-          >
+          />
           <span class="focus-border"></span>
           <i v-show="errors.has('mision')" class="text-warning"></i>
           <span
@@ -264,578 +265,85 @@
       </div>
       <div class="clear-fix"></div>
     </div>
-    <br>
+    <br />
     <div class="title-business">Servicios</div>
-    <br>
+    <br />
 
     <!-- Servicio 1-->
-    <div class="row">
-      <div class="form-CMXD row col-md-6">
-        <div class="CMXD-icon-form">
-          <i class="material-icons">notifications</i>
+    <div v-for="(servicio, index) in servicios" v-bind:key="index">
+      <div class="row servicios-kr">
+        <div class="form-CMXD row col-md-6">
+          <div class="CMXD-icon-form">
+            <i class="material-icons">notifications</i>
+          </div>
+          <div class="input-effect js-input">
+            <label>Servicio {{index+1}}</label>
+            <input
+              class="CMXD-material-input"
+              :name="'nombre_ser_'+index+1"
+              type="text"
+              placeholder="Nombre servicio"
+              v-validate="'required|max:20'"
+            />
+            <span class="focus-border"></span>
+            <i v-show="errors.has('nombre_ser_1')" class="text-warning"></i>
+            <span
+              v-show="errors.has('nombre_ser_1')"
+              class="text-danger"
+            >*Ingrese al menos un servicio.</span>
+          </div>
         </div>
-        <div class="input-effect js-input">
-          <label>Servicio 1</label>
-          <input
-            class="CMXD-material-input"
-            name="nombre_ser_1"
-            type="text"
-            placeholder="Nombre servicio"
-            v-model="servicioModel.nombre_ser_1"
-            v-validate="'required|max:20'"
+        <div class="form-CMXD row col-md-6">
+          <el-upload
+            action="http://localhost:8000/api/archivo/"
+            multiple
+            :limit="1"
+            class="btn-services"
+            :on-exceed="exceso_archivos"
+            :on-success="logo_cargado"
           >
-          <span class="focus-border"></span>
-          <i v-show="errors.has('nombre_ser_1')" class="text-warning"></i>
-          <span
-            v-show="errors.has('nombre_ser_1')"
-            class="text-danger"
-          >*Ingrese al menos un servicio.</span>
+            <el-button
+              class="el-button el-button--default el-button--small CMXD-btn-business"
+              plain
+            >
+              <span class="el-icon-upload"></span>
+            </el-button>
+          </el-upload>
         </div>
-      </div>
-      <div class="form-CMXD row col-md-6">
-        <el-upload
-          action="http://68.183.124.242:8000/api/archivo/"
-          multiple
-          :limit="1"
-          class="btn-services"
-          :on-exceed="exceso_archivos"
-          :on-success="logo_cargado"
-        >
-          <el-button class="el-button el-button--default el-button--small CMXD-btn-business" plain>
-            <span class="el-icon-upload"></span>
-          </el-button>
-        </el-upload>
-      </div>
-      <div class="form-CMXD row col-md-12">
-        <div class="CMXD-icon-form">
-          <i class="material-icons">title</i>
+        <div class="form-CMXD row col-md-12">
+          <div class="CMXD-icon-form">
+            <i class="material-icons">title</i>
+          </div>
+          <div class="input-effect js-input textarea-animation">
+            <textarea
+              class="CMXD-material-input"
+              name="ser_1"
+              placeholder="Describa el servicio"
+            ></textarea>
+            <span class="focus-border"></span>
+            <i v-show="errors.has('ser_3')" class="text-warning"></i>
+            <span v-show="errors.has('ser_3')" class="text-danger"></span>
+          </div>
         </div>
-        <div class="input-effect js-input textarea-animation">
-          <textarea
-            class="CMXD-material-input"
-            name="ser_1"
-            placeholder="Describa el servicio"
-            v-model="servicioModel.ser_1"
-          ></textarea>
-          <span class="focus-border"></span>
-          <i v-show="errors.has('ser_3')" class="text-warning"></i>
-          <span v-show="errors.has('ser_3')" class="text-danger"></span>
-        </div>
+        <div class="clear-fix"></div>
       </div>
-      <div class="clear-fix"></div>
     </div>
 
-    <!-- Servicio 2-->
-    <div class="row" v-if="servicio_2">
-      <div class="col-md-12">
-        <hr>
-        <br>
-      </div>
-      <div class="form-CMXD row col-md-6">
-        <div class="CMXD-icon-form">
-          <i class="material-icons">notifications</i>
-        </div>
-        <div class="input-effect js-input">
-          <label>Servicio 2</label>
-          <input
-            class="CMXD-material-input"
-            name="nombre_ser_2"
-            type="text"
-            placeholder="Nombre servicio"
-          >
-          <span class="focus-border"></span>
-          <i v-show="errors.has('nombre_ser_2')" class="text-warning"></i>
-          <span v-show="errors.has('nombre_ser_2')" class="text-danger"></span>
-        </div>
-      </div>
-      <div class="form-CMXD row col-md-6">
-        <el-upload
-          action="http://68.183.124.242:8000/api/archivo/"
-          multiple
-          :limit="1"
-          class="btn-services"
-          :on-exceed="exceso_archivos"
-        >
-          <el-button class="el-button el-button--default el-button--small CMXD-btn-business" plain>
-            <span class="el-icon-upload"></span>
-          </el-button>
-        </el-upload>
-      </div>
-      <div class="form-CMXD row col-md-12">
-        <div class="CMXD-icon-form">
-          <i class="material-icons">title</i>
-        </div>
-        <div class="input-effect js-input textarea-animation">
-          <textarea
-            class="CMXD-material-input"
-            name="ser_2"
-            placeholder="Describa el servicio"
-            v-model="servicioModel.ser_2"
-          ></textarea>
-          <span class="focus-border"></span>
-          <i v-show="errors.has('ser_3')" class="text-warning"></i>
-          <span v-show="errors.has('ser_3')" class="text-danger">*Maximo 20 caracteres</span>
-        </div>
-      </div>
-      <div class="clear-fix"></div>
-    </div>
-
-    <!-- Servicio 3-->
-    <div class="row" v-if="servicio_3">
-      <div class="col-md-12">
-        <hr>
-        <br>
-      </div>
-      <div class="form-CMXD row col-md-6">
-        <div class="CMXD-icon-form">
-          <i class="material-icons">notifications</i>
-        </div>
-        <div class="input-effect js-input">
-          <label>Servicio 3</label>
-          <input
-            class="CMXD-material-input"
-            name="nombre_ser_3"
-            type="text"
-            placeholder="Nombre servicio"
-            v-model="servicioModel.nombre_ser_3"
-          >
-          <span class="focus-border"></span>
-          <i v-show="errors.has('nombre_ser_3')" class="text-warning"></i>
-          <span v-show="errors.has('nombre_ser_3')" class="text-danger"></span>
-        </div>
-      </div>
-      <div class="form-CMXD row col-md-6">
-        <el-upload
-          action="http://68.183.124.242:8000/api/archivo/"
-          multiple
-          :limit="1"
-          class="btn-services"
-          :on-exceed="exceso_archivos"
-        >
-          <el-button class="el-button el-button--default el-button--small CMXD-btn-business" plain>
-            <span class="el-icon-upload"></span>
-          </el-button>
-        </el-upload>
-      </div>
-      <div class="form-CMXD row col-md-12">
-        <div class="CMXD-icon-form">
-          <i class="material-icons">title</i>
-        </div>
-        <div class="input-effect js-input textarea-animation">
-          <textarea
-            class="CMXD-material-input"
-            name="ser_3"
-            placeholder="Describa el servicio"
-            v-model="servicioModel.ser_3"
-          ></textarea>
-          <span class="focus-border"></span>
-          <i v-show="errors.has('ser_3')" class="text-warning"></i>
-          <span v-show="errors.has('ser_3')" class="text-danger"></span>
-        </div>
-      </div>
-      <div class="clear-fix"></div>
-    </div>
-
-    <!-- Servicio 4-->
-    <div class="row" v-if="servicio_4">
-      <div class="col-md-12">
-        <hr>
-        <br>
-      </div>
-      <div class="form-CMXD row col-md-6">
-        <div class="CMXD-icon-form">
-          <i class="material-icons">notifications</i>
-        </div>
-        <div class="input-effect js-input">
-          <label>Servicio 4</label>
-          <input
-            class="CMXD-material-input"
-            name="nombre_ser_4"
-            type="text"
-            placeholder="Nombre servicio"
-          >
-          <span class="focus-border"></span>
-          <i v-show="errors.has('nombre_ser_4')" class="text-warning"></i>
-          <span v-show="errors.has('nombre_ser_4')" class="text-danger"></span>
-        </div>
-      </div>
-      <div class="form-CMXD row col-md-6">
-        <el-upload
-          action="http://68.183.124.242:8000/api/archivo/"
-          multiple
-          :limit="1"
-          class="btn-services"
-          :on-exceed="exceso_archivos"
-        >
-          <el-button class="el-button el-button--default el-button--small CMXD-btn-business" plain>
-            <span class="el-icon-upload"></span>
-          </el-button>
-        </el-upload>
-      </div>
-      <div class="form-CMXD row col-md-12">
-        <div class="CMXD-icon-form">
-          <i class="material-icons">title</i>
-        </div>
-        <div class="input-effect js-input textarea-animation">
-          <textarea
-            class="CMXD-material-input"
-            name="ser_4"
-            placeholder="Describa el servicio"
-            v-model="servicioModel.ser_4"
-          ></textarea>
-          <span class="focus-border"></span>
-          <i v-show="errors.has('ser_3')" class="text-warning"></i>
-          <span v-show="errors.has('ser_3')" class="text-danger"></span>
-        </div>
-      </div>
-      <div class="clear-fix"></div>
-    </div>
-
-    <!-- Servicio 5-->
-    <div class="row" v-if="servicio_5">
-      <div class="col-md-12">
-        <hr>
-        <br>
-      </div>
-      <div class="form-CMXD row col-md-6">
-        <div class="CMXD-icon-form">
-          <i class="material-icons">notifications</i>
-        </div>
-        <div class="input-effect js-input">
-          <label>Servicio 5</label>
-          <input
-            class="CMXD-material-input"
-            name="nombre_ser_5"
-            type="text"
-            placeholder="Nombre servicio"
-            v-model="servicioModel.nombre_ser_5"
-          >
-          <span class="focus-border"></span>
-          <i v-show="errors.has('nombre_ser_5')" class="text-warning"></i>
-          <span v-show="errors.has('nombre_ser_5')" class="text-danger"></span>
-        </div>
-      </div>
-      <div class="form-CMXD row col-md-6">
-        <el-upload
-          action="http://68.183.124.242:8000/api/archivo/"
-          multiple
-          :limit="1"
-          class="btn-services"
-          :on-exceed="exceso_archivos"
-        >
-          <el-button class="el-button el-button--default el-button--small CMXD-btn-business" plain>
-            <span class="el-icon-upload"></span>
-          </el-button>
-        </el-upload>
-      </div>
-      <div class="form-CMXD row col-md-12">
-        <div class="CMXD-icon-form">
-          <i class="material-icons">title</i>
-        </div>
-        <div class="input-effect js-input textarea-animation">
-          <textarea
-            class="CMXD-material-input"
-            name="ser_5"
-            placeholder="Describa el servicio"
-            v-model="servicioModel.ser_5"
-          ></textarea>
-          <span class="focus-border"></span>
-          <i v-show="errors.has('ser_3')" class="text-warning"></i>
-          <span v-show="errors.has('ser_3')" class="text-danger"></span>
-        </div>
-      </div>
-      <div class="clear-fix"></div>
-    </div>
-
-    <!-- Servicio 6-->
-    <div class="row" v-if="servicio_6">
-      <div class="col-md-12">
-        <hr>
-        <br>
-      </div>
-      <div class="form-CMXD row col-md-6">
-        <div class="CMXD-icon-form">
-          <i class="material-icons">notifications</i>
-        </div>
-        <div class="input-effect js-input">
-          <label>Servicio 6</label>
-          <input
-            class="CMXD-material-input"
-            name="nombre_ser_6"
-            type="text"
-            placeholder="Nombre servicio"
-            v-model="servicioModel.nombre_ser_6"
-          >
-          <span class="focus-border"></span>
-          <i v-show="errors.has('nombre_ser_6')" class="text-warning"></i>
-          <span v-show="errors.has('nombre_ser_6')" class="text-danger"></span>
-        </div>
-      </div>
-      <div class="form-CMXD row col-md-6">
-        <el-upload
-          action="http://68.183.124.242:8000/api/archivo/"
-          multiple
-          :limit="1"
-          class="btn-services"
-          :on-exceed="exceso_archivos"
-        >
-          <el-button class="el-button el-button--default el-button--small CMXD-btn-business" plain>
-            <span class="el-icon-upload"></span>
-          </el-button>
-        </el-upload>
-      </div>
-      <div class="form-CMXD row col-md-12">
-        <div class="CMXD-icon-form">
-          <i class="material-icons">title</i>
-        </div>
-        <div class="input-effect js-input textarea-animation">
-          <textarea
-            class="CMXD-material-input"
-            name="ser_6"
-            placeholder="Describa el servicio"
-            v-model="servicioModel.ser_6"
-          ></textarea>
-          <span class="focus-border"></span>
-          <i v-show="errors.has('ser_3')" class="text-warning"></i>
-          <span v-show="errors.has('ser_3')" class="text-danger"></span>
-        </div>
-      </div>
-      <div class="clear-fix"></div>
-    </div>
-
-    <!-- Servicio 7-->
-    <div class="row" v-if="servicio_7">
-      <div class="col-md-12">
-        <hr>
-        <br>
-      </div>
-      <div class="form-CMXD row col-md-6">
-        <div class="CMXD-icon-form">
-          <i class="material-icons">notifications</i>
-        </div>
-        <div class="input-effect js-input">
-          <label>Servicio 7</label>
-          <input
-            class="CMXD-material-input"
-            name="nombre_ser_7"
-            type="text"
-            placeholder="Nombre servicio"
-            v-model="servicioModel.nombre_ser_7"
-          >
-          <span class="focus-border"></span>
-          <i v-show="errors.has('nombre_ser_7')" class="text-warning"></i>
-          <span v-show="errors.has('nombre_ser_7')" class="text-danger"></span>
-        </div>
-      </div>
-      <div class="form-CMXD row col-md-6">
-        <el-upload
-          action="http://68.183.124.242:8000/api/archivo/"
-          multiple
-          :limit="1"
-          class="btn-services"
-          :on-exceed="exceso_archivos"
-        >
-          <el-button class="el-button el-button--default el-button--small CMXD-btn-business" plain>
-            <span class="el-icon-upload"></span>
-          </el-button>
-        </el-upload>
-      </div>
-      <div class="form-CMXD row col-md-12">
-        <div class="CMXD-icon-form">
-          <i class="material-icons">title</i>
-        </div>
-        <div class="input-effect js-input textarea-animation">
-          <textarea
-            class="CMXD-material-input"
-            name="ser_7"
-            placeholder="Describa el servicio"
-            v-model="servicioModel.ser_7"
-          ></textarea>
-          <span class="focus-border"></span>
-          <i v-show="errors.has('ser_3')" class="text-warning"></i>
-          <span v-show="errors.has('ser_3')" class="text-danger"></span>
-        </div>
-      </div>
-      <div class="clear-fix"></div>
-    </div>
-
-    <!-- Servicio 8-->
-    <div class="row" v-if="servicio_8">
-      <div class="col-md-12">
-        <hr>
-        <br>
-      </div>
-      <div class="form-CMXD row col-md-6">
-        <div class="CMXD-icon-form">
-          <i class="material-icons">notifications</i>
-        </div>
-        <div class="input-effect js-input">
-          <label>Servicio 8</label>
-          <input
-            class="CMXD-material-input"
-            name="nombre_ser_8"
-            type="text"
-            placeholder="Nombre servicio"
-            v-model="servicioModel.nombre_ser_8"
-          >
-          <span class="focus-border"></span>
-          <i v-show="errors.has('nombre_ser_8')" class="text-warning"></i>
-          <span v-show="errors.has('nombre_ser_8')" class="text-danger"></span>
-        </div>
-      </div>
-      <div class="form-CMXD row col-md-6">
-        <el-upload
-          action="http://68.183.124.242:8000/api/archivo/"
-          multiple
-          :limit="1"
-          class="btn-services"
-          :on-exceed="exceso_archivos"
-        >
-          <el-button class="el-button el-button--default el-button--small CMXD-btn-business" plain>
-            <span class="el-icon-upload"></span>
-          </el-button>
-        </el-upload>
-      </div>
-      <div class="form-CMXD row col-md-12">
-        <div class="CMXD-icon-form">
-          <i class="material-icons">title</i>
-        </div>
-        <div class="input-effect js-input textarea-animation">
-          <textarea
-            class="CMXD-material-input"
-            name="ser_8"
-            placeholder="Describa el servicio"
-            v-model="servicioModel.ser_8"
-          ></textarea>
-          <span class="focus-border"></span>
-          <i v-show="errors.has('ser_3')" class="text-warning"></i>
-          <span v-show="errors.has('ser_3')" class="text-danger"></span>
-        </div>
-      </div>
-      <div class="clear-fix"></div>
-    </div>
-
-    <!-- Servicio 9-->
-    <div class="row" v-if="servicio_9">
-      <div class="col-md-12">
-        <hr>
-        <br>
-      </div>
-      <div class="form-CMXD row col-md-6">
-        <div class="CMXD-icon-form">
-          <i class="material-icons">notifications</i>
-        </div>
-        <div class="input-effect js-input">
-          <label>Servicio 9</label>
-          <input
-            class="CMXD-material-input"
-            name="nombre_ser_9"
-            type="text"
-            placeholder="Nombre servicio"
-          >
-          <span class="focus-border"></span>
-          <i v-show="errors.has('nombre_ser_9')" class="text-warning"></i>
-          <span v-show="errors.has('nombre_ser_9')" class="text-danger"></span>
-        </div>
-      </div>
-      <div class="form-CMXD row col-md-6">
-        <el-upload
-          action="http://68.183.124.242:8000/api/archivo/"
-          multiple
-          :limit="1"
-          class="btn-services"
-          :on-exceed="exceso_archivos"
-        >
-          <el-button class="el-button el-button--default el-button--small CMXD-btn-business" plain>
-            <span class="el-icon-upload"></span>
-          </el-button>
-        </el-upload>
-      </div>
-      <div class="form-CMXD row col-md-12">
-        <div class="CMXD-icon-form">
-          <i class="material-icons">title</i>
-        </div>
-        <div class="input-effect js-input textarea-animation">
-          <textarea
-            class="CMXD-material-input"
-            name="ser_9"
-            placeholder="Describa el servicio"
-            v-model="servicioModel.ser_9"
-          ></textarea>
-          <span class="focus-border"></span>
-          <i v-show="errors.has('ser_3')" class="text-warning"></i>
-          <span v-show="errors.has('ser_3')" class="text-danger"></span>
-        </div>
-      </div>
-      <div class="clear-fix"></div>
-    </div>
-
-    <!-- Servicio 10-->
-    <div class="row" v-if="servicio_10">
-      <div class="col-md-12">
-        <hr>
-        <br>
-      </div>
-      <div class="form-CMXD row col-md-6">
-        <div class="CMXD-icon-form">
-          <i class="material-icons">notifications</i>
-        </div>
-        <div class="input-effect js-input">
-          <label>Servicio 10</label>
-          <input
-            class="CMXD-material-input"
-            name="nombre_ser_10"
-            type="text"
-            placeholder="Nombre servicio"
-            v-model="servicioModel.nombre_ser_10"
-          >
-          <span class="focus-border"></span>
-          <i v-show="errors.has('nombre_ser_10')" class="text-warning"></i>
-          <span v-show="errors.has('nombre_ser_10')" class="text-danger"></span>
-        </div>
-      </div>
-      <div class="form-CMXD row col-md-6">
-        <el-upload
-          action="http://68.183.124.242:8000/api/archivo/"
-          multiple
-          :limit="1"
-          class="btn-services"
-          :on-exceed="exceso_archivos"
-        >
-          <el-button class="el-button el-button--default el-button--small CMXD-btn-business" plain>
-            <span class="el-icon-upload"></span>
-          </el-button>
-        </el-upload>
-      </div>
-      <div class="form-CMXD row col-md-12">
-        <div class="CMXD-icon-form">
-          <i class="material-icons">title</i>
-        </div>
-        <div class="input-effect js-input textarea-animation">
-          <textarea
-            class="CMXD-material-input"
-            name="ser_10"
-            placeholder="Describa el servicio"
-            v-model="servicioModel.ser_10"
-          ></textarea>
-          <span class="focus-border"></span>
-          <i v-show="errors.has('ser_3')" class="text-warning"></i>
-          <span v-show="errors.has('ser_3')" class="text-danger"></span>
-        </div>
-      </div>
-      <div class="clear-fix"></div>
-    </div>
     <div class="text-center">
-      <el-button type="primary" class="btn CMXD-btn-person">Añadir nuevo servicio</el-button>
+      <el-button
+        type="primary"
+        class="btn CMXD-btn-person"
+        v-on:click="agregarServicio"
+      >Añadir nuevo servicio</el-button>
     </div>
-    <br>
+    <br />
     <!--Redes sociales-->
     <div class="title-business">Redes sociales</div>
-    <br>
+    <br />
     <div class="row">
       <div class="form-CMXD row col-md-6">
         <div class="CMXD-icon-form">
-          <img src="@/assets/facebook.png" alt>
+          <img src="@/assets/facebook.png" alt />
         </div>
         <div class="input-effect js-input">
           <label>Facebook</label>
@@ -846,7 +354,7 @@
             placeholder="Ruta"
             v-model="empresaModel.facebook"
             v-validate="'max:100'"
-          >
+          />
           <span class="focus-border"></span>
           <span v-show="errors.has('facebook')" class="text-warning"></span>
           <span
@@ -857,7 +365,7 @@
       </div>
       <div class="form-CMXD row col-md-6">
         <div class="CMXD-icon-form">
-          <img src="@/assets/instagram.png" alt>
+          <img src="@/assets/instagram.png" alt />
         </div>
         <div class="input-effect js-input">
           <label>Instagram</label>
@@ -868,7 +376,7 @@
             placeholder="Ruta"
             v-model="empresaModel.instagram"
             v-validate="'max:100'"
-          >
+          />
           <span v-show="errors.has('instagram')" class="text-warning"></span>
           <span
             v-show="errors.has('instagram')"
@@ -878,7 +386,7 @@
       </div>
       <div class="form-CMXD row col-md-6">
         <div class="CMXD-icon-form">
-          <img src="@/assets/twitter.png" alt>
+          <img src="@/assets/twitter.png" alt />
         </div>
         <div class="input-effect js-input">
           <label>Twitter</label>
@@ -888,7 +396,7 @@
             name="twitter"
             type="text"
             v-validate="'max:100'"
-          >
+          />
           <span v-show="errors.has('twitter')" class="text-warning"></span>
           <span
             v-show="errors.has('twitter')"
@@ -898,7 +406,7 @@
       </div>
       <div class="form-CMXD row col-md-6">
         <div class="CMXD-icon-form">
-          <img src="@/assets/whatsapp.png" alt>
+          <img src="@/assets/whatsapp.png" alt />
         </div>
         <div class="input-effect js-input">
           <label>Whatsapp</label>
@@ -908,7 +416,7 @@
             name="whatsapp"
             type="text"
             v-validate="'max:100'"
-          >
+          />
           <span v-show="errors.has('whatsapp')" class="text-warning"></span>
           <span
             v-show="errors.has('whatsapp')"
@@ -918,7 +426,7 @@
       </div>
       <div class="form-CMXD row col-md-6">
         <div class="CMXD-icon-form">
-          <img src="@/assets/youtube.png" alt>
+          <img src="@/assets/youtube.png" alt />
         </div>
         <div class="input-effect js-input">
           <label>Youtube</label>
@@ -929,13 +437,13 @@
             type="text"
             v-model="empresaModel.youtube"
             v-validate="'max:100'"
-          >
+          />
           <span v-show="errors.has('youtube')" class="text-warning"></span>
           <span v-show="errors.has('youtube')" class="text-danger">*Maximo 100 caracteres</span>
         </div>
       </div>
     </div>
-    <br>
+    <br />
 
     <!-- Button (Double) -->
     <div class="row">
@@ -951,11 +459,7 @@
     </div>
     <div class="btn-form-end">
       <router-link class="btn CMXD-btn-business" :to="{ path: '/'}">Volver</router-link>
-      <el-button
-        type="primary"
-        class="btn CMXD-btn-person"
-        v-on:click="validateBeforeSubmit"
-      >Registrarme</el-button>
+      <el-button type="primary" class="btn CMXD-btn-person" v-on:click="validateBeforeSubmit">Registrarme</el-button>
     </div>
     <div class="img-rigth col-md-2 col-lg-2"></div>
   </div>
@@ -964,18 +468,21 @@
 <script>
 import formLogin from "@/components/login/Form_login";
 import formRegistration from "@/components/registration/Form_registration";
+import Loader from "@/components/comunes/loader";
 
 import axios from "axios";
 export default {
   name: "registro_empresa",
   components: {
     formLogin,
-    formRegistration
+    formRegistration,
+    Loader
   },
   async mounted() {
     await this.traer_ciudaes();
     await this.traer_tipos();
     this.carga = false;
+    this.loader = false;
   },
   data() {
     return {
@@ -1056,18 +563,21 @@ export default {
       id_empresa: null,
       id_archivo: null,
       empresa_nombre: null,
-      email_usuario: null
+      email_usuario: null,
+      loader: true,
+      servicios: [21]
     };
   },
   methods: {
     enviar_formulario: function() {
       this.carga = true;
+      this.loader = true;
       this.guardar_usuario();
     },
     guardar_empresa: function(user_id) {
       axios({
         method: "post",
-        url: "http://68.183.124.242:8000/api/empresa/",
+        url: "http://localhost:8000/api/empresa/",
         data: {
           nombre: this.empresaModel.nombre,
           nit: this.empresaModel.nit,
@@ -1101,10 +611,10 @@ export default {
       this.email_usuario = email;
       axios({
         method: "post",
-        url: "http://68.183.124.242:8000/rest-auth/registration/",
+        url: "http://localhost:8000/rest-auth/registration/",
         data: {
-          // first_name: name,
-          // last_name: lastname,
+          first_name: name,
+          last_name: lastname,
           username: email,
           email: email,
           password1: pass,
@@ -1116,6 +626,7 @@ export default {
           this.traerUsuario(this.email_usuario);
         })
         .catch(e => {
+          this.loader = false;
           console.log(e);
           this.$notify({
             message: "No se puede registrar intentalo mas tarde",
@@ -1125,16 +636,18 @@ export default {
     },
     traerUsuario(email) {
       axios
-        .get(`http://68.183.124.242:8000/api/usuario?email=${email}`)
+        .get(`http://localhost:8000/api/usuario?email=${email}`)
         .then(res => {
           this.id_usuario = res.data[0].id;
           this.guardar_empresa(this.id_usuario);
-        });
+        })
+        .catch(err => (this.loader = false));
     },
     enviar_servicios: function() {
+      this.asignarServicio()
       axios({
         method: "post",
-        url: "http://68.183.124.242:8000/api/servicio/",
+        url: "http://localhost:8000/api/servicio/",
         data: {
           id_empresa: this.id_empresa,
           nombre_ser_1: this.servicioModel.nombre_ser_1,
@@ -1158,15 +671,20 @@ export default {
           nombre_ser_10: this.servicioModel.nombre_ser_10,
           ser_10: this.servicioModel.ser_10
         }
-      }).then(respuesta => this.$router.push({ name: "home" }));
+      })
+        .then(respuesta => {
+          this.loader = false;
+          this.$router.push({ name: "home" });
+        })
+        .catch(err => (this.loader = false));
     },
     traer_ciudaes: async function() {
-      axios.get("http://68.183.124.242:8000/api/ciudad/").then(respuesta => {
+      axios.get("http://localhost:8000/api/ciudad/").then(respuesta => {
         this.ciudades = respuesta.data;
       });
     },
     traer_tipos: async function() {
-      axios.get("http://68.183.124.242:8000/api/tipo/").then(respuesta => {
+      axios.get("http://localhost:8000/api/tipo/").then(respuesta => {
         this.tipos = respuesta.data;
       });
     },
@@ -1373,7 +891,57 @@ export default {
     isValidEmail: function(mail) {
       //return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(mail);
       return /\S+@\S+\.\S+/.test(mail);
-    }
+    },
+    agregarServicio: function() {
+      if (this.servicios.length < 10) this.servicios.push(21);
+    },
+    asignarServicio: function() {
+      const servicios = document.querySelectorAll(".servicios-kr");
+      servicios.forEach((servicio, index) => {
+        switch(index){
+          case 0:
+            this.servicioModel.nombre_ser_1 = servicio.getElementsByTagName("input")[0].value
+            this.servicioModel.ser_1 = servicio.getElementsByTagName("textarea")[0].value
+            break
+          case 1:
+            this.servicioModel.nombre_ser_2 = servicio.getElementsByTagName("input")[0].value
+            this.servicioModel.ser_2 = servicio.getElementsByTagName("textarea")[0].value
+            break
+          case 2:
+            this.servicioModel.nombre_ser_3 = servicio.getElementsByTagName("input")[0].value
+            this.servicioModel.ser_3 = servicio.getElementsByTagName("textarea")[0].value
+            break
+          case 3:
+            this.servicioModel.nombre_ser_4 = servicio.getElementsByTagName("input")[0].value
+            this.servicioModel.ser_4 = servicio.getElementsByTagName("textarea")[0].value
+            break
+          case 4:
+            this.servicioModel.nombre_ser_5 = servicio.getElementsByTagName("input")[0].value
+            this.servicioModel.ser_5 = servicio.getElementsByTagName("textarea")[0].value
+            break
+          case 5:
+            this.servicioModel.nombre_ser_6 = servicio.getElementsByTagName("input")[0].value
+            this.servicioModel.ser_6 = servicio.getElementsByTagName("textarea")[0].value
+            break
+          case 6:
+            this.servicioModel.nombre_ser_7 = servicio.getElementsByTagName("input")[0].value
+            this.servicioModel.ser_7 = servicio.getElementsByTagName("textarea")[0].value
+            break
+          case 7:
+            this.servicioModel.nombre_ser_8 = servicio.getElementsByTagName("input")[0].value
+            this.servicioModel.ser_8 = servicio.getElementsByTagName("textarea")[0].value
+            break
+          case 8:
+            this.servicioModel.nombre_ser_9 = servicio.getElementsByTagName("input")[0].value
+            this.servicioModel.ser_9 = servicio.getElementsByTagName("textarea")[0].value
+            break
+          case 9:
+            this.servicioModel.nombre_ser_10 = servicio.getElementsByTagName("input")[0].value
+            this.servicioModel.ser_10 = servicio.getElementsByTagName("textarea")[0].value
+            break
+        }
+      });
+    },    
   }
 };
 </script>

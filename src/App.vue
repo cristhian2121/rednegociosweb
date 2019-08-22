@@ -24,7 +24,7 @@ export default {
     traer_empresas: async function() {
       // axios
       //   .get(
-      //     `http://68.183.124.242:8000/api/detalle/?email_user=${this.usuario}`
+      //     `http://localhost:8000/api/detalle/?email_user=${this.usuario}`
       //   )
       //   .then(respuesta => {
       //     this.empresas = respuesta.data[0];

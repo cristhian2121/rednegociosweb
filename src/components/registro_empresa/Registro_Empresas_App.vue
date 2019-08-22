@@ -1,5 +1,6 @@
 <template>
   <div id="CMXD-login">
+    <Loader v-if="loader"></Loader>
     <a class="freepick inside-back" href="http://www.freepik.com">Photo by Freepik</a>
     <MyHeader></MyHeader>
     <div class="bg-home"></div>
@@ -197,7 +198,7 @@
         <!--Logo-->
         <div class="form-CMXD row col-md-6">
           <el-upload
-            action="http://68.183.124.242:8000/api/archivo/"
+            action="http://localhost:8000/api/archivo/"
             multiple
             :limit="1"
             class="btn-services"
@@ -293,7 +294,7 @@
         </div>
         <div class="form-CMXD row col-md-6">
           <el-upload
-            action="http://68.183.124.242:8000/api/archivo/"
+            action="http://localhost:8000/api/archivo/"
             multiple
             :limit="1"
             class="btn-services"
@@ -354,7 +355,7 @@
         </div>
         <div class="form-CMXD row col-md-6">
           <el-upload
-            action="http://68.183.124.242:8000/api/archivo/"
+            action="http://localhost:8000/api/archivo/"
             multiple
             :limit="1"
             class="btn-services"
@@ -413,7 +414,7 @@
         </div>
         <div class="form-CMXD row col-md-6">
           <el-upload
-            action="http://68.183.124.242:8000/api/archivo/"
+            action="http://localhost:8000/api/archivo/"
             multiple
             :limit="1"
             class="btn-services"
@@ -473,7 +474,7 @@
         </div>
         <div class="form-CMXD row col-md-6">
           <el-upload
-            action="http://68.183.124.242:8000/api/archivo/"
+            action="http://localhost:8000/api/archivo/"
             multiple
             :limit="1"
             class="btn-services"
@@ -532,7 +533,7 @@
         </div>
         <div class="form-CMXD row col-md-6">
           <el-upload
-            action="http://68.183.124.242:8000/api/archivo/"
+            action="http://localhost:8000/api/archivo/"
             multiple
             :limit="1"
             class="btn-services"
@@ -591,7 +592,7 @@
         </div>
         <div class="form-CMXD row col-md-6">
           <el-upload
-            action="http://68.183.124.242:8000/api/archivo/"
+            action="http://localhost:8000/api/archivo/"
             multiple
             :limit="1"
             class="btn-services"
@@ -650,7 +651,7 @@
         </div>
         <div class="form-CMXD row col-md-6">
           <el-upload
-            action="http://68.183.124.242:8000/api/archivo/"
+            action="http://localhost:8000/api/archivo/"
             multiple
             :limit="1"
             class="btn-services"
@@ -709,7 +710,7 @@
         </div>
         <div class="form-CMXD row col-md-6">
           <el-upload
-            action="http://68.183.124.242:8000/api/archivo/"
+            action="http://localhost:8000/api/archivo/"
             multiple
             :limit="1"
             class="btn-services"
@@ -768,7 +769,7 @@
         </div>
         <div class="form-CMXD row col-md-6">
           <el-upload
-            action="http://68.183.124.242:8000/api/archivo/"
+            action="http://localhost:8000/api/archivo/"
             multiple
             :limit="1"
             class="btn-services"
@@ -827,7 +828,7 @@
         </div>
         <div class="form-CMXD row col-md-6">
           <el-upload
-            action="http://68.183.124.242:8000/api/archivo/"
+            action="http://localhost:8000/api/archivo/"
             multiple
             :limit="1"
             class="btn-services"
@@ -996,7 +997,7 @@
               href="#"
               data-toggle="modal"
               data-target="#t_and_c_m"
-            >Términos y condiciones</a> establecidos por este sitio, incluido nuestro Uso de cookies.
+            >Términos y condicione</a> establecidos por este sitio, incluido nuestro Uso de cookies.
           </div>
         </div>
       </div>
@@ -1051,6 +1052,7 @@
 <script>
 import axios from "axios";
 import MyHeader from "@/components/header/Header";
+import Loader from '@/components/comunes/loader'
 export default {
   name: "registro_empresa",
   async mounted() {
@@ -1058,9 +1060,11 @@ export default {
     await this.traer_tipos();
     await this.traerUsuario();
     this.carga = false;
+    this.loader = false;
   },
   components: {
-    MyHeader
+    MyHeader,
+    Loader
   },
   data() {
     return {
@@ -1141,15 +1145,17 @@ export default {
       id_empresa: null,
       id_archivo: null,
       empresa_nombre: null,
-      id_usuario: null
+      id_usuario: null,
+      loader: true
     };
   },
   methods: {
     enviar_formulario: function() {
       this.carga = true;
+      this.loader = true;
       axios({
         method: "post",
-        url: "http://68.183.124.242:8000/api/empresa/",
+        url: "http://localhost:8000/api/empresa/",
         data: {
           nombre: this.empresaModel.nombre,
           nit: this.empresaModel.nit,
@@ -1172,12 +1178,17 @@ export default {
         if (this.id_empresa) {
           this.enviar_servicios();
         }
-      });
+      })
+      .catch(err => {
+        console.log('error')
+        console.log(err)
+        this.loader = false;
+      })
     },
     enviar_servicios: function() {
       axios({
         method: "post",
-        url: "http://68.183.124.242:8000/api/servicio/",
+        url: "http://localhost:8000/api/servicio/",
         data: {
           id_empresa: this.id_empresa,
           nombre_ser_1: this.servicioModel.nombre_ser_1,
@@ -1205,24 +1216,26 @@ export default {
       .then(res => {
         this.mensaje_exito();
         this.$router.push({ name: "home" });
+        this.loader = false;
       })
       .catch( err => {
         this.mensaje_error();
+        this.loader = false;
       });
     },
     traer_ciudaes: async function() {
-      axios.get("http://68.183.124.242:8000/api/ciudad/").then(respuesta => {
+      axios.get("http://localhost:8000/api/ciudad/").then(respuesta => {
         this.ciudades = respuesta.data;
       });
     },
     traer_tipos: async function() {
-      axios.get("http://68.183.124.242:8000/api/tipo/").then(respuesta => {
+      axios.get("http://localhost:8000/api/tipo/").then(respuesta => {
         this.tipos = respuesta.data;
       });
     },
     traerUsuario: async function(){
       let email = sessionStorage.getItem('user');
-      axios.get(`http://68.183.124.242:8000/api/usuario/?email=${email}`)
+      axios.get(`http://localhost:8000/api/usuario/?email=${email}`)
       .then(res => {
         this.id_usuario = res.data[0].id;
       });
