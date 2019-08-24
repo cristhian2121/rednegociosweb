@@ -511,7 +511,7 @@ export default {
 
     traer_empresas: async function() {
       axios
-        .get(`http://121.0.0.1:8000/api/detalle/?nombre=${this.nombre_empresa}`)
+        .get(`http://167.71.253.254:8000/api/detalle/?nombre=${this.nombre_empresa}`)
         .then(respuesta => {
           this.empresas = respuesta.data[0];
           this.traer_servicios();
@@ -519,10 +519,10 @@ export default {
     },
 
     traer_servicios: function() {
-      //console.log(`http://121.0.0.1:8000/api/servicio/?id_empresa=${this.empresas.id_empresa}`)
+      //console.log(`http://167.71.253.254:8000/api/servicio/?id_empresa=${this.empresas.id_empresa}`)
       axios
         .get(
-          `http://121.0.0.1:8000/api/servicio/?id_empresa=${this.empresas.id_empresa}`
+          `http://167.71.253.254:8000/api/servicio/?id_empresa=${this.empresas.id_empresa}`
         )
         .then(respuesta => {
           this.servicios = respuesta.data[0];
@@ -611,7 +611,7 @@ export default {
       const user = sessionStorage.getItem("user");
       if (!user) this.existeUsuario = false;
       axios
-        .get(`http://121.0.0.1:8000/api/empresa_usuario/?email=${user}`)
+        .get(`http://167.71.253.254:8000/api/empresa_usuario/?email=${user}`)
         .then(res => {
           if (res.data.length > 0) this.existeUsuario = true;
           else this.existeUsuario = false;

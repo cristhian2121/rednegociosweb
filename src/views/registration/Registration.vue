@@ -79,7 +79,7 @@ export default {
 
       axios({
         method: "post",
-        url: "http://121.0.0.1:8000/rest-auth/registration/",
+        url: "http://167.71.253.254:8000/rest-auth/registration/",
         data: {
           first_name: document.getElementsByName("name")[0].value,
           last_name: document.getElementsByName("lastname")[0].value,

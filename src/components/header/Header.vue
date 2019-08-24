@@ -71,7 +71,7 @@ export default {
     usuario_empresa: async function() {
       await axios
         .get(
-          `http://121.0.0.1:8000/api/empresa_usuario/?email=${
+          `http://167.71.253.254:8000/api/empresa_usuario/?email=${
             this.email_user
           }`
         )
@@ -85,7 +85,7 @@ export default {
         });
     }
     // traer_empresas: function() {
-    //   axios.get(`http://121.0.0.1:8000/api/empresa/?usuario=${this.nombre_empresa}`)
+    //   axios.get(`http://167.71.253.254:8000/api/empresa/?usuario=${this.nombre_empresa}`)
     //   .then(respuesta => {
     //     this.empresas = respuesta.data[0];
     //     this.carga = false;
