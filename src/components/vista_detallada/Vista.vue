@@ -97,7 +97,7 @@
           <h2>Nuestros servicios</h2>
         </header>
         <div class="feature-grid">
-          <div class="feature" v-for="servicio in servicios">
+          <div class="feature" v-for="servicio in servicios" v-bind:key="servicio">
             <div class="image rounded">
               <img v-bind:src="'D:/proyectoRolo/Api/archivo/'+empresas.nombre_logo" alt>
               <!-- <img  src="@/assets/logo-home.png" alt> -->
@@ -504,7 +504,7 @@ export default {
     traer_empresas: function() {
       axios
         .get(
-          `http://167.71.253.254:8000/api/detalle/?nombre=${
+          `http://121.0.0.1:8000/api/detalle/?nombre=${
             this.nombre_empresa
           }`
         )
@@ -515,7 +515,7 @@ export default {
     },
 
     traer_servicios: async function() {
-      axios.get("http://167.71.253.254:8000/api/servicio/").then(respuesta => {
+      axios.get("http://121.0.0.1:8000/api/servicio/").then(respuesta => {
         this.servicios = respuesta.data[0];
         this.carga = false;
       });

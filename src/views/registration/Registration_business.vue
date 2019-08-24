@@ -171,7 +171,7 @@ export default {
       this.loader = true
       axios({
         method: "post",
-        url: "http://167.71.253.254:8000/api/empresa/",
+        url: "http://121.0.0.1:8000/api/empresa/",
         data: {
           nombre: this.empresaModel.nombre,
           nit: this.empresaModel.nit,
@@ -200,7 +200,7 @@ export default {
     enviar_servicios: function() {
       axios({
         method: "post",
-        url: "http://167.71.253.254:8000/api/servicio/",
+        url: "http://121.0.0.1:8000/api/servicio/",
         data: {
           id_empresa: this.id_empresa,
           nombre_ser_1: this.servicioModel.nombre_ser_1,
@@ -229,12 +229,12 @@ export default {
       .catch(res => this.loader = false)
     },
     traer_ciudaes: async function() {
-      axios.get("http://167.71.253.254:8000/api/ciudad/").then(respuesta => {
+      axios.get("http://121.0.0.1:8000/api/ciudad/").then(respuesta => {
         this.ciudades = respuesta.data;
       });
     },
     traer_tipos: async function() {
-      axios.get("http://167.71.253.254:8000/api/tipo/").then(respuesta => {
+      axios.get("http://121.0.0.1:8000/api/tipo/").then(respuesta => {
         this.tipos = respuesta.data;
       });
     },

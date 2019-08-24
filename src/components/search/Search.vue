@@ -151,7 +151,7 @@ export default {
     },
 
     traer_Empresas: async function() {
-      axios.get("http://167.71.253.254:8000/api/detalle/").then(respuesta => {
+      axios.get("http://121.0.0.1:8000/api/detalle/").then(respuesta => {
         this.empresasAux = respuesta.data;
         this.empresas = this.empresasAux
         this.carga = false;
@@ -159,12 +159,12 @@ export default {
       .catch(e => console.log('Error: ', e));
     },
     traer_tipos: async function() {
-      axios.get("http://167.71.253.254:8000/api/tipo/").then(respuesta => {
+      axios.get("http://121.0.0.1:8000/api/tipo/").then(respuesta => {
         this.tipos = respuesta.data;
       });
     },
     traer_ciudades: async function() {
-      axios.get("http://167.71.253.254:8000/api/ciudad/").then(respuesta => {
+      axios.get("http://121.0.0.1:8000/api/ciudad/").then(respuesta => {
         this.ciudades = respuesta.data;
       });
     },
