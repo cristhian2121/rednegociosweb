@@ -13,7 +13,7 @@ import Empresa from "../../models/empresa.js";
 export default {
   name: "listar",
   mounted() {
-    axios.get("http://localhost:8000/api/Api/").then(respuesta => {
+    axios.get("http://167.71.253.254:8000/api/Api/").then(respuesta => {
       this.empresa = respuesta.data[1];
     });
   },

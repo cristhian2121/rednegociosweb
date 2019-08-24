@@ -294,7 +294,7 @@
         </div>
         <div class="form-CMXD row col-md-6">
           <el-upload
-            action="http://localhost:8000/api/archivo/"
+            action="http://167.71.253.254:8000/api/archivo/"
             multiple
             :limit="1"
             class="btn-services"
@@ -355,7 +355,7 @@
         </div>
         <div class="form-CMXD row col-md-6">
           <el-upload
-            action="http://localhost:8000/api/archivo/"
+            action="http://167.71.253.254:8000/api/archivo/"
             multiple
             :limit="1"
             class="btn-services"
@@ -416,7 +416,7 @@
         </div>
         <div class="form-CMXD row col-md-6">
           <el-upload
-            action="http://localhost:8000/api/archivo/"
+            action="http://167.71.253.254:8000/api/archivo/"
             multiple
             :limit="1"
             class="btn-services"
@@ -477,7 +477,7 @@
         </div>
         <div class="form-CMXD row col-md-6">
           <el-upload
-            action="http://localhost:8000/api/archivo/"
+            action="http://167.71.253.254:8000/api/archivo/"
             multiple
             :limit="1"
             class="btn-services"
@@ -538,7 +538,7 @@
         </div>
         <div class="form-CMXD row col-md-6">
           <el-upload
-            action="http://localhost:8000/api/archivo/"
+            action="http://167.71.253.254:8000/api/archivo/"
             multiple
             :limit="1"
             class="btn-services"
@@ -599,7 +599,7 @@
         </div>
         <div class="form-CMXD row col-md-6">
           <el-upload
-            action="http://localhost:8000/api/archivo/"
+            action="http://167.71.253.254:8000/api/archivo/"
             multiple
             :limit="1"
             class="btn-services"
@@ -660,7 +660,7 @@
         </div>
         <div class="form-CMXD row col-md-6">
           <el-upload
-            action="http://localhost:8000/api/archivo/"
+            action="http://167.71.253.254:8000/api/archivo/"
             multiple
             :limit="1"
             class="btn-services"
@@ -721,7 +721,7 @@
         </div>
         <div class="form-CMXD row col-md-6">
           <el-upload
-            action="http://localhost:8000/api/archivo/"
+            action="http://167.71.253.254:8000/api/archivo/"
             multiple
             :limit="1"
             class="btn-services"
@@ -782,7 +782,7 @@
         </div>
         <div class="form-CMXD row col-md-6">
           <el-upload
-            action="http://localhost:8000/api/archivo/"
+            action="http://167.71.253.254:8000/api/archivo/"
             multiple
             :limit="1"
             class="btn-services"
@@ -843,7 +843,7 @@
         </div>
         <div class="form-CMXD row col-md-6">
           <el-upload
-            action="http://localhost:8000/api/archivo/"
+            action="http://167.71.253.254:8000/api/archivo/"
             multiple
             :limit="1"
             class="btn-services"
@@ -1177,7 +1177,7 @@ export default {
     traer_empresas: function() {
       axios
         .get(
-          `http://localhost:8000/api/detalle/?nombre=${
+          `http://167.71.253.254:8000/api/detalle/?nombre=${
             this.nombre_empresa
           }`
         )
@@ -1188,7 +1188,7 @@ export default {
     traer_servicios: function() {
       axios
         .get(
-          `http://localhost:8000/api/servicio/?nombre=${
+          `http://167.71.253.254:8000/api/servicio/?nombre=${
             this.nombre_empresa
           }`
         )
@@ -1203,7 +1203,7 @@ export default {
       this.carga = true;
       axios({
         method: "get",
-        url: "http://localhost:8000/api/empresa/",
+        url: "http://167.71.253.254:8000/api/empresa/",
         data: {
           nombre: this.empresaModel.nombre,
           nit: this.empresaModel.nit,
@@ -1231,7 +1231,7 @@ export default {
     enviar_servicios: async function() {
       axios({
         method: "get",
-        url: "http://localhost:8000/api/servicio/",
+        url: "http://167.71.253.254:8000/api/servicio/",
         data: {
           id_empresa: this.id_empresa,
           nombre_ser_1: this.servicioModel.nombre_ser_1,
@@ -1266,12 +1266,12 @@ export default {
         });
     },
     traer_ciudaes: async function() {
-      axios.get("http://localhost:8000/api/ciudad/").then(respuesta => {
+      axios.get("http://167.71.253.254:8000/api/ciudad/").then(respuesta => {
         this.ciudades = respuesta.data;
       });
     },
     traer_tipos: async function() {
-      axios.get("http://localhost:8000/api/tipo/").then(respuesta => {
+      axios.get("http://167.71.253.254:8000/api/tipo/").then(respuesta => {
         this.tipos = respuesta.data;
       });
     },

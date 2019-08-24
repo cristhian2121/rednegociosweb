@@ -141,7 +141,7 @@ export default {
 
       axios({
         method: "post",
-        url: "http://localhost:8000/rest-auth/login/",
+        url: "http://167.71.253.254:8000/rest-auth/login/",
         data: {
           username: this.usuario_model.email,
           email: this.usuario_model.email,
